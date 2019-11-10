@@ -108,6 +108,7 @@ def build(token, path="src/mindustry-mods.yaml", ):
 
     mods = [ Mod(repo(m), link(m), desc(m), icon(m), r.stars)
              for m, r in zip(mods, repos) ]
+    mods = reversed(sorted(mods, key=lambda x: x.stars))
 
     data = template.render(mods=mods)
 

@@ -3,9 +3,6 @@ author: Anuke
 name: ExampleMod
 about: An example mod.
 repo: Anuken/ExampleMod
-content:
-    - items/electrum
-    - blocks/electrum-forge
 category: example
 ---
 author: Potion

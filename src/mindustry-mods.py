@@ -39,7 +39,7 @@ def loads(path):
 def fmt_entry_content(repo, xs):
     def fmt(x):
         link = f"https://raw.githubusercontent.com/{repo}/master/sprites/{x}.png"
-        return f' - ![{x}]({link})'
+        return f'  - ![{x}]({link})'
     
     return "\n".join(fmt(x) for x in xs)
 

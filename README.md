@@ -40,6 +40,8 @@
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png) *1 stars* -- crystal edition
 
+  - [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) *0 stars* -- This is a mod for the game Mindustry that adds more production.
+
   - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry) ![ ](images/opmindustry-icon.png) *0 stars* -- Just a mod that has way too much stuff for low material cost.
 
   - [ZkyLB/Dirt-Block](https://github.com/ZkyLB/Dirt-Block) ![ ](images/dirt-block-icon.png) *0 stars* -- dirt

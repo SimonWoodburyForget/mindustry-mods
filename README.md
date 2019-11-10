@@ -1,7 +1,7 @@
 List of mods:
 - [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) An example mod.
-  - ![items/electrum](https://github.com/Anuken/ExampleMod/items/electrum)
-  - ![blocks/electrum-forge](https://github.com/Anuken/ExampleMod/blocks/electrum-forge)
+  - ![items/electrum](https://github.com/Anuken/ExampleMod/tree/master/sprites/items/electrum.png.png)
+  - ![blocks/electrum-forge](https://github.com/Anuken/ExampleMod/tree/master/sprites/blocks/electrum-forge.png.png)
 - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) crystal edition
 
 - [DE3000/Manufacry](https://github.com/DE3000/Manufacry) Manufacturing based mod for Mindustry

@@ -31,10 +31,33 @@ category: example
 import yaml
 
 def loads(path):
-    """ Path load yaml data from. """
+    """ Loads data from path, ensuring duplicates don't exist. """
     with open(path, 'r') as f:
-        data = yaml.load(f.read())
-    return str(data)
+        data = { x["repo"]: x for x in yaml.load_all(f.read()) }.values()
+    return list(data)
+
+def fmt_entry_content(repo, xs):
+    def fmt(x):
+        link = f"https://github.com/{repo}/{x}"
+        return f'  - ![{x}]({link})'
+    
+    return "\n".join(fmt(x) for x in xs)
+
+def fmt_entry(x):
+    repo = x["repo"]
+    link = "https://github.com/" + repo
+    desc = x["about"]
+    cont = fmt_entry_content(repo, x["content"]) if "content" in x else ""
+    return "\n".join([f'- [{repo}]({link}) {desc}', cont])
+
+def fmt_content(x):
+    return "List of mods:\n" + "\n".join(x)
+
+def build(path="src/mindustry-mods.yaml"):
+    """ Builds index.html """
+    data = fmt_content(fmt_entry(x) for x in loads(path))
+    with open("README.md", 'w') as f:
+        print(data, file=f)
 
 if __name__ == '__main__':
-    loads("src/awesome-mindustry.yaml")
+    build()

@@ -6,6 +6,7 @@ repo: Anuken/ExampleMod
 content:
     - items/electrum
     - blocks/electrum-forge
+category: example
 ---
 author: Potion
 name: Mindustry-Crystal-edition
@@ -24,7 +25,9 @@ repo: ProximityCatz/CreepLand
 ---
 author: aze
 name: mindustry-io
-about: Adds a lot of different elements to mindustry, uranium, more mechs, bots, walls, etc.
+about: >-
+    Adds a lot of different elements to mindustry,
+    uranium, more mechs, bots, walls, etc.
 repo: fuzzbuck/mindustry-io
 --- 
 author: Techfish3000
@@ -34,7 +37,9 @@ repo: TechFish3000/More-Mindustry
 --- 
 author: MemFaceGo
 name: Better-Blocks-Mod
-about: This mod adds more blocks , materials and enemies (I'll add enemies soon) (OH NO)
+about: >-
+    This mod adds more blocks , materials and
+    enemies (I'll add enemies soon) (OH NO)
 repo: MemFaceGo/Better-Blocks-Mod
 --- 
 author: Techfish3000
@@ -59,12 +64,16 @@ repo: TechFish3000/Techfish-BEANS
 ---
 author: Ado1928
 name: Fusion-Reactor-mod
-about: An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+about: >-
+    An endgame Mindustry mod that adds new interesting
+    materials and blocks to the game, most notably, the Fusion Reactor.
 repo: ado1928/Fusion-Reactor-mod
 ---
 author: wewemaster
 name: random-things
-about: Thats my first mod,just upload the zip and if u want u can unzip it
+about: >-
+    Thats my first mod, just upload the zip
+    and if u want u can unzip it.
 repo: wewemaster/random-things
 ---
 author: TheBabinator
@@ -124,7 +133,9 @@ repo: ZkyLB/Dark-Life
 ---
 author: wewemaster
 name: random-things
-about: this mod have a variety of items/block,in the future will be units and some more things :)
+about: >-
+    This mod have a variety of items/block,
+    in the future will be units and some more things.
 repo: wewemaster/random-things
 ---
 author: MemFaceGo
@@ -168,7 +179,7 @@ repo: Maxwelllondon92/RedSands
 name: RedSands
 ---
 author: KeviTV
-about: Mod for Mindustry. Version: 0.5 Глобальное обновление!
+about: Mod for Mindustry. Глобальное обновление!
 repo: KeviTV/MekanisM
 name: MekanisM
 ---
@@ -181,3 +192,4 @@ author: Nope.avi
 about: A mod for mindustry, where aliens of differing cultures fight against the Drone union.
 repo: ThatOneBepis/Infinitodustry
 name: Infinitodustry
+...

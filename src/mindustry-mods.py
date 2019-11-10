@@ -35,6 +35,7 @@ category: example
 from pathlib import Path
 from collections import namedtuple
 
+import json
 import yaml
 import jinja2
 import github
@@ -59,36 +60,56 @@ def icon(mod):
     ''' Returns the mods icon path. (small image) '''
     return f"images/{name(mod)}-icon.png"
 
-class Mod(namedtuple("Mod", "repo link desc icon")):
-    @staticmethod
-    def from_raw(raw):
-        """ Turns the configuration from YAML 
-        into a named tuble. """
-        return Mod(repo(raw), link(raw), desc(raw), icon(raw))
-
-def loads(path, gh):
-    """ Loads data from path, ensuring duplicates don't exist,
-    and turning them into namedtuple, ready for a template to use. """
+class Mod(namedtuple("Mod", "repo link desc icon stars")):
+    pass
     
+def loads(path):
+    """ Loads data from path, ensuring duplicates don't exist,
+    and turning them into namedtuple, ready for a template to use. """    
     with open(path, 'r') as f:
-        data = { x["repo"]: Mod.from_raw(x, gh)
+        data = { x["repo"]: x
                  for x in yaml.load_all(f.read()) }.values()
-    return list(x for x in data if x is not None)
+    return list(x for x in data)
+
+class Repo(namedtuple("Repo", "name stars")):
+    @staticmethod
+    def from_github(gh, name):
+        ''' Gets a Github repository from Github. '''
+        repo = gh.get_repo(name)
+        return Repo(name, repo.stargazers_count)
+
+    def into_dict(self):
+        return dict(self._asdict())
 
 template = jinja2.Template('''
-
 List of mods:
-
 {% for mod in mods %}
-  - ![ ]({{ mod.icon }}) [{{ mod.repo }}]({{ mod.link }}) {{ mod.desc }}
+  - ![ ]({{ mod.icon }}) {{ mod.stars }} Stars [{{ mod.repo }}]({{ mod.link }}) {{ mod.desc }}
 {% endfor %}
-
 ''')
 
-def build(token, path="src/mindustry-mods.yaml"):
+def repos_cached(gh, mods, update=False):
+    ''' Gets repos and caches them if update cache is true. '''
+    repos_path = Path.home() / ".github-cache"
+    if update:
+        repos = [ Repo.from_github(gh, x) for x in mods ]
+        with open(repos_path, "w") as f:
+            json.dump([ r.into_dict() for r in repos ], f)
+    else:
+        with open(repos_path) as f:
+            repos = [ Repo(**r) for r in json.load(f) ]
+    return repos
+
+def build(token, path="src/mindustry-mods.yaml", ):
     """ Builds index.html """
+    mods = loads(path)
     gh = github.Github(token)
-    data = template.render(mods=loads(path, gh))
+    repos = repos_cached(gh, [ m["repo"] for m in mods])
+
+    mods = [ Mod(repo(m), link(m), desc(m), icon(m), r.stars)
+             for m, r in zip(mods, repos) ]
+
+    data = template.render(mods=mods)
 
     with open("README.md", 'w') as f:
         print(data, file=f)

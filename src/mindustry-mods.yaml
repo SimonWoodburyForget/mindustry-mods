@@ -167,6 +167,8 @@ author: macdowntwo
 name: Dirt-Block
 about: dirt
 repo: ZkyLB/Dirt-Block
+content:
+    - blocks/dirt
 ---
 author: Beryllium
 name: RevenantMod

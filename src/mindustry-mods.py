@@ -4,14 +4,16 @@ This will do nothing super fancy, just build some HTML from some
 static YAML file, with the following characteristics:
 
 ```
+---
 author: Author Name
 name: Mod Name
 about: Short description.
 repo: User/Repo
 content:
     - items/silver
-    - blocks/forget
+    - blocks/forge
 category: example
+...
 ```
 
 - the YAML file should be separated into documents 
@@ -24,11 +26,16 @@ category: example
   last one should be picked;
 
 - the `category` value is used to select under which
-  section to put the mod.
+  section to put the mod;
+
+- the `images` key is for images of content.
+
+
 
 """
 
 import yaml
+import jinja2
 
 def loads(path):
     """ Loads data from path, ensuring duplicates don't exist. """
@@ -36,26 +43,29 @@ def loads(path):
         data = { x["repo"]: x for x in yaml.load_all(f.read()) }.values()
     return list(data)
 
-def fmt_entry_content(repo, xs):
-    def fmt(x):
-        link = f"https://raw.githubusercontent.com/{repo}/master/sprites/{x}.png"
-        return f'  - ![{x}]({link})'
-    
-    return "\n".join(fmt(x) for x in xs)
+def repo(mod):
+    return mod["repo"]
 
-def fmt_entry(x):
-    repo = x["repo"]
-    link = "https://github.com/" + repo
-    desc = x["about"]
-    cont = fmt_entry_content(repo, x["content"]) if "content" in x else ""
-    return "\n".join([f'- [{repo}]({link}) {desc}', cont])
+def link(mod):
+    return "https://github.com/" + repo(mod)
 
-def fmt_content(x):
-    return "List of mods:\n" + "\n".join(x)
+def desc(mod):
+    return mod["about"] if "about" in mod else ""
+
+template = jinja2.Template('''
+
+List of mods:
+
+{% for mod in mods %}
+  - [{{ repo(mod) }}]({{ link(mod) }}) {{ desc(mod) }}
+{% endfor %}
+
+''')
+
 
 def build(path="src/mindustry-mods.yaml"):
     """ Builds index.html """
-    data = fmt_content(fmt_entry(x) for x in loads(path))
+    data = template.render(mods=loads(path), repo=repo, link=link, desc=desc)
     with open("README.md", 'w') as f:
         print(data, file=f)
 

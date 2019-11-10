@@ -30,18 +30,15 @@ category: example
 
 - the `images` key is for images of content.
 
-
-
 """
+
+from pathlib import Path
+from collections import namedtuple
 
 import yaml
 import jinja2
+import github
 
-def loads(path):
-    """ Loads data from path, ensuring duplicates don't exist. """
-    with open(path, 'r') as f:
-        data = { x["repo"]: x for x in yaml.load_all(f.read()) }.values()
-    return list(data)
 
 def repo(mod):
     ''' Returns the mods Github repository name. '''
@@ -62,22 +59,40 @@ def icon(mod):
     ''' Returns the mods icon path. (small image) '''
     return f"images/{name(mod)}-icon.png"
 
+class Mod(namedtuple("Mod", "repo link desc icon")):
+    @staticmethod
+    def from_raw(raw):
+        """ Turns the configuration from YAML 
+        into a named tuble. """
+        return Mod(repo(raw), link(raw), desc(raw), icon(raw))
+
+def loads(path, gh):
+    """ Loads data from path, ensuring duplicates don't exist,
+    and turning them into namedtuple, ready for a template to use. """
+    
+    with open(path, 'r') as f:
+        data = { x["repo"]: Mod.from_raw(x, gh)
+                 for x in yaml.load_all(f.read()) }.values()
+    return list(x for x in data if x is not None)
+
 template = jinja2.Template('''
 
 List of mods:
 
 {% for mod in mods %}
-  - ![ ]({{ icon(mod) }}) [{{ repo(mod) }}]({{ link(mod) }}) {{ desc(mod) }}
+  - ![ ]({{ mod.icon }}) [{{ mod.repo }}]({{ mod.link }}) {{ mod.desc }}
 {% endfor %}
 
 ''')
 
-
-def build(path="src/mindustry-mods.yaml"):
+def build(token, path="src/mindustry-mods.yaml"):
     """ Builds index.html """
-    data = template.render(mods=loads(path), repo=repo, link=link, desc=desc, icon=icon)
+    gh = github.Github(token)
+    data = template.render(mods=loads(path, gh))
+
     with open("README.md", 'w') as f:
         print(data, file=f)
 
 if __name__ == '__main__':
-    build()
+    with open(Path.home() / ".github-token") as f:
+        build(f.read())

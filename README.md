@@ -19,7 +19,7 @@ List of mods:
 
   - [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) *3 stars* 
 
-    A mod for mindustry, where aliens of differing cultures fight against the Drone union.
+    A mod for mindustry, where aliens of differing cultures fight against the Drone union, and their leader: Divinity. 
 
   - [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![ ](images/redsands-icon.png) *2 stars* 
 

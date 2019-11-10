@@ -188,7 +188,9 @@ repo: walksanatora/OPmindustry
 name: OPmindustry
 ---
 author: Nope.avi
-about: A mod for mindustry, where aliens of differing cultures fight against the Drone union.
+about: >-
+    A mod for mindustry, where aliens of differing cultures fight
+    against the Drone union, and their leader: Divinity. 
 repo: ThatOneBepis/Infinitodustry
 name: Infinitodustry
 ...

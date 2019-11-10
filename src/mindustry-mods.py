@@ -83,7 +83,8 @@ class Repo(namedtuple("Repo", "name stars")):
         return dict(self._asdict())
 
 template = jinja2.Template('''
-List of mods:
+# Listing of Mods
+
 {% for mod in mods %}
   - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.stars }} stars* 
 

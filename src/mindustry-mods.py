@@ -86,9 +86,7 @@ template = jinja2.Template('''
 # Listing of Mods
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.stars }} stars* 
-
-    {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 

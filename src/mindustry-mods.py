@@ -5,6 +5,7 @@ static YAML file, with the following characteristics:
 
 ```
 ---
+issue: zipped incorrectly
 author: Author Name
 name: Mod Name
 about: Short description.

@@ -6,11 +6,11 @@
 
   - [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![ ](images/better-blocks-mod-icon.png) *11 stars* -- This mod adds more blocks , materials and enemies OH NO
 
+  - [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) *4 stars* -- A mod for mindustry, where aliens of differing cultures fight against the Drone union, and their leader: Divinity. 
+
   - [Maxwelllondon92/AdvancedLogisticsMod](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![ ](images/advancedlogisticsmod-icon.png) *4 stars* -- A mod for Mindustry
 
   - [ZkyLB/Dark-Life](https://github.com/ZkyLB/Dark-Life) ![ ](images/dark-life-icon.png) *4 stars* -- The life of light and dark.
-
-  - [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) *3 stars* -- A mod for mindustry, where aliens of differing cultures fight against the Drone union, and their leader: Divinity. 
 
   - [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![ ](images/redsands-icon.png) *2 stars* -- A martian-like environment.
 
@@ -39,6 +39,8 @@
   - [fuzzbuck/mindustry-io](https://github.com/fuzzbuck/mindustry-io) ![ ](images/mindustry-io-icon.png) *1 stars* -- Adds a lot of different elements to mindustry, uranium, more mechs, bots, walls, etc.
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png) *1 stars* -- crystal edition
+
+  - [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator) ![ ](images/ukrajinisator-icon.png) *0 stars* -- Українізатор. Цим все сказано.
 
   - [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) *0 stars* -- This is a mod for the game Mindustry that adds more production.
 

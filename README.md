@@ -38,6 +38,8 @@
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png) *1 stars* -- crystal edition
 
+  - [DemonX3/DemonX3-ERM](https://github.com/DemonX3/DemonX3-ERM) ![ ](images/extended-rebuilding-modules-icon.png) *0 stars* -- 
+
   - [ZkyLB/Swarm-Mod](https://github.com/ZkyLB/Swarm-Mod) ![ ](images/swarm-mod-icon.png) *0 stars* -- Adds a new, and annoying flying unit.
 
   - [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) *0 stars* -- This is a mod for the game Mindustry that adds more production.

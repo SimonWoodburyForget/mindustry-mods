@@ -148,7 +148,7 @@ class ModMeta:
         mods_name = parse_or_nothing(r.mname) if r.mname else m["repo"]
         mods_desc = parse_or_nothing(r.desc) if 'about' not in m else m['about']
         author = parse_or_nothing(r.author) if 'author' not in m else m['author']
-        mindustry_name = repo_name.lower().replace(" ", "-")
+        mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
 
         return ModMeta(repo=mods_name,
                            link=f"https://github.com/{repo_name}",

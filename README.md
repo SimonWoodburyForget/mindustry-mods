@@ -14,7 +14,7 @@ A list of mods, ordered by most recently committed:
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 *0 stars* -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
-  - [DustryX](https://github.com/Xusk947/DustryX)  by Xusk947 *1 stars* -- I apologize for being in the archive
+  - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive
 
   - [NISZOgen mod](https://github.com/niszogen/mindustrymod1)  by NISZOgen *1 stars* -- Mod dodający nowe przedmioty :D!
 
@@ -33,7 +33,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [RedSands](https://github.com/Maxwelllondon92/RedSands)  by Maxwelllondon *2 stars* -- A martian-like environment.
 
-  - [Revenant Fighter Ship Pad](https://github.com/BasedUser/RevenantMod)  by Beryllium *1 stars* -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - [Revenant Fighter Ship Pad](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium *1 stars* -- A mod for Mindustry that adds the Revenant as a playable mech.
 
   - [Better blocks mod](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo *11 stars* -- This mod adds more blocks , materials and enemies OH NO
 
@@ -41,7 +41,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 *0 stars* -- Core mod for all Techfish mindustry mods
 
-  - [Example Mod](https://github.com/Anuken/ExampleMod)  by Anuke *28 stars* -- An example mod.
+  - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
 
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost *2 stars* -- Place object on environment walls
 
@@ -61,7 +61,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 *2 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
-  - [More Grass](https://github.com/Retrothopter/More-Grass)  by Retrothopter *1 stars* -- Adds Dry Grass and Flowered Grass for more varied green spaces.
+  - [More Grass](https://github.com/Retrothopter/More-Grass) ![](images/more-grass-icon.png) by Retrothopter *1 stars* -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 
   - [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore)  by jojoblack_fr *2 stars* -- Mindustry mod
 

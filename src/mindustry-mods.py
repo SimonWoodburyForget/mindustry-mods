@@ -178,17 +178,21 @@ class ModMeta:
 def update_icon(repo_name, image_path=None):
     if image_path is None:
         return None
-        
+
     icon_name = repo_name.split("/")[1].lower().replace(" ", "-")
     icon_name = f"{icon_name}-icon"
     icon_path = f"images/{icon_name}.png"
     url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
     r = requests.get(url, stream=True)
+
+    try:
+        image = Image.open(BytesIO(r.content))
+    except:
+        # ohno
+        return None
     
-    image = Image.open(BytesIO(r.content))
     maxsize = (16, 16)
     image.thumbnail(maxsize, Image.ANTIALIAS)
-    image.show()
     image.save(icon_path, "PNG")
     return icon_path
     

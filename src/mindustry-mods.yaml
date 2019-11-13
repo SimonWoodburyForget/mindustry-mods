@@ -4,6 +4,7 @@ name: ExampleMod
 about: An example mod.
 repo: Anuken/ExampleMod
 category: example
+icon: sprites/items/electrum.png
 ---
 author: Potion
 name: Mindustry-Crystal-edition
@@ -31,6 +32,7 @@ author: Techfish3000
 name: More-Mindustry
 about: mindustry mod
 repo: TechFish3000/More-Mindustry
+icon: sprites/items/power_cell.png
 --- 
 author: MemFaceGo
 name: Better-Blocks-Mod
@@ -53,6 +55,7 @@ author: Plas_Gensokyo
 name: Modular-Turret
 about: An Mindustry mod
 repo: xhz313123/Modular-Turret
+icon: sprites/items/commonTI.png
 ---
 author: Techfish3000
 name: Techfish-BEANS
@@ -102,6 +105,7 @@ author: Retrothopter
 name: More-Grass
 about: Adds Dry Grass and Flowered Grass for more varied green spaces.
 repo: Retrothopter/More-Grass
+icon: sprites/blocks/environment/dryGrass3.png
 ---
 author: Techfish3000
 name: Techfish-Core
@@ -158,6 +162,7 @@ author: Xusk947
 name: DustryX
 about: I apologize for being in the archive
 repo: Xusk947/DustryX
+icon: sprites/units/machinegunner.png
 ---
 author: macdowntwo
 name: Dirt-Block
@@ -170,6 +175,7 @@ author: Beryllium
 name: RevenantMod
 about: A mod for Mindustry that adds the Revenant as a playable mech.
 repo: BasedUser/RevenantMod
+icon: sprites/mechs/revenant.png
 ---
 author: Maxwelllondon
 about: A martian-like environment.

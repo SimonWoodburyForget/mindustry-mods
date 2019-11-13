@@ -73,7 +73,7 @@ def mod_dot_json(name):
     '''
     return f"https://raw.githubusercontent.com/{name}/master/mod.json"
 
-class Mod(namedtuple("Mod", "repo link desc icon stars author")):
+class Mod(namedtuple("Mod", "repo link desc icon stars author date")):
     pass
     
 def loads(path):
@@ -148,9 +148,10 @@ def build(token, path="src/mindustry-mods.yaml", ):
                  icon(m),
                  r.stars,
                  (minfmt.ignore_sbrack.parse(
-                     ("by " + r.author) if r.author else "")).strip())
+                     ("by " + r.author) if r.author else "")).strip(),
+                 r.date)
              for m, r in zip(mods, repos) ]
-    mods = reversed(sorted(mods, key=lambda x: x.stars))
+    mods = reversed(sorted(mods, key=lambda x: x.date))
 
     data = template.render(mods=mods)
 

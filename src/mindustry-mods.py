@@ -46,7 +46,7 @@ import github
 import requests
 from datetime import datetime
 import dateutil.parser
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from PIL import Image
 from io import BytesIO
 
@@ -114,7 +114,7 @@ class Repo:
         '''Called when the object is about to be serialized.
         '''
         return { k: str(v) if k == 'date' else v
-                 for k, v in self._asdict().items() }
+                 for k, v in asdict(self).items() }
 
     def from_dict(d):
         '''Called when the object is being deserialized.
@@ -130,7 +130,7 @@ A list of mods, ordered by most recently committed:
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=False, cache_path=Path.home() / ".github-cache"):
+def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"):
     '''Gets repos if update is `True` and caches them, 
     otherwise just reads the cached data.
     '''
@@ -188,8 +188,10 @@ class ModMeta:
         '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which 
         will be used in the templates.
         '''
-        return [ ModMeta.build(m, r, icons[m['repo']])
-                 for m, r in zip(mods, repos) if 'issue' not in m ]
+        repos = { x.name: x for x in repos }
+
+        return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
+                 for m in mods if 'issue' not in m ]
 
 def update_icon(repo_name, image_path=None):
     if image_path is None:

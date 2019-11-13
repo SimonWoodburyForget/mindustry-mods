@@ -59,8 +59,15 @@ def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
     and turning them into namedtuple, ready for a template to use.
     '''
+    def key_handler(x, k):
+        try:
+            return x[k]
+        except KeyError as e:
+            print(f"KeyError: {e} in {x}")
+            quit()
+    
     with open(path, 'r') as f:
-        data = { x["repo"]: x
+        data = { key_handler(x, "repo"): x
                  for x in yaml.safe_load_all(f.read()) }.values()
     return list(x for x in data)
 

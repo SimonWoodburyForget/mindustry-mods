@@ -26,8 +26,6 @@ A list of mods, ordered by most recently committed:
 
   - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry)  by walksanator *0 stars* -- 
-
   - [MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
 EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
@@ -37,15 +35,13 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Better blocks mod](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo *11 stars* -- This mod adds more blocks , materials and enemies OH NO
 
-  - [ZkyLB/Dirt-Block](https://github.com/ZkyLB/Dirt-Block)  by macdowntwo *0 stars* -- dirt
-
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 *0 stars* -- Core mod for all Techfish mindustry mods
 
   - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
 
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost *2 stars* -- Place object on environment walls
 
-  - [CreepLand](https://github.com/ProximityCatz/CreepLand)  by ProximityCat *0 stars* -- A mindustry modification.
+  - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat *0 stars* -- A mindustry modification.
 
   - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo *4 stars* -- The life of light and dark.
 

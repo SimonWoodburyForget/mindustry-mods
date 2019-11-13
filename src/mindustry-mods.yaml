@@ -20,6 +20,7 @@ author: ProximityCat
 name: CreepLand
 about: A mindustry modification.
 repo: ProximityCatz/CreepLand
+icon: sprites/items/mshell.png
 ---
 author: aze
 name: mindustry-io
@@ -35,7 +36,7 @@ repo: TechFish3000/More-Mindustry
 icon: sprites/items/power_cell.png
 --- 
 repo: MemFaceGo/Better-Blocks-Mod
-icon: sprites/blocks/q-battery.png
+icon: sprites/units/bazercon.png
 --- 
 author: Techfish3000
 name: Techfish-Orbital
@@ -67,10 +68,8 @@ repo: ado1928/Fusion-Reactor-mod
 ---
 author: wewemaster
 name: random-things
-about: >-
-    Thats my first mod, just upload the zip
-    and if u want u can unzip it.
 repo: wewemaster/random-things
+issue: mod in subdirectory
 ---
 author: TheBabinator
 name: NuclearWar
@@ -165,8 +164,7 @@ author: macdowntwo
 name: Dirt-Block
 about: dirt
 repo: ZkyLB/Dirt-Block
-content:
-    - blocks/dirt
+issue: mod in subdirectory
 ---
 author: Beryllium
 name: RevenantMod
@@ -188,6 +186,7 @@ icon: sprites/blocks/battery1.png
 author: walksanator
 repo: walksanatora/OPmindustry
 name: OPmindustry
+issue: mod in zip file
 ---
 repo: ThatOneBepis/Infinitodustry
 name: Infinitodustry

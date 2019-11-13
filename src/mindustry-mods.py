@@ -188,7 +188,7 @@ def update_icon(repo_name, image_path=None):
     try:
         image = Image.open(BytesIO(r.content))
     except:
-        # ohno
+        print(":ohno:", repo_name, image_path)
         return None
     
     maxsize = (16, 16)

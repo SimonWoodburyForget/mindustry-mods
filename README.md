@@ -2,13 +2,13 @@
 A list of mods, ordered by most recently committed:
 
 
-  - [ReFacthorium](https://github.com/Slava0135/ReFactorium)  by Slava0135 *0 stars* -- A new way forward. V0.1 - Scrap Update!
+  - [ReFacthorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.1 - Scrap Update!
 
-  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod)  by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
-  - [Canvas](https://github.com/ZkyLB/Canvas)  by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
+  - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition)  by Potion *1 stars* -- crystal edition
 
@@ -16,15 +16,15 @@ A list of mods, ordered by most recently committed:
 
   - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive
 
-  - [NISZOgen mod](https://github.com/niszogen/mindustrymod1)  by NISZOgen *1 stars* -- Mod dodający nowe przedmioty :D!
+  - [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen *1 stars* -- Mod dodający nowe przedmioty :D!
 
   - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod)  by ZkyLB *0 stars* -- Adds a new, and annoying flying unit.
 
   - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua *1 stars* -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
-  - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod)  by Maxwelllondon *5 stars* -- A mod for Mindustry
+  - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![](images/advancedlogisticsmod-icon.png) by Maxwelllondon *5 stars* -- More Conveyor Belts
 
-  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry)  by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
+  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry)  by walksanator *0 stars* -- 
 

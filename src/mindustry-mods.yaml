@@ -34,12 +34,8 @@ about: mindustry mod
 repo: TechFish3000/More-Mindustry
 icon: sprites/items/power_cell.png
 --- 
-author: MemFaceGo
-name: Better-Blocks-Mod
-about: >-
-    This mod adds more blocks , materials and
-    enemies (I'll add enemies soon) (OH NO)
 repo: MemFaceGo/Better-Blocks-Mod
+icon: sprites/blocks/carbon-wall.png
 --- 
 author: Techfish3000
 name: Techfish-Orbital
@@ -145,9 +141,8 @@ about: This mod adds more blocks , materials and enemies OH NO
 repo: MemFaceGo/Better-Blocks-Mod
 ---
 author: Maxwelllondon
-name: AdvancedLogisticsMod
-about: A mod for Mindustry
 repo: Maxwelllondon92/AdvancedLogisticsMod
+icon: sprites/blocks/conveyors/carbon-fiber-conveyor-0-2.png
 ---
 author: BlindGhost
 name: PlaceAnywhere
@@ -157,6 +152,7 @@ repo: BlindGhostPL/PlaceAnywhere
 name: Canvas
 about: A mod for the pixel artists. Includes 29 colors.
 repo: ZkyLB/Canvas
+icon: sprites/blocks/raspberry.png
 ---
 author: Xusk947
 name: DustryX
@@ -192,10 +188,12 @@ name: OPmindustry
 ---
 repo: ThatOneBepis/Infinitodustry
 name: Infinitodustry
+icon: sprites/units/supreme-lich.png
 ---
 author: What42Pizza
 name: Mindustry-Production-Mod
 repo: What42Pizza/Mindustry-Production-Mod
+icon: sprites/blocks/sand-sifter-iron.png
 ---
 author: Prosta4ok_ua
 name: Ukrajinisator
@@ -210,6 +208,7 @@ repo: ZkyLB/Swarm-Mod
 author: NISZOgen
 name: mindustrymod1
 repo: niszogen/mindustrymod1
+icon: sprites/items/niszonium.png
 ---
 author: DemonX3
 name: Extended Rebuilding Modules
@@ -219,4 +218,5 @@ icon: sprites/mechs/sister.png
 repo: ballgamer56/VanillaExtended
 ---
 repo: Slava0135/ReFactorium
+icon: sprites/blocks/condenser.png
 ...

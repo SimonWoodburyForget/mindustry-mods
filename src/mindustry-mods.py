@@ -113,14 +113,14 @@ class Repo(namedtuple("Repo", "name stars mname desc author date")):
         return { k: str(v) if k == 'date' else v for k, v in self._asdict().items() }
 
 template = jinja2.Template('''
-# Listing of Mods
+A list of mods, ordered by most recently committed:
 
 {% for mod in mods %}
   - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) {{ mod.author }} *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=True):
+def repos_cached(gh, mods, update=False):
     '''Gets repos and caches them if update cache is true.
     '''
     repos_path = Path.home() / ".github-cache"

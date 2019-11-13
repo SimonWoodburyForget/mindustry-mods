@@ -1,12 +1,12 @@
 
-# Listing of Mods
+A list of mods, ordered by most recently committed:
 
 
   - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) by  macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png)  *1 stars* -- crystal edition
 
-  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This is a mod for the game Mindustry that adds more production.
+  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![ ](images/extended-rebuilding-modules-icon.png) by DemonX3 *0 stars* -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
@@ -16,15 +16,16 @@
 
   - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod) ![ ](images/swarm-mod-icon.png) by  macdowntwo *0 stars* -- Adds a new, and annoying flying unit.
 
-  - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator) ![ ](images/ukrajinisator-icon.png) by Prosta4ok_ua#6336 *1 stars* -- Українізатор. Цим все сказано.
+  - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator) ![ ](images/ukrajinisator-icon.png) by Prosta4ok_ua#6336 *1 stars* -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
   - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![ ](images/advancedlogisticsmod-icon.png) by Maxwelllondon *5 stars* -- A mod for Mindustry
 
-  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) by  Bepis *4 stars* -- A mod for mindustry, where aliens of differing cultures fight against the Drone union, and their leader: Divinity. 
+  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) by  Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry) ![ ](images/opmindustry-icon.png)  *0 stars* -- Just a mod that has way too much stuff for low material cost.
+  - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry) ![ ](images/opmindustry-icon.png)  *0 stars* -- 
 
-  - [MekanisM](https://github.com/KeviTV/MekanisM) ![ ](images/mekanism-icon.png) by KeviTV *1 stars* -- Mod for Mindustry. Глобальное обновление!
+  - [MekanisM](https://github.com/KeviTV/MekanisM) ![ ](images/mekanism-icon.png) by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
+EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [RedSands](https://github.com/Maxwelllondon92/RedSands) ![ ](images/redsands-icon.png) by Maxwelllondon *2 stars* -- A martian-like environment.
 

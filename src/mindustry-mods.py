@@ -41,6 +41,8 @@ import yaml
 import jinja2
 import github
 import requests
+from datetime import datetime
+import dateutil.parser
 
 def repo(mod):
     '''Returns the mods Github repository name.
@@ -83,7 +85,7 @@ def loads(path):
                  for x in yaml.load_all(f.read()) }.values()
     return list(x for x in data)
 
-class Repo(namedtuple("Repo", "name stars mname desc author")):
+class Repo(namedtuple("Repo", "name stars mname desc author date")):
 
     @staticmethod
     def from_github(gh, name):
@@ -92,6 +94,8 @@ class Repo(namedtuple("Repo", "name stars mname desc author")):
         data into a namedtuple to be cached.
         '''
         repo = gh.get_repo(name)
+        sha = repo.get_branch("master").commit.sha
+        date = repo.get_commit(sha).commit.author.date
         r = requests.get(mod_dot_json(name))
         mname = desc = author = None
         try:
@@ -102,10 +106,11 @@ class Repo(namedtuple("Repo", "name stars mname desc author")):
                 print(f"404 at {name}")
         except ParseError as e:
             print(f"Error in {name}: {e}")
-        return Repo(name, repo.stargazers_count, mname, desc, author)
+        return Repo(name, repo.stargazers_count, mname, desc, author, date)
 
     def into_dict(self):
-        return dict(self._asdict())
+        '''Called when the object is about to be serialized'''
+        return { k: str(v) if k == 'date' else v for k, v in self._asdict().items() }
 
 template = jinja2.Template('''
 # Listing of Mods
@@ -125,7 +130,8 @@ def repos_cached(gh, mods, update=True):
             json.dump([ r.into_dict() for r in repos ], f)
     else:
         with open(repos_path) as f:
-            repos = [ Repo(**r) for r in json.load(f) ]
+            repos = [ Repo({"date": dateutil.parser.parse(r["date"]),
+                            **r}) for r in json.load(f) ]
     return repos
 
 def build(token, path="src/mindustry-mods.yaml", ):

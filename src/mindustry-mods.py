@@ -75,7 +75,7 @@ def mod_dot_json(name):
     '''
     return f"https://raw.githubusercontent.com/{name}/master/mod.json"
 
-class Mod(namedtuple("Mod", "repo link desc icon stars")):
+class Mod(namedtuple("Mod", "repo link desc icon stars author")):
     pass
     
 def loads(path):
@@ -87,7 +87,7 @@ def loads(path):
                  for x in yaml.load_all(f.read()) }.values()
     return list(x for x in data)
 
-class Repo(namedtuple("Repo", "name stars mname desc")):
+class Repo(namedtuple("Repo", "name stars mname desc author")):
 
     @staticmethod
     def from_github(gh, name):
@@ -97,16 +97,16 @@ class Repo(namedtuple("Repo", "name stars mname desc")):
         '''
         repo = gh.get_repo(name)
         r = requests.get(mod_dot_json(name))
-        mname = desc = None
+        mname = desc = author = None
         try:
             if r.status_code == 200:
                 j = mson.jsonc.parse(r.text)
-                mname, desc = j["name"], j["description"]
+                mname, desc, author = j["name"], j["description"], j["author"]
             else:
                 print(f"404 at {name}")
         except ParseError as e:
             print(f"Error in {name}: {e}")
-        return Repo(name, repo.stargazers_count, mname, desc)
+        return Repo(name, repo.stargazers_count, mname, desc, author)
 
     def into_dict(self):
         return dict(self._asdict())
@@ -115,11 +115,11 @@ template = jinja2.Template('''
 # Listing of Mods
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.stars }} stars* -- {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.author }} {{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=True):
+def repos_cached(gh, mods, update=False):
     '''Gets repos and caches them if update cache is true.
     '''
     repos_path = Path.home() / ".github-cache"
@@ -143,7 +143,8 @@ def build(token, path="src/mindustry-mods.yaml", ):
                  link(m),
                  desc(m) or r.desc or "",
                  icon(m),
-                 r.stars)
+                 r.stars,
+                 minfmt.ignore_sbrack.parse("by " + r.author if r.author else ""))
              for m, r in zip(mods, repos) ]
     mods = reversed(sorted(mods, key=lambda x: x.stars))
 

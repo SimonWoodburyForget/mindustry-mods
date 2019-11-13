@@ -1,16 +1,15 @@
 """ Python script to pull Mindustry mods relative to repo name.
+This modules requires Python 3.7 or higher.
 
-The format goes as follows:
+The yaml configuration file format goes as follows:
 
-```
----
-repo: User/Repo
-issue: zipped incorrectly
-author: Author Name
-name: Mod Name
-about: Short 
-...
-```
+    ---
+    repo: User/Repo
+    issue: zipped incorrectly
+    author: Author Name
+    name: Mod Name
+    about: Short 
+    ...
 
 Documents are separated by `---`, and the file is
 ended with `...`, with the following fields:
@@ -43,6 +42,7 @@ import github
 import requests
 from datetime import datetime
 import dateutil.parser
+from dataclasses import dataclass
 
 def repo(mod):
     '''Returns the mods Github repository name.
@@ -73,9 +73,6 @@ def mod_dot_json(name):
     '''
     return f"https://raw.githubusercontent.com/{name}/master/mod.json"
 
-class Mod(namedtuple("Mod", "repo link desc icon stars author date")):
-    pass
-    
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
     and turning them into namedtuple, ready for a template to use.
@@ -85,7 +82,14 @@ def loads(path):
                  for x in yaml.load_all(f.read()) }.values()
     return list(x for x in data)
 
-class Repo(namedtuple("Repo", "name stars mname desc author date")):
+@dataclass
+class Repo:
+    name: str
+    stars: int
+    mname: str
+    desc: str
+    author: str
+    date: datetime
 
     @staticmethod
     def from_github(gh, name):
@@ -109,8 +113,16 @@ class Repo(namedtuple("Repo", "name stars mname desc author date")):
         return Repo(name, repo.stargazers_count, mname, desc, author, date)
 
     def into_dict(self):
-        '''Called when the object is about to be serialized'''
-        return { k: str(v) if k == 'date' else v for k, v in self._asdict().items() }
+        '''Called when the object is about to be serialized.
+        '''
+        return { k: str(v) if k == 'date' else v
+                 for k, v in self._asdict().items() }
+
+    def from_dict(d):
+        '''Called when the object is being deserialized.
+        '''
+        return Repo(**{ **d, "date": dateutil.parser.parse(d["date"]) })
+        
 
 template = jinja2.Template('''
 A list of mods, ordered by most recently committed:
@@ -120,7 +132,7 @@ A list of mods, ordered by most recently committed:
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=True):
+def repos_cached(gh, mods, update=False):
     '''Gets repos and caches them if update cache is true.
     '''
     repos_path = Path.home() / ".github-cache"
@@ -130,10 +142,38 @@ def repos_cached(gh, mods, update=True):
             json.dump([ r.into_dict() for r in repos ], f)
     else:
         with open(repos_path) as f:
-            repos = [ Repo(**{ **r,
-                               "date": dateutil.parser.parse(r["date"]) })
-                      for r in json.load(f) ]
+            repos = [ Repo.from_dict(d) for d in json.load(f) ]
     return repos
+
+@dataclass
+class Mod:
+    repo: str
+    link: str
+    desc: str
+    icon: str
+    stars: int
+    author: str
+    date: datetime
+    issue: str = None
+
+    @staticmethod
+    def build(m, r):
+        return Mod(minfmt.ignore_sbrack.parse(r.mname or repo(m) or ""),
+                   link(m),
+                   minfmt.ignore_sbrack.parse(desc(m) or r.desc or ""),
+                   icon(m),
+                   r.stars,
+                   (minfmt.ignore_sbrack.parse(
+                       ("by " + r.author) if r.author else "")).strip(),
+                   r.date,
+                   m["issue"] if 'issue' in m else None) 
+
+    @staticmethod
+    def builds(mods, repos):
+        '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which 
+        will be used in the templates.
+        '''
+        return [ Mod.build(m, r) for m, r in zip(mods, repos) if 'issue' not in m ]
 
 def build(token, path="src/mindustry-mods.yaml", ):
     '''Builds the README.md out of everything else here.
@@ -142,15 +182,7 @@ def build(token, path="src/mindustry-mods.yaml", ):
     gh = github.Github(token)
     repos = repos_cached(gh, [ m["repo"] for m in mods])
 
-    mods = [ Mod(minfmt.ignore_sbrack.parse(r.mname or repo(m) or ""),
-                 link(m),
-                 minfmt.ignore_sbrack.parse(desc(m) or r.desc or ""),
-                 icon(m),
-                 r.stars,
-                 (minfmt.ignore_sbrack.parse(
-                     ("by " + r.author) if r.author else "")).strip(),
-                 r.date)
-             for m, r in zip(mods, repos) ]
+    mods = Mod.builds(mods, repos)
     mods = reversed(sorted(mods, key=lambda x: x.date))
 
     data = template.render(mods=mods)

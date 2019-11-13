@@ -110,7 +110,7 @@ template = jinja2.Template('''
 A list of mods, ordered by most recently committed:
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }}) {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 

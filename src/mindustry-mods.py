@@ -31,53 +31,82 @@ category: example
 
 - the `images` key is for images of content.
 
+
 """
 
 from pathlib import Path
 from collections import namedtuple
 
 import json
+import mson
+from mson import ParseError
+import minfmt
 import yaml
 import jinja2
 import github
-
+import requests
 
 def repo(mod):
-    ''' Returns the mods Github repository name. '''
+    '''Returns the mods Github repository name.
+    '''
     return mod["repo"]
 
 def link(mod):
-    ''' Returns the mods Github repository link. ''' 
+    '''Returns the mods Github repository link.
+    ''' 
     return "https://github.com/" + repo(mod)
 
 def desc(mod):
-    ''' Returns the mods description. '''
+    '''Returns the mods description.
+    '''
     return mod["about"] if "about" in mod else ""
 
 def name(mod):
     return mod["name"].lower().replace(" ", "-")
 
 def icon(mod):
-    ''' Returns the mods icon path. (small image) '''
+    '''Returns the mods icon path. (small image)
+    '''
     return f"images/{name(mod)}-icon.png"
+
+def mod_dot_json(name):
+    '''Returns the path to request the mod.json in the repo
+    This may be used to pull authors/descriptions automatically
+    '''
+    return f"https://raw.githubusercontent.com/{name}/master/mod.json"
 
 class Mod(namedtuple("Mod", "repo link desc icon stars")):
     pass
     
 def loads(path):
-    """ Loads data from path, ensuring duplicates don't exist,
-    and turning them into namedtuple, ready for a template to use. """    
+    '''Loads data from path, ensuring duplicates don't exist,
+    and turning them into namedtuple, ready for a template to use.
+    '''
     with open(path, 'r') as f:
         data = { x["repo"]: x
                  for x in yaml.load_all(f.read()) }.values()
     return list(x for x in data)
 
-class Repo(namedtuple("Repo", "name stars")):
+class Repo(namedtuple("Repo", "name stars mname desc")):
+
     @staticmethod
     def from_github(gh, name):
-        ''' Gets a Github repository from Github. '''
+        '''Gets a Github repository from Github, with other
+        data which may require a few requests, and packs this
+        data into a namedtuple to be cached.
+        '''
         repo = gh.get_repo(name)
-        return Repo(name, repo.stargazers_count)
+        r = requests.get(mod_dot_json(name))
+        mname = desc = None
+        try:
+            if r.status_code == 200:
+                j = mson.jsonc.parse(r.text)
+                mname, desc = j["name"], j["description"]
+            else:
+                print(f"404 at {name}")
+        except ParseError as e:
+            print(f"Error in {name}: {e}")
+        return Repo(name, repo.stargazers_count, mname, desc)
 
     def into_dict(self):
         return dict(self._asdict())
@@ -91,7 +120,8 @@ template = jinja2.Template('''
 ''')
 
 def repos_cached(gh, mods, update=True):
-    ''' Gets repos and caches them if update cache is true. '''
+    '''Gets repos and caches them if update cache is true.
+    '''
     repos_path = Path.home() / ".github-cache"
     if update:
         repos = [ Repo.from_github(gh, x) for x in mods ]
@@ -103,12 +133,17 @@ def repos_cached(gh, mods, update=True):
     return repos
 
 def build(token, path="src/mindustry-mods.yaml", ):
-    """ Builds index.html """
+    '''Builds the README.md out of everything else here.
+    '''
     mods = loads(path)
     gh = github.Github(token)
     repos = repos_cached(gh, [ m["repo"] for m in mods])
 
-    mods = [ Mod(repo(m), link(m), desc(m), icon(m), r.stars)
+    mods = [ Mod(minfmt.ignore_sbrack.parse(r.mname or repo(m) or ""),
+                 link(m),
+                 desc(m) or r.desc or "",
+                 icon(m),
+                 r.stars)
              for m, r in zip(mods, repos) ]
     mods = reversed(sorted(mods, key=lambda x: x.stars))
 

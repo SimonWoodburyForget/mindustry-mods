@@ -35,7 +35,7 @@ from collections import namedtuple
 import json
 import mson
 from mson import ParseError
-import minfmt
+from minfmt import ignore_sbrack
 import yaml
 import jinja2
 import github
@@ -43,29 +43,6 @@ import requests
 from datetime import datetime
 import dateutil.parser
 from dataclasses import dataclass
-
-def repo(mod):
-    '''Returns the mods Github repository name.
-    '''
-    return mod["repo"]
-
-def link(mod):
-    '''Returns the mods Github repository link.
-    ''' 
-    return "https://github.com/" + repo(mod)
-
-def desc(mod):
-    '''Returns the mods description.
-    '''
-    return mod["about"] if "about" in mod else ""
-
-def name(mod):
-    return mod["name"].lower().replace(" ", "-") if 'name' in mod else None
-
-def icon(mod):
-    '''Returns the mods icon path. (small image)
-    '''
-    return f"images/{name(mod)}-icon.png"
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -83,7 +60,7 @@ def loads(path):
     return list(x for x in data)
 
 @dataclass
-class Repo:
+class Repo:    
     name: str
     stars: int
     mname: str
@@ -128,25 +105,28 @@ template = jinja2.Template('''
 A list of mods, ordered by most recently committed:
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) {{ mod.author }} *{{ mod.stars }} stars* -- {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=False):
-    '''Gets repos and caches them if update cache is true.
+def repos_cached(gh, mods, update=False, cache_path=Path.home() / ".github-cache"):
+    '''Gets repos if update is `True` and caches them, 
+    otherwise just reads the cached data.
     '''
-    repos_path = Path.home() / ".github-cache"
     if update:
         repos = [ Repo.from_github(gh, x) for x in mods ]
-        with open(repos_path, "w") as f:
+        with open(cache_path, "w") as f:
             json.dump([ r.into_dict() for r in repos ], f)
     else:
-        with open(repos_path) as f:
+        with open(cache_path) as f:
             repos = [ Repo.from_dict(d) for d in json.load(f) ]
     return repos
 
 @dataclass
-class Mod:
+class ModMeta:
+    '''Metadata to render mods in a template.
+    '''
+    
     repo: str
     link: str
     desc: str
@@ -156,24 +136,35 @@ class Mod:
     date: datetime
     issue: str = None
 
+    def author_fmt(self):
+        return f"by {self.author}" if self.author else ""
+    
     @staticmethod
     def build(m, r):
-        return Mod(minfmt.ignore_sbrack.parse(r.mname or repo(m) or ""),
-                   link(m),
-                   minfmt.ignore_sbrack.parse(desc(m) or r.desc or ""),
-                   icon(m),
-                   r.stars,
-                   (minfmt.ignore_sbrack.parse(
-                       ("by " + r.author) if r.author else "")).strip(),
-                   r.date,
-                   m["issue"] if 'issue' in m else None) 
+        def parse_or_nothing(x):
+            return ignore_sbrack.parse(x or "")
+
+        repo_name = m["repo"]        
+        mods_name = parse_or_nothing(r.mname) if r.mname else m["repo"]
+        mods_desc = parse_or_nothing(r.desc) if 'about' not in m else m['about']
+        author = parse_or_nothing(r.author) if 'author' not in m else m['author']
+        mindustry_name = repo_name.lower().replace(" ", "-")
+
+        return ModMeta(repo=mods_name,
+                           link=f"https://github.com/{repo_name}",
+                           desc=mods_desc,
+                           icon=f"images/{mindustry_name}-icon.png",
+                           stars=r.stars,
+                           author=author.strip(),
+                           date=r.date,
+                           issue=m["issue"] if 'issue' in m else None) 
 
     @staticmethod
     def builds(mods, repos):
         '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which 
         will be used in the templates.
         '''
-        return [ Mod.build(m, r) for m, r in zip(mods, repos) if 'issue' not in m ]
+        return [ ModMeta.build(m, r) for m, r in zip(mods, repos) if 'issue' not in m ]
 
 def build(token, path="src/mindustry-mods.yaml", ):
     '''Builds the README.md out of everything else here.
@@ -182,7 +173,7 @@ def build(token, path="src/mindustry-mods.yaml", ):
     gh = github.Github(token)
     repos = repos_cached(gh, [ m["repo"] for m in mods])
 
-    mods = Mod.builds(mods, repos)
+    mods = ModMeta.builds(mods, repos)
     mods = reversed(sorted(mods, key=lambda x: x.date))
 
     data = template.render(mods=mods)

@@ -2,13 +2,15 @@
 # Listing of Mods
 
 
+  - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) by  macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
+
+  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png)  *1 stars* -- crystal edition
+
   - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This is a mod for the game Mindustry that adds more production.
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![ ](images/extended-rebuilding-modules-icon.png) by DemonX3 *0 stars* -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
   - [DustryX](https://github.com/Xusk947/DustryX) ![ ](images/dustryx-icon.png) by ССР]Xusk *1 stars* -- I apologize for being in the archive
-
-  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png)  *1 stars* -- crystal edition
 
   - [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![ ](images/mindustrymod1-icon.png) by NISZOgen *1 stars* -- Mod dodający nowe przedmioty :D!
 
@@ -38,8 +40,6 @@
 
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere) ![ ](images/placeanywhere-icon.png) by BlindGhost *2 stars* -- Place object on environment walls
 
-  - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) by  macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
-
   - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![ ](images/creepland-icon.png) by ProximityCat *0 stars* -- A mindustry modification.
 
   - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![ ](images/dark-life-icon.png) by  macdowntwo *4 stars* -- The life of light and dark.
@@ -54,7 +54,7 @@
 
   - [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital) ![ ](images/techfish-orbital-icon.png)  *0 stars* -- Orbital shenanigans. Mindustry Mod
 
-  - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod) ![ ](images/fusion-reactor-mod-icon.png) by Ado1928 *1 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+  - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod) ![ ](images/fusion-reactor-mod-icon.png) by Ado1928 *2 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
   - [More Grass](https://github.com/Retrothopter/More-Grass) ![ ](images/more-grass-icon.png) by Retrothopter *1 stars* -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 

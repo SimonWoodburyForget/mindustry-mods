@@ -120,7 +120,7 @@ template = jinja2.Template('''
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=False):
+def repos_cached(gh, mods, update=True):
     '''Gets repos and caches them if update cache is true.
     '''
     repos_path = Path.home() / ".github-cache"

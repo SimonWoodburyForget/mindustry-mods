@@ -2,11 +2,13 @@
 A list of mods, ordered by most recently committed:
 
 
+  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+
+  - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended) ![ ](images/None-icon.png) by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
+
   - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) by  macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png)  *1 stars* -- crystal edition
-
-  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![ ](images/extended-rebuilding-modules-icon.png) by DemonX3 *0 stars* -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 

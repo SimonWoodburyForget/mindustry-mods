@@ -60,7 +60,7 @@ def desc(mod):
     return mod["about"] if "about" in mod else ""
 
 def name(mod):
-    return mod["name"].lower().replace(" ", "-")
+    return mod["name"].lower().replace(" ", "-") if 'name' in mod else None
 
 def icon(mod):
     '''Returns the mods icon path. (small image)

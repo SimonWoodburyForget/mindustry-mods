@@ -32,6 +32,8 @@ class TestBracks(unittest.TestCase):
         self.assertEqual(ignore_sbrack.parse("[a][b]x[c]"), "x")
         x = "[#b][USMP] [royal]mac[white]down[scarlet]two"
         self.assertEqual(ignore_sbrack.parse(x), " macdowntwo")
+        # TODO
+        # self.assertEqual(ignore_sbrack.parse("[a[b]c]x", "x")
 
 if __name__ == "__main__":
     unittest.main()

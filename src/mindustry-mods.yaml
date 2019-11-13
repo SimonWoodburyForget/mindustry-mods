@@ -35,7 +35,7 @@ repo: TechFish3000/More-Mindustry
 icon: sprites/items/power_cell.png
 --- 
 repo: MemFaceGo/Better-Blocks-Mod
-icon: sprites/blocks/carbon-wall.png
+icon: sprites/blocks/q-battery.png
 --- 
 author: Techfish3000
 name: Techfish-Orbital
@@ -127,6 +127,7 @@ author: macdowntwo
 name: Dark-Life
 about: The life of light and dark.
 repo: ZkyLB/Dark-Life
+icon: sprites/items/dark.png
 ---
 author: wewemaster
 name: random-things
@@ -177,10 +178,12 @@ author: Maxwelllondon
 about: A martian-like environment.
 repo: Maxwelllondon92/RedSands
 name: RedSands
+icon: sprites/floor/redwall1.png
 ---
 author: KeviTV
 repo: KeviTV/MekanisM
 name: MekanisM
+icon: sprites/blocks/battery1.png
 ---
 author: walksanator
 repo: walksanatora/OPmindustry
@@ -204,6 +207,7 @@ author: ZkyLB
 name: Swarm-Mod
 about: Adds a new, and annoying flying unit.
 repo: ZkyLB/Swarm-Mod
+icon: sprites/units/swarm.png
 ---
 author: NISZOgen
 name: mindustrymod1

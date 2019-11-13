@@ -18,7 +18,7 @@ A list of mods, ordered by most recently committed:
 
   - [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen *1 stars* -- Mod dodający nowe przedmioty :D!
 
-  - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod)  by ZkyLB *0 stars* -- Adds a new, and annoying flying unit.
+  - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod) ![](images/swarm-mod-icon.png) by ZkyLB *0 stars* -- Adds a new, and annoying flying unit.
 
   - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua *1 stars* -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
@@ -28,10 +28,10 @@ A list of mods, ordered by most recently committed:
 
   - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry)  by walksanator *0 stars* -- 
 
-  - [MekanisM](https://github.com/KeviTV/MekanisM)  by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
+  - [MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
 EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
-  - [RedSands](https://github.com/Maxwelllondon92/RedSands)  by Maxwelllondon *2 stars* -- A martian-like environment.
+  - [RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon *2 stars* -- A martian-like environment.
 
   - [Revenant Fighter Ship Pad](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium *1 stars* -- A mod for Mindustry that adds the Revenant as a playable mech.
 
@@ -47,7 +47,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [CreepLand](https://github.com/ProximityCatz/CreepLand)  by ProximityCat *0 stars* -- A mindustry modification.
 
-  - [Dark Life](https://github.com/ZkyLB/Dark-Life)  by macdowntwo *4 stars* -- The life of light and dark.
+  - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo *4 stars* -- The life of light and dark.
 
   - [wewemaster/random-things](https://github.com/wewemaster/random-things)  by wewemaster *0 stars* -- This mod have a variety of items/block, in the future will be units and some more things.
 

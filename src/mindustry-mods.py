@@ -182,6 +182,10 @@ def update_icon(repo_name, image_path=None):
     icon_name = repo_name.split("/")[1].lower().replace(" ", "-")
     icon_name = f"{icon_name}-icon"
     icon_path = f"images/{icon_name}.png"
+
+    if Path(icon_path).exists():
+        return icon_path
+    
     url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
     r = requests.get(url, stream=True)
 

@@ -2,6 +2,8 @@
 A list of mods, ordered by most recently committed:
 
 
+  - [ReFacthorium](https://github.com/Slava0135/ReFactorium) ![ ](images/None-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.1 - Scrap Update!
+
   - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended) ![ ](images/None-icon.png) by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random

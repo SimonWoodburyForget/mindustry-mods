@@ -120,7 +120,7 @@ template = jinja2.Template('''
 {% endfor %}
 ''')
 
-def repos_cached(gh, mods, update=True):
+def repos_cached(gh, mods, update=False):
     '''Gets repos and caches them if update cache is true.
     '''
     repos_path = Path.home() / ".github-cache"
@@ -130,8 +130,9 @@ def repos_cached(gh, mods, update=True):
             json.dump([ r.into_dict() for r in repos ], f)
     else:
         with open(repos_path) as f:
-            repos = [ Repo({"date": dateutil.parser.parse(r["date"]),
-                            **r}) for r in json.load(f) ]
+            repos = [ Repo(**{ **r,
+                               "date": dateutil.parser.parse(r["date"]) })
+                      for r in json.load(f) ]
     return repos
 
 def build(token, path="src/mindustry-mods.yaml", ):

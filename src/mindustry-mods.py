@@ -115,7 +115,7 @@ template = jinja2.Template('''
 # Listing of Mods
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) *{{ mod.author }} {{ mod.stars }} stars* -- {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) {{ mod.author }} *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 
@@ -141,7 +141,7 @@ def build(token, path="src/mindustry-mods.yaml", ):
 
     mods = [ Mod(minfmt.ignore_sbrack.parse(r.mname or repo(m) or ""),
                  link(m),
-                 desc(m) or r.desc or "",
+                 minfmt.ignore_sbrack.parse(desc(m) or r.desc or ""),
                  icon(m),
                  r.stars,
                  (minfmt.ignore_sbrack.parse(

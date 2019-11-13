@@ -1,36 +1,32 @@
-""" Python script to help build an organized list of JSON mods. 
+""" Python script to pull Mindustry mods relative to repo name.
 
-This will do nothing super fancy, just build some HTML from some
-static YAML file, with the following characteristics:
+The format goes as follows:
 
 ```
 ---
+repo: User/Repo
 issue: zipped incorrectly
 author: Author Name
 name: Mod Name
-about: Short description.
-repo: User/Repo
-content:
-    - items/silver
-    - blocks/forge
-category: example
+about: Short 
 ...
 ```
 
-- the YAML file should be separated into documents 
-  with `---`;
+Documents are separated by `---`, and the file is
+ended with `...`, with the following fields:
 
-- the `content` key is optional, and is used to link
-  example content;
+- `repo`: the repository to pull the mod.json from;
 
-- if `repo` appears twice in the generation, the 
-  last one should be picked;
+- `issue`: if present, the mod wont be rendered;
 
-- the `category` value is used to select under which
-  section to put the mod;
+- `author`: if present, the mod's author name 
+  will be overwritten;
 
-- the `images` key is for images of content.
+- `name`: if present, the mod's name will be 
+  overwritten;
 
+- `about`: if present, the mod's description
+  will be overwritten.
 
 """
 

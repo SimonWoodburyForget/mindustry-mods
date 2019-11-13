@@ -34,6 +34,7 @@ ended with `...`, with the following fields:
 
 from pathlib import Path
 from collections import namedtuple
+from collections import Counter
 
 import json
 import mson
@@ -49,6 +50,7 @@ from dataclasses import dataclass
 from PIL import Image
 from io import BytesIO
 
+
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
     This may be used to pull authors/descriptions automatically
@@ -60,6 +62,7 @@ def loads(path):
     and turning them into namedtuple, ready for a template to use.
     '''
     def key_handler(x, k):
+        # missing repo key
         try:
             return x[k]
         except KeyError as e:
@@ -67,9 +70,15 @@ def loads(path):
             quit()
     
     with open(path, 'r') as f:
-        data = { key_handler(x, "repo"): x
-                 for x in yaml.safe_load_all(f.read()) }.values()
-    return list(x for x in data)
+        data = [ x for x in yaml.safe_load_all(f.read()) ]
+    repos = (key_handler(x, 'repo') for x in data)
+    dups = [ x for x, count in Counter(repos).items()
+             if count > 1 ]
+    if dups:
+        dupsfmt = "\n  * " + '\n  * '.join(dups)
+        raise ValueError(f"\n Duplicate repository in yaml: {dupsfmt}")
+
+    return data
 
 @dataclass
 class Repo:    

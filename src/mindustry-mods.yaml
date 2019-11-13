@@ -10,6 +10,7 @@ author: Potion
 name: Mindustry-Crystal-edition
 about: crystal edition
 repo: AmateurPotion/Mindustry-Crystal-edition
+icon: core/assets-raw/sprites/mechs/ships/stealth-ship-real.png
 ---
 author: DE3000
 name: Manufacry
@@ -21,27 +22,12 @@ name: CreepLand
 about: A mindustry modification.
 repo: ProximityCatz/CreepLand
 icon: sprites/items/mshell.png
----
-author: aze
-name: mindustry-io
-about: >-
-    Adds a lot of different elements to mindustry,
-    uranium, more mechs, bots, walls, etc.
-repo: fuzzbuck/mindustry-io
 --- 
 author: Techfish3000
 name: More-Mindustry
 about: mindustry mod
 repo: TechFish3000/More-Mindustry
 icon: sprites/items/power_cell.png
---- 
-repo: MemFaceGo/Better-Blocks-Mod
-icon: sprites/units/bazercon.png
---- 
-author: Techfish3000
-name: Techfish-Orbital
-about: Orbital shenanigans. Mindustry Mod
-repo: TechFish3000/Techfish-Orbital
 ---
 author: Retrothopter
 name: Niobium-Nanotech
@@ -53,11 +39,6 @@ name: Modular-Turret
 about: An Mindustry mod
 repo: xhz313123/Modular-Turret
 icon: sprites/items/commonTI.png
----
-author: Techfish3000
-name: Techfish-BEANS
-about: gimme the BEANS
-repo: TechFish3000/Techfish-BEANS
 ---
 author: Ado1928
 name: Fusion-Reactor-mod
@@ -75,21 +56,6 @@ author: TheBabinator
 name: NuclearWar
 about: dont think this is balanced because it well isnt
 repo: TheBabinator/NuclearWar
----
-author: Plas_Gensokyo
-name: Modular-Turret
-about: An Mindustry mod
-repo: xhz313123/Modular-Turret
----
-author: Techfish3000
-name: Techfish-Orbital
-about: Orbital shenanigans. Mindustry Mod
-repo: TechFish3000/Techfish-Orbital
----
-author: Syoga
-name: Lenin
-about: A Lenin mod
-repo: Syoga23/Lenin
 ---
 author: jojoblack_fr
 name: more-ore
@@ -112,11 +78,6 @@ name: Techfish-Orbital
 about: Orbital shenanigans. Mindustry Mod
 repo: TechFish3000/Techfish-Orbital
 ---
-author: Techfish3000
-name: Techfish-BEANS
-about: gimme the BEANS
-repo: TechFish3000/Techfish-BEANS
----
 author: Syoga
 name: Lenin
 about: A Lenin mod
@@ -127,13 +88,6 @@ name: Dark-Life
 about: The life of light and dark.
 repo: ZkyLB/Dark-Life
 icon: sprites/items/dark.png
----
-author: wewemaster
-name: random-things
-about: >-
-    This mod have a variety of items/block,
-    in the future will be units and some more things.
-repo: wewemaster/random-things
 ---
 author: MemFaceGo
 name: Better-Blocks-Mod
@@ -222,4 +176,7 @@ repo: ballgamer56/VanillaExtended
 ---
 repo: Slava0135/ReFactorium
 icon: sprites/blocks/condenser.png
+---
+repo: MisterCinnabar/Revenge-Of-The-Data-Mod
+issue: mod in zip file
 ...

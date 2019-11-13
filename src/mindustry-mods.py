@@ -25,7 +25,10 @@ ended with `...`, with the following fields:
   overwritten;
 
 - `about`: if present, the mod's description
-  will be overwritten.
+  will be overwritten;
+
+- `icon`: path in the project of the icon
+  to be used.
 
 """
 
@@ -43,6 +46,8 @@ import requests
 from datetime import datetime
 import dateutil.parser
 from dataclasses import dataclass
+from PIL import Image
+from io import BytesIO
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -105,7 +110,7 @@ template = jinja2.Template('''
 A list of mods, ordered by most recently committed:
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) ![ ]({{ mod.icon }}) {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
+  - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }}) {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
 {% endfor %}
 ''')
 
@@ -138,9 +143,12 @@ class ModMeta:
 
     def author_fmt(self):
         return f"by {self.author}" if self.author else ""
+
+    def md_icon(self):
+        return f'![]({self.icon})' if self.icon is not None else ''
     
     @staticmethod
-    def build(m, r):
+    def build(m, r, icon):
         def parse_or_nothing(x):
             return ignore_sbrack.parse(x or "")
 
@@ -151,29 +159,49 @@ class ModMeta:
         mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
 
         return ModMeta(repo=mods_name,
-                           link=f"https://github.com/{repo_name}",
-                           desc=mods_desc,
-                           icon=f"images/{mindustry_name}-icon.png",
-                           stars=r.stars,
-                           author=author.strip(),
-                           date=r.date,
-                           issue=m["issue"] if 'issue' in m else None) 
+                       link=f"https://github.com/{repo_name}",
+                       desc=mods_desc,
+                       icon=icon,
+                       stars=r.stars,
+                       author=author.strip(),
+                       date=r.date,
+                       issue=m["issue"] if 'issue' in m else None)
 
     @staticmethod
-    def builds(mods, repos):
+    def builds(mods, repos, icons):
         '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which 
         will be used in the templates.
         '''
-        return [ ModMeta.build(m, r) for m, r in zip(mods, repos) if 'issue' not in m ]
+        return [ ModMeta.build(m, r, icons[m['repo']])
+                 for m, r in zip(mods, repos) if 'issue' not in m ]
 
-def build(token, path="src/mindustry-mods.yaml", ):
+def update_icon(repo_name, image_path=None):
+    if image_path is None:
+        return None
+        
+    icon_name = repo_name.split("/")[1].lower().replace(" ", "-")
+    icon_name = f"{icon_name}-icon"
+    icon_path = f"images/{icon_name}.png"
+    url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
+    r = requests.get(url, stream=True)
+    
+    image = Image.open(BytesIO(r.content))
+    maxsize = (16, 16)
+    image.thumbnail(maxsize, Image.ANTIALIAS)
+    image.show()
+    image.save(icon_path, "PNG")
+    return icon_path
+    
+def build(token, path="src/mindustry-mods.yaml"):
     '''Builds the README.md out of everything else here.
     '''
     mods = loads(path)
     gh = github.Github(token)
-    repos = repos_cached(gh, [ m["repo"] for m in mods])
+    repos = repos_cached(gh, [ m['repo'] for m in mods])
+    icons = { m['repo']: update_icon(m['repo'], m['icon'] if 'icon' in m else None)
+              for m in mods }
 
-    mods = ModMeta.builds(mods, repos)
+    mods = ModMeta.builds(mods, repos, icons)
     mods = reversed(sorted(mods, key=lambda x: x.date))
 
     data = template.render(mods=mods)

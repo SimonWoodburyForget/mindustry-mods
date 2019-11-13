@@ -11,9 +11,11 @@ sbrack = (lbrack
           >> concat(many(none_of("]")))
           << rbrack)
 
-ignore_sbrack = (optional(sbrack)
+ssbrack = (sbrack << sbrack) | sbrack
+
+ignore_sbrack = (optional(ssbrack)
                  >> concat(many(none_of("[")
-                                << optional(sbrack))))
+                                << optional(ssbrack))))
 
 
 class TestBracks(unittest.TestCase):
@@ -25,6 +27,11 @@ class TestBracks(unittest.TestCase):
         self.assertEqual(ignore_sbrack.parse("x[abc]"), "x")
         self.assertEqual(ignore_sbrack.parse("x[abc]y"), "xy")
         self.assertEqual(ignore_sbrack.parse("[abc]y"), "y")
+        self.assertEqual(ignore_sbrack.parse("[a]y[b]x[c]"), "yx")
+        self.assertEqual(ignore_sbrack.parse("[a] [b]x[c]"), " x")
+        self.assertEqual(ignore_sbrack.parse("[a][b]x[c]"), "x")
+        x = "[#b][USMP] [royal]mac[white]down[scarlet]two"
+        self.assertEqual(ignore_sbrack.parse(x), " macdowntwo")
 
 if __name__ == "__main__":
     unittest.main()

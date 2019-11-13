@@ -144,7 +144,8 @@ def build(token, path="src/mindustry-mods.yaml", ):
                  desc(m) or r.desc or "",
                  icon(m),
                  r.stars,
-                 minfmt.ignore_sbrack.parse("by " + r.author if r.author else ""))
+                 (minfmt.ignore_sbrack.parse(
+                     ("by " + r.author) if r.author else "")).strip())
              for m, r in zip(mods, repos) ]
     mods = reversed(sorted(mods, key=lambda x: x.stars))
 

@@ -10,13 +10,13 @@
 
   - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![ ](images/infinitodustry-icon.png) *by  Bepis 4 stars* -- A mod for mindustry, where aliens of differing cultures fight against the Drone union, and their leader: Divinity. 
 
-  - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![ ](images/dark-life-icon.png) *by  4 stars* -- The life of light and dark.
+  - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![ ](images/dark-life-icon.png) *by  macdowntwo 4 stars* -- The life of light and dark.
 
   - [RedSands](https://github.com/Maxwelllondon92/RedSands) ![ ](images/redsands-icon.png) *by Maxwelllondon 2 stars* -- A martian-like environment.
 
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere) ![ ](images/placeanywhere-icon.png) *by BlindGhost 2 stars* -- Place object on environment walls
 
-  - [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore) ![ ](images/more-ore-icon.png) * 2 stars* -- Mindustry mod
+  - [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore) ![ ](images/more-ore-icon.png) *jojoblack_fr 2 stars* -- Mindustry mod
 
   - [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![ ](images/mindustrymod1-icon.png) *by NISZOgen 1 stars* -- Mod dodający nowe przedmioty :D!
 
@@ -26,7 +26,7 @@
 
   - [Revenant Fighter Ship Pad](https://github.com/BasedUser/RevenantMod) ![ ](images/revenantmod-icon.png) *by BasedUser 1 stars* -- A mod for Mindustry that adds the Revenant as a playable mech.
 
-  - [DustryX](https://github.com/Xusk947/DustryX) ![ ](images/dustryx-icon.png) *by  1 stars* -- I apologize for being in the archive
+  - [DustryX](https://github.com/Xusk947/DustryX) ![ ](images/dustryx-icon.png) *by ССР]Xusk 1 stars* -- I apologize for being in the archive
 
   - [More Grass](https://github.com/Retrothopter/More-Grass) ![ ](images/more-grass-icon.png) *by Retrothopter 1 stars* -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 
@@ -36,37 +36,37 @@
 
   - [More-Mindustry](https://github.com/TechFish3000/More-Mindustry) ![ ](images/more-mindustry-icon.png) *by Techfish3000 1 stars* -- mindustry mod
 
-  - [DE3000/Manufacry](https://github.com/DE3000/Manufacry) ![ ](images/manufacry-icon.png) * 1 stars* -- Manufacturing based mod for Mindustry
+  - [DE3000/Manufacry](https://github.com/DE3000/Manufacry) ![ ](images/manufacry-icon.png) *DE3000 1 stars* -- Manufacturing based mod for Mindustry
 
-  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png) * 1 stars* -- crystal edition
+  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![ ](images/mindustry-crystal-edition-icon.png) *Potion 1 stars* -- crystal edition
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![ ](images/extended-rebuilding-modules-icon.png) *by DemonX3 0 stars* -- You were given licenses for [accent]new types of ships and mechs[]. Current quantity: 3 Ships | 1 Mech.
 
-  - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod) ![ ](images/swarm-mod-icon.png) *by  0 stars* -- Adds a new, and annoying flying unit.
+  - [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod) ![ ](images/swarm-mod-icon.png) *by  macdowntwo 0 stars* -- Adds a new, and annoying flying unit.
 
   - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![ ](images/mindustry-production-mod-icon.png) *by What42Pizza 0 stars* -- This is a mod for the game Mindustry that adds more production.
 
-  - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry) ![ ](images/opmindustry-icon.png) * 0 stars* -- Just a mod that has way too much stuff for low material cost.
+  - [walksanatora/OPmindustry](https://github.com/walksanatora/OPmindustry) ![ ](images/opmindustry-icon.png) *walksanator 0 stars* -- Just a mod that has way too much stuff for low material cost.
 
-  - [ZkyLB/Dirt-Block](https://github.com/ZkyLB/Dirt-Block) ![ ](images/dirt-block-icon.png) * 0 stars* -- dirt
+  - [ZkyLB/Dirt-Block](https://github.com/ZkyLB/Dirt-Block) ![ ](images/dirt-block-icon.png) *macdowntwo 0 stars* -- dirt
 
-  - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) *by  0 stars* -- A mod for the pixel artists. Includes 29 colors.
+  - [Canvas](https://github.com/ZkyLB/Canvas) ![ ](images/canvas-icon.png) *by  macdowntwo 0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core) ![ ](images/techfish-core-icon.png) *by Techfish3000 0 stars* -- Core mod for all Techfish mindustry mods
 
-  - [Syoga23/Lenin](https://github.com/Syoga23/Lenin) ![ ](images/lenin-icon.png) * 0 stars* -- A Lenin mod
+  - [Syoga23/Lenin](https://github.com/Syoga23/Lenin) ![ ](images/lenin-icon.png) *Syoga 0 stars* -- A Lenin mod
 
-  - [Nuclear War](https://github.com/TheBabinator/NuclearWar) ![ ](images/nuclearwar-icon.png) *by The 0 stars* -- dont think this is balanced because it well isnt
+  - [Nuclear War](https://github.com/TheBabinator/NuclearWar) ![ ](images/nuclearwar-icon.png) *by TheBabinator 0 stars* -- dont think this is balanced because it well isnt
 
-  - [wewemaster/random-things](https://github.com/wewemaster/random-things) ![ ](images/random-things-icon.png) * 0 stars* -- This mod have a variety of items/block, in the future will be units and some more things.
+  - [wewemaster/random-things](https://github.com/wewemaster/random-things) ![ ](images/random-things-icon.png) *wewemaster 0 stars* -- This mod have a variety of items/block, in the future will be units and some more things.
 
   - [Techfish-BEANS](https://github.com/TechFish3000/Techfish-BEANS) ![ ](images/techfish-beans-icon.png) *by Techfish3000 0 stars* -- gimme the BEANS
 
   - [Niobium Nanotech](https://github.com/Retrothopter/Niobium-Nanotech) ![ ](images/niobium-nanotech-icon.png) *by Retrothopter 0 stars* -- A Mindustry mod adding new content based on Niobium.
 
-  - [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital) ![ ](images/techfish-orbital-icon.png) * 0 stars* -- Orbital shenanigans. Mindustry Mod
+  - [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital) ![ ](images/techfish-orbital-icon.png) *Techfish3000 0 stars* -- Orbital shenanigans. Mindustry Mod
 
-  - [fuzzbuck/mindustry-io](https://github.com/fuzzbuck/mindustry-io) ![ ](images/mindustry-io-icon.png) * 0 stars* -- Adds a lot of different elements to mindustry, uranium, more mechs, bots, walls, etc.
+  - [fuzzbuck/mindustry-io](https://github.com/fuzzbuck/mindustry-io) ![ ](images/mindustry-io-icon.png) *aze 0 stars* -- Adds a lot of different elements to mindustry, uranium, more mechs, bots, walls, etc.
 
   - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![ ](images/creepland-icon.png) *by ProximityCat 0 stars* -- A mindustry modification.
 

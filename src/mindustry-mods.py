@@ -56,7 +56,7 @@ def loads(path):
     '''
     with open(path, 'r') as f:
         data = { x["repo"]: x
-                 for x in yaml.load_all(f.read()) }.values()
+                 for x in yaml.safe_load_all(f.read()) }.values()
     return list(x for x in data)
 
 @dataclass

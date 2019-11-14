@@ -2,6 +2,8 @@
 A list of mods, ordered by most recently committed:
 
 
+  - [Bomb Mod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes *0 stars* -- A mod that adds bombs.
+
   - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
 
   - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive

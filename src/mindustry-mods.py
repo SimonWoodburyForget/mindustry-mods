@@ -96,7 +96,6 @@ class Repo:
         data which may require a few requests, and packs this
         data into a namedtuple to be cached.
         '''
-
         def try_hjson(text):
             try:
                 return hjson.loads(text)
@@ -121,7 +120,9 @@ class Repo:
         sha = repo.get_branch("master").commit.sha
         date = repo.get_commit(sha).commit.author.date
         stars = repo.stargazers_count
-        out = partial(Repo, name, stars, date)
+        out = partial(Repo, name,
+                      stars=stars,
+                      date=date)
 
         r = requests.get(mod_dot_json(name))
         if r.status_code != 200:
@@ -161,6 +162,7 @@ def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"
     '''Gets repos if update is `True` and caches them, 
     otherwise just reads the cached data.
     '''
+    # TODO: implement better caching
     if update:
         repos = [ Repo.from_github(gh, x) for x in mods ]
         with open(cache_path, "w") as f:

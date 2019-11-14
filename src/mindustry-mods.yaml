@@ -180,4 +180,7 @@ icon: sprites/blocks/condenser.png
 ---
 repo: MisterCinnabar/Revenge-Of-The-Data-Mod
 issue: mod in zip file
+---
+repo: ZacBytes/BombMod
+icon: sprites/blocks/bomb.png
 ...

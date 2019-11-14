@@ -1,14 +1,14 @@
 
-A list of mods, ordered by most recently committed:
+A list of mods, ordered by most recently committed. 
 
+
+  - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.2 - Scrabbling and Fighting.
 
   - [Bomb Mod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes *0 stars* -- A mod that adds bombs.
 
-  - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
+  - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *29 stars* -- An example mod.
 
   - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive
-
-  - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.1 - Scrap Update!
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
@@ -28,7 +28,7 @@ A list of mods, ordered by most recently committed:
 
   - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua *1 stars* -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
-  - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![](images/advancedlogisticsmod-icon.png) by Maxwelllondon *5 stars* -- More Conveyor Belts
+  - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![](images/advancedlogisticsmod-icon.png) by Maxwelllondon *4 stars* -- More Conveyor Belts
 
   - [MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
 EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources

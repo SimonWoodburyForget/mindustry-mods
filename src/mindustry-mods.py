@@ -151,7 +151,7 @@ class Repo:
         
 
 template = jinja2.Template('''
-A list of mods, ordered by most recently committed:
+A list of mods, ordered by most recently committed. 
 
 {% for mod in mods %}
   - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} *{{ mod.stars }} stars* -- {{ mod.desc }}
@@ -222,8 +222,14 @@ class ModMeta:
         return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
                  for m in mods if 'issue' not in m ]
 
-def update_icon(repo_name, image_path=None):
-    if image_path is None:
+def update_icon(repo_name, image_path=None, force=False):
+    '''Downloads an image from the target repository, and scales
+    it down to 16x16, and saves it. Doesn't do anything if the
+    image exists.
+
+    Returns the path to the image.
+    '''
+    if image_path is None or force:
         return None
 
     icon_name = repo_name.split("/")[1].lower().replace(" ", "-")

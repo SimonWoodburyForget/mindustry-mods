@@ -49,7 +49,8 @@ import dateutil.parser
 from dataclasses import dataclass, asdict
 from PIL import Image
 from io import BytesIO
-
+import hjson 
+from functools import partial
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -84,10 +85,10 @@ def loads(path):
 class Repo:    
     name: str
     stars: int
-    mname: str
-    desc: str
-    author: str
     date: datetime
+    mname: str = None 
+    desc: str = None 
+    author: str = None
 
     @staticmethod
     def from_github(gh, name):
@@ -95,20 +96,46 @@ class Repo:
         data which may require a few requests, and packs this
         data into a namedtuple to be cached.
         '''
+
+        def try_hjson(text):
+            try:
+                return hjson.loads(text)
+            except hjson.scanner.HjsonDecodeError as e:
+                print(f"Hjson error in {name}: {e}")
+
+        def try_mson(text):
+            try:
+                return mson.jsonc.parse(text)
+            except ParseError as e:
+                print(f"Mson error in {name}: {e}")
+
+        def key_handler(x, k):
+            # missing key
+            try:
+                return x[k]
+            except KeyError as e:
+                print(f"KeyError: {e} in {name}")
+                return None
+
         repo = gh.get_repo(name)
         sha = repo.get_branch("master").commit.sha
         date = repo.get_commit(sha).commit.author.date
+        stars = repo.stargazers_count
+        out = partial(Repo, name, stars, date)
+
         r = requests.get(mod_dot_json(name))
-        mname = desc = author = None
-        try:
-            if r.status_code == 200:
-                j = mson.jsonc.parse(r.text)
-                mname, desc, author = j["name"], j["description"], j["author"]
-            else:
-                print(f"404 at {name}")
-        except ParseError as e:
-            print(f"Error in {name}: {e}")
-        return Repo(name, repo.stargazers_count, mname, desc, author, date)
+        if r.status_code != 200:
+            print(f"{r.status_code} at {name}")
+            return out()
+
+        j = try_hjson(r.text) or try_mson(r.text) or None
+        if j is None:
+            print(f"Skipping {name}")
+            return out()
+        else:
+            return out(mname=key_handler(j, 'name'),
+                       desc=key_handler(j, 'description'),
+                       author=key_handler(j, 'author'))
 
     def into_dict(self):
         '''Called when the object is about to be serialized.

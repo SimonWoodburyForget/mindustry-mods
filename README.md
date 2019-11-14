@@ -2,15 +2,17 @@
 A list of mods, ordered by most recently committed:
 
 
+  - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
+
+  - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive
+
+  - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.1 - Scrap Update!
+
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
   - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
-
-  - [DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 *1 stars* -- I apologize for being in the archive
-
-  - [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png)  *0 stars* -- 
 
   - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
@@ -37,8 +39,6 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 *0 stars* -- Core mod for all Techfish mindustry mods
 
-  - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *28 stars* -- An example mod.
-
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost *2 stars* -- Place object on environment walls
 
   - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat *0 stars* -- A mindustry modification.
@@ -51,7 +51,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [More-Mindustry](https://github.com/TechFish3000/More-Mindustry)  by Techfish3000 *1 stars* -- mindustry mod
 
-  - [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 *0 stars* -- Orbital shenanigans. Mindustry Mod
+  - [Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 *0 stars* -- Orbital shenanigans. Mindustry Mod
 
   - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 *2 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 

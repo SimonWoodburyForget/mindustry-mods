@@ -4,3 +4,4 @@ PyGithub==1.44.1
 python-dateutil==2.6.1
 PyYAML==5.1.2
 requests==2.22.0
+hjson=3.0.1

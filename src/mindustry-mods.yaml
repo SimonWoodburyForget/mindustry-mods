@@ -188,4 +188,7 @@ icon: sprites/items/banana.png
 ---
 repo: AeronGreva/AeroMindustry
 icon: sprites/units/eclipse.png
+---
+repo: Miner28/Bronze-Mod
+icon: sprites/items/bronze.png
 ...

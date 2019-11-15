@@ -1,22 +1,21 @@
-''' Parsers to help format inputs. '''
+'''Mindustry square bracket parser.'''
 from parsec import *
-import unittest
 from itertools import chain 
 
 concat = lambda p: p.parsecmap(lambda x: "".join(chain.from_iterable(x)))
 
 lbrack = string("[")
 rbrack = string("]")
-sbrack = (lbrack
-          >> concat(many(none_of("]")))
-          << rbrack)
+sbrack = (lbrack >> concat(many(none_of("]"))) << rbrack)
+ssbrack = (sbrack << sbrack << sbrack) | (sbrack << sbrack) | sbrack
 
-ssbrack = (sbrack << sbrack) | sbrack
-
-ignore_sbrack = (optional(ssbrack)
+ignore_sbrack = (many(ssbrack)
                  >> concat(many(none_of("[")
                                 << optional(ssbrack))))
 
+
+
+import unittest
 
 class TestBracks(unittest.TestCase):
 
@@ -30,10 +29,11 @@ class TestBracks(unittest.TestCase):
         self.assertEqual(ignore_sbrack.parse("[a]y[b]x[c]"), "yx")
         self.assertEqual(ignore_sbrack.parse("[a] [b]x[c]"), " x")
         self.assertEqual(ignore_sbrack.parse("[a][b]x[c]"), "x")
+        self.assertEqual(ignore_sbrack.parse("[a][b][y]x[c]"), "x")
         x = "[#b][USMP] [royal]mac[white]down[scarlet]two"
         self.assertEqual(ignore_sbrack.parse(x), " macdowntwo")
         # TODO
-        # self.assertEqual(ignore_sbrack.parse("[a[b]c]x", "x")
-
+        # self.assertEqual(ignore_sbrack.parse("[a[b]c]x", "x")    
+        
 if __name__ == "__main__":
     unittest.main()

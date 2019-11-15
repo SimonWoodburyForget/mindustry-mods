@@ -183,4 +183,7 @@ issue: mod in zip file
 ---
 repo: ZacBytes/BombMod
 icon: sprites/blocks/bomb.png
+---
+repo: PetruCHIOrus/lead_ind
+icon: sprites/items/banana.png
 ...

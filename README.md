@@ -18,7 +18,7 @@ A list of mods, ordered by most recently committed.
 
   - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
-  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion *1 stars* -- crystal edition
+  - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion *2 stars* -- crystal edition
 
   - [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 *0 stars* -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
@@ -41,6 +41,8 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 *0 stars* -- Core mod for all Techfish mindustry mods
 
+  - [Lead Industries](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png) by PetruCHIOrus & DefenseX *4 stars* -- New guns, drills, crafting, materials and resourses
+
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost *2 stars* -- Place object on environment walls
 
   - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat *0 stars* -- A mindustry modification.
@@ -55,7 +57,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 *0 stars* -- Orbital shenanigans. Mindustry Mod
 
-  - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 *2 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+  - [Fusion Reactor](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 *3 stars* -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
   - [More Grass](https://github.com/Retrothopter/More-Grass) ![](images/more-grass-icon.png) by Retrothopter *1 stars* -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 

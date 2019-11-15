@@ -15,11 +15,11 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
-  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png)  *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
+  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - [](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- 
+  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png)  *0 stars* -- A mod for the pixel artists. Includes 29 colors.
+  - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 
   - [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion *2 stars* -- crystal edition
 
@@ -33,23 +33,24 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - [AdvancedLogistics](https://github.com/Maxwelllondon92/AdvancedLogisticsMod) ![](images/advancedlogisticsmod-icon.png) by Maxwelllondon *4 stars* -- More Conveyor Belts
 
-  - [MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV *1 stars* -- 
+  - [MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV *1 stars* -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
+EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - [RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon *2 stars* -- A martian-like environment.
 
   - [Revenant Fighter Ship Pad](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium *1 stars* -- A mod for Mindustry that adds the Revenant as a playable mech.
 
-  - [](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo *11 stars* -- This mod adds more blocks , materials and enemies OH NO
+  - [Better blocks mod](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo *11 stars* -- This mod adds more blocks , materials and enemies OH NO
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 *0 stars* -- Core mod for all Techfish mindustry mods
 
-  - [](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png)  *4 stars* -- 
+  - [Lead Industries](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png) by PetruCHIOrus & DefenseX *4 stars* -- New guns, drills, crafting, materials and resourses
 
   - [PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost *2 stars* -- Place object on environment walls
 
   - [CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat *0 stars* -- A mindustry modification.
 
-  - [](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo *4 stars* -- The life of light and dark.
+  - [Dark Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo *4 stars* -- The life of light and dark.
 
   - [Syoga23/Lenin](https://github.com/Syoga23/Lenin)  by Syoga *0 stars* -- A Lenin mod
 

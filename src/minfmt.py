@@ -4,23 +4,23 @@ from itertools import chain
 
 concat = lambda p: p.parsecmap(lambda x: "".join(chain.from_iterable(x)))
 
-lbrack = string("[")
-rbrack = string("]")
-sbrack = (lbrack >> concat(many(none_of("]"))) << rbrack)
-ssbrack = (sbrack << sbrack << sbrack) | (sbrack << sbrack) | sbrack
+@generate
+def sbrack():
+    yield string("[")
+    content = yield concat(many(sbrack | none_of("]")))
+    yield string("]")
+    return content
 
-ignore_sbrack = (many(ssbrack)
-                 >> concat(many(none_of("[")
-                                << optional(ssbrack))))
-
+not_sbrack = concat(many(none_of("[")))
+ignore_sbrack = concat(many(string('[[').result('[')
+                            ^ sbrack.result('')
+                            | not_sbrack))
 
 
 import unittest
 
 class TestBracks(unittest.TestCase):
-
     def test_bracket(self):
-        self.assertEqual(lbrack.parse("["), "[")
         self.assertEqual(sbrack.parse("[abc]"), "abc")
         self.assertEqual(ignore_sbrack.parse("[abc]"), "")
         self.assertEqual(ignore_sbrack.parse("x[abc]"), "x")
@@ -32,8 +32,8 @@ class TestBracks(unittest.TestCase):
         self.assertEqual(ignore_sbrack.parse("[a][b][y]x[c]"), "x")
         x = "[#b][USMP] [royal]mac[white]down[scarlet]two"
         self.assertEqual(ignore_sbrack.parse(x), " macdowntwo")
-        # TODO
-        # self.assertEqual(ignore_sbrack.parse("[a[b]c]x", "x")    
+        self.assertEqual(ignore_sbrack.parse('[a[b]c]x'), "x")
+        self.assertEqual(ignore_sbrack.parse('[[abc]x'), '[abc]x')
         
 if __name__ == "__main__":
     unittest.main()

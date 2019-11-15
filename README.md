@@ -7,12 +7,7 @@ A list of mods, ordered by most recently committed.
   - [AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva *2 stars* -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - [Bronze mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 *6 stars* -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings 
-  
-Very big thanks for sprites for Conveyors goes to Retrothopter!
-Natrium is added thanks to Ficus150!
-
-Looking for people who can do Sprites :) Contact me on Discord: Miner28_3#3607
+  - [Bronze mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 *6 stars* -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
 
 https://github.com/Miner28/Bronze-Mod for more detailed description
 

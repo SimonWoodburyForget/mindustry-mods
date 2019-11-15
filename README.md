@@ -9,8 +9,6 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - [Bronze mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 *6 stars* -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
 
-https://github.com/Miner28/Bronze-Mod for more detailed description
-
   - [Bomb Mod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes *0 stars* -- A mod that adds bombs.
 
   - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *29 stars* -- An example mod.

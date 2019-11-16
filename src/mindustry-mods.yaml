@@ -191,5 +191,9 @@ icon: sprites/units/eclipse.png
 ---
 repo: Miner28/Bronze-Mod
 icon: sprites/items/bronze.png
-about: This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings
+about: This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
+---
+repo: xamionex/Opore-Mod
+about: Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+icon: sprites/mechs/op-mech.png
 ...

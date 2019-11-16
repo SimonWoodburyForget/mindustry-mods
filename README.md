@@ -2,12 +2,16 @@
 A list of mods, ordered by most recently committed. 
 
 
-  - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.2 - Scrabbling and Fighting.
+  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva *2 stars* -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - [Bronze mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 *6 stars* -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
+
+  - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *0 stars* -- A new way forward. V0.2 - Scrabbling and Fighting.
+
+  - [Opore Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione *4 stars* -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
   - [Bomb Mod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes *0 stars* -- A mod that adds bombs.
 
@@ -17,9 +21,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
-  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *4 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
-
-  - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *5 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 

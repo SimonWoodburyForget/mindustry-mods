@@ -2,6 +2,10 @@
 A list of mods, ordered by most recently committed. 
 
 
+  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *7 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
+
+  - [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty *0 stars* -- A mod for speed and efficiency
+
   - [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza *0 stars* -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 *2 stars* -- A new way forward in vanilla style. V0.3 - Thorium Update!
@@ -26,8 +30,6 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
   - [Example Mod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke *30 stars* -- An example mod.
 
   - [Vanilla Extended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou *0 stars* -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
-
-  - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis *7 stars* -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - [Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo *0 stars* -- A mod for the pixel artists. Includes 29 colors.
 

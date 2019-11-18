@@ -196,4 +196,7 @@ about: This mod is currently all oriented around Bronze(kind of not anymore), Ri
 repo: xamionex/Opore-Mod
 about: Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 icon: sprites/mechs/op-mech.png
+---
+repo: Vortetty/Mindustryalization
+icon: sprites/items/lightcube.png
 ...

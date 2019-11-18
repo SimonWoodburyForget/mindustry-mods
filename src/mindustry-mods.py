@@ -151,7 +151,7 @@ class Repo:
         
 
 template = jinja2.Template('''
-A list of mods, ordered by most recently committed. Each `★` 1 star.
+A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 {% for mod in mods %}
   - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} -- {{ mod.stars * '★' if mod.stars else '☆' }} -- {{ mod.desc }}

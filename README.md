@@ -1,5 +1,5 @@
 
-A list of mods, ordered by most recently committed. Each `★` 1 star.
+A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
   - [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★★★★★★★ -- A big crossover episode, mashup of many cultures. Name it how you want

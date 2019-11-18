@@ -76,4 +76,4 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   * [DE3000/Manufacry](https://github.com/DE3000/Manufacry)  by DE3000 *★★* -- Manufacturing based mod for Mindustry
   
-  * [Mindustryalization](https://github.com/Vortetty/Mindustryalization/)  by Vortetty *★★★* -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive.
+  * [Mindustryalization](https://github.com/Vortetty/Mindustryalization/)![lightcube](https://raw.githubusercontent.com/Vortetty/Mindustryalization/master/sprites/items/lightcube.png)  by Vortetty *★★★* -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes to build things.

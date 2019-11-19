@@ -51,6 +51,9 @@ from PIL import Image
 from io import BytesIO
 import hjson 
 from functools import partial
+import schedule
+import time
+import subprocess
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -270,6 +273,20 @@ def build(token, path="src/mindustry-mods.yaml"):
     with open("README.md", 'w') as f:
         print(data, file=f)
 
-if __name__ == '__main__':
+def run():
     with open(Path.home() / ".github-token") as f:
         build(f.read())
+    print()
+    print()
+    subprocess.run(['git', 'add', 'README.md'])
+    print()
+    subprocess.run(['git', 'commit', '-m', 'auto update'])
+    print()
+    subprocess.run(['git', 'push', 'origin', 'master'])
+
+if __name__ == '__main__':   
+    schedule.every(2).hours.at(':00').do(run)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)

@@ -8,7 +8,7 @@ The yaml configuration file format goes as follows:
     issue: zipped incorrectly
     author: Author Name
     name: Mod Name
-    about: Short 
+    about: Short
     ...
 
 Documents are separated by `---`, and the file is
@@ -18,10 +18,10 @@ ended with `...`, with the following fields:
 
 - `issue`: if present, the mod wont be rendered;
 
-- `author`: if present, the mod's author name 
+- `author`: if present, the mod's author name
   will be overwritten;
 
-- `name`: if present, the mod's name will be 
+- `name`: if present, the mod's name will be
   overwritten;
 
 - `about`: if present, the mod's description
@@ -50,7 +50,7 @@ import dateutil.parser
 from dataclasses import dataclass, asdict
 from PIL import Image
 from io import BytesIO
-import hjson 
+import hjson
 from functools import partial
 import schedule
 import time
@@ -74,7 +74,7 @@ def loads(path):
         except KeyError as e:
             print(f"KeyError: {e} in {x}")
             quit()
-    
+
     with open(path, 'r') as f:
         data = [ x for x in yaml.safe_load_all(f.read()) ]
     repos = (key_handler(x, 'repo') for x in data)
@@ -87,12 +87,12 @@ def loads(path):
     return data
 
 @dataclass
-class Repo:    
+class Repo:
     name: str
     stars: int
     date: datetime
-    mname: str = None 
-    desc: str = None 
+    mname: str = None
+    desc: str = None
     author: str = None
 
     @staticmethod
@@ -154,7 +154,7 @@ class Repo:
         '''Called when the object is being deserialized.
         '''
         return Repo(**{ **d, "date": dateutil.parser.parse(d["date"]) })
-        
+
 
 template = jinja2.Template('''
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
@@ -165,7 +165,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 ''')
 
 def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"):
-    '''Gets repos if update is `True` and caches them, 
+    '''Gets repos if update is `True` and caches them,
     otherwise just reads the cached data.
     '''
     # TODO: implement better caching
@@ -182,7 +182,7 @@ def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"
 class ModMeta:
     '''Metadata to render mods in a template.
     '''
-    
+
     repo: str
     link: str
     desc: str
@@ -197,13 +197,13 @@ class ModMeta:
 
     def md_icon(self):
         return f'![]({self.icon})' if self.icon is not None else ''
-    
+
     @staticmethod
     def build(m, r, icon):
         def parse_or_nothing(x):
             return ignore_sbrack.parse(x or "")
 
-        repo_name = m["repo"]        
+        repo_name = m["repo"]
         mods_name = parse_or_nothing(r.mname) if r.mname else m["repo"]
         mods_desc = parse_or_nothing(r.desc) if 'about' not in m else m['about']
         author = parse_or_nothing(r.author) if 'author' not in m else m['author']
@@ -220,7 +220,7 @@ class ModMeta:
 
     @staticmethod
     def builds(mods, repos, icons):
-        '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which 
+        '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which
         will be used in the templates.
         '''
         repos = { x.name: x for x in repos }
@@ -244,30 +244,34 @@ def update_icon(gh, repo_name, image_path=None, force=False):
 
     if Path(icon_path).exists():
         return icon_path
-    
-    # url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
-    # r = requests.get(url, stream=True)
-    data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
 
+    data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
     try:
         image = Image.open(BytesIO(data))
     except Exception as e:
         print(repo_name, ':ohno:', e)
         return None
-    
+
     maxsize = (16, 16)
     image.thumbnail(maxsize, Image.ANTIALIAS)
     image.save(icon_path, "PNG")
     return icon_path
-    
+
+
+def update_icons(gh, mods):
+    def update_mod(gh, mod):
+        icon = mod['icon'] if 'icon' in mod else None
+        return mod['repo'], update_icon(gh, mod['repo'], icon)
+    return dict(update_mod(gh, m) for m in mods)
+
+
 def build(token, path="src/mindustry-mods.yaml"):
     '''Builds the README.md out of everything else here.
     '''
     mods = loads(path)
     gh = github.Github(token)
     repos = repos_cached(gh, [ m['repo'] for m in mods])
-    icons = { m['repo']: update_icon(gh, m['repo'], m['icon'] if 'icon' in m else None)
-              for m in mods }
+    icons = update_icons(gh, mods)
 
     mods = ModMeta.builds(mods, repos, icons)
     mods = reversed(sorted(mods, key=lambda x: x.date))

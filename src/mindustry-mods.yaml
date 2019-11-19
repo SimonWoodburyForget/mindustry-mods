@@ -70,7 +70,6 @@ icon: sprites/blocks/environment/dryGrass3.png
 ---
 author: Techfish3000
 name: Techfish-Core
-about: Core mod for all Techfish mindustry mods
 repo: TechFish3000/Techfish-Core
 ---
 author: Techfish3000
@@ -146,7 +145,6 @@ repo: ThatOneBepis/Infinitodustry
 icon: sprites/units/supreme-lich.png
 ---
 author: What42Pizza
-name: Mindustry-Production-Mod
 repo: What42Pizza/Mindustry-Production-Mod
 icon: sprites/blocks/sand-sifter-iron.png
 ---

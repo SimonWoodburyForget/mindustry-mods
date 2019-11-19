@@ -59,15 +59,25 @@ def loads(path):
 
 @dataclass
 class Repo:
+    '''Purely cached data.'''
+
+    '''Repo endpoint.'''
     name: str
+    '''Number of stargazers.'''
     stars: int
+    '''Last commit date.'''
     date: datetime
+    '''Mod.json name.'''
     mname: str = None
+    '''Mod.json description.'''
     desc: str = None
+    '''Mod.json author.'''
     author: str = None
+    '''Last commit hash.'''
+    sha: str = None
 
     @staticmethod
-    def from_github(gh, name):
+    def from_github(gh, name, old=None):
         '''Gets a Github repository from Github, with other
         data which may require a few requests, and packs this
         data into a namedtuple to be cached.
@@ -94,11 +104,16 @@ class Repo:
 
         repo = gh.get_repo(name)
         sha = repo.get_branch("master").commit.sha
+        if old and old.sha == sha:
+            print('[skipped]', name, "-- nothing new")
+            return old
+
         date = repo.get_commit(sha).commit.author.date
         stars = repo.stargazers_count
         out = partial(Repo, name,
                       stars=stars,
-                      date=date)
+                      date=date,
+                      sha=sha)
 
         try:
             text = b64decode(repo.get_contents("mod.json").content).decode('utf8')
@@ -146,13 +161,15 @@ def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"
     otherwise just reads the cached data.
     '''
     # TODO: implement better caching
+    with open(cache_path) as f:
+        repos = [ Repo.from_dict(d) for d in json.load(f) ]
+        old = { r.name: r for r in repos }
+
     if update:
-        repos = [ Repo.from_github(gh, x) for x in mods ]
+        repos = [ Repo.from_github(gh, x, old[x]) for x in mods ]
         with open(cache_path, "w") as f:
             json.dump([ r.into_dict() for r in repos ], f)
-    else:
-        with open(cache_path) as f:
-            repos = [ Repo.from_dict(d) for d in json.load(f) ]
+
     return repos
 
 @dataclass
@@ -285,7 +302,7 @@ if __name__ == '__main__':
     with open(Path.home() / ".github-token") as f:
         build(f.read())
 
-    schedule.every(2).hours.at(':00').do(run)
+    schedule.every(1).hour.at(':00').do(run)
 
     while True:
         schedule.run_pending()

@@ -28,10 +28,8 @@
               by {{ mod.author }}</p>
             <p class="description">{{ mod.desc[:1].upper() + mod.desc[1:] }}</p>
           </td>
-
           <td class="delta">{{ mod.delta_ago()  }} ago</td>
           <td class="stars">{{ mod.stars_fmt() }}</td>
-
         <tr/>
         {% endfor %}
       </tbody>

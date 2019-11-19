@@ -43,6 +43,7 @@ from minfmt import ignore_sbrack
 import yaml
 import jinja2
 import github
+from github import GithubException
 import requests
 from datetime import datetime
 import dateutil.parser
@@ -54,6 +55,7 @@ from functools import partial
 import schedule
 import time
 import subprocess
+from base64 import b64decode
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -127,12 +129,13 @@ class Repo:
                       stars=stars,
                       date=date)
 
-        r = requests.get(mod_dot_json(name))
-        if r.status_code != 200:
-            print(f"{r.status_code} at {name}")
+        try:
+            text = b64decode(repo.get_contents("mod.json").content).decode('utf8')
+        except GithubException as e:
+            print(f"{name} mod.json {e.data['message']}")
             return out()
 
-        j = try_hjson(r.text) or try_mson(r.text) or None
+        j = try_hjson(text) or try_mson(text) or None
         if j is None:
             print(f"Skipping {name}")
             return out()
@@ -225,7 +228,7 @@ class ModMeta:
         return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
                  for m in mods if 'issue' not in m ]
 
-def update_icon(repo_name, image_path=None, force=False):
+def update_icon(gh, repo_name, image_path=None, force=False):
     '''Downloads an image from the target repository, and scales
     it down to 16x16, and saves it. Doesn't do anything if the
     image exists.
@@ -242,13 +245,14 @@ def update_icon(repo_name, image_path=None, force=False):
     if Path(icon_path).exists():
         return icon_path
     
-    url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
-    r = requests.get(url, stream=True)
+    # url = f"https://raw.githubusercontent.com/{repo_name}/master/{image_path}"
+    # r = requests.get(url, stream=True)
+    data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
 
     try:
-        image = Image.open(BytesIO(r.content))
-    except:
-        print(":ohno:", repo_name, image_path)
+        image = Image.open(BytesIO(data))
+    except Exception as e:
+        print(repo_name, ':ohno:', e)
         return None
     
     maxsize = (16, 16)
@@ -262,7 +266,7 @@ def build(token, path="src/mindustry-mods.yaml"):
     mods = loads(path)
     gh = github.Github(token)
     repos = repos_cached(gh, [ m['repo'] for m in mods])
-    icons = { m['repo']: update_icon(m['repo'], m['icon'] if 'icon' in m else None)
+    icons = { m['repo']: update_icon(gh, m['repo'], m['icon'] if 'icon' in m else None)
               for m in mods }
 
     mods = ModMeta.builds(mods, repos, icons)
@@ -272,6 +276,7 @@ def build(token, path="src/mindustry-mods.yaml"):
 
     with open("README.md", 'w') as f:
         print(data, file=f)
+    print("--- END ---")
 
 def run():
     with open(Path.home() / ".github-token") as f:
@@ -284,7 +289,10 @@ def run():
     print()
     subprocess.run(['git', 'push', 'origin', 'master'])
 
-if __name__ == '__main__':   
+if __name__ == '__main__':
+    with open(Path.home() / ".github-token") as f:
+        build(f.read())
+
     schedule.every(2).hours.at(':00').do(run)
 
     while True:

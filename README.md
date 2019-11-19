@@ -4,7 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *52 minutes ago* [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *an hour ago* [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
   - *an hour ago* [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
 
@@ -15,9 +15,9 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *12 hours ago* [AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - *19 hours ago* [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ☆ -- Core mod for all Techfish mindustry mods
+  - *20 hours ago* [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ☆ -- Core mod for all Techfish mindustry mods
 
-  - *19 hours ago* [Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
+  - *20 hours ago* [Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
 
   - *23 hours ago* [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 

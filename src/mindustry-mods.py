@@ -128,6 +128,8 @@ class Repo:
 
 
 template = jinja2.Template('''
+Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
+
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 {% for mod in mods %}

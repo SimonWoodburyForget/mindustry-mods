@@ -165,6 +165,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 {% endfor %}
 ''')
 
+# TODO: move this somewhere better
 with open('src/template.html') as f:
     template_html = jinja2.Template(f.read())
 

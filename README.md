@@ -2,12 +2,12 @@
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
+  - [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ -- A mod for speed and efficiency
+
   - [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★ -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
   - [AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★★★ -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
-
-  - [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ -- A mod for speed and efficiency
 
   - [Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ☆ -- Core mod for all Techfish mindustry mods
 

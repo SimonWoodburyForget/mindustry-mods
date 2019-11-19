@@ -5,8 +5,10 @@
           href="src/style.css">
   </head>
   <body>
-    <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md">
-      Adding mods to this list.</a>
+    <p>This is a currated list of Mindustry mods found on GitHub, with generated
+      authors, descriptions, commit date and stars.
+    <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing">
+      Adding mods to this list.</a></p>
     <table>
       <thead>
         <caption>List of Mindustry Mods</caption>
@@ -21,8 +23,8 @@
         {% for mod in mods %}
         <tr>
           <td class="metadata">
-            <p><a href="{{ mod.link }}">{{ mod.repo }}</a>
-              <img src="{{ mod.icon }}" onerror="this.style.display='none'"/>
+            <p><img src="{{ mod.icon }}" onerror="this.style.display='none'"/>
+              <a href="{{ mod.link }}">{{ mod.repo }}</a>
               by {{ mod.author }}</p>
             <p class="description">{{ mod.desc[:1].upper() + mod.desc[1:] }}</p>
           </td>

@@ -6,11 +6,11 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *an hour ago* [Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *an hour ago* [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
+  - *2 hours ago* [ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
 
-  - *4 hours ago* [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - *5 hours ago* [Production Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - *9 hours ago* [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
+  - *10 hours ago* [Українізатор Всесвіту](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
   - *12 hours ago* [AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
@@ -19,7 +19,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *20 hours ago* [Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
 
-  - *23 hours ago* [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *a day ago* [Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *2 days ago* [Opore Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
@@ -43,7 +43,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *6 days ago* [Extended Rebuilding Modules](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
-  - *7 days ago* [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen -- ★  -- Mod dodający nowe przedmioty :D!
+  - *8 days ago* [NISZOgen mod](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen -- ★  -- Mod dodający nowe przedmioty :D!
 
   - *8 days ago* [Swarm Mod](https://github.com/ZkyLB/Swarm-Mod) ![](images/swarm-mod-icon.png) by ZkyLB -- ☆ -- Adds a new, and annoying flying unit.
 
@@ -74,9 +74,9 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *19 days ago* [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore)  by jojoblack_fr -- ★ ★  -- Mindustry mod
 
-  - *19 days ago* [Nuclear War](https://github.com/TheBabinator/NuclearWar)  by TheBabinator -- ☆ -- dont think this is balanced because it well isnt
+  - *20 days ago* [Nuclear War](https://github.com/TheBabinator/NuclearWar)  by TheBabinator -- ☆ -- dont think this is balanced because it well isnt
 
-  - *21 days ago* [Niobium Nanotech](https://github.com/Retrothopter/Niobium-Nanotech)  by Retrothopter -- ☆ -- A Mindustry mod adding new content based on Niobium.
+  - *22 days ago* [Niobium Nanotech](https://github.com/Retrothopter/Niobium-Nanotech)  by Retrothopter -- ☆ -- A Mindustry mod adding new content based on Niobium.
 
   - *27 days ago* [DE3000/Manufacry](https://github.com/DE3000/Manufacry)  by DE3000 -- ★ ★  -- Manufacturing based mod for Mindustry
 

@@ -56,6 +56,7 @@ import schedule
 import time
 import subprocess
 from base64 import b64decode
+import humanize
 
 def mod_dot_json(name):
     '''Returns the path to request the mod.json in the repo
@@ -160,7 +161,7 @@ template = jinja2.Template('''
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 {% for mod in mods %}
-  - [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} -- {{ mod.stars * '★' if mod.stars else '☆' }} -- {{ mod.desc }}
+  - *{{ mod.delta_ago()  }} ago* [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} -- {{ mod.stars * '★' if mod.stars else '☆' }} -- {{ mod.desc }}
 {% endfor %}
 ''')
 
@@ -197,6 +198,10 @@ class ModMeta:
 
     def md_icon(self):
         return f'![]({self.icon})' if self.icon is not None else ''
+
+    def delta_ago(self):
+        dt = datetime.utcnow() - self.date
+        return humanize.naturaldelta(dt)
 
     @staticmethod
     def build(m, r, icon):
@@ -263,7 +268,6 @@ def update_icons(gh, mods):
         icon = mod['icon'] if 'icon' in mod else None
         return mod['repo'], update_icon(gh, mod['repo'], icon)
     return dict(update_mod(gh, m) for m in mods)
-
 
 def build(token, path="src/mindustry-mods.yaml"):
     '''Builds the README.md out of everything else here.

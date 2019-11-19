@@ -293,7 +293,7 @@ def run():
     print()
     subprocess.run(['git', 'add', 'README.md'])
     print()
-    subprocess.run(['git', 'commit', '-m', 'auto update'])
+    subprocess.run(['git', 'commit', '--amend', '--no-edit'])
     print()
     subprocess.run(['git', 'push', 'origin', 'master'])
 

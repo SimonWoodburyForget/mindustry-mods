@@ -1,35 +1,5 @@
 """ Python script to pull Mindustry mods relative to repo name.
 This modules requires Python 3.7 or higher.
-
-The yaml configuration file format goes as follows:
-
-    ---
-    repo: User/Repo
-    issue: zipped incorrectly
-    author: Author Name
-    name: Mod Name
-    about: Short
-    ...
-
-Documents are separated by `---`, and the file is
-ended with `...`, with the following fields:
-
-- `repo`: the repository to pull the mod.json from;
-
-- `issue`: if present, the mod wont be rendered;
-
-- `author`: if present, the mod's author name
-  will be overwritten;
-
-- `name`: if present, the mod's name will be
-  overwritten;
-
-- `about`: if present, the mod's description
-  will be overwritten;
-
-- `icon`: path in the project of the icon
-  to be used.
-
 """
 
 from pathlib import Path

@@ -1,0 +1,41 @@
+
+body
+{
+    color: #333;
+    margin: 1% 4% 2% 4%;
+    font-size: 105%;
+}
+
+table
+{
+    margin: 2em;
+}
+
+th
+{
+    padding-top: 1em;
+    border-bottom: 1px solid #555;
+}
+
+td
+{
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    border-bottom: 1px solid #999;
+}
+
+td.stars
+{
+    color: #881;
+    text-align: center;
+}
+
+td.delta
+{
+    white-space: nowrap;
+}
+
+td.repo
+{
+    text-align: right;
+}

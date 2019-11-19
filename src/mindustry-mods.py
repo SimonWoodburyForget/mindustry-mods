@@ -161,9 +161,12 @@ template = jinja2.Template('''
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 {% for mod in mods %}
-  - *{{ mod.delta_ago()  }} ago* [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} -- {{ mod.stars * '★' if mod.stars else '☆' }} -- {{ mod.desc }}
+  - *{{ mod.delta_ago()  }} ago* [{{ mod.repo }}]({{ mod.link }}) {{ mod.md_icon() }} {{ mod.author_fmt() }} -- {{ mod.stars_fmt() }} -- {{ mod.desc }}
 {% endfor %}
 ''')
+
+with open('src/template.html') as f:
+    template_html = jinja2.Template(f.read())
 
 def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"):
     '''Gets repos if update is `True` and caches them,
@@ -192,6 +195,9 @@ class ModMeta:
     author: str
     date: datetime
     issue: str = None
+
+    def stars_fmt(self):
+        return self.stars * '★ ' if self.stars else '☆'
 
     def author_fmt(self):
         return f"by {self.author}" if self.author else ""
@@ -280,10 +286,15 @@ def build(token, path="src/mindustry-mods.yaml"):
     mods = ModMeta.builds(mods, repos, icons)
     mods = reversed(sorted(mods, key=lambda x: x.date))
 
+    mods = list(mods)
     data = template.render(mods=mods)
-
     with open("README.md", 'w') as f:
         print(data, file=f)
+
+    data = template_html.render(mods=mods)
+    with open("index.html", 'w') as f:
+        print(data, file=f)
+
     print("--- END ---")
 
 def run():

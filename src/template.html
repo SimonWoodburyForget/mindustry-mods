@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css"
+          href="src/style.css">
+  </head>
+  <body>
+    <table>
+      <thead>
+        <caption>List of Mindustry Mods</caption>
+        <tr>
+          <th>Repository</th>
+          <th>Author</th>
+          <th>Last Commit</th>
+          <th>Stars</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        {% for mod in mods %}
+        <tr>
+          <td class="repo">
+            <a href="{{ mod.link }}">{{ mod.repo }}</a>
+            <img src="{{ mod.icon }}" onerror="this.style.display='none'"/></td>
+          <td>by {{ mod.author }}</td>
+          <td class="delta">{{ mod.delta_ago()  }} ago</td>
+          <td class="stars">{{ mod.stars_fmt() }}</td>
+          <td>{{ mod.desc }}</td>
+        <tr/>
+        {% endfor %}
+      </tbody>
+      
+    </table> 
+    
+  </body>
+</html>

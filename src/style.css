@@ -2,13 +2,24 @@
 *
 {
     font-family: "Courier New", Courier, monospace;
+    background: #111;
 }
 
 body
 {
-    color: #333;
+    color: #ccc;
     margin: 1% 2% 1% 2%;
     font-size: 105%;
+}
+
+a
+{
+    color: #ff1
+}
+
+a:link, a:visited
+{
+    color: #ffa
 }
 
 table
@@ -19,19 +30,19 @@ table
 th
 {
     padding-top: 1em;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #ddd;
 }
 
 td
 {
     padding-right: 0.5em;
     padding-top: 0.5em;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #fff;
 }
 
 td.stars
 {
-    color: #881;
+    color: #ff3;
     text-align: center;
 }
 

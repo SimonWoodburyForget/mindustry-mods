@@ -8,9 +8,9 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *6 hours ago* [ZkyLB/3x3-and-4x4-walls](https://github.com/ZkyLB/3x3-and-4x4-walls) ![](images/3x3-and-4x4-walls-icon.png) by macdowntwo -- ☆ -- The built-in current defence walls with 3x3 and 4x4 counterparts.
 
-  - *7 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 -- ★ ★  -- I apologize for being in the archive
+  - *8 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 -- ★ ★  -- I apologize for being in the archive
 
-  - *7 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *8 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
   - *12 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
@@ -72,7 +72,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *19 days ago* [TechFish3000/More-Mindustry](https://github.com/TechFish3000/More-Mindustry)  by Techfish3000 -- ★  -- mindustry mod
 
-  - *19 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+  - *20 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
   - *20 days ago* [Retrothopter/More-Grass](https://github.com/Retrothopter/More-Grass) ![](images/more-grass-icon.png) by Retrothopter -- ★  -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 

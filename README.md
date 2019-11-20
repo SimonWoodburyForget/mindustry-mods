@@ -4,18 +4,22 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *4 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *53 minutes ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 -- ★ ★  -- I apologize for being in the archive
 
-  - *4 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
+  - *54 minutes ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *5 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *5 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+
+  - *5 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
+
+  - *6 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - *6 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - *7 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - *13 hours ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
+  - *14 hours ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
 
-  - *22 hours ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
+  - *23 hours ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
   - *a day ago* [TheBestBot/The-End-Is-Nigh](https://github.com/TheBestBot/The-End-Is-Nigh) ![](images/the-end-is-nigh-icon.png) by Best Bot -- ☆ -- A End-Game mod. Adds new content for expanding the endgame, such as massive long range turrets, strong large units and new new tech.
 
@@ -25,13 +29,9 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *2 days ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
-
   - *2 days ago* [xhz313123/Modular-Turret](https://github.com/xhz313123/Modular-Turret) ![](images/modular-turret-icon.png) by Plas_Gensokyo -- ★  -- An Mindustry mod
 
   - *3 days ago* [Miner28/Bronze-Mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 -- ★ ★ ★ ★ ★ ★  -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
-
-  - *3 days ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 -- ★ ★  -- I apologize for being in the archive
 
   - *3 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
@@ -41,7 +41,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *6 days ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
-  - *6 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors.
+  - *7 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors.
 
   - *7 days ago* [DemonX3/DemonX3-ERM](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 

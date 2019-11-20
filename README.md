@@ -8,9 +8,9 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *7 hours ago* [ZkyLB/3x3-and-4x4-walls](https://github.com/ZkyLB/3x3-and-4x4-walls) ![](images/3x3-and-4x4-walls-icon.png) by macdowntwo -- ☆ -- The built-in current defence walls with 3x3 and 4x4 counterparts.
 
-  - *8 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk947 -- ★ ★  -- I apologize for being in the archive
+  - *9 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★  -- Hello ^^ , thanks for playing
 
-  - *8 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *9 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
   - *13 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
@@ -43,7 +43,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *6 days ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
-  - *7 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors.
+  - *7 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors, with 18 new colors, and an experimental Tip, Slab, and Case block (only White-Black type).
 
   - *7 days ago* [DemonX3/DemonX3-ERM](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
@@ -62,7 +62,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *13 days ago* [PetruCHIOrus/lead_ind](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png) by PetruCHIOrus & DefenseX -- ★ ★ ★ ★ ★  -- New guns, drills, crafting, materials and resourses
 
-  - *14 days ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Place object on environment walls
+  - *14 days ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
 
   - *17 days ago* [ProximityCatz/CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat -- ☆ -- A mindustry modification.
 

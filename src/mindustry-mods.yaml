@@ -98,18 +98,11 @@ repo: Maxwelllondon92/AdvancedLogisticsMod
 icon: sprites/blocks/conveyors/carbon-fiber-conveyor-0-2.png
 ---
 author: BlindGhost
-name: PlaceAnywhere
-about: Place object on environment walls
 repo: BlindGhostPL/PlaceAnywhere
 ---
-name: Canvas
-about: A mod for the pixel artists. Includes 29 colors.
 repo: ZkyLB/Canvas
 icon: sprites/blocks/raspberry.png
 ---
-author: Xusk947
-name: DustryX
-about: I apologize for being in the archive
 repo: Xusk947/DustryX
 icon: sprites/units/machinegunner.png
 ---

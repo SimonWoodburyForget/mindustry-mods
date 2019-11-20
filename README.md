@@ -4,7 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *4 minutes ago* [DemonX3/DemonX3-ERM](https://github.com/DemonX3/DemonX3-ERM) ![](images/demonx3-erm-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
+  - *3 minutes ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+
+  - *19 minutes ago* [DemonX3/ExtendedRebuildingModules](https://github.com/DemonX3/ExtendedRebuildingModules) ![](images/extendedrebuildingmodules-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
   - *an hour ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
@@ -14,7 +16,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *11 hours ago* [ZkyLB/3x3-and-4x4-walls](https://github.com/ZkyLB/3x3-and-4x4-walls) ![](images/3x3-and-4x4-walls-icon.png) by macdowntwo -- ☆ -- The built-in current defence walls with 3x3 and 4x4 counterparts.
 
-  - *12 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★  -- Hello ^^ , thanks for playing
+  - *13 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★  -- Hello ^^ , thanks for playing
 
   - *17 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
 
@@ -30,8 +32,6 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
   - *a day ago* [TechFish3000/Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ☆ -- The core of all Techfish Mods.
 
   - *a day ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
-
-  - *2 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *3 days ago* [xhz313123/Modular-Turret](https://github.com/xhz313123/Modular-Turret) ![](images/modular-turret-icon.png) by Plas_Gensokyo -- ★  -- An Mindustry mod
 

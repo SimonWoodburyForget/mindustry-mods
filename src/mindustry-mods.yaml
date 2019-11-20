@@ -86,7 +86,7 @@ author: macdowntwo
 name: Dark-Life
 about: The life of light and dark.
 repo: ZkyLB/Dark-Life
-icon: sprites/items/dark.png
+icon: sprites/items/light.png
 ---
 author: MemFaceGo
 name: Better-Blocks-Mod
@@ -197,4 +197,7 @@ icon: sprites/mechs/op-mech.png
 ---
 repo: Vortetty/Mindustryalization
 icon: sprites/items/lightcube.png
+---
+repo: TheBestBot/The-End-Is-Nigh
+icon: sprites/items/micro-chip.png
 ...

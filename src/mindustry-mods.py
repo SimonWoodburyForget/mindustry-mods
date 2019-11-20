@@ -166,7 +166,7 @@ def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"
         old = { r.name: r for r in repos }
 
     if update:
-        repos = [ Repo.from_github(gh, x, old[x]) for x in mods ]
+        repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods ]
         with open(cache_path, "w") as f:
             json.dump([ r.into_dict() for r in repos ], f)
 

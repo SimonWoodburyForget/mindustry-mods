@@ -24,7 +24,8 @@
         <tr>
           <td class="metadata">
             <p><img src="{{ mod.icon }}" onerror="this.style.display='none'"/>
-              <a href="{{ mod.link }}">{{ mod.repo }}</a>
+              <a href="{{ mod.link }}">{{ mod.name }}</a>
+              <a href="{{ mod.archive_link() }}">zip</a>
               by {{ mod.author }}</p>
             <p class="description">{{ mod.desc[:1].upper() + mod.desc[1:] }}</p>
           </td>

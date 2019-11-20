@@ -177,14 +177,16 @@ class ModMeta:
     '''Metadata to render mods in a template.
     '''
 
-    repo: str
+    name: str
     link: str
     desc: str
     icon: str
     stars: int
     author: str
     date: datetime
+    repo: str
     issue: str = None
+    
 
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
@@ -199,6 +201,9 @@ class ModMeta:
         dt = datetime.utcnow() - self.date
         return humanize.naturaldelta(dt)
 
+    def archive_link(self):
+        return f"https://github.com/{self.repo}/archive/master.zip"
+
     @staticmethod
     def build(m, r, icon):
         def parse_or_nothing(x):
@@ -210,8 +215,9 @@ class ModMeta:
         author = parse_or_nothing(r.author) if 'author' not in m else m['author']
         mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
 
-        return ModMeta(repo=mods_name,
+        return ModMeta(name=mods_name,
                        link=f"https://github.com/{repo_name}",
+                       repo=m['repo'],
                        desc=mods_desc,
                        icon=icon,
                        stars=r.stars,

@@ -310,7 +310,7 @@ def run(push=True):
 if __name__ == '__main__':
     run(False)
 
-    schedule.every(1).hour.at(':00').do(run)
+    schedule.every(2).hour.at(':00').do(run)
 
     while True:
         schedule.run_pending()

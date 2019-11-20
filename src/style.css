@@ -50,3 +50,10 @@ td.delta
 {
     white-space: nowrap;
 }
+
+p.description
+{
+    font-size: 0.9em;
+}
+
+p

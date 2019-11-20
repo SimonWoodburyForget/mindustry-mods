@@ -302,8 +302,7 @@ def run(push=True):
     print()
 
 if __name__ == '__main__':
-    with open(Path.home() / ".github-token") as f:
-        build(f.read())
+    run(False)
 
     schedule.every(1).hour.at(':00').do(run)
 

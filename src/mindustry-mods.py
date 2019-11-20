@@ -9,12 +9,13 @@ from collections import Counter
 from datetime import datetime
 from dataclasses import dataclass, asdict
 from functools import partial
+from typing import List, Dict, Optional
 
 # Decoding/Encoding
 import yaml
 import json
 import mson
-import hjson 
+import hjson
 from mson import ParseError
 from minfmt import ignore_sbrack
 from base64 import b64decode
@@ -22,23 +23,19 @@ import dateutil.parser
 from PIL import Image
 from io import BytesIO
 
-
-# Automation
+# Application Stuff
 import github
 from github import GithubException
-import schedule
-import time
 import subprocess
+import time
+import schedule
+import click
+#import appdirs
+
+# Generation
 import humanize
 import jinja2
-import click
-import appdirs
 
-def mod_dot_json(name):
-    '''Returns the path to request the mod.json in the repo
-    This may be used to pull authors/descriptions automatically
-    '''
-    return f"https://raw.githubusercontent.com/{name}/master/mod.json"
 
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
@@ -63,9 +60,62 @@ def loads(path):
 
     return data
 
+def try_hjson(text):
+    try:
+        return hjson.loads(text)
+    except hjson.scanner.HjsonDecodeError as e:
+        print(f"[error] Hjson error {e}")
+
+def try_mson(text):
+    try:
+        return mson.jsonc.parse(text)
+    except ParseError as e:
+        print(f"[error] Mson error {e}")
+
+@dataclass
+class ModInfo:
+    '''Raw mod.json data.'''
+
+    '''mod.json name.'''
+    name: str = None
+    '''mod.json description.'''
+    description: str = None
+    '''mod.json author.'''
+    author: str = None
+    '''mod.json version.'''
+    version: str = None
+    '''mod.json dependencies.'''
+    dependencies: List[str] = None
+
+    @staticmethod
+    def from_repo(repo):
+        '''Get's mod.json from a specific repo.'''
+        try:
+            text = b64decode(repo.get_contents("mod.json").content).decode('utf8')
+        except GithubException as e:
+            print(f"[error] unable to find mod.json -- {e.data['message']}")
+            return ModInfo()
+        return ModInfo.from_text(text)
+
+    @staticmethod
+    def from_text(text):
+        j = try_hjson(text) or try_mson(text) or None
+
+        # version should always be a string
+        # but it may endup being a number
+        if 'version' in j:
+            j['version'] = str(j)
+
+        if j is not None:
+            return ModInfo(**j)
+        else:
+            print(f"[error] unable to parse mod.json")
+            return ModInfo()
+
 @dataclass
 class Repo:
-    '''Purely cached data.'''
+    '''Raw untouched data from the repository.
+    '''
 
     '''Repo endpoint.'''
     name: str
@@ -73,79 +123,42 @@ class Repo:
     stars: int
     '''Last commit date.'''
     date: datetime
-    '''Mod.json name.'''
-    mname: str = None
-    '''Mod.json description.'''
-    desc: str = None
-    '''Mod.json author.'''
-    author: str = None
     '''Last commit hash.'''
     sha: str = None
+    '''Mod.json of repository.'''
+    mod: Optional[ModInfo] = None
 
     @staticmethod
-    def from_github(gh, name, old=None):
+    def from_github(gh, name, old=None, force=False):
         '''Gets a Github repository from Github, with other
         data which may require a few requests, and packs this
         data into a namedtuple to be cached.
         '''
-        def try_hjson(text):
-            try:
-                return hjson.loads(text)
-            except hjson.scanner.HjsonDecodeError as e:
-                print(f"Hjson error in {name}: {e}")
-
-        def try_mson(text):
-            try:
-                return mson.jsonc.parse(text)
-            except ParseError as e:
-                print(f"Mson error in {name}: {e}")
-
-        def key_handler(x, k):
-            # missing key
-            try:
-                return x[k]
-            except KeyError as e:
-                print(f"KeyError: {e} in {name}")
-                return None
 
         repo = gh.get_repo(name)
         sha = repo.get_branch("master").commit.sha
-        if old and old.sha == sha:
+        if old and old.sha == sha and not force:
             print('[skipped]', name, "-- nothing new")
             return old
 
-        date = repo.get_commit(sha).commit.author.date
-        stars = repo.stargazers_count
-        out = partial(Repo, name,
-                      stars=stars,
-                      date=date,
-                      sha=sha)
-
-        try:
-            text = b64decode(repo.get_contents("mod.json").content).decode('utf8')
-        except GithubException as e:
-            print(f"{name} mod.json {e.data['message']}")
-            return out()
-
-        j = try_hjson(text) or try_mson(text) or None
-        if j is None:
-            print(f"Skipping {name}")
-            return out()
-        else:
-            return out(mname=key_handler(j, 'name'),
-                       desc=key_handler(j, 'description'),
-                       author=key_handler(j, 'author'))
+        return Repo(name,
+                    stars=repo.stargazers_count,
+                    date=repo.get_commit(sha).commit.author.date,
+                    sha=sha,
+                    mod=ModInfo.from_repo(repo))
 
     def into_dict(self):
         '''Called when the object is about to be serialized.
-        '''
+        ''' # mostly just handles date I guess.
         return { k: str(v) if k == 'date' else v
                  for k, v in asdict(self).items() }
 
     def from_dict(d):
         '''Called when the object is being deserialized.
         '''
-        return Repo(**{ **d, "date": dateutil.parser.parse(d["date"]) })
+        return Repo(**{ **d,
+                        "date": dateutil.parser.parse(d["date"]),
+                        "mod": ModInfo(**d["mod"]) })
 
 
 template = jinja2.Template('''
@@ -162,14 +175,21 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 with open('src/template.html') as f:
     template_html = jinja2.Template(f.read())
 
-def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"):
+CACHE_PATH = Path.home() / ".github-cache"
+
+def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
     '''Gets repos if update is `True` and caches them,
     otherwise just reads the cached data.
     '''
     # TODO: implement better caching
-    with open(cache_path) as f:
-        repos = [ Repo.from_dict(d) for d in json.load(f) ]
-        old = { r.name: r for r in repos }
+    cache_path = Path(cache_path)
+    if cache_path.exists():
+        with open(cache_path) as f:
+            repos = [ Repo.from_dict(d) for d in json.load(f) ]
+            old = { r.name: r for r in repos }
+    else:
+        repos = []
+        old = {}
 
     if update:
         repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods ]
@@ -180,7 +200,7 @@ def repos_cached(gh, mods, update=True, cache_path=Path.home() / ".github-cache"
 
 @dataclass
 class ModMeta:
-    '''Metadata to render mods in a template.
+    '''Middle man between Repo and template, where everything can get formatted.
     '''
 
     name: str
@@ -192,7 +212,7 @@ class ModMeta:
     date: datetime
     repo: str
     issue: str = None
-    
+
 
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
@@ -216,9 +236,9 @@ class ModMeta:
             return ignore_sbrack.parse(x or "")
 
         repo_name = m["repo"]
-        mods_name = parse_or_nothing(r.mname) if r.mname else m["repo"]
-        mods_desc = parse_or_nothing(r.desc) if 'about' not in m else m['about']
-        author = parse_or_nothing(r.author) if 'author' not in m else m['author']
+        mods_name = parse_or_nothing(r.mod.name) if r.mod.name else m["repo"]
+        mods_desc = parse_or_nothing(r.mod.description) if 'about' not in m else m['about']
+        author = parse_or_nothing(r.mod.author) if 'author' not in m else m['author']
         mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
 
         return ModMeta(name=mods_name,
@@ -315,9 +335,13 @@ def main(push=True):
 @click.option('-i', '--instant', is_flag=True, help="Run generator right away.")
 @click.option('-p', '--push', is_flag=True, help="Push said changes to GitHub.")
 @click.option('-h', '--hourly', is_flag=True, help="Keep running hourly.")
-def cli(instant, push, hourly):
+@click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
+def cli(instant, push, hourly, clean):
+    if clean:
+        subprocess.run(['rm', CACHE_PATH])
+
     main_run = lambda: main(push)
-    
+
     if instant:
         main_run()
 

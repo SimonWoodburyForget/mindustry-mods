@@ -4,16 +4,18 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *31 minutes ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ☆ -- This mod replaces all texts in the game with random ones.
+  - *40 seconds ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
 
-  - *11 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *an hour ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ☆ -- This mod replaces all texts in the game with random ones.
+
+  - *12 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - *12 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *13 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *22 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
+  - *23 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
 
-  - *23 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - *a day ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
 
@@ -30,8 +32,6 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
   - *a day ago* [DemonX3/ExtendedRebuildingModules](https://github.com/DemonX3/ExtendedRebuildingModules) ![](images/extendedrebuildingmodules-icon.png) by DemonX3 -- ☆ -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
   - *a day ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
-
-  - *2 days ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★  -- A new way forward in vanilla style. V0.3 - Thorium Update!
 
   - *2 days ago* [ZkyLB/3x3-and-4x4-walls](https://github.com/ZkyLB/3x3-and-4x4-walls) ![](images/3x3-and-4x4-walls-icon.png) by macdowntwo -- ☆ -- The built-in current defence walls with 3x3 and 4x4 counterparts.
 
@@ -78,7 +78,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *21 days ago* [TechFish3000/More-Mindustry](https://github.com/TechFish3000/More-Mindustry)  by Techfish3000 -- ★  -- mindustry mod
 
-  - *21 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+  - *22 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
   - *22 days ago* [Retrothopter/More-Grass](https://github.com/Retrothopter/More-Grass) ![](images/more-grass-icon.png) by Retrothopter -- ★  -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 

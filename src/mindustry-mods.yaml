@@ -157,9 +157,7 @@ name: mindustrymod1
 repo: niszogen/mindustrymod1
 icon: sprites/items/niszonium.png
 ---
-author: DemonX3
-name: Extended Rebuilding Modules
-repo: DemonX3/DemonX3-ERM
+repo: DemonX3/ExtendedRebuildingModules
 icon: sprites/mechs/sister.png
 ---
 repo: ballgamer56/VanillaExtended
@@ -196,4 +194,12 @@ icon: sprites/items/micro-chip.png
 ---
 repo: ZkyLB/3x3-and-4x4-walls
 icon: sprites/blocks/gigantic-copper-wall.png
+---
+repo: ZkyLB/Mac-Mod
+icon: sprites/blocks/friend-wall.png
+---
+repo: Hecodie/Refined-Hecodium
+icon: sprites/items/rocket.png
+---
+repo: valtsu41/bundle-chaos
 ...

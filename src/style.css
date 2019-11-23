@@ -56,7 +56,7 @@ header
     padding-top: 1em;
     font-size: 150%;
     display: block;
-    background: #111;
+    background: #221;
     border-bottom: 2px solid #ddd;
     color: #ccc;
 }
@@ -72,6 +72,9 @@ content
     color: #ccc;
     border-bottom: 2px solid #ddd;
     background: #222;
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer

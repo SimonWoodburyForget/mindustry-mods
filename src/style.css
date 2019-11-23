@@ -1,16 +1,4 @@
 
-*
-{
-    font-family: "Courier New", Courier, monospace;
-    background: #111;
-}
-
-body
-{
-    color: #ccc;
-    margin: 1% 2% 1% 2%;
-    font-size: 105%;
-}
 
 a
 {
@@ -56,4 +44,41 @@ p.description
     font-size: 0.9em;
 }
 
-p
+body
+{
+    margin: 0;
+    background: #111;
+}
+
+header
+{
+    padding-left: 2em;
+    padding-top: 1em;
+    font-size: 150%;
+    display: block;
+    background: #111;
+    border-bottom: 2px solid #ddd;
+    color: #ccc;
+}
+
+content
+{
+    font-family: "Courier New", Courier, monospace;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
+    display: block;
+    color: #ccc;
+    border-bottom: 2px solid #ddd;
+    background: #222;
+}
+
+footer
+{
+    display: block;
+    padding-top: 4em;
+    padding-left: 2em;
+    padding-bottom: 4em;
+    background: #111;
+}

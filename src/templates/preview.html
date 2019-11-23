@@ -5,6 +5,10 @@
 <!-- installation -->
 
 {% block content %}
+
+<a href="{{ mod.link }}">repository</a>
+<a href="{{ mod.archive_link() }}">zip</a>
+
 {{ mod.readme_html() }}
 {% endblock %}
 

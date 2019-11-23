@@ -36,6 +36,7 @@ import click
 import humanize
 import jinja2
 import markdown
+import re
 
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
@@ -213,7 +214,11 @@ class ModMeta:
     readme: str = ''
 
     def readme_html(self):
-        return markdown.markdown(self.readme)
+        from jinja2 import Markup
+        from markdown import markdown
+        text = self.readme
+        # TODO: fix image links
+        return Markup(markdown(text))
 
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
@@ -250,7 +255,8 @@ class ModMeta:
                        stars=r.stars,
                        author=author.strip(),
                        date=r.date,
-                       issue=m["issue"] if 'issue' in m else None)
+                       issue=m["issue"] if 'issue' in m else None,
+                       readme=r.readme or '')
 
     @staticmethod
     def builds(mods, repos, icons):
@@ -310,13 +316,21 @@ def build(token, path="src/mindustry-mods.yaml"):
 
     env = load_env()
     mods = list(mods)
-    data = env.get_template('listing.md').render(mods=mods)
+    data = env.get_template('listing.md').render(mods=mods, style="src/style.css")
     with open("README.md", 'w') as f:
         print(data, file=f)
 
-    data = env.get_template('listing.html').render(mods=mods)
+    data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
     with open("index.html", 'w') as f:
         print(data, file=f)
+    
+    template = env.get_template('preview.html')
+    for mod in mods:
+        data = template.render(mod=mod, style="../src/style.css")
+        if mod.readme:
+            path = Path('m') / (mod.name.lower().replace(' ', '-').split('/')[-1] + ".html")
+            with open(path, 'w') as f:
+                print(data, file=f)
 
 def main(push=True):
     with open(Path.home()  /".github-token") as f:

@@ -1,8 +1,10 @@
-<!-- Template to preview a mod. -->
+{% extends "base.html" %}
 
 <!-- repository -->
 <!-- dependencies -->
 <!-- installation -->
 
-<!-- render readme -->
+{% block content %}
 {{ mod.readme_html() }}
+{% endblock %}
+

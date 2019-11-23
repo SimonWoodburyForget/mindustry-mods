@@ -87,13 +87,25 @@ def get_file(repo, filename):
     except GithubException as e:
         print(f"[error] unable to find {filename} in {repo.name}")
 
-def fix_image_url(url, repo):
+def fix_image_url(url, repo_name):
     '''Fixes a GitHub url, where the url should point to an image.
-    Invalid image URLs found in README.md:
 
+    Any links with `github.com` are invalid, because they're html links, while
+    image links would have `githubusercontent.com`, for example: 
     - https://github.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png;
-    - Preview.png;
+
+    Any links that don't have a domain are relative and as such invalid, for example:
+    - preview.png;
+    - sprites/preview.png;
+    - /sprites/preview.png
+
+    This is also why a repo name is required.
     '''
+    from urllib.parse import urlparse
+    o = urlparse(url)
+    # if o.netloc.contains("githubusercontent.com")
+
+    
     pass
         
 @dataclass
@@ -191,6 +203,7 @@ def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
     '''Gets repos if update is `True` and caches them,
     otherwise just reads the cached data.
     '''
+
     # TODO: implement better caching
     cache_path = Path(cache_path)
     if cache_path.exists():
@@ -205,7 +218,6 @@ def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
         repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods ]
         with open(cache_path, "w") as f:
             json.dump([ r.into_dict() for r in repos ], f)
-
     return repos
 
 @dataclass
@@ -251,11 +263,10 @@ class ModMeta:
         '''
 
         html = markdown(self.readme)
-        '''
         soup = bs4.BeautifulSoup(html, 'html.parser')
         links = soup.find_all('img')
-        links = [ (l, process(l.src, self.repo)) for l in links ]
-        
+        links = [ (l, fix_image_url(l.src, self.repo)) for l in links ]
+        '''
         print(links)
         '''
         return Markup(html)

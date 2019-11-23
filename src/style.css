@@ -2,12 +2,17 @@
 
 a
 {
-    color: #ff1
+    color: #ff1;
 }
 
 a:link, a:visited
 {
-    color: #ffa
+    color: #ffa;
+}
+
+header a
+{
+    text-decoration: none;
 }
 
 table

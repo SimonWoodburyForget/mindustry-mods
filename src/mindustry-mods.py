@@ -37,6 +37,8 @@ import humanize
 import jinja2
 import markdown
 import re
+import bs4
+import urllib
 
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
@@ -85,6 +87,15 @@ def get_file(repo, filename):
     except GithubException as e:
         print(f"[error] unable to find {filename} in {repo.name}")
 
+def fix_image_url(url, repo):
+    '''Fixes a GitHub url, where the url should point to an image.
+    Invalid image URLs found in README.md:
+
+    - https://github.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png;
+    - Preview.png;
+    '''
+    pass
+        
 @dataclass
 class ModInfo:
     '''Raw mod.json data.'''
@@ -216,9 +227,38 @@ class ModMeta:
     def readme_html(self):
         from jinja2 import Markup
         from markdown import markdown
-        text = self.readme
-        # TODO: fix image links
-        return Markup(markdown(text))
+        '''
+        def process(url):
+            from urllib.parse import urlparse
+            o = urlparse(url)
+
+            def parse_find_string(string):
+                def parse(data):
+                    print(data, string)
+                    result = data.find(string)
+                    return result >= 0, result + len(string)
+                return parse
+
+            master = parse_find_string('/blob/master/')
+            result = master(o.path.decode('utf8'))
+            if result[0]:
+                path = o.path[:result[1]]
+                return f"https://raw.githubusercontent.com/{self.repo}/{path}"
+
+            if url.netloc == '':
+                return f"https://raw.githubusercontent.com/{self.repo}/{o.path}"
+            return 
+        '''
+
+        html = markdown(self.readme)
+        '''
+        soup = bs4.BeautifulSoup(html, 'html.parser')
+        links = soup.find_all('img')
+        links = [ (l, process(l.src, self.repo)) for l in links ]
+        
+        print(links)
+        '''
+        return Markup(html)
 
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'

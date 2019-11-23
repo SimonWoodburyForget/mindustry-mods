@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="src/style.css">
+    <title>{% block title %}{% endblock %} - Mindustry Mods</title>
+    {% endblock %}
+  </head>
+  
+  <body>
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+    <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing">
+      Adding mods to this list.
+    </a>
+    {% endblock %}
+  </body>
+
+</html>

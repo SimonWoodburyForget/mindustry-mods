@@ -96,3 +96,9 @@ content img
     /* width: 40em; */
     max-width: 40em;
 }
+
+content icon img
+{
+    max-width: 1.5em;
+    max-height: 1.5em;
+}

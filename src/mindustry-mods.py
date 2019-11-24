@@ -244,9 +244,14 @@ class ModMeta:
     '''
 
     name: str
+    '''Link to repository.'''
     link: str
+    '''Short description.'''
     desc: str
+    '''Internal icon path.'''
     icon: str
+    '''External icon path.'''
+    icon_raw: str
     stars: int
     author: str
     date: datetime
@@ -254,43 +259,22 @@ class ModMeta:
     issue: str = None
     readme: str = ''
 
+    def icon_url(self):
+        return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
+
     def readme_html(self):
         from jinja2 import Markup
         from markdown import markdown
-        '''
-        def process(url):
-            from urllib.parse import urlparse
-            o = urlparse(url)
-
-            def parse_find_string(string):
-                def parse(data):
-                    print(data, string)
-                    result = data.find(string)
-                    return result >= 0, result + len(string)
-                return parse
-
-            master = parse_find_string('/blob/master/')
-            result = master(o.path.decode('utf8'))
-            if result[0]:
-                path = o.path[:result[1]]
-                return f"https://raw.githubusercontent.com/{self.repo}/{path}"
-
-            if url.netloc == '':
-                return f"https://raw.githubusercontent.com/{self.repo}/{o.path}"
-            return 
-        '''
 
         html = markdown(self.readme)
         soup = bs4.BeautifulSoup(html, 'html.parser')
         links = soup.find_all('img')
         links = [ (l['src'], fix_image_url(l['src'], self.repo)) for l in links ]
-        '''
-        print(links)
-        '''
+
         for original, new in links:
             html = html.replace(original, new)
         return Markup(html)
-
+    
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
 
@@ -326,6 +310,7 @@ class ModMeta:
                        repo=m['repo'],
                        desc=mods_desc,
                        icon=icon,
+                       icon_raw=m['icon'] if 'icon' in m else '',
                        stars=r.stars,
                        author=author.strip(),
                        date=r.date,
@@ -439,6 +424,6 @@ def cli(instant, push, hourly, clean, update):
         while True:
             schedule.run_pending()
             time.sleep(1)
-
+            
 if __name__ == '__main__':
     cli()

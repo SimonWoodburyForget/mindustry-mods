@@ -22,7 +22,9 @@
     <tr>
       <td class="metadata">
         <p>
-          <img src="{{ mod.icon }}" onerror="this.style.display='none'"/>
+          <icon>
+            <img src="{{ mod.icon_url() }}" onerror="this.style.display='none'"/>
+          </icon>
           <a href="{{ mod.endpoint() }}">{{ mod.name }}</a>
           by {{ mod.author }}
         </p>

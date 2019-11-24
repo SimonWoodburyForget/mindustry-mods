@@ -22,6 +22,7 @@ from base64 import b64decode
 import dateutil.parser
 from PIL import Image
 from io import BytesIO
+import parsec
 
 # Application Stuff
 import github
@@ -102,11 +103,28 @@ def fix_image_url(url, repo_name):
     This is also why a repo name is required.
     '''
     from urllib.parse import urlparse
-    o = urlparse(url)
-    # if o.netloc.contains("githubusercontent.com")
-
+    from parsec import optional, string, regex, none_of, many, ParseError
+   
+    glob = (optional(string('/'))
+            >> string(repo_name)
+            >> string("/blob/master/")
+            >> many(none_of("?")).parsecmap(lambda x: "".join(x)))
     
-    pass
+    o = urlparse(url)
+    if o.netloc == "raw.githubusercontent.com":
+        return url
+
+    try: path = glob.parse(o.path)
+    except ParseError as e:
+        path = None    
+    if o.netloc == "github.com" and path:
+        return f"https://raw.githubusercontent.com/{repo_name}/master/{path}"
+
+    if o.netloc == "":
+        return f"https://raw.githubusercontent.com/{repo_name}/master/{o.path}"
+
+    print('[warning] non github url:', url)
+    return url
         
 @dataclass
 class ModInfo:
@@ -265,10 +283,12 @@ class ModMeta:
         html = markdown(self.readme)
         soup = bs4.BeautifulSoup(html, 'html.parser')
         links = soup.find_all('img')
-        links = [ (l, fix_image_url(l.src, self.repo)) for l in links ]
+        links = [ (l['src'], fix_image_url(l['src'], self.repo)) for l in links ]
         '''
         print(links)
         '''
+        for original, new in links:
+            html = html.replace(original, new)
         return Markup(html)
 
     def stars_fmt(self):
@@ -408,7 +428,7 @@ def cli(instant, push, hourly, clean, update):
     if clean:
         subprocess.run(['rm', CACHE_PATH])
 
-    main_run = lambda: main(push, update=not instant)
+    main_run = lambda: main(push)
 
     if instant:
         main_run()

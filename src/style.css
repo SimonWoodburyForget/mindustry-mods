@@ -90,3 +90,9 @@ footer
     padding-bottom: 4em;
     background: #111;
 }
+
+content img
+{
+    /* width: 40em; */
+    max-width: 40em;
+}

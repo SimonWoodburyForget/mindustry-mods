@@ -4,7 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *2 hours ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game and some are just added for convenience sake
+  - *3 hours ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game and some are just added for convenience sake
 
 French translation by Noxenemerus Lunacor
 
@@ -30,7 +30,7 @@ V1.1 - Fixing and Mixing
   - *a day ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - *2 days ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
+  - *3 days ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
 
   - *3 days ago* [ZkyLB/Mac-Mod](https://github.com/ZkyLB/Mac-Mod) ![](images/mac-mod-icon.png) by macdowntwo -- ☆ -- A mod that is used for testing out certain features, but can also be used for fun.
 

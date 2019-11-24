@@ -4,15 +4,17 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
+  - *3 minutes ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game and some are just added for convenience sake
+
+French translation by Noxenemerus Lunacor
+
   - *4 hours ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *6 hours ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★  -- Hello ^^ , thanks for playing
 
-  - *6 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *7 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
 
-  - *12 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
-
-  - *a day ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
+  - *13 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - *a day ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
 

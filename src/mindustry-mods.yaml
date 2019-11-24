@@ -197,4 +197,10 @@ repo: Hecodie/Refined-Hecodium
 icon: sprites/items/rocket.png
 ---
 repo: valtsu41/bundle-chaos
+---
+repo: HolyHades/VanillaEnhanced
+icon: sprites/blocks/conveyors/surge-alloy-conveyor.png
+author: HolyHades & v1nce
+name: VanillaEnhanced
+about: Adds stuff to enhance the vanilla experience.
 ...

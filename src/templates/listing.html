@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Listing{% endblock %}
+
 {% block content %}
 <p>This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods
   <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing">
@@ -17,7 +19,7 @@
     </tr>
   </thead>
   
-  <tbody>
+  <tbody>    
     {% for mod in mods %}
     <tr>
       <td class="metadata">

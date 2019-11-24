@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *13 minutes ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - *5 minutes ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
-  - *12 hours ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
+  - *59 minutes ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ☆ -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - *13 hours ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
+  - *13 hours ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game, some are just added for convenience sake and some are totally random
+
+  - *14 hours ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ☆ -- Orbital shenanigans. Mindustry Mod
 
   - *14 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ☆ -- This mod replaces all texts in the game with random ones.
-
-  - *16 hours ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod)  by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *a day ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
@@ -73,7 +73,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *20 days ago* [ProximityCatz/CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat -- ☆ -- A mindustry modification.
 
-  - *21 days ago* [ZkyLB/Dark-Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo -- ★ ★ ★ ★  -- The life of light and dark.
+  - *21 days ago* [ZkyLB/Dark-Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo -- ★ ★ ★ ★  -- The light and dark awaits you.
 
   - *22 days ago* [Syoga23/Lenin](https://github.com/Syoga23/Lenin)  by Syoga -- ☆ -- A Lenin mod
 

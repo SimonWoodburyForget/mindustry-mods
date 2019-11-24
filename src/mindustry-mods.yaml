@@ -82,16 +82,12 @@ name: Lenin
 about: A Lenin mod
 repo: Syoga23/Lenin
 ---
-author: macdowntwo
-name: Dark-Life
-about: The life of light and dark.
 repo: ZkyLB/Dark-Life
 icon: sprites/items/light.png
 ---
-author: MemFaceGo
-name: Better-Blocks-Mod
 about: This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 repo: MemFaceGo/Better-Blocks-Mod
+icon: sprites/small_logo.png
 ---
 author: Maxwelllondon
 repo: Maxwelllondon92/AdvancedLogisticsMod
@@ -106,7 +102,6 @@ icon: sprites/blocks/raspberry.png
 repo: Xusk947/DustryX
 icon: sprites/units/machinegunner.png
 ---
-author: macdowntwo
 name: Dirt-Block
 about: dirt
 repo: ZkyLB/Dirt-Block

@@ -102,3 +102,12 @@ content icon img
     max-width: 1.5em;
     max-height: 1.5em;
 }
+
+content code
+{
+    font-family: "Courier New", Courier, monospace;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    border: 1px solid #886;
+    background: #111;
+}

@@ -8,9 +8,10 @@
 
 {% block content %}
 
+<code>{{ mod.repo }}</code>
 <a href="{{ mod.link }}">repository</a>
 <a href="{{ mod.archive_link() }}">zip</a>
-<code>{{ mod.repo }}</code>
+
 
 {{ mod.readme_html() }}
 {% endblock %}

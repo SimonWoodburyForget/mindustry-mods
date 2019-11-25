@@ -156,7 +156,7 @@ class ModInfo:
         # version should always be a string
         # but it may endup being a number
         if 'version' in j:
-            j['version'] = str(j)
+            j['version'] = str(j['version'])
 
         if j is not None:
             return ModInfo(**j)
@@ -258,6 +258,7 @@ class ModMeta:
     repo: str
     issue: str = None
     readme: str = ''
+    version: str = ''
 
     def icon_url(self):
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
@@ -315,7 +316,8 @@ class ModMeta:
                        author=author.strip(),
                        date=r.date,
                        issue=m["issue"] if 'issue' in m else None,
-                       readme=r.readme or '')
+                       readme=r.readme or '',
+                       version=r.mod.version)
 
     @staticmethod
     def builds(mods, repos, icons):

@@ -114,3 +114,10 @@ content code
     font-size: 80%;
     user-select: all;
 }
+
+content span.version
+{
+    font-size: 90%;
+    color: #888;
+    display: inline-block;
+}

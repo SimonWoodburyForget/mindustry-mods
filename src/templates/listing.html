@@ -30,6 +30,7 @@
           </icon>
           <a href="{{ mod.endpoint() }}">{{ mod.name }}</a>
           by {{ mod.author }}
+          <span class='version'>v{{ mod.version }}</span>
         </p>
         <p class="description">{{ mod.desc[:1].upper() + mod.desc[1:] }}</p>
         <p>

@@ -25,6 +25,22 @@ th
     white-space: nowrap;
     padding-top: 1em;
     border-bottom: 3px solid #777;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+th input
+{
+    border-radius: 0;
+    border: 0px;
+    color: #ffa;
+    font-family: "Courier New", Courier, monospace;
+    border-bottom: 0px;
+    padding: 0px;
+    margin: 0px;
+    background: #222;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 td

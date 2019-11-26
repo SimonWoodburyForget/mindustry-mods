@@ -21,6 +21,8 @@
   (js->clj js/rawData
            :keywordize-keys false))
 
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helpers
 
@@ -84,18 +86,26 @@
      [:td.delta (delta-ago m) " ago"]
      [:td.stars (stars-fmt m)]]))
 
+
+(def sorting (r/atom data))
+
 (defn table
-  [headers data]
+  [data]
   [:table
    [:thead
-    [:tr (map-tag :th headers)]]
-   [:tbody (make-rows data)]])
+    [:tr
+     [:th "metadata"]
+     [:th [:input {:type "button" :value "last-commit"
+                   :on-click #(reset! sorting data)}]]
+     [:th [:input {:type "button" :value "stars"
+                   :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}]]]]
+   [:tbody (make-rows @sorting)]])
 
 (defn listing []
   [:div
    [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods "
     [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"} "here"] "."]
-   (table ["metadata" "last-commit" "stars"] data)])
+   (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Initialize app

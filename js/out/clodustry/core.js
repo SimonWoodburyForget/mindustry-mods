@@ -51,25 +51,25 @@ clodustry.core.stars_fmt = (function clodustry$core$stars_fmt(m){
 return m.call(null,"stars_fmt");
 });
 clodustry.core.make_rows = (function clodustry$core$make_rows(mods){
-var iter__4582__auto__ = (function clodustry$core$make_rows_$_iter__28475(s__28476){
+var iter__4582__auto__ = (function clodustry$core$make_rows_$_iter__28850(s__28851){
 return (new cljs.core.LazySeq(null,(function (){
-var s__28476__$1 = s__28476;
+var s__28851__$1 = s__28851;
 while(true){
-var temp__5735__auto__ = cljs.core.seq.call(null,s__28476__$1);
+var temp__5735__auto__ = cljs.core.seq.call(null,s__28851__$1);
 if(temp__5735__auto__){
-var s__28476__$2 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__28476__$2)){
-var c__4580__auto__ = cljs.core.chunk_first.call(null,s__28476__$2);
+var s__28851__$2 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__28851__$2)){
+var c__4580__auto__ = cljs.core.chunk_first.call(null,s__28851__$2);
 var size__4581__auto__ = cljs.core.count.call(null,c__4580__auto__);
-var b__28478 = cljs.core.chunk_buffer.call(null,size__4581__auto__);
-if((function (){var i__28477 = (0);
+var b__28853 = cljs.core.chunk_buffer.call(null,size__4581__auto__);
+if((function (){var i__28852 = (0);
 while(true){
-if((i__28477 < size__4581__auto__)){
-var m = cljs.core._nth.call(null,c__4580__auto__,i__28477);
-cljs.core.chunk_append.call(null,b__28478,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.metadata","td.metadata",1399189386),new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.icon.call(null,m)," ",clodustry.core.endpoint.call(null,m)," by ",m.call(null,"author")," ",clodustry.core.version.call(null,m)], null),clodustry.core.description.call(null,m),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.repository_link.call(null,m)," ",clodustry.core.archive_link.call(null,m)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.delta","td.delta",-2062419773),clodustry.core.delta_ago.call(null,m)," ago"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.stars","td.stars",1953212759),clodustry.core.stars_fmt.call(null,m)], null)], null));
+if((i__28852 < size__4581__auto__)){
+var m = cljs.core._nth.call(null,c__4580__auto__,i__28852);
+cljs.core.chunk_append.call(null,b__28853,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.metadata","td.metadata",1399189386),new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.icon.call(null,m)," ",clodustry.core.endpoint.call(null,m)," by ",m.call(null,"author")," ",clodustry.core.version.call(null,m)], null),clodustry.core.description.call(null,m),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.repository_link.call(null,m)," ",clodustry.core.archive_link.call(null,m)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.delta","td.delta",-2062419773),clodustry.core.delta_ago.call(null,m)," ago"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.stars","td.stars",1953212759),clodustry.core.stars_fmt.call(null,m)], null)], null));
 
-var G__28479 = (i__28477 + (1));
-i__28477 = G__28479;
+var G__28854 = (i__28852 + (1));
+i__28852 = G__28854;
 continue;
 } else {
 return true;
@@ -77,13 +77,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__28478),clodustry$core$make_rows_$_iter__28475.call(null,cljs.core.chunk_rest.call(null,s__28476__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__28853),clodustry$core$make_rows_$_iter__28850.call(null,cljs.core.chunk_rest.call(null,s__28851__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__28478),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__28853),null);
 }
 } else {
-var m = cljs.core.first.call(null,s__28476__$2);
-return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.metadata","td.metadata",1399189386),new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.icon.call(null,m)," ",clodustry.core.endpoint.call(null,m)," by ",m.call(null,"author")," ",clodustry.core.version.call(null,m)], null),clodustry.core.description.call(null,m),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.repository_link.call(null,m)," ",clodustry.core.archive_link.call(null,m)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.delta","td.delta",-2062419773),clodustry.core.delta_ago.call(null,m)," ago"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.stars","td.stars",1953212759),clodustry.core.stars_fmt.call(null,m)], null)], null),clodustry$core$make_rows_$_iter__28475.call(null,cljs.core.rest.call(null,s__28476__$2)));
+var m = cljs.core.first.call(null,s__28851__$2);
+return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.metadata","td.metadata",1399189386),new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.icon.call(null,m)," ",clodustry.core.endpoint.call(null,m)," by ",m.call(null,"author")," ",clodustry.core.version.call(null,m)], null),clodustry.core.description.call(null,m),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),clodustry.core.repository_link.call(null,m)," ",clodustry.core.archive_link.call(null,m)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.delta","td.delta",-2062419773),clodustry.core.delta_ago.call(null,m)," ago"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td.stars","td.stars",1953212759),clodustry.core.stars_fmt.call(null,m)], null)], null),clodustry$core$make_rows_$_iter__28850.call(null,cljs.core.rest.call(null,s__28851__$2)));
 }
 } else {
 return null;
@@ -94,11 +94,18 @@ break;
 });
 return iter__4582__auto__.call(null,mods);
 });
-clodustry.core.table = (function clodustry$core$table(headers,data){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"table","table",-564943036),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"thead","thead",-291875296),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),clodustry.core.map_tag.call(null,new cljs.core.Keyword(null,"th","th",-545608566),headers)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tbody","tbody",-80678300),clodustry.core.make_rows.call(null,data)], null)], null);
+clodustry.core.sorting = reagent.core.atom.call(null,clodustry.core.data);
+clodustry.core.table = (function clodustry$core$table(data){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"table","table",-564943036),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"thead","thead",-291875296),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"th","th",-545608566),"metadata"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"th","th",-545608566),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"button",new cljs.core.Keyword(null,"value","value",305978217),"last-commit",new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
+return cljs.core.reset_BANG_.call(null,clodustry.core.sorting,data);
+})], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"th","th",-545608566),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"button",new cljs.core.Keyword(null,"value","value",305978217),"stars",new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
+return cljs.core.reset_BANG_.call(null,clodustry.core.sorting,cljs.core.sort_by.call(null,(function (m){
+return m.call(null,"stars");
+}),cljs.core._GT_,data));
+})], null)], null)], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tbody","tbody",-80678300),clodustry.core.make_rows.call(null,cljs.core.deref.call(null,clodustry.core.sorting))], null)], null);
 });
 clodustry.core.listing = (function clodustry$core$listing(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),"This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods ",new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"href","href",-793805698),"https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"], null),"here"], null),"."], null),clodustry.core.table.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["metadata","last-commit","stars"], null),clodustry.core.data)], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),"This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods ",new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"href","href",-793805698),"https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"], null),"here"], null),"."], null),clodustry.core.table.call(null,clodustry.core.data)], null);
 });
 clodustry.core.mount_root = (function clodustry$core$mount_root(){
 return reagent.core.render.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [clodustry.core.listing], null),document.getElementById("app"));
@@ -107,4 +114,4 @@ clodustry.core.init_BANG_ = (function clodustry$core$init_BANG_(){
 return clodustry.core.mount_root.call(null);
 });
 
-//# sourceMappingURL=core.js.map?rel=1574749340398
+//# sourceMappingURL=core.js.map?rel=1574753039672

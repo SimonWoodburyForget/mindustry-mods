@@ -4,9 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *3 minutes ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
-
-  - *8 minutes ago* [ThatOneCritic/Battle-Cats](https://github.com/ThatOneCritic/Battle-Cats)   -- ☆ -- 
+  - *5 minutes ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
 
   - *12 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 

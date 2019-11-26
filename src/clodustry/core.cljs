@@ -48,7 +48,11 @@
   "Returns icon tag with image and src url if icon exists."
   [:icon [:img
     (if (clojure.string/blank? (m "icon")) {}
-        {:src (m "icon_url")})]])
+        {:src (clojure.string/join
+               ["https://raw.githubusercontent.com/"
+                (m "repo")
+                "/master/"
+                (m "icon_raw")])})]])
 
 (defn description [m]
   [:p.description
@@ -66,13 +70,16 @@
   [:a {:href (m "link")} "repository"])
 
 (defn archive-link [m]
-  [:a {:href (m "archive_link")} "zip"])
+  [:a {:href (clojure.string/join
+              ["https://github.com/"
+               (m "repo")
+               "/archive/master.zip"])} "zip"])
 
 (defn delta-ago [m]
   (m "delta_ago"))
 
 (defn stars-fmt [m]
-  (m "stars_fmt"))
+  (repeat (m "stars") "★ "))
 
 (defn make-rows
   [mods]

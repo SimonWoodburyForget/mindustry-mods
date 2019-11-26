@@ -344,17 +344,12 @@ class ModMeta:
                  for m in mods if 'issue' not in m ]
 
     def pack_data(self):
-        '''Packs data for front-end ClojureScript, so we also pack methods data.'''
+        '''Packs data for the ClojureScript, trying to only give what is required.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
-                 "icon_url": self.icon_url(),
                  "date": str(self.date),
                  "readme_html": self.readme_html(),
                  "header": self.header(),
-                 "stars_fmt": self.stars_fmt(),
-                 "author_fmt": self.author_fmt(),
-                 "md_icon": self.md_icon(),
                  "delta_ago": self.delta_ago(),
-                 "archive_link": self.archive_link(),
                  "endpoint": str(self.endpoint()) }
 
 def update_icon(gh, repo_name, image_path=None, force=False):

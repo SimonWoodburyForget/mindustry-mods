@@ -100,6 +100,8 @@
    (fn [a b] (or a b))
    [(included? (m "readme") q)
     (included? (m "repo") q)
+    (included? (m "author") q)
+    (included? (m "name") q)
     (included? (m "desc") q)]))
 
 (defn table

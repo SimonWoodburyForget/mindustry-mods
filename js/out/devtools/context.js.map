@@ -1,1 +1,0 @@
-{"version":3,"file":"\/home\/simon\/Projects\/Mindustry-Mods\/js\/out\/devtools\/context.js","sources":["context.cljs?rel=1574747407122"],"lineCount":11,"mappings":";AAAA;;AAGA,4BAAA,5BAAgBA;AAAhB,AACEC;;AAEF,+BAAA,\/BAAgBC;AAAhB,AACE,OAAW,AAACF","names":["devtools.context\/get-root","goog\/global","devtools.context\/get-console"]}

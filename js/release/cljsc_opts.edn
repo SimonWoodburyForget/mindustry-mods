@@ -1,1 +1,0 @@
-{:output-wrapper true, :externs ["closure-js/externs"], :libs ["closure-js/libs"], :output-to "js/app.js", :output-dir "js/release", :optimizations :advanced, :infer-externs true, :pretty-print false}

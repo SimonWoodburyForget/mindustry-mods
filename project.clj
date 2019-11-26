@@ -26,27 +26,28 @@
              :nrepl-middleware [cider.piggieback/wrap-cljs-repl]
              :css-dirs ["src"]}
 
-  :cljsbuild {:builds {:app
-                       {:source-paths ["src" "env/dev/cljs"]
-                        :compiler
-                        {:main "clodustry.dev"
-                         :output-to "js/app.js"
-                         :output-dir "js/out"
-                         :asset-path "js/out"
-                         :source-map true
-                         :optimizations :none
-                         :pretty-print  true}
-                        :figwheel
-                        {:on-jsload "clodustry.core/mount-root"
-                         :open-urls ["http://localhost:3449/index.html"]}}
-                       :release
-                       {:source-paths ["src" "env/prod/cljs"]
-                        :compiler
-                        {:output-to "js/app.js"
-                         :output-dir "js/release"
-                         :optimizations :advanced
-                         :infer-externs true
-                         :pretty-print false}}}}
+  :cljsbuild {:builds
+              {:app
+               {:source-paths ["src" "env/dev/cljs"]
+                :compiler
+                {:main "clodustry.dev"
+                 :output-to "js/app.js"
+                 :output-dir "js/out"
+                 :asset-path "js/out"
+                 :source-map true
+                 :optimizations :none
+                 :pretty-print  true}
+                :figwheel
+                {:on-jsload "clodustry.core/mount-root"
+                 :open-urls ["http://localhost:3449/index.html"]}}
+               :release
+               {:source-paths ["src" "env/prod/cljs"]
+                :compiler
+                {:output-to "js/app-prod.js"
+                 :output-dir "js/release"
+                 :optimizations :advanced
+                 :infer-externs true
+                 :pretty-print false}}}}
 
   :aliases {"package" ["do" "clean" ["cljsbuild" "once" "release"]]}
 

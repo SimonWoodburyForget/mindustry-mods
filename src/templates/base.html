@@ -5,8 +5,8 @@
     {% block head %}
     <meta charset="utf8">
     <script type="text/javascript">
-      // String of b64 encoded JSON data.
-      rawData = JSON.parse(window.atob("{{ data }}"));
+      // JSON data.
+      rawData = {{ data }};
     </script>
 
     
@@ -27,6 +27,8 @@
     <content id="app">
     {% block content %}{% endblock %}
     </content>
+    <!-- No idea if parsing Markdown on the clientside would be of any use. -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"> -->
     <script type="text/javascript" src="/mindustry-mods/js/app.js"></script>
 
     <footer>

@@ -401,11 +401,10 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     env = load_env()
 
     with open("index.html", 'w') as f:
-        # for ClojureScript testing purposes
-        jdata = json.dumps([ mm.pack_data() for mm in mods ])
-        bdata = b64encode(jdata.encode("utf8")).decode('utf8')
-
-        data = env.get_template('listing.html').render(mods=mods, data=bdata, style="src/style.css")
+        # dumping JSON data straight into JS
+        ddata = [ mm.pack_data() for mm in mods ]
+        jdata = Markup(json.dumps(ddata))
+        data = env.get_template('listing.html').render(mods=mods, data=jdata, style="src/style.css")
         print(data, file=f)
 
     with open("README.md", 'w') as f:

@@ -26,7 +26,7 @@ V1.1 - Fixing and Mixing
 
   - *a day ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★ ★  -- Hello ^^ , thanks for playing
 
-  - *a day ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *2 days ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
 
   - *2 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ☆ -- This mod replaces all texts in the game with random ones.
 

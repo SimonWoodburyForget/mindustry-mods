@@ -22,7 +22,6 @@
            :keywordize-keys false))
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helpers
 
@@ -89,6 +88,20 @@
 
 (def sorting (r/atom data))
 
+(defn included? [a b]
+  (clojure.string/includes?
+   (clojure.string/lower-case a)
+   (clojure.string/lower-case b)))
+
+(def query (r/atom ""))
+(defn search [m q]
+  "Simple one word search."
+  (reduce
+   (fn [a b] (or a b))
+   [(included? (m "readme") q)
+    (included? (m "repo") q)
+    (included? (m "desc") q)]))
+
 (defn table
   [data]
   [:table
@@ -99,12 +112,15 @@
                    :on-click #(reset! sorting data)}]]
      [:th [:input {:type "button" :value "stars"
                    :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}]]]]
-   [:tbody (make-rows @sorting)]])
+   [:tbody (make-rows (filter (fn [m] (search m @query)) @sorting))]])
 
 (defn listing []
   [:div
    [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods "
     [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"} "here"] "."]
+   [:p "Filter a word "
+    [:input {:type "text" :value @query
+             :on-change #(reset! query (-> % .-target .-value))}]]
    (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

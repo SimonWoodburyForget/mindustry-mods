@@ -29,6 +29,18 @@ th
     font-size: 1em;
 }
 
+
+content input[type=text]
+{
+    border-radius: 0;
+    background: #222;
+    border-color: #777;
+    border-style: solid;
+    color: #777;
+    font-size: 1.1em;
+    font-family: "Courier New", Courier, monospace;
+}
+
 th input
 {
     border-radius: 0;
@@ -74,6 +86,7 @@ body
 
 header
 {
+    font-style: italic;
     padding-left: 2em;
     padding-top: 1em;
     font-size: 150%;
@@ -148,3 +161,11 @@ content mod-header img
     display: inline-block;
     max-width: 20em;
 }
+
+content p
+{
+    font-size: 85%;
+    
+}
+
+

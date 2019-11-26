@@ -3,8 +3,13 @@
 
   <head>
     {% block head %}
+    <script type="text/javascript">
+      // String of b64 encoded JSON data.
+      rawData = JSON.parse(window.atob("{{ data }}"));
+    </script>
     <script type="text/javascript" src="out/main.js"></script>
 
+    
     <link rel="stylesheet" type="text/css"
           href="{{ style }}">
     <title>{% block title %}{% endblock %} - Mindustry Mods</title>

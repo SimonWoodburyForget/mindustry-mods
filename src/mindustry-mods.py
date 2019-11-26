@@ -2,7 +2,6 @@
 This modules requires Python 3.7 or higher.
 """
 
-# Data Structures
 from pathlib import Path
 from collections import namedtuple
 from collections import Counter
@@ -18,7 +17,7 @@ import mson
 import hjson
 from mson import ParseError
 from minfmt import ignore_sbrack
-from base64 import b64decode
+from base64 import b64decode, b64encode
 import dateutil.parser
 from PIL import Image
 from io import BytesIO
@@ -343,15 +342,16 @@ class ModMeta:
 
     def pack_data(self):
         '''Packs data for front-end ClojureScript, so we also pack methods data.'''
-        return { **asdict(mod),
-                 "readme_html": mod.readme_html(),
-                 "header": mod.header(),
-                 "stars_fmt": mod.stars_fmt(),
-                 "author_fmt": mod.author_fmt(),
-                 "md_icon": mod.md_icon(),
-                 "delta_ago": mod.delta_ago(),
-                 "archive_link": mod.archive_link(),
-                 "endpoint": mod.endpoint() }
+        return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
+                 "date": str(self.date),
+                 "readme_html": self.readme_html(),
+                 "header": self.header(),
+                 "stars_fmt": self.stars_fmt(),
+                 "author_fmt": self.author_fmt(),
+                 "md_icon": self.md_icon(),
+                 "delta_ago": self.delta_ago(),
+                 "archive_link": self.archive_link(),
+                 "endpoint": str(self.endpoint()) }
 
 def update_icon(gh, repo_name, image_path=None, force=False):
     '''Downloads an image from the target repository, and scales
@@ -399,17 +399,22 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     mods = ModMeta.builds(mods, repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
 
-    with open("data.json", 'w') as f:
-        json.dump([ r.into_dict() for r in mods ], f)    
-
     env = load_env()
-    mods = list(mods)
-    data = env.get_template('listing.md').render(mods=mods, style="src/style.css")
-    with open("README.md", 'w') as f:
+
+    with open("public/index.html", 'w') as f:
+        # for ClojureScript testing purposes
+        jdata = json.dumps([ mm.pack_data() for mm in mods ])
+        bdata = b64encode(jdata.encode("utf8")).decode('utf8')
+
+        data = env.get_template('listing.html').render(mods=mods, data=bdata)
         print(data, file=f)
 
-    data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
+    with open("README.md", 'w') as f:
+        data = env.get_template('listing.md').render(mods=mods, style="src/style.css")
+        print(data, file=f)
+
     with open("index.html", 'w') as f:
+        data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
         print(data, file=f)
     
     template = env.get_template('preview.html')
@@ -434,15 +439,17 @@ def main(push=True, update=True):
 
 @click.command()
 @click.option('-i', '--instant', is_flag=True, help="Run templates right away.")
-@click.option('-u', '--update', is_flag=True, help="Run updates right away.")
 @click.option('-p', '--push', is_flag=True, help="Push said changes to GitHub.")
 @click.option('-h', '--hourly', is_flag=True, help="Keep running hourly.")
 @click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
-def cli(instant, push, hourly, clean, update):
+@click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
+def cli(instant, push, hourly, clean, fast):
+    update = not fast 
+    
     if clean:
         subprocess.run(['rm', CACHE_PATH])
 
-    main_run = lambda: main(push)
+    main_run = lambda: main(push, update)
 
     if instant:
         main_run()

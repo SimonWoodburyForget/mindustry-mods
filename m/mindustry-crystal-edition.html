@@ -3,11 +3,11 @@
 
   <head>
     
+    <meta charset="utf8">
     <script type="text/javascript">
       // String of b64 encoded JSON data.
       rawData = JSON.parse(window.atob(""));
     </script>
-    <script type="text/javascript" src="out/main.js"></script>
 
     
     <link rel="stylesheet" type="text/css"
@@ -24,7 +24,7 @@
       
     </header>
 
-    <content>
+    <content id="app">
     
 
 <p>
@@ -79,6 +79,7 @@
 After building, the output .JAR file should be in <code>/desktop/build/libs/Mindustry.jar</code> for desktop builds, and in <code>/server/build/libs/server-release.jar</code> for server builds.</p>
 
     </content>
+    <script type="text/javascript" src="/js/app.js"></script>
 
     <footer>
       

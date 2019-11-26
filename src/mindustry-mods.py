@@ -1,5 +1,8 @@
 """ Python script to pull Mindustry mods relative to repo name.
 This modules requires Python 3.7 or higher.
+
+It uses Jinja2 for templating and eventually will use ClojureScript
+instead, which is probably entirely overkill.
 """
 
 from pathlib import Path
@@ -240,7 +243,7 @@ def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
 
 @dataclass
 class ModMeta:
-    '''Middle man between Repo and template, where everything can get formatted.
+    '''The ugly middle layer between Repo and Jinja2 and ClojureScript.
     '''
 
     name: str
@@ -343,6 +346,7 @@ class ModMeta:
     def pack_data(self):
         '''Packs data for front-end ClojureScript, so we also pack methods data.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
+                 "icon_url": self.icon_url(),
                  "date": str(self.date),
                  "readme_html": self.readme_html(),
                  "header": self.header(),
@@ -406,7 +410,7 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
         jdata = json.dumps([ mm.pack_data() for mm in mods ])
         bdata = b64encode(jdata.encode("utf8")).decode('utf8')
 
-        data = env.get_template('listing.html').render(mods=mods, data=bdata)
+        data = env.get_template('listing.html').render(mods=mods, data=bdata, style="css/site.css")
         print(data, file=f)
 
     with open("README.md", 'w') as f:

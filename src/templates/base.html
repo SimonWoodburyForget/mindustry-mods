@@ -3,11 +3,11 @@
 
   <head>
     {% block head %}
+    <meta charset="utf8">
     <script type="text/javascript">
       // String of b64 encoded JSON data.
       rawData = JSON.parse(window.atob("{{ data }}"));
     </script>
-    <script type="text/javascript" src="out/main.js"></script>
 
     
     <link rel="stylesheet" type="text/css"
@@ -24,9 +24,10 @@
       {% endblock %}
     </header>
 
-    <content>
+    <content id="app">
     {% block content %}{% endblock %}
     </content>
+    <script type="text/javascript" src="/js/app.js"></script>
 
     <footer>
       {% block footer %}

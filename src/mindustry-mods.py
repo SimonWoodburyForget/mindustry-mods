@@ -40,6 +40,7 @@ import markdown
 import re
 import bs4
 import urllib
+from jinja2 import Markup
 
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
@@ -264,7 +265,6 @@ class ModMeta:
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
 
     def readme_html(self):
-        from jinja2 import Markup
         from markdown import markdown
 
         html = markdown(self.readme)
@@ -275,6 +275,18 @@ class ModMeta:
         for original, new in links:
             html = html.replace(original, new)
         return Markup(html)
+
+    def header(self):
+        from markdown import markdown
+
+        html = markdown(self.readme)
+        soup = bs4.BeautifulSoup(html, 'html.parser')
+        links = soup.find_all('img')
+        links = [ fix_image_url(l['src'], self.repo) for l in links ]
+        if links:
+            return links[0]
+        else:
+            return ''
     
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
@@ -294,7 +306,7 @@ class ModMeta:
 
     def endpoint(self):
         return Path('m') / (self.name.lower().replace(' ', '-').split('/')[-1] + ".html")
-
+    
     @staticmethod
     def build(m, r, icon):
         def parse_or_nothing(x):
@@ -328,6 +340,18 @@ class ModMeta:
 
         return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
                  for m in mods if 'issue' not in m ]
+
+    def pack_data(self):
+        '''Packs data for front-end ClojureScript, so we also pack methods data.'''
+        return { **asdict(mod),
+                 "readme_html": mod.readme_html(),
+                 "header": mod.header(),
+                 "stars_fmt": mod.stars_fmt(),
+                 "author_fmt": mod.author_fmt(),
+                 "md_icon": mod.md_icon(),
+                 "delta_ago": mod.delta_ago(),
+                 "archive_link": mod.archive_link(),
+                 "endpoint": mod.endpoint() }
 
 def update_icon(gh, repo_name, image_path=None, force=False):
     '''Downloads an image from the target repository, and scales
@@ -373,7 +397,10 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     icons = update_icons(gh, mods)
 
     mods = ModMeta.builds(mods, repos, icons)
-    mods = reversed(sorted(mods, key=lambda x: x.date))
+    mods = list(reversed(sorted(mods, key=lambda x: x.date)))
+
+    with open("data.json", 'w') as f:
+        json.dump([ r.into_dict() for r in mods ], f)    
 
     env = load_env()
     mods = list(mods)
@@ -392,7 +419,7 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
             print(data, file=f)
 
 def main(push=True, update=True):
-    with open(Path.home()  /".github-token") as f:
+    with open(Path.home() / ".github-token") as f:
         build(f.read(), update=update)
     print("--- END BUILD ---")
     print()

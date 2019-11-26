@@ -121,3 +121,9 @@ content span.version
     color: #888;
     display: inline-block;
 }
+
+content mod-header img
+{
+    display: inline-block;
+    max-width: 20em;
+}

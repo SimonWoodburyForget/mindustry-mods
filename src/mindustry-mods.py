@@ -405,21 +405,21 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
 
     env = load_env()
 
-    with open("public/index.html", 'w') as f:
+    with open("index.html", 'w') as f:
         # for ClojureScript testing purposes
         jdata = json.dumps([ mm.pack_data() for mm in mods ])
         bdata = b64encode(jdata.encode("utf8")).decode('utf8')
 
-        data = env.get_template('listing.html').render(mods=mods, data=bdata, style="css/site.css")
+        data = env.get_template('listing.html').render(mods=mods, data=bdata, style="src/style.css")
         print(data, file=f)
 
     with open("README.md", 'w') as f:
         data = env.get_template('listing.md').render(mods=mods, style="src/style.css")
         print(data, file=f)
 
-    with open("index.html", 'w') as f:
-        data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
-        print(data, file=f)
+    # with open("index.html", 'w') as f:
+    #     data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
+    #     print(data, file=f)
     
     template = env.get_template('preview.html')
     for mod in mods:

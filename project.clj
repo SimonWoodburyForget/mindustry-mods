@@ -19,20 +19,20 @@
    [:cljsbuild :builds :app :compiler :output-dir]
    [:cljsbuild :builds :app :compiler :output-to]]
 
-  :resource-paths ["public"]
+  :resource-paths ["."]
 
   :figwheel {:http-server-root "."
              :nrepl-port 7002
              :nrepl-middleware [cider.piggieback/wrap-cljs-repl]
-             :css-dirs ["public/css"]}
+             :css-dirs ["src"]}
 
   :cljsbuild {:builds {:app
                        {:source-paths ["src" "env/dev/cljs"]
                         :compiler
                         {:main "clodustry.dev"
-                         :output-to "public/js/app.js"
-                         :output-dir "public/js/out"
-                         :asset-path   "js/out"
+                         :output-to "js/app.js"
+                         :output-dir "js/out"
+                         :asset-path "js/out"
                          :source-map true
                          :optimizations :none
                          :pretty-print  true}
@@ -42,8 +42,8 @@
                        :release
                        {:source-paths ["src" "env/prod/cljs"]
                         :compiler
-                        {:output-to "public/js/app.js"
-                         :output-dir "public/js/release"
+                        {:output-to "js/app.js"
+                         :output-dir "js/release"
                          :optimizations :advanced
                          :infer-externs true
                          :pretty-print false}}}}

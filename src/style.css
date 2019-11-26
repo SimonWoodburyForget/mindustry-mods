@@ -22,6 +22,7 @@ table
 
 th
 {
+    white-space: nowrap;
     padding-top: 1em;
     border-bottom: 3px solid #777;
 }
@@ -120,6 +121,7 @@ content code
 
 content span.version
 {
+    white-space: nowrap;
     font-size: 90%;
     color: #888;
     display: inline-block;

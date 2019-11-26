@@ -22,6 +22,7 @@ table
 
 th
 {
+    white-space: nowrap;
     padding-top: 1em;
     border-bottom: 3px solid #777;
 }

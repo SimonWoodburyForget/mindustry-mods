@@ -99,6 +99,8 @@ content img
 
 content icon img
 {
+    background-color: #333;
+    padding: 4px;
     max-width: 1.5em;
     max-height: 1.5em;
 }
@@ -106,8 +108,25 @@ content icon img
 content code
 {
     font-family: "Courier New", Courier, monospace;
-    padding-left: 0.2em;
-    padding-right: 0.2em;
-    border: 1px solid #886;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    display: inline-block;
+    border: 1px solid #664;
     background: #111;
+    font-size: 80%;
+    user-select: all;
+}
+
+
+content span.version
+{
+    font-size: 90%;
+    color: #888;
+    display: inline-block;
+}
+
+content mod-header img
+{
+    display: inline-block;
+    max-width: 20em;
 }

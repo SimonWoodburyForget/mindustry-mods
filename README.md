@@ -4,9 +4,11 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *2 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *3 minutes ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★  -- Adds stuff to enhance the vanilla experience.
 
-  - *11 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
+  - *8 minutes ago* [ThatOneCritic/Battle-Cats](https://github.com/ThatOneCritic/Battle-Cats)   -- ☆ -- 
+
+  - *12 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
   - *12 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
 
@@ -67,7 +69,7 @@ V1.1 - Fixing and Mixing
   - *16 days ago* [KeviTV/MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV -- ★  -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
 EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
-  - *16 days ago* [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon -- ★ ★  -- A martian-like environment.
+  - *17 days ago* [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon -- ★ ★  -- A martian-like environment.
 
   - *17 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 

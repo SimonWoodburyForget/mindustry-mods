@@ -99,6 +99,8 @@ content img
 
 content icon img
 {
+    background-color: #333;
+    padding: 4px;
     max-width: 1.5em;
     max-height: 1.5em;
 }
@@ -114,6 +116,7 @@ content code
     font-size: 80%;
     user-select: all;
 }
+
 
 content span.version
 {

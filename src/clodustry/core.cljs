@@ -89,13 +89,14 @@
 (def sorting (r/atom data))
 
 (defn included? [a b]
+  "Looks if ane string contains the other, case-insensitive."
   (clojure.string/includes?
    (clojure.string/lower-case a)
    (clojure.string/lower-case b)))
 
 (def query (r/atom ""))
 (defn search [m q]
-  "Simple one word search."
+  "Simple (and very inefficient) word search."
   (reduce
    (fn [a b] (or a b))
    [(included? (m "readme") q)

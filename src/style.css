@@ -33,10 +33,13 @@ th
 content input[type=text]
 {
     border-radius: 0;
-    background: #222;
-    border-color: #777;
+    background: #333;
+    border-color: #ffa;
     border-style: solid;
-    color: #777;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    color: #ffa;
     font-size: 1.1em;
     font-family: "Courier New", Courier, monospace;
 }

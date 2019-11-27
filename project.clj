@@ -43,8 +43,8 @@
                :release
                {:source-paths ["src" "env/prod/cljs"]
                 :compiler
-                {:output-to "js/app-prod.js"
-                 :output-dir "js/release"
+                {:output-to "js/app.js"
+                 ;; :output-dir "js/release"
                  :optimizations :advanced
                  :infer-externs true
                  :pretty-print false}}}}

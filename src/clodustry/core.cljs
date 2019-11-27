@@ -79,7 +79,8 @@
   (m "delta_ago"))
 
 (defn stars-fmt [m]
-  (repeat (m "stars") "★ "))
+  (if (= 0 (m "stars")) "☆"
+  (repeat (m "stars") "★ ")))
 
 (defn make-rows
   [mods]

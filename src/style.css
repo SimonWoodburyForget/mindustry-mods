@@ -32,6 +32,7 @@ th
 
 content input[type=text]
 {
+    width: 28em;
     border-radius: 0;
     background: #333;
     border-color: #ffa;
@@ -159,7 +160,6 @@ content tags
     display: inline-flex;
     border: 1px solid #fff;
     font-size: 80%;
-    user-select: all;
 }
 
 content tags.assets

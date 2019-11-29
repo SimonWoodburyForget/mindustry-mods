@@ -20,19 +20,21 @@
   
   (def path
     (clojure.string/replace
-      repo-name "/" "--"))
+     repo-name "/" "--"))
   
   (clojure.string/join [home "/m/" path ".html"]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Loading
+;; Data and Stuff
 
 ;; JSON string data dumped by Python, inside a JS string.
 (def data
   (js->clj js/rawData
            :keywordize-keys false))
 
+(def query (r/atom ""))
+(def sorting (r/atom data))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helpers
@@ -81,19 +83,30 @@
   (if (= 0 (m "stars")) "☆"
       (repeat (m "stars") "★ ")))
 
+;; (defn tag-button
+;;   [tag]
+
+;;   (defn adder [t]
+;;     (defn add-tag [q]
+;;       (.log js/console t)
+;;       (clojure.string/join "" (concat [q " " t]))))
+
+;;   [:tag
+;;    [:input
+;;     {:type "button" :value tag
+;;      :on-click #(swap! query (adder tag))}]])
+
 (defn info
   "Rander a nice inline list of game assets and content."
   [m]
 
   (def assets
     (set (m "assets")))
-
   (def contents
     (set (m "contents")))
-
   (def fmt
     (clojure.set/difference assets #{"content"}))
-  
+
   [:div
    (when (not-empty fmt)
      [:tags.assets (map-tag :tag fmt) ])
@@ -115,39 +128,36 @@
      [:td.delta (delta-ago m) " ago"]
      [:td.stars (stars-fmt m)]]))
 
-(def sorting (r/atom data))
-
-(def query (r/atom ""))
 
 (defn search
-  "Simple (and very inefficient) word search."
-  [m q]
+"Simple (and very inefficient) word search."
+[m q]
 
-  (defn included?
-    [a b]
-    (clojure.string/includes?
-     (clojure.string/lower-case a)
-     (clojure.string/lower-case b)))
+(defn included?
+  [a b]
+  (clojure.string/includes?
+   (clojure.string/lower-case a)
+   (clojure.string/lower-case b)))
 
-  (defn sword
-    "Search a word."
-    [m w]
-
-    (reduce
-     (fn [a b] (or a b))
-     [(included? (m "readme") w)
-      (included? (m "repo") w)
-      (included? (m "author") w)
-      (included? (m "name") w)
-      (included? (m "desc") w)
-      (some #{w} (m "contents"))
-      (some #{w} (m "assets"))]))
-
-  (def qs (clojure.string/split q " "))
+(defn sword
+  "Search a word."
+  [m w]
 
   (reduce
-   (fn [a b] (and a b))   
-   (map (fn [qq] (sword m qq)) qs)))
+   (fn [a b] (or a b))
+   [(included? (m "readme") w)
+    (included? (m "repo") w)
+    (included? (m "author") w)
+    (included? (m "name") w)
+    (included? (m "desc") w)
+    (some #{w} (m "contents"))
+    (some #{w} (m "assets"))]))
+
+(def qs (clojure.string/split q " "))
+
+(reduce
+ (fn [a b] (and a b))   
+ (map (fn [qq] (sword m qq)) qs)))
 
 (defn table
 [data]
@@ -170,15 +180,15 @@
  [:tbody rows]])
 
 (defn listing
-  []
-  [:content
-   [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
-   [:div
-    [:input {:type "text" :value @query
-             :on-change #(reset! query (-> % .-target .-value))
-             :placeholder "filter by words"}]]
-   
-   (table data)])
+[]
+[:content
+ [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
+ [:div
+  [:input {:type "text" :value @query
+           :on-change #(reset! query (-> % .-target .-value))
+           :placeholder "filter by words"}]]
+ 
+ (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Views/App
@@ -189,18 +199,18 @@
   [:h1 "Mindustry Mods"]]])
 
 (def footer
-[:footer
- [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"}
-  "Adding mods to this list."]])
+  [:footer
+   [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"}
+    "Adding mods to this list."]])
 
 (defn app []
-[:app
- header
- (listing)
- footer])
+  [:app
+   header
+   (listing)
+   footer])
 
 (defn mount-root []
-(r/render [app] (.getElementById js/document "app")))
+  (r/render [app] (.getElementById js/document "app")))
 
 (defn init! []
   (mount-root))

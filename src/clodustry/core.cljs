@@ -17,18 +17,13 @@
 
 (defn mod-html
   [repo-name]
-
-  (def mod-name
-    (clojure.string/split "/" repo-name))
-
+  
   (def path
-    (clojure.string/lower-case
-     (clojure.string/replace
-      mod-name " " "-")))
+    (clojure.string/replace
+      repo-name "/" "--"))
   
   (clojure.string/join [home "/m/" path ".html"]))
 
-(.log js/console mod-html (mod-html "My Mod"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading

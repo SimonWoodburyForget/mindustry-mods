@@ -307,7 +307,7 @@ class ModMeta:
         return f"https://github.com/{self.repo}/archive/master.zip"
 
     def endpoint(self):
-        return Path('m') / (self.name.lower().replace(' ', '-').split('/')[-1] + ".html")
+        return Path('m') / (self.repo.replace('/', '--') + ".html")
     
     @staticmethod
     def build(m, r, icon):

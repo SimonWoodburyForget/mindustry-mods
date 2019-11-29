@@ -17,3 +17,4 @@ pom.xml.asc
 /.env
 mindustry-mods
 /js/out
+.rebel_readline_history

@@ -140,8 +140,8 @@
       (included? (m "author") w)
       (included? (m "name") w)
       (included? (m "desc") w)
-      (contains? (m "contents") w)
-      (contains? (m "assets") w)]))
+      (some #{w} (m "contents"))
+      (some #{w} (m "assets"))]))
 
   (def qs (clojure.string/split q " "))
 

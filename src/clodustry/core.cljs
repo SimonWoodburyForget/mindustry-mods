@@ -15,9 +15,20 @@
 
 (def contribute-md "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing")
 
-(defn m-html
-  [name]
-  (clojure.string/join [home "/m/" name ".html"]))
+(defn mod-html
+  [repo-name]
+
+  (def mod-name
+    (clojure.string/split "/" repo-name))
+
+  (def path
+    (clojure.string/lower-case
+     (clojure.string/replace
+      mod-name " " "-")))
+  
+  (clojure.string/join [home "/m/" path ".html"]))
+
+(.log js/console mod-html (mod-html "My Mod"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading
@@ -52,7 +63,7 @@
    (m "desc")])
 
 (defn endpoint [m]
-  [:a {:href (clojure.string/join [home "/" (m "endpoint")])}
+  [:a {:href (mod-html (m "repo"))}
    (m "name")])
 
 (defn version [m]

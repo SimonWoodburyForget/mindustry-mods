@@ -349,8 +349,7 @@ class ModMeta:
                  "date": str(self.date),
                  "readme_html": self.readme_html(),
                  "header": self.header(),
-                 "delta_ago": self.delta_ago(),
-                 "endpoint": str(self.endpoint()) }
+                 "delta_ago": self.delta_ago() }
 
 def update_icon(gh, repo_name, image_path=None, force=False):
     '''Downloads an image from the target repository, and scales

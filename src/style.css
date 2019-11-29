@@ -150,6 +150,34 @@ content code
     user-select: all;
 }
 
+content tags
+{
+    font-family: "Courier New", Courier, monospace;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    vertical-align: text-top;
+    display: inline-flex;
+    border: 1px solid #fff;
+    font-size: 80%;
+    user-select: all;
+}
+
+content tags.assets
+{
+    border-color: #422;
+    background: #211;
+}
+
+content tags.contents
+{
+    border-color: #244;
+    background: #122;
+}
+
+content tag
+{
+    margin: 0.2em;
+}
 
 content span.version
 {

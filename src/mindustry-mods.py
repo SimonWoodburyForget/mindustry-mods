@@ -11,7 +11,7 @@ from collections import Counter
 from datetime import datetime
 from dataclasses import dataclass, asdict
 from functools import partial
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Set
 
 # Decoding/Encoding
 import yaml
@@ -34,6 +34,7 @@ import time
 import schedule
 import click
 #import appdirs
+import gitops as gop
 
 # Generation
 import humanize
@@ -181,13 +182,17 @@ class Repo:
     '''Last commit date.'''
     date: datetime
     '''Last commit hash.'''
-    sha: str = None
+    sha: str
     '''Mod.json of repository.'''
-    mod: Optional[ModInfo] = None
+    mod: Optional[ModInfo]
     '''README.md of the repository.'''
-    readme: str = None
+    readme: str
+    '''A set of assets found in the repo.'''
+    assets: Set[str]
+    '''A set of contents found in the repo.'''
+    contents: Set[str]
 
-    @staticmethod
+    @staticmethod 
     def from_github(gh, name, old=None, force=False):
         '''Gets a Github repository from Github, with other
         data which may require a few requests, and packs this
@@ -199,26 +204,36 @@ class Repo:
         if old and old.sha == sha and not force:
             print('[skipped]', name, "-- nothing new")
             return old
-        
+
+        assets = gop.assets(repo)
+        contents = gop.contents(repo) if 'content' in assets else set()
+
         return Repo(name,
                     stars=repo.stargazers_count,
                     date=repo.get_commit(sha).commit.author.date,
                     sha=sha,
                     mod=ModInfo.from_repo(repo),
-                    readme=get_file(repo, "README.md"))
+                    readme=get_file(repo, "README.md"),
+                    assets=assets,
+                    contents=contents)
+    
+    def archive_link(self):
+        return f"https://github.com/{self.repo}/archive/master.zip"
 
     def into_dict(self):
-        '''Called when the object is about to be serialized.
-        ''' # mostly just handles date I guess.
-        return { k: str(v) if k == 'date' else v
-                 for k, v in asdict(self).items() }
+        '''Called when the object is about to be serialized.'''
+        return { **asdict(self),
+                 'date': str(self.date),
+                 'assets': tuple(self.assets),
+                 'contents': tuple(self.contents) }
 
     def from_dict(d):
-        '''Called when the object is being deserialized.
-        '''
+        '''Called when the object is being deserialized.'''
         return Repo(**{ **d,
                         "date": dateutil.parser.parse(d["date"]),
-                        "mod": ModInfo(**d["mod"]) })
+                        "mod": ModInfo(**d["mod"]),
+                        "assets": set(d["assets"]),
+                        "contents": set(d["contents"]) })
 
 def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
     '''Gets repos if update is `True` and caches them,
@@ -259,9 +274,12 @@ class ModMeta:
     author: str
     date: datetime
     repo: str
+    contents: List[str]
+    assets: List[str]
     issue: str = None
     readme: str = ''
     version: str = ''
+
 
     def icon_url(self):
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
@@ -331,7 +349,9 @@ class ModMeta:
                        date=r.date,
                        issue=m["issue"] if 'issue' in m else None,
                        readme=r.readme or '',
-                       version=r.mod.version)
+                       version=r.mod.version,
+                       assets=list(r.assets),
+                       contents=list(r.contents))
 
     @staticmethod
     def builds(mods, repos, icons):

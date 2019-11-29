@@ -6,7 +6,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *an hour ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - *3 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *4 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
   - *23 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
@@ -83,7 +83,7 @@ EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
   - *28 days ago* [TechFish3000/More-Mindustry](https://github.com/TechFish3000/More-Mindustry)  by Techfish3000 -- ★  -- mindustry mod
 
-  - *28 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
+  - *29 days ago* [ado1928/Fusion-Reactor-mod](https://github.com/ado1928/Fusion-Reactor-mod)  by Ado1928 -- ★ ★ ★ ★ ★  -- An endgame Mindustry mod that adds new interesting materials and blocks to the game, most notably, the Fusion Reactor.
 
   - *29 days ago* [Retrothopter/More-Grass](https://github.com/Retrothopter/More-Grass) ![](images/more-grass-icon.png) by Retrothopter -- ★  -- Adds Dry Grass and Flowered Grass for more varied green spaces.
 

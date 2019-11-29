@@ -139,9 +139,9 @@
   []
   [:content
    [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
-   [:p "Filter a word "
-    [:input {:type "text" :value @query
-             :on-change #(reset! query (-> % .-target .-value))}]]
+   [:input {:type "text" :value @query
+             :on-change #(reset! query (-> % .-target .-value))
+             :placeholder "filter a word"}]
    (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -44,6 +44,8 @@ import bs4
 import urllib
 from jinja2 import Markup
 
+CACHE_PATH = Path.home() / ".github-cache"
+
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
     and turning them into namedtuple, ready for a template to use.
@@ -166,7 +168,7 @@ class ModInfo:
         else:
             print(f"[error] unable to parse mod.json")
             return ModInfo()
-    
+
 @dataclass
 class Repo:
     '''Raw untouched data from the repository.
@@ -217,8 +219,6 @@ class Repo:
         return Repo(**{ **d,
                         "date": dateutil.parser.parse(d["date"]),
                         "mod": ModInfo(**d["mod"]) })
-
-CACHE_PATH = Path.home() / ".github-cache"
 
 def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
     '''Gets repos if update is `True` and caches them,

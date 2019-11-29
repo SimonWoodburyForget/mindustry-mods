@@ -18,27 +18,28 @@
   </head>
   
   <body>
-    <header>
-      {% block header %}
-      <a href="/mindustry-mods/index.html"><h1>Mindustry Mods</h1></a>
-      {% endblock %}
-    </header>
+    <div id="app">
+      
+      <header>
+        {% block header %}
+        <a href="/mindustry-mods/index.html"><h1>Mindustry Mods</h1></a>
+        {% endblock %}
+      </header>
 
-    <content id="app">
-    {% block content %}{% endblock %}
-    </content>
-    <!-- No idea if parsing Markdown on the clientside would be of any use. -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"> -->
+      <content>
+        {% block content %}{% endblock %}
+      </content>
+
+      <footer>
+        {% block footer %}
+        <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing">
+          Adding mods to this list.
+        </a>
+        {% endblock %}
+      </footer>
+
+    </div>
     <script type="text/javascript" src="/mindustry-mods/js/app.js"></script>
-
-    <footer>
-      {% block footer %}
-      <a href="https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing">
-        Adding mods to this list.
-      </a>
-      {% endblock %}
-    </footer>
-    
   </body>
 
 </html>

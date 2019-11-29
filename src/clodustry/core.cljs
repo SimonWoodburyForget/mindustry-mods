@@ -4,14 +4,20 @@
    [ajax.core :as ajax :refer [GET]]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Constants
-
+;; Path Stuff
 
 (def home "/mindustry-mods")
-(def m (clojure.string/join [home "/m"]))
 
-;; Place to move things before replacing root index.html
-(def test-home "/mindustry-mods/test.html")
+
+(def index-html (clojure.string/join [home "/index.html"]))
+
+;; (def test-home "/mindustry-mods/test.html")
+
+(def contribute-md "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing")
+
+(defn m-html
+  [name]
+  (clojure.string/join [home "/m/" name ".html"]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading
@@ -29,20 +35,7 @@
   (map (fn [x] [tag x]) xs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Views
-
-(defn home-page []
-  [:div [:h2 "Welcome to Reagent"]])
-
-(defn header []
-  [:header
-   [:a {:href home}
-    [:h1 "Mindustry Mods"]]])
-
-(defn footer []
-  [:footer
-   [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"}
-    "Adding mods to this list."]])
+;; Table Stuff
 
 (defn icon [m]
   "Returns icon tag with image and src url if icon exists."
@@ -84,6 +77,7 @@
 
 (defn make-rows
   [mods]
+  
   (for [m mods]
     [:tr
      [:td.metadata
@@ -95,15 +89,18 @@
 
 (def sorting (r/atom data))
 
-(defn included? [a b]
-  "Looks if ane string contains the other, case-insensitive."
-  (clojure.string/includes?
-   (clojure.string/lower-case a)
-   (clojure.string/lower-case b)))
-
 (def query (r/atom ""))
-(defn search [m q]
+
+(defn search
   "Simple (and very inefficient) word search."
+  [m q]
+
+  (defn included?
+    [a b]
+    (clojure.string/includes?
+     (clojure.string/lower-case a)
+     (clojure.string/lower-case b)))
+  
   (reduce
    (fn [a b] (or a b))
    [(included? (m "readme") q)
@@ -119,39 +116,49 @@
     [:input
      {:type "button" :value "last-commit"
       :on-click #(reset! sorting data)}])
-
   (def stars
     [:input
      {:type "button" :value "stars"
       :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}])
 
-  (def cols
-    (map-tag :th ["metadata" last-commit stars]))
-
+  (def headers
+    [:tr (map-tag :th ["metadata" last-commit stars])])
   (def rows
     (make-rows (filter (fn [m] (search m @query)) @sorting)))
-
   [:table
-   [:thead
-    [:tr cols]]
+   [:thead headers]
    [:tbody rows]])
 
-(defn listing []
-  [:div
-   [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods "
-    [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"} "here"] "."]
+(defn listing
+  []
+  [:content
+   [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
    [:p "Filter a word "
     [:input {:type "text" :value @query
              :on-change #(reset! query (-> % .-target .-value))}]]
    (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Initialize app
+;; Views/App
 
+(def header
+  [:header
+   [:a {:href index-html }
+    [:h1 "Mindustry Mods"]]])
 
+(def footer
+  [:footer
+   [:a {:href "https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md#adding-mods-to-the-listing"}
+    "Adding mods to this list."]])
+
+(defn app []
+  [:app
+   header
+   (listing)
+   footer])
 
 (defn mount-root []
-  (r/render [listing] (.getElementById js/document "app")))
+  (r/render [app] (.getElementById js/document "app")))
 
 (defn init! []
    (mount-root))

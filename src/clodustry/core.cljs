@@ -1,6 +1,6 @@
 (ns clodustry.core
   (:require
-   [reagent.core :as r] 
+   [reagent.core :as r]
    [ajax.core :as ajax :refer [GET]]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,7 +93,6 @@
      [:td.delta (delta-ago m) " ago"]
      [:td.stars (stars-fmt m)]]))
 
-
 (def sorting (r/atom data))
 
 (defn included? [a b]
@@ -115,15 +114,27 @@
 
 (defn table
   [data]
+
+  (def last-commit
+    [:input
+     {:type "button" :value "last-commit"
+      :on-click #(reset! sorting data)}])
+
+  (def stars
+    [:input
+     {:type "button" :value "stars"
+      :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}])
+
+  (def cols
+    (map-tag :th ["metadata" last-commit stars]))
+
+  (def rows
+    (make-rows (filter (fn [m] (search m @query)) @sorting)))
+
   [:table
    [:thead
-    [:tr
-     [:th "metadata"]
-     [:th [:input {:type "button" :value "last-commit"
-                   :on-click #(reset! sorting data)}]]
-     [:th [:input {:type "button" :value "stars"
-                   :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}]]]]
-   [:tbody (make-rows (filter (fn [m] (search m @query)) @sorting))]])
+    [:tr cols]]
+   [:tbody rows]])
 
 (defn listing []
   [:div

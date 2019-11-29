@@ -15,7 +15,7 @@ Does not modify Vanilla content, for the sake of compatibility with other mods.
 
   - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
-  - *a day ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
+  - *2 days ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod worked and processed.
 
   - *4 days ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ★  -- Orbital shenanigans. Mindustry Mod
 

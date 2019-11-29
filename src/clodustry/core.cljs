@@ -140,8 +140,8 @@
   [:content
    [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
    [:input {:type "text" :value @query
-             :on-change #(reset! query (-> % .-target .-value))
-             :placeholder "filter a word"}]
+            :on-change #(reset! query (-> % .-target .-value))
+            :placeholder "filter a word"}]
    (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -167,4 +167,4 @@
   (r/render [app] (.getElementById js/document "app")))
 
 (defn init! []
-   (mount-root))
+  (mount-root))

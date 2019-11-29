@@ -7,11 +7,11 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *17 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 Does not modify Vanilla content, for the sake of compatibility with other mods.
 
-  - *19 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *20 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
 
   - *20 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
-  - *23 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, oil processing, and alternative ways of generating materials like titanium.
 
@@ -67,7 +67,7 @@ V1.1 - Fixing and Mixing
   - *19 days ago* [KeviTV/MekanisM](https://github.com/KeviTV/MekanisM) ![](images/mekanism-icon.png) by KeviTV -- ★  -- RU: Этот мод добавляет множество механизмов, руд, врагов, новые источники энергии.
 EN: This mod adds a lot of mechanisms, ores, enemies, new energy sources
 
-  - *19 days ago* [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon -- ★ ★  -- A martian-like environment.
+  - *20 days ago* [Maxwelllondon92/RedSands](https://github.com/Maxwelllondon92/RedSands) ![](images/redsands-icon.png) by Maxwelllondon -- ★ ★  -- A martian-like environment.
 
   - *20 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 

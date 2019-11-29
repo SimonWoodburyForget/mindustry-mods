@@ -129,15 +129,25 @@
      (clojure.string/lower-case a)
      (clojure.string/lower-case b)))
 
+  (defn sword
+    "Search a word."
+    [m w]
+
+    (reduce
+     (fn [a b] (or a b))
+     [(included? (m "readme") w)
+      (included? (m "repo") w)
+      (included? (m "author") w)
+      (included? (m "name") w)
+      (included? (m "desc") w)
+      (contains? (m "contents") w)
+      (contains? (m "assets") w)]))
+
+  (def qs (clojure.string/split q " "))
+
   (reduce
-   (fn [a b] (or a b))
-   [(included? (m "readme") q)
-    (included? (m "repo") q)
-    (included? (m "author") q)
-    (included? (m "name") q)
-    (included? (m "desc") q)
-    (contains? (m "contents") q)
-    (contains? (m "assets") q)]))
+   (fn [a b] (and a b))   
+   (map (fn [qq] (sword m qq)) qs)))
 
 (defn table
 [data]
@@ -166,7 +176,7 @@
    [:div
     [:input {:type "text" :value @query
              :on-change #(reset! query (-> % .-target .-value))
-             :placeholder "filter a word"}]]
+             :placeholder "filter by words"}]]
    
    (table data)])
 

@@ -130,73 +130,73 @@
 
 
 (defn search
-"Simple (and very inefficient) word search."
-[m q]
+  "Simple (and very inefficient) word search."
+  [m q]
 
-(defn included?
-  [a b]
-  (clojure.string/includes?
-   (clojure.string/lower-case a)
-   (clojure.string/lower-case b)))
+  (defn included?
+    [a b]
+    (clojure.string/includes?
+     (clojure.string/lower-case a)
+     (clojure.string/lower-case b)))
 
-(defn sword
-  "Search a word."
-  [m w]
+  (defn sword
+    "Search a word."
+    [m w]
+
+    (reduce
+     (fn [a b] (or a b))
+     [(included? (m "readme") w)
+      (included? (m "repo") w)
+      (included? (m "author") w)
+      (included? (m "name") w)
+      (included? (m "desc") w)
+      (some #{w} (m "contents"))
+      (some #{w} (m "assets"))]))
+
+  (def qs (clojure.string/split q " "))
 
   (reduce
-   (fn [a b] (or a b))
-   [(included? (m "readme") w)
-    (included? (m "repo") w)
-    (included? (m "author") w)
-    (included? (m "name") w)
-    (included? (m "desc") w)
-    (some #{w} (m "contents"))
-    (some #{w} (m "assets"))]))
-
-(def qs (clojure.string/split q " "))
-
-(reduce
- (fn [a b] (and a b))   
- (map (fn [qq] (sword m qq)) qs)))
+   (fn [a b] (and a b))   
+   (map (fn [qq] (sword m qq)) qs)))
 
 (defn table
-[data]
+  [data]
 
-(def last-commit
-  [:input
-   {:type "button" :value "last-commit"
-    :on-click #(reset! sorting data)}])
-(def stars
-  [:input
-   {:type "button" :value "stars"
-    :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}])
-
-(def headers
-  [:tr (map-tag :th ["metadata" last-commit stars])])
-(def rows
-  (make-rows (filter (fn [m] (search m @query)) @sorting)))
-[:table
- [:thead headers]
- [:tbody rows]])
+  (def last-commit
+    [:input
+     {:type "button" :value "last-commit"
+      :on-click #(reset! sorting data)}])
+  (def stars
+    [:input
+     {:type "button" :value "stars"
+      :on-click #(reset! sorting (sort-by (fn [m] (m "stars")) > data))}])
+  
+  (def headers
+    [:tr (map-tag :th ["metadata" last-commit stars])])
+  (def rows
+    (make-rows (filter (fn [m] (search m @query)) @sorting)))
+  [:table
+   [:thead headers]
+   [:tbody rows]])
 
 (defn listing
-[]
-[:content
- [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
- [:div
-  [:input {:type "text" :value @query
-           :on-change #(reset! query (-> % .-target .-value))
-           :placeholder "filter by words"}]]
- 
- (table data)])
+  []
+  [:content
+   [:p "This is a currated list of Mindustry mods found on GitHub with authors, descriptions, commit date and stars automatically pulled from the repositories. You can report broken mods, suggest better icons, or add missing mods " [:a {:href contribute-md} "here"] "."]
+   [:div
+    [:input {:type "text" :value @query
+             :on-change #(reset! query (-> % .-target .-value))
+             :placeholder "filter by words"}]]
+   
+   (table data)])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Views/App
 
 (def header
-[:header
- [:a {:href index-html }
-  [:h1 "Mindustry Mods"]]])
+  [:header
+   [:a {:href index-html }
+    [:h1 "Mindustry Mods"]]])
 
 (def footer
   [:footer

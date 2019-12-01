@@ -367,7 +367,6 @@ class ModMeta:
         '''Packs data for the ClojureScript, trying to only give what is required.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
                  "date": str(self.date),
-                 "readme_html": self.readme_html(),
                  "header": self.header(),
                  "delta_ago": self.delta_ago() }
 

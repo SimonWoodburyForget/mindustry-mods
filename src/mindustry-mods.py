@@ -420,9 +420,12 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     env = load_env()
 
     with open("index.html", 'w') as f:
-        # dumping JSON data straight into JS
-        ddata = [ mm.pack_data() for mm in mods ]
-        jdata = Markup(json.dumps(ddata))
+        # dumping JSON data straight into JS as b64 string to prevent XSS
+        jdata = [ mm.pack_data() for mm in mods ]
+        jdata = json.dumps(jdata)
+        jdata = b64encode(jdata.encode("utf8")).decode('utf8')
+        jdata = Markup(json.dumps(jdata))
+
         data = env.get_template('listing.html').render(mods=mods, data=jdata, style="src/style.css")
         print(data, file=f)
 

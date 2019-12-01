@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     {% block head %}
     <meta charset="utf8">
     <script type="text/javascript">
-      // JSON data.
-      rawData = {{ data }};
+      // String of b64 encoded JSON data.
+      rawData = JSON.parse(window.atob({{ data }}));
     </script>
-
-    
     <link rel="stylesheet" type="text/css"
           href="{{ style }}">
     <title>{% block title %}{% endblock %} - Mindustry Mods</title>
-
     {% endblock %}
   </head>
   
   <body>
     <div id="app">
-      
       <header>
         {% block header %}
         <a href="/mindustry-mods/index.html"><h1>Mindustry Mods</h1></a>
         {% endblock %}
       </header>
-
       <content>
         {% block content %}{% endblock %}
       </content>
@@ -37,9 +31,7 @@
         </a>
         {% endblock %}
       </footer>
-
     </div>
     <script type="text/javascript" src="/mindustry-mods/js/app.js"></script>
   </body>
-
 </html>

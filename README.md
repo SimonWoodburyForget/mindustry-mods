@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *40 minutes ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *an hour ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *3 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *4 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *4 hours ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
+  - *5 hours ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
 
-  - *7 hours ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★  -- PToE: Periodic Table of elements
+  - *8 hours ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★  -- PToE: Periodic Table of elements
 
-  - *16 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *17 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
   - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
@@ -54,13 +54,13 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *15 days ago* [xhz313123/Modular-Turret](https://github.com/xhz313123/Modular-Turret) ![](images/modular-turret-icon.png) by Plas_Gensokyo -- ★  -- An Mindustry mod
 
-  - *15 days ago* [Miner28/Bronze-Mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 -- ★ ★ ★ ★ ★ ★  -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
+  - *16 days ago* [Miner28/Bronze-Mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 -- ★ ★ ★ ★ ★ ★  -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
 
   - *18 days ago* [ZacBytes/BombMod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes -- ☆ -- A mod that adds bombs.
 
   - *19 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors, with 18 new colors, and an experimental Tip, Slab, and Case block (only White-Black type).
 
-  - *20 days ago* [niszogen/mindustrymod1](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen -- ★  -- Mod dodający nowe przedmioty :D!
+  - *21 days ago* [niszogen/mindustrymod1](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen -- ★  -- Mod dodający nowe przedmioty :D!
 
   - *21 days ago* [ZkyLB/Swarm-Mod](https://github.com/ZkyLB/Swarm-Mod) ![](images/swarm-mod-icon.png) by ZkyLB -- ☆ -- Adds a new, and annoying flying unit.
 

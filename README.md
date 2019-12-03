@@ -4,15 +4,17 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *59 minutes ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *an hour ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
-  - *8 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
+  - *2 hours ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX] -- ★ ★  -- Russian modding
+
+  - *9 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 
   - *14 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *22 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *23 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *23 hours ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
+  - *a day ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
 
   - *a day ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★  -- PToE: Periodic Table of elements
 
@@ -74,7 +76,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *26 days ago* [PetruCHIOrus/lead_ind](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png) by PetruCHIOrus & DefenseX -- ★ ★ ★ ★ ★ ★ ★ ★  -- New guns, drills, crafting, materials and resourses
 
-  - *26 days ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
+  - *27 days ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
 
   - *30 days ago* [ProximityCatz/CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat -- ☆ -- A mindustry modification.
 

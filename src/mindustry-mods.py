@@ -129,7 +129,7 @@ def fix_image_url(url, repo_name):
     if o.netloc == "":
         return f"https://raw.githubusercontent.com/{repo_name}/master/{o.path}"
 
-    print('[warning] non github url:', url)
+    # print('[warning] non github url:', url)
     return url
         
 @dataclass
@@ -202,8 +202,9 @@ class Repo:
         repo = gh.get_repo(name)
         sha = repo.get_branch("master").commit.sha
         if old and old.sha == sha and not force:
-            print('[skipped]', name, "-- nothing new")
+            print('[skipped] old hash --', name)
             return old
+        print('[processing] new hash --', name)
 
         assets = gop.assets(repo)
         contents = gop.contents(repo) if 'content' in assets else set()
@@ -326,6 +327,10 @@ class ModMeta:
 
     def endpoint(self):
         return Path('m') / (self.repo.replace('/', '--') + ".html")
+
+    # def keywords(self):
+    #     '''Keywords used to filter mods.'''
+    #     return set(str(x for x in self.readme).split())
     
     @staticmethod
     def build(m, r, icon):
@@ -368,6 +373,7 @@ class ModMeta:
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
                  "date": str(self.date),
                  "header": self.header(),
+                 # "keywords": self.keywords(),
                  "delta_ago": self.delta_ago() }
 
 def update_icon(gh, repo_name, image_path=None, force=False):

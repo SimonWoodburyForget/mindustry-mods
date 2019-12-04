@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *11 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *37 minutes ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *12 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *12 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *12 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *13 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
-  - *15 hours ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX] -- ★ ★  -- Russian modding
+  - *13 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *16 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *17 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
   - *a day ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 
@@ -34,13 +34,13 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *9 days ago* [ballgamer56/VanillaExtended](https://github.com/ballgamer56/VanillaExtended)  by Tom Petrou -- ☆ -- Mod that added things that should be in the original game and some are just added for convenience sake
 
-  - *9 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
+  - *10 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *10 days ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★ ★ ★  -- Hello ^^ , thanks for playing
 
   - *11 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
-  - *12 days ago* [ZkyLB/Mac-Mod](https://github.com/ZkyLB/Mac-Mod) ![](images/mac-mod-icon.png) by macdowntwo -- ☆ -- A mod that is used for testing out certain features, but can also be used for fun.
+  - *13 days ago* [ZkyLB/Mac-Mod](https://github.com/ZkyLB/Mac-Mod) ![](images/mac-mod-icon.png) by macdowntwo -- ☆ -- A mod that is used for testing out certain features, but can also be used for fun.
 
   - *13 days ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
 

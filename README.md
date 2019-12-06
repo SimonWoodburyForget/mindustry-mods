@@ -6,9 +6,11 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *20 minutes ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *5 hours ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
+  - *36 minutes ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *14 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *6 hours ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
+
+  - *15 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
   - *a day ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ☆ -- This mod is Material Plus Mod for Mindustry.
 
@@ -17,8 +19,6 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *2 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
   - *2 days ago* [hfok/stopBuild](https://github.com/hfok/stopBuild)  by hfok -- ☆ -- Adds a block (of fog) that stop players to build on it.
-
-  - *2 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
   - *3 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 

@@ -283,7 +283,7 @@ class ModMeta:
 
 
     def icon_url(self):
-        return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
+        return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}" if self.icon_raw else "https://raw.githubusercontent.com/Anuken/Mindustry/master/core/assets/sprites/error.png"
 
     def readme_html(self):
         from markdown import markdown

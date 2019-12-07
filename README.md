@@ -4,13 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *7 minutes ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
+  - *an hour ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *3 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *4 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *8 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *9 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *10 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *11 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+
+  - *20 hours ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad.
 
   - *a day ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 

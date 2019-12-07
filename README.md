@@ -4,13 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *2 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *7 minutes ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *7 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *3 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *9 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *8 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *23 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *10 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+
+  - *a day ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
   - *a day ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
 
@@ -21,8 +23,6 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *2 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ☆ -- This mod is Material Plus Mod for Mindustry.
 
   - *3 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
-
-  - *3 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
   - *3 days ago* [hfok/stopBuild](https://github.com/hfok/stopBuild)  by hfok -- ☆ -- Adds a block (of fog) that stop players to build on it.
 

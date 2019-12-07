@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *4 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *3 minutes ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *6 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *5 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *11 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *7 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 
-  - *20 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *21 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
   - *a day ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
 
@@ -30,7 +30,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *4 days ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 
-  - *4 days ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
+  - *5 days ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
 
   - *5 days ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★  -- PToE: Periodic Table of elements
 
@@ -82,7 +82,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *30 days ago* [PetruCHIOrus/lead_ind](https://github.com/PetruCHIOrus/lead_ind) ![](images/lead_ind-icon.png) by PetruCHIOrus & DefenseX -- ★ ★ ★ ★ ★ ★ ★ ★  -- New guns, drills, crafting, materials and resourses
 
-  - *30 days ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
+  - *a month ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
 
   - *a month ago* [ProximityCatz/CreepLand](https://github.com/ProximityCatz/CreepLand) ![](images/creepland-icon.png) by ProximityCat -- ☆ -- A mindustry modification.
 

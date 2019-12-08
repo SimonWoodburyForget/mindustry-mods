@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *6 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *7 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *9 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *10 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
-  - *13 hours ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
+  - *14 hours ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *21 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *22 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *23 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *a day ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 
   - *a day ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad.
 
@@ -70,7 +70,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *23 days ago* [ZacBytes/BombMod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes -- ☆ -- A mod that adds bombs.
 
-  - *24 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors, with 18 new colors, and an experimental Tip, Slab, and Case block (only White-Black type).
+  - *25 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 29 colors, with 18 new colors, and an experimental Tip, Slab, and Case block (only White-Black type).
 
   - *26 days ago* [niszogen/mindustrymod1](https://github.com/niszogen/mindustrymod1) ![](images/mindustrymod1-icon.png) by NISZOgen -- ★  -- Mod dodający nowe przedmioty :D!
 

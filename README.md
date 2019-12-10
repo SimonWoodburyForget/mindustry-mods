@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *14 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *10 minutes ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *19 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *15 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
-  - *21 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- a WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *20 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *22 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!.
+  - *23 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!.
 
   - *a day ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters)  by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
 

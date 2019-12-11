@@ -224,4 +224,10 @@ repo: Ramielsaadi2/Slopes-Mod
 ---
 repo: VKLowe-Original/Ripple_planet
 icon: sprites/blocks/turrets/ripplya.png
+---
+author: MEEP of Faith
+name: Ohno Missiles
+about: With the new ballistic missile, you can nuke the enemies with various missile silos.
+repo: MEEPofFaith/Ohno-Missiles
+icon: sprites/missiles/missilenuke.png
 ...

@@ -280,6 +280,8 @@ class ModMeta:
     issue: str = None
     readme: str = ''
     version: str = ''
+    '''Link to external official wiki.'''
+    wiki: str = ''
 
 
     def icon_url(self):
@@ -356,7 +358,8 @@ class ModMeta:
                        readme=r.readme or '',
                        version=r.mod.version,
                        assets=list(r.assets),
-                       contents=list(r.contents))
+                       contents=list(r.contents),
+                       wiki=m['wiki'] if 'wiki' in m else None)
 
     @staticmethod
     def builds(mods, repos, icons):

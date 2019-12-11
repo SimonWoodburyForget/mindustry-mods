@@ -1,7 +1,6 @@
 (ns clodustry.core
   (:require
-   [reagent.core :as r]
-   [ajax.core :as ajax :refer [GET]]))
+   [reagent.core :as r]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Path Stuff
@@ -76,6 +75,11 @@
                (m "repo")
                "/archive/master.zip"])} "zip"])
 
+(defn wiki-link [m]
+  (if (some? (m "wiki"))
+    [:a {:href (m "wiki")} "wiki"]
+    ))
+
 (defn delta-ago [m]
   (m "delta_ago"))
 
@@ -124,7 +128,8 @@
       (description m)
       [:p
        (repository-link m) " "
-       (archive-link m) " "]]
+       (archive-link m) " "
+       (wiki-link m) " "]]
      [:td.delta (delta-ago m) " ago"]
      [:td.stars (stars-fmt m)]]))
 

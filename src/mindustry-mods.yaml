@@ -239,4 +239,10 @@ icon: sprites/items/bottle-water.png
 ---
 repo: SolarPH/Mindustry-Crystal-Pack
 icon: sprites/items/crushed-crystals.png
+---
+author: MEEP of Faith
+name: Ohno Missiles
+about: With the new ballistic missile, you can nuke the enemies with various missile silos.
+repo: MEEPofFaith/Ohno-Missiles
+icon: sprites/missiles/missilenuke.png
 ...

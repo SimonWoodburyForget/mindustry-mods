@@ -5,6 +5,7 @@ It uses Jinja2 for templating and eventually will use ClojureScript
 instead, which is probably entirely overkill.
 """
 
+
 from pathlib import Path
 from collections import namedtuple
 from collections import Counter
@@ -98,7 +99,7 @@ def fix_image_url(url, repo_name):
     '''Fixes a GitHub url, where the url should point to an image.
 
     Any links with `github.com` are invalid, because they're html links, while
-    image links would have `githubusercontent.com`, for example: 
+    image links would have `githubusercontent.com`, for example:
     - https://github.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png;
 
     Any links that don't have a domain are relative and as such invalid, for example:
@@ -110,19 +111,19 @@ def fix_image_url(url, repo_name):
     '''
     from urllib.parse import urlparse
     from parsec import optional, string, regex, none_of, many, ParseError
-   
+
     glob = (optional(string('/'))
             >> string(repo_name)
             >> string("/blob/master/")
             >> many(none_of("?")).parsecmap(lambda x: "".join(x)))
-    
+
     o = urlparse(url)
     if o.netloc == "raw.githubusercontent.com":
         return url
 
     try: path = glob.parse(o.path)
     except ParseError as e:
-        path = None    
+        path = None
     if o.netloc == "github.com" and path:
         return f"https://raw.githubusercontent.com/{repo_name}/master/{path}"
 
@@ -131,7 +132,7 @@ def fix_image_url(url, repo_name):
 
     # print('[warning] non github url:', url)
     return url
-        
+
 @dataclass
 class ModInfo:
     '''Raw mod.json data.'''
@@ -192,7 +193,7 @@ class Repo:
     '''A set of contents found in the repo.'''
     contents: Set[str]
 
-    @staticmethod 
+    @staticmethod
     def from_github(gh, name, old=None, force=False):
         '''Gets a Github repository from Github, with other
         data which may require a few requests, and packs this
@@ -217,7 +218,7 @@ class Repo:
                     readme=get_file(repo, "README.md"),
                     assets=assets,
                     contents=contents)
-    
+
     def archive_link(self):
         return f"https://github.com/{self.repo}/archive/master.zip"
 
@@ -310,7 +311,7 @@ class ModMeta:
             return links[0]
         else:
             return ''
-    
+
     def stars_fmt(self):
         return self.stars * '★ ' if self.stars else '☆'
 
@@ -333,7 +334,7 @@ class ModMeta:
     # def keywords(self):
     #     '''Keywords used to filter mods.'''
     #     return set(str(x for x in self.readme).split())
-    
+
     @staticmethod
     def build(m, r, icon):
         def parse_or_nothing(x):
@@ -444,7 +445,7 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     # with open("index.html", 'w') as f:
     #     data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
     #     print(data, file=f)
-    
+
     template = env.get_template('preview.html')
     for mod in mods:
         data = template.render(mod=mod, style="../src/style.css")
@@ -472,8 +473,8 @@ def main(push=True, update=True):
 @click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
 @click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
 def cli(instant, push, hourly, clean, fast):
-    update = not fast 
-    
+    update = not fast
+
     if clean:
         subprocess.run(['rm', CACHE_PATH])
 
@@ -488,6 +489,6 @@ def cli(instant, push, hourly, clean, fast):
         while True:
             schedule.run_pending()
             time.sleep(1)
-            
+
 if __name__ == '__main__':
     cli()

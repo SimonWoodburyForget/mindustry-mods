@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *3 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *30 minutes ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
-  - *3 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *4 hours ago* [Vortetty/Mindustryalization](https://github.com/Vortetty/Mindustryalization) ![](images/mindustryalization-icon.png) by Vortetty -- ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *5 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!.
+  - *4 hours ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
-  - *7 hours ago* [SolarPH/Mindustry-Crystal-Pack](https://github.com/SolarPH/Mindustry-Crystal-Pack) ![](images/mindustry-crystal-pack-icon.png) by SolarPH -- ☆ -- A mod that contains an OP yet super expensive weapon.
+  - *6 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!.
 
-  - *22 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
+  - *8 hours ago* [SolarPH/Mindustry-Crystal-Pack](https://github.com/SolarPH/Mindustry-Crystal-Pack) ![](images/mindustry-crystal-pack-icon.png) by SolarPH -- ☆ -- A mod that contains an OP yet super expensive weapon.
 
   - *a day ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
 
@@ -42,7 +42,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *8 days ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★  -- PToE: Periodic Table of elements
 
-  - *10 days ago* [TechFish3000/Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ★  -- The core of all Techfish Mods.
+  - *11 days ago* [TechFish3000/Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ★  -- The core of all Techfish Mods.
 
   - *11 days ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★ ★ ★ ★  -- A new way forward in vanilla style.
 
@@ -66,7 +66,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *21 days ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
-  - *21 days ago* [TheBestBot/The-End-Is-Nigh](https://github.com/TheBestBot/The-End-Is-Nigh) ![](images/the-end-is-nigh-icon.png) by Best Bot -- ★ ★ ★ ★  -- A End-Game mod. Adds new content for expanding the endgame, such as massive long range turrets, strong large units and new new tech.
+  - *22 days ago* [TheBestBot/The-End-Is-Nigh](https://github.com/TheBestBot/The-End-Is-Nigh) ![](images/the-end-is-nigh-icon.png) by Best Bot -- ★ ★ ★ ★  -- A End-Game mod. Adds new content for expanding the endgame, such as massive long range turrets, strong large units and new new tech.
 
   - *23 days ago* [xhz313123/Modular-Turret](https://github.com/xhz313123/Modular-Turret) ![](images/modular-turret-icon.png) by Plas_Gensokyo -- ★  -- An Mindustry mod
 

@@ -224,4 +224,19 @@ repo: Ramielsaadi2/Slopes-Mod
 ---
 repo: VKLowe-Original/Ripple_planet
 icon: sprites/blocks/turrets/ripplya.png
+---
+repo: hfok/stopBuild
+---
+repo: ZkyLB/Beneath-The-Dark-Life
+---
+repo: pyro000/Mindustry-BetterBuildsMod
+---
+repo: OverChock/Playable-reaper-mod
+icon: sprites/mechs/reaper.png
+---
+repo: SolarPH/Mindustry-Vanilla-Converters
+icon: sprites/items/bottle-water.png
+---
+repo: SolarPH/Mindustry-Crystal-Pack
+icon: sprites/items/crushed-crystals.png
 ...

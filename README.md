@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *3 hours ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
+  - *4 hours ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
 
-  - *4 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
+  - *5 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
-  - *4 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *5 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
-  - *20 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
+  - *21 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
 
   - *a day ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 
@@ -62,7 +62,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *21 days ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
 
-  - *21 days ago* [DemonX3/ExtendedRebuildingModules](https://github.com/DemonX3/ExtendedRebuildingModules) ![](images/extendedrebuildingmodules-icon.png) by DemonX3 -- ★  -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
+  - *22 days ago* [DemonX3/ExtendedRebuildingModules](https://github.com/DemonX3/ExtendedRebuildingModules) ![](images/extendedrebuildingmodules-icon.png) by DemonX3 -- ★  -- You were given licenses for new types of ships and mechs. Current quantity: 3 Ships | 1 Mech.
 
   - *22 days ago* [ZkyLB/3x3-and-4x4-walls](https://github.com/ZkyLB/3x3-and-4x4-walls) ![](images/3x3-and-4x4-walls-icon.png) by macdowntwo -- ☆ -- The built-in current defence walls with 3x3 and 4x4 counterparts.
 
@@ -72,7 +72,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *25 days ago* [xhz313123/Modular-Turret](https://github.com/xhz313123/Modular-Turret) ![](images/modular-turret-icon.png) by Plas_Gensokyo -- ★  -- An Mindustry mod
 
-  - *25 days ago* [Miner28/Bronze-Mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 -- ★ ★ ★ ★ ★ ★  -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
+  - *26 days ago* [Miner28/Bronze-Mod](https://github.com/Miner28/Bronze-Mod) ![](images/bronze-mod-icon.png) by Miner28_3 -- ★ ★ ★ ★ ★ ★  -- This mod is currently all oriented around Bronze(kind of not anymore), Right now it adds 6 materials and around 30 Buildings.
 
   - *28 days ago* [ZacBytes/BombMod](https://github.com/ZacBytes/BombMod) ![](images/bombmod-icon.png) by ZacBytes -- ☆ -- A mod that adds bombs.
 

@@ -1,8 +1,9 @@
 [package]
 name = "wasm-experiment"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
+license = "GNUv3"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

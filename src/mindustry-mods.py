@@ -13,6 +13,7 @@ from datetime import datetime
 from dataclasses import dataclass, asdict
 from functools import partial
 from typing import List, Dict, Optional, Set
+import time
 
 # Decoding/Encoding
 import yaml
@@ -360,6 +361,7 @@ class ModMeta:
                        readme=r.readme or '',
                        version=r.mod.version,
                        assets=list(r.assets),
+                       date_tt=time.mktime(r.date.timetuple()),
                        contents=list(r.contents),
                        wiki=m['wiki'] if 'wiki' in m else None)
 
@@ -374,7 +376,7 @@ class ModMeta:
                  for m in mods if 'issue' not in m ]
 
     def pack_data(self):
-        '''Packs data for the ClojureScript, trying to only give what is required.'''
+        '''Packs JSON data for the frontend.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
                  "date": str(self.date),
                  "header": self.header(),
@@ -427,16 +429,20 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
     mods = ModMeta.builds(mods, repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
 
-    env = load_env()
+    jdata = [ mm.pack_data() for mm in mods ]
+    jdata = json.dumps(jdata)
 
+    with open("frontend/data/modmeta.1.0.json", 'w') as f:
+        print(jdata, file=f)
+
+    env = load_env()
     with open("index.html", 'w') as f:
         # dumping JSON data straight into JS as b64 string to prevent XSS
-        jdata = [ mm.pack_data() for mm in mods ]
-        jdata = json.dumps(jdata)
-        jdata = b64encode(jdata.encode("utf8")).decode('utf8')
-        jdata = Markup(json.dumps(jdata))
-
-        data = env.get_template('listing.html').render(mods=mods, data=jdata, style="src/style.css")
+        
+        bdata = b64encode(jdata.encode("utf8")).decode('utf8')
+        bdata = Markup(json.dumps(jdata))
+        
+        data = env.get_template('listing.html').render(mods=mods, data=bdata, style="src/style.css")
         print(data, file=f)
 
     with open("README.md", 'w') as f:

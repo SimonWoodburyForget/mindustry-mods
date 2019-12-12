@@ -7,11 +7,11 @@ extern crate instant;
 extern crate wee_alloc;
 
 use seed::{prelude::*, *};
-use wasm_bindgen::prelude::*;
+// use wasm_bindgen::prelude::*;
 
 use futures::Future;
 use seed::{fetch, Method, Request};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use hifitime::Epoch;
 use humantime;
@@ -19,24 +19,49 @@ use humantime;
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+static HOME: &'static str = "/mindustry-mods";
+
 #[derive(Deserialize, Debug, Clone)]
-struct Repo {
+struct Mod {
     name: String,
     stars: u32,
     date_tt: f64,
+    desc: String,
+    link: String,
+    repo: String,
 }
 
-impl Repo {
+impl Mod {
+    /// Link to the mod's archive.
+    fn archive_link(&self) -> String {
+        return format!("https://github.com/{}/archive/master.zip", self.repo);
+    }
+
+    /// Endpoint to the rendered README.md
+    fn endpoint(&self) -> String {
+        let path = self.repo.replace("/", "--");
+        return format!("{}/m/{}.html", HOME, path);
+    }
+
     /// Returns the `Node<Msg>` for the listing.
     fn as_listing_node(&self) -> Node<Msg> {
-        tr![format!("{:?}", &self)]
+        div![
+            a![
+                attrs! {
+                    At::Href => self.link
+                },
+                self.name
+            ],
+            self.endpoint(),
+            self.archive_link()
+        ]
     }
 }
 
 struct Model {
     count: i32,
     words: String,
-    data: Vec<Repo>,
+    data: Vec<Mod>,
 }
 
 impl Default for Model {
@@ -55,11 +80,11 @@ impl Default for Model {
 enum Msg {
     Increment,
     Decrement,
-    FetchData(fetch::ResponseDataResult<Vec<Repo>>),
+    FetchData(fetch::ResponseDataResult<Vec<Mod>>),
 }
 
 fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
-    Request::new("data/test.json")
+    Request::new("data/modmeta.1.0.json")
         .method(Method::Get)
         .fetch_json_data(Msg::FetchData)
 }
@@ -101,7 +126,7 @@ fn view(model: &Model) -> impl View<Msg> {
 
     div![
         attrs! { At::Class => "content" },
-        style! { "background" => "black" },
+        style! { "background" => "yellow" },
         button![simple_ev(Ev::Click, Msg::Increment), "+"],
         div![format!("{}", model.count)],
         button![simple_ev(Ev::Click, Msg::Decrement), "-"],

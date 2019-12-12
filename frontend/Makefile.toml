@@ -4,7 +4,7 @@ dependencies = [ "clean" ]
 
 [tasks.wasm-pack]
 command = "wasm-pack"
-args = ["build", "--target=web"]
+args = ["build", "--target=web", "--release"]
 
 [tasks.wasm-run]
 description = "Build wasm and open a Firefox tab."

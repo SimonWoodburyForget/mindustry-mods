@@ -12,7 +12,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *21 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
 
-  - *a day ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL)  by DeltaNedas -- ☆ -- ohno
+  - *a day ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ☆ -- ohno
 
   - *a day ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 

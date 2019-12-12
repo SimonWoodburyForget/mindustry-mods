@@ -275,6 +275,7 @@ class ModMeta:
     stars: int
     author: str
     date: datetime
+    date_tt: float
     repo: str
     contents: List[str]
     assets: List[str]

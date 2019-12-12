@@ -6,7 +6,7 @@ extern crate hifitime;
 extern crate instant;
 extern crate wee_alloc;
 
-use seed::prelude::*;
+use seed::{prelude::*, *};
 use wasm_bindgen::prelude::*;
 
 use futures::Future;
@@ -26,6 +26,13 @@ struct Repo {
     date_tt: f64,
 }
 
+impl Repo {
+    /// Returns the `Node<Msg>` for the listing.
+    fn as_listing_node(&self) -> Node<Msg> {
+        tr![format!("{:?}", &self)]
+    }
+}
+
 struct Model {
     count: i32,
     words: String,
@@ -40,6 +47,8 @@ impl Default for Model {
             data: vec![],
         }
     }
+
+    // fn listing() -> View<Node<>>
 }
 
 #[derive(Debug, Clone)]
@@ -91,6 +100,8 @@ fn view(model: &Model) -> impl View<Msg> {
     let before = date::from_tt(457.3892);
 
     div![
+        attrs! { At::Class => "content" },
+        style! { "background" => "black" },
         button![simple_ev(Ev::Click, Msg::Increment), "+"],
         div![format!("{}", model.count)],
         button![simple_ev(Ev::Click, Msg::Decrement), "-"],
@@ -103,7 +114,8 @@ fn view(model: &Model) -> impl View<Msg> {
         p![format!(
             "{}",
             humantime::format_duration(now.duration_since(before).unwrap())
-        )]
+        )],
+        table![model.data.iter().map(|r| r.as_listing_node())]
     ]
 }
 

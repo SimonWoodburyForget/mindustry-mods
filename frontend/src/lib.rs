@@ -15,6 +15,7 @@ use serde::Deserialize;
 
 use hifitime::Epoch;
 use humantime;
+use instant::Instant;
 
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -45,22 +46,21 @@ impl Mod {
 
     /// Returns the `Node<Msg>` for the listing.
     fn as_listing_node(&self) -> Node<Msg> {
-        div![
-            a![
-                attrs! {
-                    At::Href => self.link
-                },
-                self.name
-            ],
-            self.endpoint(),
-            self.archive_link()
-        ]
+        let repo_link = a![attrs! { At::Href => self.link }, self.name];
+
+        div![repo_link, self.endpoint(), self.archive_link()]
     }
 }
 
 struct Model {
     count: i32,
-    words: String,
+
+    /// instant the app started
+    dt: Instant,
+
+    /// number of requests submitted for date updates
+    data_requested: u32,
+
     data: Vec<Mod>,
 }
 
@@ -68,7 +68,8 @@ impl Default for Model {
     fn default() -> Self {
         Self {
             count: 0,
-            words: "string".into(),
+            dt: Instant::now(),
+            data_requested: 0,
             data: vec![],
         }
     }
@@ -127,24 +128,23 @@ fn view(model: &Model) -> impl View<Msg> {
     div![
         attrs! { At::Class => "content" },
         style! { "background" => "yellow" },
-        button![simple_ev(Ev::Click, Msg::Increment), "+"],
-        div![format!("{}", model.count)],
-        button![simple_ev(Ev::Click, Msg::Decrement), "-"],
-        p![format!("{:?}", model.data)],
-        p![format!("{:?}", instant::Instant::now())],
-        p![format!(
-            "{:?}",
-            Epoch::from_gregorian_utc(2017, 12, 25, 02, 02, 14, 0)
-        )],
         p![format!(
             "{}",
             humantime::format_duration(now.duration_since(before).unwrap())
         )],
-        table![model.data.iter().map(|r| r.as_listing_node())]
+        table![model.data.iter().map(|r| r.as_listing_node())],
+        p![format!("{}", model.dt.elapsed().as_secs())]
     ]
+}
+
+fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
+    orders.perform_cmd(fetch_data());
+    AfterMount::default()
 }
 
 #[wasm_bindgen(start)]
 pub fn render() {
-    seed::App::builder(update, view).build_and_start();
+    seed::App::builder(update, view)
+        .after_mount(after_mount)
+        .build_and_start();
 }

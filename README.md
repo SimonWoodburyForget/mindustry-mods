@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *12 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
+  - *13 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
 
-  - *18 hours ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
+  - *19 hours ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A WIP mod for Mindustry designed for automation, it is currently op as it has items obtainable in the early game designed for late game (for testing purposes), however newer updates will make the blocks harder to research for balance. recipes may also become more expensive. mod is highly based around using light cubes (essentialy solid light, think Hard Light Bridges from portal 2) to build things. non-op version is availible with every release.
 
-  - *19 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
+  - *20 hours ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 
-  - *19 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
+  - *20 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
-  - *23 hours ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
+  - *a day ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
   - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
@@ -22,9 +22,9 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 days ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
 
-  - *2 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
+  - *3 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
-  - *2 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
+  - *3 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
 
   - *4 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
@@ -34,7 +34,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *6 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ☆ -- This mod is Material Plus Mod for Mindustry.
 
-  - *7 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *8 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *8 days ago* [hfok/stopBuild](https://github.com/hfok/stopBuild)  by hfok -- ☆ -- Adds a block (of fog) that stop players to build on it.
 

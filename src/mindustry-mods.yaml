@@ -246,4 +246,10 @@ name: Ohno Missiles
 about: With the new ballistic missile, you can nuke the enemies with various missile silos.
 repo: MEEPofFaith/Ohno-Missiles
 icon: sprites/missiles/missilenuke.png
+---
+author: DeltaNedas
+name: ohno
+about: ohno
+repo: DeltaNedas/NUL
+icon: sprites/blocks/ohno-conveyor-0-0.png
 ...

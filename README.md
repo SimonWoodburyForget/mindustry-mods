@@ -8,9 +8,11 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *5 hours ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
-  - *5 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *6 hours ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
   - *21 hours ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
+
+  - *a day ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL)  by DeltaNedas -- ☆ -- ohno
 
   - *a day ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 

@@ -251,5 +251,5 @@ author: DeltaNedas
 name: ohno
 about: ohno
 repo: DeltaNedas/NUL
-icon: core/assets/sprites/error.png
+# icon: sprites/blocks/ohno-conveyor-0-0.png
 ...

@@ -185,6 +185,10 @@ repo: Vortetty/Light
 icon: sprites/items/lightcube.png
 wiki: https://vortetty.github.io/Light/
 ---
+repo: Vortetty/Dark
+icon: sprites/items/dark.png
+wiki: https://github.com/Vortetty/Dark
+---
 repo: TheBestBot/The-End-Is-Nigh
 icon: sprites/items/micro-chip.png
 ---

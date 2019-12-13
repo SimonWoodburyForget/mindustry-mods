@@ -21,21 +21,23 @@ header h1 {
     border-bottom: 8px solid #ffa;
 }
 
-div.listing-container {
+.listing-container {
     background: #aaa;
     display: flex;
     flex-flow: row wrap;
     margin-left: 5vw;
-    width: 90%;
+    width: 90%;                         
 }
 
-div.listing-item {
+.listing-item {
     background: #334;
     margin: 4px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 4px;    
-    display: flex;
-    width: 239px;
-    padding-left: 0.5em;
+    padding: 4px;
+    flex: 1;
+    /* align-self: center; */
+    /* padding-left: 0.5em; */
+}
+
+.listing-item img {
+    max-width: 5em;
 }

@@ -30,6 +30,7 @@ fn link(rel: String, href: String) -> Node<Msg> {
 }
 
 static HOME: &'static str = "/mindustry-mods";
+static RGUC: &'static str = "https://raw.githubusercontent.com";
 
 #[derive(Deserialize, Debug, Clone)]
 struct Mod {
@@ -41,6 +42,7 @@ struct Mod {
     repo: String,
     wiki: Option<String>,
     delta_ago: String,
+    icon_raw: Option<String>,
 }
 
 impl Mod {
@@ -83,6 +85,15 @@ impl Mod {
         }
     }
 
+    fn icon(&self) -> Node<Msg> {
+        if let Some(p) = &self.icon_raw {
+            let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
+            return img![attrs! { At::Src => i }];
+        } else {
+            return img![style! { "display" => "none" }];
+        }
+    }
+
     // fn version_render(&self) -> Node<Msg> {
     //     if let "" = &self.version {
     //         return span![style! { "display" => "none" }];
@@ -93,6 +104,7 @@ impl Mod {
     fn listing_item(&self) -> Node<Msg> {
         div![
             attrs! { At::Class => "listing-item" },
+            self.icon(),
             self.repo_link(),
             self.archive_link(),
             self.wiki_link(),

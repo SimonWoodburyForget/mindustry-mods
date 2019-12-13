@@ -82,14 +82,10 @@ impl Default for Model {
             data: vec![],
         }
     }
-
-    // fn listing() -> View<Node<>>
 }
 
 #[derive(Debug, Clone)]
 enum Msg {
-    Increment,
-    Decrement,
     FetchData(fetch::ResponseDataResult<Vec<Mod>>),
 }
 
@@ -101,16 +97,7 @@ fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
 
 fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     match msg {
-        Msg::Increment => {
-            model.count += 2;
-            orders.skip().perform_cmd(fetch_data());
-        }
-
-        Msg::Decrement => model.count -= 1,
-
-        Msg::FetchData(data) => {
-            model.data = data.unwrap();
-        }
+        Msg::FetchData(data) => model.data = data.unwrap(),
     }
 }
 
@@ -135,6 +122,8 @@ fn view(model: &Model) -> impl View<Msg> {
     let before = date::from_tt(457.3892);
 
     div![
+        attrs! { At::Class => "app" },
+        header![h1!["Mindustry Mods"]],
         link("StyleSheet".into(), "css/listing.css".into()),
         div![
             attrs! { At::Class => "listing-container" },

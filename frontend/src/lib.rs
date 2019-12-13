@@ -53,11 +53,10 @@ impl Mod {
 
     /// Returns the `Node<Msg>` for the listing.
     fn as_listing_node(&self) -> Node<Msg> {
-        let class = attrs! { At::Class => "listing-item" };
         let repo_link = a![attrs! { At::Href => self.link }, self.name];
         let zipy_link = a![attrs! { At::Href => self.archive_link()}, "zip"];
 
-        div![class, repo_link, zipy_link]
+        div![attrs! { At::Class => "listing-item" }, repo_link, zipy_link]
     }
 }
 

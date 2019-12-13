@@ -1,0 +1,26 @@
+body {}
+
+header {
+    margin: 0;
+    color: #ffa;
+    background: #011;
+}
+
+header h1 {
+    margin: 0;
+    padding: 16px;
+    border-bottom: 8px solid #ffa;
+}
+
+div.listing-container {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 5vw;
+    width: 90%;
+}
+
+.listing-item {
+    display: flex;
+    width: 232px;
+    padding-left: 1em;
+}

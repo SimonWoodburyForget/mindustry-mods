@@ -400,7 +400,7 @@ def update_icon(gh, repo_name, image_path=None, force=False):
     try:
         data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
     except GithubException as e:
-        print(f"[404] icon not found -- {repo_name}")
+        print(f"[error] update_icon -- {repo_name}")
         return None
 
     try:

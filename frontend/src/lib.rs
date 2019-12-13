@@ -6,6 +6,8 @@ extern crate hifitime;
 extern crate instant;
 extern crate wee_alloc;
 
+use std::convert::TryFrom;
+
 use seed::{prelude::*, *};
 // use wasm_bindgen::prelude::*;
 
@@ -37,26 +39,59 @@ struct Mod {
     desc: String,
     link: String,
     repo: String,
+    wiki: Option<String>,
 }
 
 impl Mod {
     /// Link to the mod's archive.
-    fn archive_link(&self) -> String {
-        return format!("https://github.com/{}/archive/master.zip", self.repo);
+    fn archive_link(&self) -> Node<Msg> {
+        let l = format!("https://github.com/{}/archive/master.zip", self.repo);
+        a![attrs! { At::Href => l }, "zip"]
     }
 
-    /// Endpoint to the rendered README.md
-    fn endpoint(&self) -> String {
+    /// Endpoint link to the locally rendered README.md
+    fn endpoint_link(&self) -> Node<Msg> {
         let path = self.repo.replace("/", "--");
-        return format!("{}/m/{}.html", HOME, path);
+        let l = format!("/{}/m/{}.html", HOME, path);
+        a![attrs! { At::Href => l }, "repository"]
     }
+
+    /// Link to the mods repository.
+    fn repo_link(&self) -> Node<Msg> {
+        a![attrs! { At::Href => self.link }, self.name]
+    }
+
+    /// Link to the optional wiki.
+    fn wiki_link(&self) -> Node<Msg> {
+        match &self.wiki {
+            Some(link) => a![attrs! { At::Href => link }, "wiki"],
+            None => a![style! { "display" => "none" }],
+        }
+    }
+
+    /// Returns unicode stars.
+    fn fmt_stars(&self) -> String {
+        match usize::try_from(self.stars) {
+            Err(_) => "err".into(),
+            Ok(0) => "☆".into(),
+            Ok(x) => "★ ".repeat(x),
+        }
+    }
+
+    // fn version_render(&self) -> Node<Msg> {
+    //     if let "" = &self.version {
+    //         return span![style! { "display" => "none" }];
+    //     }
+    // }
 
     /// Returns the `Node<Msg>` for the listing.
-    fn as_listing_node(&self) -> Node<Msg> {
-        let repo_link = a![attrs! { At::Href => self.link }, self.name];
-        let zipy_link = a![attrs! { At::Href => self.archive_link()}, "zip"];
-
-        div![attrs! { At::Class => "listing-item" }, repo_link, zipy_link]
+    fn listing_item(&self) -> Node<Msg> {
+        div![
+            attrs! { At::Class => "listing-item" },
+            self.repo_link(),
+            self.archive_link(),
+            self.wiki_link(),
+        ]
     }
 }
 
@@ -126,7 +161,7 @@ fn view(model: &Model) -> impl View<Msg> {
         link("StyleSheet".into(), "css/listing.css".into()),
         div![
             attrs! { At::Class => "listing-container" },
-            model.data.iter().map(|r| r.as_listing_node())
+            model.data.iter().map(|r| r.listing_item())
         ]
     ]
 }

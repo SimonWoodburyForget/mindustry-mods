@@ -1,4 +1,13 @@
-body {}
+/* * { border: 1px solid; } */
+
+body {
+    margin: 0;
+    background: #000;
+}
+
+a {
+    color: #ffa;
+}
 
 header {
     margin: 0;
@@ -13,14 +22,20 @@ header h1 {
 }
 
 div.listing-container {
+    background: #aaa;
     display: flex;
     flex-flow: row wrap;
     margin-left: 5vw;
     width: 90%;
 }
 
-.listing-item {
+div.listing-item {
+    background: #334;
+    margin: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;    
     display: flex;
-    width: 232px;
-    padding-left: 1em;
+    width: 239px;
+    padding-left: 0.5em;
 }

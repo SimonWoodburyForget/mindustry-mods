@@ -40,6 +40,7 @@ struct Mod {
     link: String,
     repo: String,
     wiki: Option<String>,
+    delta_ago: String,
 }
 
 impl Mod {
@@ -67,6 +68,10 @@ impl Mod {
             Some(link) => a![attrs! { At::Href => link }, "wiki"],
             None => a![style! { "display" => "none" }],
         }
+    }
+
+    fn last_commit(&self) -> Node<Msg> {
+        span![self.delta_ago, " ago"]
     }
 
     /// Returns unicode stars.

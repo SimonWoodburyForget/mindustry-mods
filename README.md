@@ -4,7 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *an hour ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
+  - *2 hours ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
 
   - *4 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium.
 
@@ -15,6 +15,8 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *20 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
 
   - *21 hours ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
+
+  - *a day ago* [Vortetty/Dark](https://github.com/Vortetty/Dark)   -- ★  -- 
 
   - *a day ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
@@ -28,7 +30,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *2 days ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
+  - *3 days ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
   - *3 days ago* [SolarPH/Mindustry-Crystal-Pack](https://github.com/SolarPH/Mindustry-Crystal-Pack) ![](images/mindustry-crystal-pack-icon.png) by SolarPH -- ☆ -- A mod that contains an OP yet super expensive weapon.
 

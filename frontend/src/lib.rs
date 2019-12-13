@@ -20,6 +20,13 @@ use instant::Instant;
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+fn link(rel: String, href: String) -> Node<Msg> {
+    custom![
+        Tag::Custom("link".into()),
+        attrs! { At::Href => href, At::Rel => rel }
+    ]
+}
+
 static HOME: &'static str = "/mindustry-mods";
 
 #[derive(Deserialize, Debug, Clone)]
@@ -46,9 +53,11 @@ impl Mod {
 
     /// Returns the `Node<Msg>` for the listing.
     fn as_listing_node(&self) -> Node<Msg> {
+        let class = attrs! { At::Class => "listing-item" };
         let repo_link = a![attrs! { At::Href => self.link }, self.name];
+        let zipy_link = a![attrs! { At::Href => self.archive_link()}, "zip"];
 
-        div![repo_link, self.endpoint(), self.archive_link()]
+        div![class, repo_link, zipy_link]
     }
 }
 
@@ -126,14 +135,11 @@ fn view(model: &Model) -> impl View<Msg> {
     let before = date::from_tt(457.3892);
 
     div![
-        attrs! { At::Class => "content" },
-        style! { "background" => "yellow" },
-        p![format!(
-            "{}",
-            humantime::format_duration(now.duration_since(before).unwrap())
-        )],
-        table![model.data.iter().map(|r| r.as_listing_node())],
-        p![format!("{}", model.dt.elapsed().as_secs())]
+        link("StyleSheet".into(), "css/listing.css".into()),
+        div![
+            attrs! { At::Class => "listing-container" },
+            model.data.iter().map(|r| r.as_listing_node())
+        ]
     ]
 }
 

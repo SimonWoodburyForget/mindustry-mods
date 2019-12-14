@@ -1,3 +1,4 @@
 index.html linguist-vendored
 m/* linguist-vendored
 js/* linguist-vendored
+frontend/pkg/* linguist-vendored

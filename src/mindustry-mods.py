@@ -449,7 +449,6 @@ def build(token, path="src/mindustry-mods.yaml", update=True):
         # dumping JSON data straight into JS as b64 string to prevent XSS
         
         bdata = b64encode(jdata.encode("utf8")).decode('utf8')
-        bdata = Markup(json.dumps(jdata))
         
         data = env.get_template('listing.html').render(mods=mods, data=bdata, style="src/style.css")
         print(data, file=f)

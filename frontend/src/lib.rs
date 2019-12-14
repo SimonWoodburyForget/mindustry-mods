@@ -29,6 +29,17 @@ fn link(rel: String, href: String) -> Node<Msg> {
     ]
 }
 
+fn tiny_list(v: &Vec<String>) -> Node<Msg> {
+    if !v.is_empty() {
+        ul![v
+            .iter()
+            .filter(|x| x.as_str() != "content")
+            .map(|x| li![attrs! { At::Class => x}, x])]
+    } else {
+        div![]
+    }
+}
+
 static HOME: &'static str = "/mindustry-mods";
 static RGUC: &'static str = "https://raw.githubusercontent.com";
 
@@ -43,9 +54,19 @@ struct Mod {
     wiki: Option<String>,
     delta_ago: String,
     icon_raw: Option<String>,
+    contents: Vec<String>,
+    assets: Vec<String>,
 }
 
 impl Mod {
+    fn assets_list(&self) -> Node<Msg> {
+        tiny_list(&self.assets)
+    }
+
+    fn contents_list(&self) -> Node<Msg> {
+        tiny_list(&self.contents)
+    }
+
     /// Link to the mod's archive.
     fn archive_link(&self) -> Node<Msg> {
         let l = format!("https://github.com/{}/archive/master.zip", self.repo);
@@ -150,7 +171,9 @@ impl Mod {
                     self.archive_link(),
                     self.wiki_link(),
                 ],
-                div![attrs! { At::Class => "box stars" }, self.stars_fmt()]
+                div![attrs! { At::Class => "box stars" }, self.stars_fmt()],
+                div![attrs! { At::Class => "box assets" }, self.assets_list()],
+                div![attrs! { At::Class => "box contents" }, self.contents_list()]
             ]
         ]
     }

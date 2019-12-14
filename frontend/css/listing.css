@@ -22,22 +22,58 @@ header h1 {
 }
 
 .listing-container {
-    background: #aaa;
+    background: #222;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     margin-left: 5vw;
-    width: 90%;                         
+    width: 90%;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .listing-item {
-    background: #334;
-    margin: 4px;
-    padding: 4px;
     flex: 1;
+    
+    background: #222;
+    padding: 1em;
+    border-bottom: 3px solid #f0f0f0;
+    display: flex;
+    flex-direction: row wrap;
     /* align-self: center; */
     /* padding-left: 0.5em; */
 }
 
-.listing-item img {
-    max-width: 5em;
+.listing-item.root div:last-child {
+    margin-left: auto;
+    align-self: end;
+}
+
+.side-items img {
+    width: 7vw;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.description {
+    flex: 0.4;
+    color: #f0f0f0;
+              
+}
+
+.listing-item a,
+.description {
+    font-family: "Courier New", Courier, monospace;
+    padding: 4px;
+}
+
+.listing-item .mid-items {
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.listing-item .side-items {
+    display:flex;
+    flex-direction: column-reverse;
+    
 }

@@ -56,12 +56,12 @@ impl Mod {
     fn endpoint_link(&self) -> Node<Msg> {
         let path = self.repo.replace("/", "--");
         let l = format!("/{}/m/{}.html", HOME, path);
-        a![attrs! { At::Href => l }, "repository"]
+        a![attrs! { At::Href => l }, self.name]
     }
 
     /// Link to the mods repository.
     fn repo_link(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.link }, self.name]
+        a![attrs! { At::Href => self.link }, "repository"]
     }
 
     /// Link to the optional wiki.
@@ -86,12 +86,17 @@ impl Mod {
     }
 
     fn icon(&self) -> Node<Msg> {
-        if let Some(p) = &self.icon_raw {
-            let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
-            return img![attrs! { At::Src => i }];
-        } else {
-            return img![style! { "display" => "none" }];
+        match self.icon_raw.as_ref().map(String::as_str) {
+            Some("") | None => img![style! { "display" => "none" }],
+            Some(p) => {
+                let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
+                img![attrs! { At::Src => i }]
+            }
         }
+    }
+
+    fn description(&self) -> Node<Msg> {
+        p![attrs! { At::Class => "description" }, self.desc]
     }
 
     // fn version_render(&self) -> Node<Msg> {
@@ -104,10 +109,18 @@ impl Mod {
     fn listing_item(&self) -> Node<Msg> {
         div![
             attrs! { At::Class => "listing-item" },
-            self.icon(),
-            self.repo_link(),
-            self.archive_link(),
-            self.wiki_link(),
+            div![
+                attrs! { At::Class => "side-items" },
+                self.repo_link(),
+                self.archive_link(),
+                self.wiki_link(),
+                self.icon(),
+            ],
+            div![
+                attrs! { At::Class => "mid-items" },
+                self.endpoint_link(),
+                div![attrs! { At::Class => "side-items" }, self.description(),]
+            ],
         ]
     }
 }

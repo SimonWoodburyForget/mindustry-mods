@@ -53,6 +53,7 @@ img, a, p, .description
 .wrapper
 {
     padding-bottom: 3em;
+    padding-top: 1em;
     border-bottom: 3px solid #f0f0f0;
     max-width: 64em;
 }

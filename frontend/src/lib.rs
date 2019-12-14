@@ -118,9 +118,17 @@ impl Mod {
         p![attrs! { At::Class => "description" }, self.desc]
     }
 
+    /// Handles path names, which occur when mod.json doesn't exist.
+    fn mod_name(&self) -> String {
+        match self.name.rfind("/") {
+            Some(x) => self.name.split_at(x + 1).1.into(),
+            None => self.name.clone(),
+        }
+    }
+
     /// Title (name) of the mod in the listing.
     fn listing_title(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.endpoint_href() }, self.name]
+        a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
     }
 
     // fn version_render(&self) -> Node<Msg> {

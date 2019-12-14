@@ -33,18 +33,21 @@ img {
 a, .description
 { font-family: "Courier New", Courier, monospace; }
 
-img, a, p
-{ padding: 4px; }
-            
-
-.grid {
-    padding: 1em;
+img, a, p, .description
+{
+    padding: 4px;
+    margin: 0;
 }
 
+.wrapper
+{ border-bottom: 3px solid #f0f0f0; }
+
+/* ================================================================ */
+/* Layout */
 
 .wrapper {
     display: flex;
-    /* grid-template-columns: 1fr 3fr;  */
+    /* grid-template-columns: 1fr 1fr; */
 }
 
 .links {
@@ -55,8 +58,9 @@ img, a, p
 
 @media (width <= 400px) {
     .wrapper {
-        display: grid;
-        grid-template-rows: 1fr 3fr; 
+        display: flex;
+        /* grid-template-rows: 1fr 2fr;  */
+        flex-flow: column;
     }
     
     .links {

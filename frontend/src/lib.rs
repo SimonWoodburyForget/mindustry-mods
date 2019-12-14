@@ -108,19 +108,15 @@ impl Mod {
     /// Returns the `Node<Msg>` for the listing.
     fn listing_item(&self) -> Node<Msg> {
         div![
-            attrs! { At::Class => "listing-item" },
+            attrs! { At::Class => "wrapper" },
             div![
-                attrs! { At::Class => "side-items" },
+                attrs! { At::Class => "links" },
+                self.icon(),
                 self.repo_link(),
                 self.archive_link(),
                 self.wiki_link(),
-                self.icon(),
             ],
-            div![
-                attrs! { At::Class => "mid-items" },
-                self.endpoint_link(),
-                div![attrs! { At::Class => "side-items" }, self.description(),]
-            ],
+            self.description(),
         ]
     }
 }

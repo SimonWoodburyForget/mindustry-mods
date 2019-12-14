@@ -7,6 +7,7 @@ body {
 
 a {
     color: #ffa;
+    white-space: nowrap;
 }
 
 header {
@@ -21,59 +22,45 @@ header h1 {
     border-bottom: 8px solid #ffa;
 }
 
-.listing-container {
-    background: #222;
+.description {
+    color: #f0f0f0;
+}
+
+img {
+    width: 50px;
+}
+
+a, .description
+{ font-family: "Courier New", Courier, monospace; }
+
+img, a, p
+{ padding: 4px; }
+            
+
+.grid {
+    padding: 1em;
+}
+
+
+.wrapper {
+    display: flex;
+    /* grid-template-columns: 1fr 3fr;  */
+}
+
+.links {
     display: flex;
     flex-flow: column;
-    margin-left: 5vw;
-    width: 90%;
-    padding-left: 1em;
-    padding-right: 1em;
+    align-items: flex-start;
 }
 
-.listing-item {
-    flex: 1;
+@media (width <= 400px) {
+    .wrapper {
+        display: grid;
+        grid-template-rows: 1fr 3fr; 
+    }
     
-    background: #222;
-    padding: 1em;
-    border-bottom: 3px solid #f0f0f0;
-    display: flex;
-    flex-direction: row wrap;
-    /* align-self: center; */
-    /* padding-left: 0.5em; */
-}
-
-.listing-item.root div:last-child {
-    margin-left: auto;
-    align-self: end;
-}
-
-.side-items img {
-    width: 7vw;
-    object-fit: contain;
-    padding: 8px;
-}
-
-.description {
-    flex: 0.4;
-    color: #f0f0f0;
-              
-}
-
-.listing-item a,
-.description {
-    font-family: "Courier New", Courier, monospace;
-    padding: 4px;
-}
-
-.listing-item .mid-items {
-    display:flex;
-    flex-direction: column;
-    
-}
-
-.listing-item .side-items {
-    display:flex;
-    flex-direction: column-reverse;
-    
+    .links {
+        display: flex;
+        flex-flow: row wrap;
+    }    
 }

@@ -4,9 +4,17 @@ dependencies = [ "clean" ]
 
 [tasks.wasm-pack]
 command = "wasm-pack"
-args = ["build", "--target=web", "--release"]
+args = [ "build", "--target=web", "--release" ]
 
 [tasks.wasm-run]
 description = "Build wasm and open a Firefox tab."
 script = [ "firefox 0.0.0.0:8000" ]
 dependencies = [ "wasm-pack" ]
+
+[tasks.wasm-dist]
+description = '''
+Build wasm without to be published. Clean, build and
+remove .gitignore from `./pkg/` after build.
+'''
+script = [ "rm ./pkg/.gitignore" ]
+dependencies = [ "clean", "wasm-pack" ]

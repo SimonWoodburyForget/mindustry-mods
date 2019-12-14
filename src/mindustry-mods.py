@@ -400,7 +400,12 @@ def update_icon(gh, repo_name, image_path=None, force=False):
     if Path(icon_path).exists():
         return icon_path
 
-    data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
+    try:
+        data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
+    except GithubException as e:
+        print(f"[error] update_icon -- {repo_name}")
+        return None
+
     try:
         image = Image.open(BytesIO(data))
     except Exception as e:

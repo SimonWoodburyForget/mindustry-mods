@@ -81,7 +81,7 @@ impl Mod {
     }
 
     /// Returns unicode stars.
-    fn fmt_stars(&self) -> String {
+    fn stars_fmt(&self) -> String {
         match usize::try_from(self.stars) {
             Err(_) => "err".into(),
             Ok(0) => "☆".into(),
@@ -94,20 +94,17 @@ impl Mod {
         match self.icon_raw.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
-                img![attrs! { At::Src => "" }, style! { "width" => "50px" }]
+                img![attrs! { At::Src => "" },]
             ],
 
             Some(p) => {
                 let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
                 a![
                     attrs! { At::Href => self.endpoint_href() },
-                    img![
-                        attrs! {
-                            At::Src => i,
-                            At::OnError => "this.src=''"
-                        },
-                        style! { "width" => "50px" }
-                    ]
+                    img![attrs! {
+                        At::Src => i,
+                        At::OnError => "this.src='';this.style.height='50px'"
+                    }]
                 ]
             }
         }
@@ -153,6 +150,7 @@ impl Mod {
                     self.archive_link(),
                     self.wiki_link(),
                 ],
+                div![attrs! { At::Class => "box stars" }, self.stars_fmt()]
             ]
         ]
     }

@@ -150,6 +150,8 @@ class ModInfo:
     dependencies: List[str] = None
     '''mod.json display name.'''
     displayName: str = None
+    '''mod.json minimum game version.'''
+    minGameVersion: str = None
 
     @staticmethod
     def from_repo(repo):

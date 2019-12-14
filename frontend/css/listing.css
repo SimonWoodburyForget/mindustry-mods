@@ -40,7 +40,13 @@ img, a, p, .description
 }
 
 .wrapper
-{ border-bottom: 3px solid #f0f0f0; }
+{
+    border-bottom: 3px solid #f0f0f0;
+    background: #222;
+    max-width: 64em;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* ================================================================ */
 /* Layout */

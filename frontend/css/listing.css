@@ -26,9 +26,9 @@ header h1 {
     color: #f0f0f0;
 }
 
-img {
-    width: 50px;
-}
+/* img, svg { */
+/*     width: 40px; */
+/* } */
 
 a, .description
 { font-family: "Courier New", Courier, monospace; }

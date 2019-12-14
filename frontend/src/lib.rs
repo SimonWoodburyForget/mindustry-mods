@@ -91,17 +91,21 @@ impl Mod {
 
     fn icon(&self) -> Node<Msg> {
         match self.icon_raw.as_ref().map(String::as_str) {
-            Some("") | None => a![svg![
-                attrs! {
-                    At::Width => "50",
-                    At::Height => "50",
-                },
-                rect![attrs! {
-                    At::Width => "50",
-                    At::Height => "50",
-                    At::Stroke => "#f0f0f0"
-                }]
-            ]],
+            Some("") | None => a![
+                attrs! { At::Href => self.endpoint_href() },
+                svg![
+                    attrs! {
+                        At::Width => "50",
+                        At::Height => "50",
+                    },
+                    rect![attrs! {
+                        At::Width => "50",
+                        At::Height => "50",
+                        At::Stroke => "#f0f0f0"
+                    }]
+                ]
+            ],
+
             Some(p) => {
                 let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
                 a![
@@ -125,15 +129,18 @@ impl Mod {
     /// Returns the `Node<Msg>` for the listing.
     fn listing_item(&self) -> Node<Msg> {
         div![
-            attrs! { At::Class => "wrapper" },
+            attrs! { At::Class => "outside" },
             div![
-                attrs! { At::Class => "links" },
-                self.icon(),
-                self.repo_link(),
-                self.archive_link(),
-                self.wiki_link(),
-            ],
-            self.description(),
+                attrs! { At::Class => "wrapper" },
+                div![
+                    attrs! { At::Class => "links" },
+                    self.icon(),
+                    self.repo_link(),
+                    self.archive_link(),
+                    self.wiki_link(),
+                ],
+                self.description(),
+            ]
         ]
     }
 }

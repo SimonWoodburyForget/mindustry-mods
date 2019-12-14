@@ -39,13 +39,22 @@ img, a, p, .description
     margin: 0;
 }
 
-.wrapper
-{
-    border-bottom: 3px solid #f0f0f0;
+.outside {
+    /* margin-left: 3em; */
+    /* margin-right: 3em; */
     background: #222;
     max-width: 64em;
+    padding-left: 1em;
+    padding-right: 1em;
     margin-left: auto;
     margin-right: auto;
+}
+
+.wrapper
+{
+    padding-bottom: 3em;
+    border-bottom: 3px solid #f0f0f0;
+    max-width: 64em;
 }
 
 /* ================================================================ */
@@ -53,7 +62,6 @@ img, a, p, .description
 
 .wrapper {
     display: flex;
-    /* grid-template-columns: 1fr 1fr; */
 }
 
 .links {

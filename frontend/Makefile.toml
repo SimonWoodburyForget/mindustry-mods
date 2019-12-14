@@ -1,6 +1,7 @@
 [tasks.wasm-clean]
 script = [ "rm ./pkg/wasm_experiment.* -f" ]
-dependencies = [ "clean" ]
+# adds too much time for it's purpose.
+# dependencies = [ "clean" ]
 
 [tasks.wasm-pack]
 command = "wasm-pack"

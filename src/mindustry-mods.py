@@ -148,6 +148,8 @@ class ModInfo:
     version: str = None
     '''mod.json dependencies.'''
     dependencies: List[str] = None
+    '''mod.json display name.'''
+    displayName: str = None
 
     @staticmethod
     def from_repo(repo):

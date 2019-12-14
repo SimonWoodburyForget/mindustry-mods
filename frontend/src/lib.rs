@@ -89,35 +89,38 @@ impl Mod {
         }
     }
 
+    /// Returns an icon link node.
     fn icon(&self) -> Node<Msg> {
         match self.icon_raw.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
-                svg![
-                    attrs! {
-                        At::Width => "50",
-                        At::Height => "50",
-                    },
-                    rect![attrs! {
-                        At::Width => "50",
-                        At::Height => "50",
-                        At::Stroke => "#f0f0f0"
-                    }]
-                ]
+                img![attrs! { At::Src => "" }, style! { "width" => "50px" }]
             ],
 
             Some(p) => {
                 let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
                 a![
                     attrs! { At::Href => self.endpoint_href() },
-                    img![attrs! { At::Src => i }, style! { "width" => "50px" }]
+                    img![
+                        attrs! {
+                            At::Src => i,
+                            At::OnError => "this.src=''"
+                        },
+                        style! { "width" => "50px" }
+                    ]
                 ]
             }
         }
     }
 
+    /// Description paragraph of the mode for the listing.
     fn description(&self) -> Node<Msg> {
         p![attrs! { At::Class => "description" }, self.desc]
+    }
+
+    /// Title (name) of the mod in the listing.
+    fn listing_title(&self) -> Node<Msg> {
+        a![attrs! { At::Href => self.endpoint_href() }, self.name]
     }
 
     // fn version_render(&self) -> Node<Msg> {
@@ -132,14 +135,16 @@ impl Mod {
             attrs! { At::Class => "outside" },
             div![
                 attrs! { At::Class => "wrapper" },
+                div![attrs! { At::Class => "box icon" }, self.icon()],
+                div![attrs! { At::Class => "box name" }, self.listing_title()],
+                // div![attrs! { At::Class => "box none" }],
+                div![attrs! { At::Class => "box desc" }, self.description()],
                 div![
-                    attrs! { At::Class => "links" },
-                    self.icon(),
+                    attrs! { At::Class => "box links" },
                     self.repo_link(),
                     self.archive_link(),
                     self.wiki_link(),
                 ],
-                self.description(),
             ]
         ]
     }

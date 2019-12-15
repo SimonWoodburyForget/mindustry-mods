@@ -124,7 +124,8 @@ impl Mod {
                     attrs! { At::Href => self.endpoint_href() },
                     img![attrs! {
                         At::Src => i,
-                        At::OnError => "this.src='';this.style.height='50px'"
+                        // This isn't right..
+                        // At::OnError => "this.style.height='50px'"
                     }]
                 ]
             }

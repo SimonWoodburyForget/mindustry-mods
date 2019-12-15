@@ -1,1 +1,1 @@
-An experimental work-in progress Rust frontend ClojureScript replacement.
+An experimental work-in progress Rust frontend replacement.

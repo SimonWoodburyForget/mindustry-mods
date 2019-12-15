@@ -22,6 +22,22 @@ use instant::Instant;
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+mod date {
+    use js_sys::Date;
+    use std::time::{Duration, SystemTime, UNIX_EPOCH};
+
+    pub fn from_tt(x: f64) -> SystemTime {
+        let secs = (x as u64) / 1_000;
+        let nanos = ((x as u32) % 1_000) * 1_000_000;
+        UNIX_EPOCH + Duration::new(secs, nanos)
+    }
+
+    pub fn now() -> SystemTime {
+        let x = Date::now();
+        from_tt(x)
+    }
+}
+
 fn link(rel: String, href: String) -> Node<Msg> {
     custom![
         Tag::Custom("link".into()),
@@ -115,7 +131,7 @@ impl Mod {
         match self.icon_raw.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
-                img![attrs! { At::Src => "" },]
+                img![attrs! { At::Src => "../images/nothing.png" },]
             ],
 
             Some(p) => {
@@ -124,8 +140,7 @@ impl Mod {
                     attrs! { At::Href => self.endpoint_href() },
                     img![attrs! {
                         At::Src => i,
-                        // This isn't right..
-                        // At::OnError => "this.style.height='50px'"
+                        At::OnError => "this.src='../images/nothing.png'"
                     }]
                 ]
             }
@@ -217,22 +232,6 @@ fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
 fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchData(data) => model.data = data.unwrap(),
-    }
-}
-
-mod date {
-    use js_sys::Date;
-    use std::time::{Duration, SystemTime, UNIX_EPOCH};
-
-    pub fn from_tt(x: f64) -> SystemTime {
-        let secs = (x as u64) / 1_000;
-        let nanos = ((x as u32) % 1_000) * 1_000_000;
-        UNIX_EPOCH + Duration::new(secs, nanos)
-    }
-
-    pub fn now() -> SystemTime {
-        let x = Date::now();
-        from_tt(x)
     }
 }
 

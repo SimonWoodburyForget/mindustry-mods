@@ -7,6 +7,7 @@ extern crate instant;
 extern crate wee_alloc;
 
 use std::convert::TryFrom;
+use std::iter;
 
 use seed::{prelude::*, *};
 // use wasm_bindgen::prelude::*;
@@ -118,11 +119,16 @@ impl Mod {
     }
 
     /// Returns unicode stars.
-    fn stars_fmt(&self) -> String {
+    fn stars_el(&self) -> Vec<Node<Msg>> {
+        let star = || attrs! { At::Class => "star" };
+
         match usize::try_from(self.stars) {
-            Err(_) => "err".into(),
-            Ok(0) => "☆".into(),
-            Ok(x) => "★ ".repeat(x),
+            Err(_) => vec![div!["err"]],
+            Ok(0) => vec![div![attrs! { At::Class => "zero-star"}, "☆"]],
+            Ok(x) => iter::repeat("★")
+                .take(self.stars as usize)
+                .map(|x| div![star(), x])
+                .collect(),
         }
     }
 
@@ -187,7 +193,7 @@ impl Mod {
                     self.archive_link(),
                     self.wiki_link(),
                 ],
-                div![attrs! { At::Class => "box stars" }, self.stars_fmt()],
+                div![attrs! { At::Class => "box stars" }, self.stars_el()],
                 div![attrs! { At::Class => "box assets" }, self.assets_list()],
                 div![attrs! { At::Class => "box contents" }, self.contents_list()]
             ]

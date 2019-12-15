@@ -205,7 +205,13 @@ class Repo:
         data into a namedtuple to be cached.
         '''
 
-        repo = gh.get_repo(name)
+        try:
+            repo = gh.get_repo(name)
+        except GithubException as e:
+            # repository gone?
+            print(f"[error] get_repo {e.data['message']} -- {name}")
+            return old
+
         sha = repo.get_branch("master").commit.sha
         if old and old.sha == sha and not force:
             print('[skipped] old hash --', name)

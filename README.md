@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *27 minutes ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
+  - *an hour ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
 
-  - *6 hours ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ☆ -- ohno
+  - *7 hours ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ☆ -- ohno
 
-  - *6 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
+  - *7 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
 
-  - *7 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *8 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *12 hours ago* [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore)  by jojoblack_fr -- ★ ★ ★  -- Mindustry mod
 

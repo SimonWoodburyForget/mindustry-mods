@@ -211,6 +211,9 @@ struct Model {
     data_requested: u32,
 
     data: Vec<Mod>,
+
+    /// state of sorting, which is initially none
+    sort_state: Option<SortBy>,
 }
 
 impl Default for Model {
@@ -220,13 +223,26 @@ impl Default for Model {
             dt: Instant::now(),
             data_requested: 0,
             data: vec![],
+            sort_state: None,
         }
     }
 }
 
 #[derive(Debug, Clone)]
+enum Order {
+    Ascending,
+    Descending,
+}
+
+#[derive(Debug, Clone)]
+enum SortBy {
+    Stars(Order),
+}
+
+#[derive(Debug, Clone)]
 enum Msg {
     FetchData(fetch::ResponseDataResult<Vec<Mod>>),
+    SortStarsToggle,
 }
 
 fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
@@ -238,17 +254,27 @@ fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
 fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchData(data) => model.data = data.unwrap(),
+
+        Msg::SortStarsToggle => {
+            model.data.sort_by_key(|x| x.stars);
+            if let Some(SortBy::Stars(Order::Ascending)) = model.sort_state {
+                model.sort_state = Some(SortBy::Stars(Order::Descending));
+            } else {
+                model.data.reverse();
+                model.sort_state = Some(SortBy::Stars(Order::Ascending));
+            }
+        }
     }
 }
 
 fn view(model: &Model) -> impl View<Msg> {
-    let now = date::now();
-    let before = date::from_tt(457.3892);
-
+    // let now = date::now();
+    // let before = date::from_tt(457.3892);
     div![
         attrs! { At::Class => "app" },
         header![h1!["Mindustry Mods"]],
         link("StyleSheet".into(), "css/listing.css".into()),
+        button![simple_ev(Ev::Click, Msg::SortStarsToggle), "stars"],
         div![
             attrs! { At::Class => "listing-container" },
             model.data.iter().map(|r| r.listing_item())

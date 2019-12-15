@@ -91,7 +91,7 @@ img, .links a, p, .description
 /* ================================================================ */
 /* Layout */
 
-/* Nested flex containers */
+/* Nested containers */
 .links {
     display: flex;
     flex-flow: column;
@@ -161,7 +161,22 @@ img, .links a, p, .description
     }
     
     .links {
-        display: flex;
-        flex-flow: row wrap;
-    }    
+        display:flex;
+        flex-flow:row wrap;
+        align-items:center;
+    }
+
+    .box.stars,
+    .box.icon,
+    .box.links
+    {
+        align-self:center;
+    }
+
+    .box.assets,
+    .box.contents
+    {
+        align-self:start;
+    }
+    
 }

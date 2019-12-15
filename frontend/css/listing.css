@@ -10,10 +10,15 @@ a, .stars {
 }
 
 .icon img {
-    width: 50px;
+    max-width: 50px;
+    min-width: 15px;
     max-height: 50px;
     min-height: 15px;
     margin: 6px;
+    background: #333;
+}
+
+.icon {
     background: #333;
 }
 
@@ -120,6 +125,7 @@ img, .links a, p, .description
 .box.icon {
     grid-column:1;
     grid-row:1/3;
+    justify-self:center;
 }
 
 .box.name {

@@ -121,6 +121,11 @@ button {
     white-space: nowrap;
 }
 
+.last-commit {
+    color: #606060;
+    margin-left:auto;
+}
+
 /* ================================================================ */
 
 a, .description, .assets, .contents, button
@@ -223,9 +228,10 @@ img, .links a, p, .description
     grid-row:1;
 }
 
-/* .box.stars { */
-/*     grid-column:5; */
-/* } */
+.box.stars {
+    grid-column:4/6;
+    justify-self:end;
+}
 
 /* .box.assets { */
 /*     grid-column:2/3; */

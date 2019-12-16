@@ -120,7 +120,11 @@ impl Mod {
     }
 
     fn last_commit(&self) -> Node<Msg> {
-        span![self.delta_ago, " ago"]
+        div![
+            attrs! { At::Class => "last-commit" },
+            self.delta_ago,
+            " ago"
+        ]
     }
 
     /// Returns unicode stars.
@@ -205,6 +209,7 @@ impl Mod {
             self.title_link(),
             self.by_author(),
             self.v_number(),
+            self.last_commit()
         ]
     }
 

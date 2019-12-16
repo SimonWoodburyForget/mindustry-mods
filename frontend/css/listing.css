@@ -125,6 +125,24 @@ img, .links a, p, .description
 }
 
 /* ================================================================ */
+/* Tag containers. */
+
+.assets ul,
+.contents ul
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.assets ul li,
+.contents ul li
+{
+    padding-right: 0.4em;
+    white-space: nowrap;
+}
+
+/* ================================================================ */
 /* Layout */
 
 /* Nested containers */
@@ -137,11 +155,6 @@ img, .links a, p, .description
     display: flex;
     flex-flow: column;
     align-items: flex-start;
-}
-
-.box.assets ul {
-    display: flex;
-    flex-flow: column;
 }
 
 .box.stars {
@@ -168,7 +181,7 @@ img, .links a, p, .description
 
 .box.desc {
     grid-column:2/7;
-    grid-row:2;
+    grid-row:3;
 }
 
 .box.icon {
@@ -187,11 +200,13 @@ img, .links a, p, .description
 }
 
 .box.assets {
-    grid-column:2;
+    grid-column:2/4;
+    grid-row:2;
 }
 
 .box.contents {
-    grid-column:3;
+    grid-column:4/6;
+    grid-row:2;
 }
 
 @media (width <= 400px) {

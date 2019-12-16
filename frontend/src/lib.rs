@@ -65,6 +65,7 @@ static RGUC: &'static str = "https://raw.githubusercontent.com";
 
 #[derive(Deserialize, Debug, Clone)]
 struct Mod {
+    author: String,
     name: String,
     stars: u32,
     date_tt: f64,
@@ -76,6 +77,7 @@ struct Mod {
     icon_raw: Option<String>,
     contents: Vec<String>,
     assets: Vec<String>,
+    version: Option<String>,
 }
 
 impl Mod {
@@ -169,9 +171,31 @@ impl Mod {
         }
     }
 
+    fn by_author(&self) -> Node<Msg> {
+        div![attrs! { At::Class => "by-author" }, "by ", self.author]
+    }
+
+    fn v_number(&self) -> Node<Msg> {
+        let pre = if self.version.is_some() { "v" } else { "" };
+        let num = self.version.as_ref().map(|x| x.as_str()).unwrap_or("");
+        div![attrs! { At::Class => "v-number" }, pre, num]
+    }
+
+    fn title_link(&self) -> Node<Msg> {
+        div![
+            attrs! { At::Class => "title-link" },
+            a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
+        ]
+    }
+
     /// Title (name) of the mod in the listing.
     fn listing_title(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
+        div![
+            attrs! { At::Class => "title-box" },
+            self.title_link(),
+            self.by_author(),
+            self.v_number(),
+        ]
     }
 
     // fn version_render(&self) -> Node<Msg> {
@@ -280,7 +304,7 @@ fn view(model: &Model) -> impl View<Msg> {
         div![
             attrs! { At::Class => "buttons" },
             button![simple_ev(Ev::Click, Msg::SortToggleStars), "stars"],
-            button![simple_ev(Ev::Click, Msg::SortToggleCommit), "last-commit"],
+            button![simple_ev(Ev::Click, Msg::SortToggleCommit), "commit"],
         ],
         div![attrs! { At::Class => "listing-container" }, model.listing()]
     ]

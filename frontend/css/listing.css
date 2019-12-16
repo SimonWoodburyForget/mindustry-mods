@@ -14,7 +14,7 @@ a, .stars {
     min-width: 15px;
     max-height: 50px;
     min-height: 15px;
-    margin: 6px;
+    /* margin: 6px; */
     background: #333;
 }
 
@@ -52,15 +52,49 @@ header h1 {
     border-bottom: 8px solid #ffa;
 }
 
-.description {
-    color: #f0f0f0;
+
+button {
+    font-size: 1.3em;
+    border: 0;
+    background: #333;
+    color: #ffa;
 }
 
-/* img, svg { */
-/*     width: 40px; */
-/* } */
 
-a, .description, .assets, .contents
+.buttons {
+    background: #333;
+    border-bottom: 1px solid #ffa;
+}
+
+.description {
+    color: #f0f0f0;
+    background: #333;
+}
+
+/* ================================================================ */
+/* Title Box */
+.title-link,
+.by-author,
+.v-number
+{ padding-right: 0.5em; }
+
+.title-link {
+    color: #ffa;
+}
+
+.by-author {
+    color: #f0f0f0;
+    white-space: nowrap;
+}
+
+.v-number {
+    color: #a0a0a0;
+    white-space: nowrap;
+}
+
+/* ================================================================ */
+
+a, .description, .assets, .contents, button
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description
@@ -69,6 +103,8 @@ img, .links a, p, .description
     margin: 0;
 }
 
+/* ================================================================ */
+/* Whole page margins/padding and borders between wrapper elements. */
 .outside {
     /* margin-left: 3em; */
     /* margin-right: 3em; */
@@ -92,6 +128,11 @@ img, .links a, p, .description
 /* Layout */
 
 /* Nested containers */
+.title-box {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .links {
     display: flex;
     flex-flow: column;

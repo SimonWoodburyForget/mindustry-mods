@@ -146,6 +146,7 @@ input {
 .description {
     color: #f0f0f0;
     background: #333;
+    border-left: 2px solid #666;
 }
 
 /* ================================================================ */
@@ -202,7 +203,7 @@ img, .links a, p, .description
 {
     padding-bottom: 3em;
     padding-top: 1em;
-    border-bottom: 3px solid #f0f0f0;
+    border-bottom: 3px solid #666;
     max-width: 64em;
 }
 

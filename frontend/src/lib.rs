@@ -363,7 +363,7 @@ fn view(model: &Model) -> impl View<Msg> {
             ],
             div![
                 attrs! { At::Class => "buttons" },
-                p!["Order by: "],
+                p!["Order by "],
                 button![simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)), "stars"],
                 button![
                     simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),

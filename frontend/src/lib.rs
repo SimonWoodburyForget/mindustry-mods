@@ -4,10 +4,13 @@
 extern crate seed;
 extern crate hifitime;
 extern crate instant;
+extern crate itertools;
 extern crate wee_alloc;
 
 use std::convert::TryFrom;
 use std::iter;
+
+// use itertools::IterTools;
 
 use seed::{prelude::*, *};
 // use wasm_bindgen::prelude::*;
@@ -210,10 +213,23 @@ struct Model {
     /// number of requests submitted for date updates
     data_requested: u32,
 
+    /// A vector of mod data.
     data: Vec<Mod>,
+    sorting: Sorting,
+    // reversed: bool,
+}
 
-    /// state of sorting, which is initially none
-    sort_state: Option<SortBy>,
+impl Model {
+    /// Returns listing of mods, sorted by the sort state.
+    fn listing(&self) -> Vec<Node<Msg>> {
+        let mut data = self.data.clone();
+        match self.sorting {
+            Sorting::Commit => data.sort_by_key(|x| x.date_tt as u32),
+            Sorting::Stars => data.sort_by_key(|x| x.stars),
+        }
+        data.reverse();
+        data.iter().map(|r| r.listing_item()).collect()
+    }
 }
 
 impl Default for Model {
@@ -223,26 +239,22 @@ impl Default for Model {
             dt: Instant::now(),
             data_requested: 0,
             data: vec![],
-            sort_state: None,
+            sorting: Sorting::Commit,
         }
     }
 }
 
 #[derive(Debug, Clone)]
-enum Order {
-    Ascending,
-    Descending,
-}
-
-#[derive(Debug, Clone)]
-enum SortBy {
-    Stars(Order),
+enum Sorting {
+    Stars,
+    Commit,
 }
 
 #[derive(Debug, Clone)]
 enum Msg {
     FetchData(fetch::ResponseDataResult<Vec<Mod>>),
-    SortStarsToggle,
+    SortToggleStars,
+    SortToggleCommit,
 }
 
 fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
@@ -255,30 +267,22 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchData(data) => model.data = data.unwrap(),
 
-        Msg::SortStarsToggle => {
-            model.data.sort_by_key(|x| x.stars);
-            if let Some(SortBy::Stars(Order::Ascending)) = model.sort_state {
-                model.sort_state = Some(SortBy::Stars(Order::Descending));
-            } else {
-                model.data.reverse();
-                model.sort_state = Some(SortBy::Stars(Order::Ascending));
-            }
-        }
+        Msg::SortToggleStars => model.sorting = Sorting::Stars,
+        Msg::SortToggleCommit => model.sorting = Sorting::Commit,
     }
 }
 
 fn view(model: &Model) -> impl View<Msg> {
-    // let now = date::now();
-    // let before = date::from_tt(457.3892);
     div![
         attrs! { At::Class => "app" },
         header![h1!["Mindustry Mods"]],
         link("StyleSheet".into(), "css/listing.css".into()),
-        button![simple_ev(Ev::Click, Msg::SortStarsToggle), "stars"],
         div![
-            attrs! { At::Class => "listing-container" },
-            model.data.iter().map(|r| r.listing_item())
-        ]
+            attrs! { At::Class => "buttons" },
+            button![simple_ev(Ev::Click, Msg::SortToggleStars), "stars"],
+            button![simple_ev(Ev::Click, Msg::SortToggleCommit), "last-commit"],
+        ],
+        div![attrs! { At::Class => "listing-container" }, model.listing()]
     ]
 }
 

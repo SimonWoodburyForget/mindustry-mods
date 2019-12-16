@@ -124,16 +124,26 @@ impl Mod {
     }
 
     /// Returns unicode stars.
-    fn stars_el(&self) -> Vec<Node<Msg>> {
-        let star = || attrs! { At::Class => "star" };
-
+    fn stars_el(&self) -> Node<Msg> {
+        let star_count: Node<Msg> = div![
+            attrs! { At::Class => "star-count" },
+            format!("{}", self.stars)
+        ];
         match usize::try_from(self.stars) {
-            Err(_) => vec![div!["err"]],
-            Ok(0) => vec![div![attrs! { At::Class => "zero-star"}, "☆"]],
-            Ok(x) => iter::repeat("★")
-                .take(self.stars as usize)
-                .map(|x| div![star(), x])
-                .collect(),
+            Err(_) => div![star_count, div!["err"]],
+            Ok(0) => div![
+                div![attrs! { At::Class => "stars-wrapper"}, "☆"],
+                star_count,
+            ],
+            Ok(x) => div![
+                div![
+                    attrs! { At::Class => "stars-wrapper" },
+                    iter::repeat("★")
+                        .take(self.stars as usize)
+                        .map(|x| div![attrs! { At::Class => "star" }, x])
+                ],
+                star_count,
+            ],
         }
     }
 
@@ -220,9 +230,9 @@ impl Mod {
                     self.archive_link(),
                     self.wiki_link(),
                 ],
-                div![attrs! { At::Class => "box stars" }, self.stars_el()],
                 div![attrs! { At::Class => "box assets" }, self.assets_list()],
-                div![attrs! { At::Class => "box contents" }, self.contents_list()]
+                div![attrs! { At::Class => "box contents" }, self.contents_list()],
+                div![attrs! { At::Class => "box stars" }, self.stars_el()],
             ]
         ]
     }

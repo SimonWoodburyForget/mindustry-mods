@@ -12,7 +12,7 @@ a {
 /* ================================================================ */
 /* Stars */
 .stars-wrapper {
-    border: 1px solid #333;
+    border-bottom: 1px solid #333;
 }
 
 .stars {
@@ -82,18 +82,66 @@ header h1 {
 }
 
 
-button {
+/* ================================================================ */
+/* Inputs */
+button, input {
     font-size: 1.3em;
-    border: 0;
-    background: #333;
+    text-decoration: none;
     color: #ffa;
+    border:0;
+
 }
 
+.buttons p {
+    color: #666;
+}
 
-.buttons {
+input, .buttons, button {
     background: #333;
+}
+
+input, .buttons {
+    border: 1px solid #666;
+}
+
+.inputs {
+    background: #444;
     border-bottom: 1px solid #ffa;
 }
+
+.inputs {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+
+.buttons {
+    display:flex;
+    flex-flow: row;
+}
+
+input {
+    width:50vw;
+}
+
+@media (width <= 760px) {
+    input {
+        width: 80vw;
+    }
+}
+
+@media (width <= 460px) {
+    input {
+        width: 100vw;
+    }
+
+    .buttons {
+        flex-flow: row wrap;
+    }
+}
+
+
+/* ================================================================ */
+
 
 .description {
     color: #f0f0f0;
@@ -128,7 +176,7 @@ button {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button
+a, .description, .assets, .contents, button, input, p
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description
@@ -251,9 +299,11 @@ img, .links a, p, .description
         /* grid-template-rows: 1fr 2fr;  */
         flex-flow: column;
     }
-
-
     
+    .outside {
+        padding:0.2em;
+    }
+
     /* .links { */
     /*     display:flex; */
     /*     flex-flow:row wrap; */

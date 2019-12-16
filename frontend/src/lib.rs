@@ -291,9 +291,14 @@ enum Sorting {
 
 #[derive(Debug, Clone)]
 enum Msg {
+    /// Fetched mod data.
     FetchData(fetch::ResponseDataResult<Vec<Mod>>),
-    SortToggleStars,
-    SortToggleCommit,
+
+    /// Set sorting.
+    SetSort(Sorting),
+
+    /// Filter by (words?) in string.
+    FilterWords(String),
 }
 
 fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
@@ -306,8 +311,9 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchData(data) => model.data = data.unwrap(),
 
-        Msg::SortToggleStars => model.sorting = Sorting::Stars,
-        Msg::SortToggleCommit => model.sorting = Sorting::Commit,
+        Msg::SetSort(sorting) => model.sorting = sorting,
+
+        Msg::FilterWords(words) => {}
     }
 }
 
@@ -317,9 +323,20 @@ fn view(model: &Model) -> impl View<Msg> {
         header![h1!["Mindustry Mods"]],
         link("StyleSheet".into(), "css/listing.css".into()),
         div![
-            attrs! { At::Class => "buttons" },
-            button![simple_ev(Ev::Click, Msg::SortToggleStars), "stars"],
-            button![simple_ev(Ev::Click, Msg::SortToggleCommit), "commit"],
+            attrs! { At::Class => "inputs" },
+            input![
+                attrs! { "placeholder" => "filter by words" },
+                input_ev(Ev::Input, Msg::FilterWords)
+            ],
+            div![
+                attrs! { At::Class => "buttons" },
+                p!["Order by: "],
+                button![simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)), "stars"],
+                button![
+                    simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),
+                    "commit"
+                ],
+            ]
         ],
         div![attrs! { At::Class => "listing-container" }, model.listing()]
     ]

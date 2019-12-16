@@ -78,9 +78,30 @@ struct Mod {
     contents: Vec<String>,
     assets: Vec<String>,
     version: Option<String>,
+    readme: String,
 }
 
 impl Mod {
+    /// Returns whether the mod should be rendered, given a query.
+    fn filtering(&self, query: &str) -> bool {
+        if query == "" {
+            true
+        } else {
+            query.split_whitespace().all(|q| {
+                [
+                    &self.author,
+                    &self.desc,
+                    &self.repo,
+                    &self.readme,
+                    &self.contents.join(" "),
+                    &self.assets.join(" "),
+                ]
+                .iter()
+                .any(|s| s.as_str().to_lowercase().contains(q))
+            })
+        }
+    }
+
     fn assets_list(&self) -> Node<Msg> {
         tiny_list(&self.assets)
     }
@@ -254,8 +275,12 @@ struct Model {
 
     /// A vector of mod data.
     data: Vec<Mod>,
+
+    /// Order of rendered content.
     sorting: Sorting,
-    // reversed: bool,
+
+    /// Filtering of rendered content.
+    filtering: Option<String>,
 }
 
 impl Model {
@@ -267,7 +292,14 @@ impl Model {
             Sorting::Stars => data.sort_by_key(|x| x.stars),
         }
         data.reverse();
-        data.iter().map(|r| r.listing_item()).collect()
+        data.iter()
+            .filter(|x| {
+                self.filtering
+                    .as_ref()
+                    .map_or(true, |f| x.filtering(f.as_str()))
+            })
+            .map(|x| x.listing_item())
+            .collect()
     }
 }
 
@@ -279,6 +311,7 @@ impl Default for Model {
             data_requested: 0,
             data: vec![],
             sorting: Sorting::Commit,
+            filtering: None,
         }
     }
 }
@@ -313,7 +346,7 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
 
         Msg::SetSort(sorting) => model.sorting = sorting,
 
-        Msg::FilterWords(words) => {}
+        Msg::FilterWords(words) => model.filtering = Some(words),
     }
 }
 

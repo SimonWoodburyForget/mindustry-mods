@@ -12,10 +12,14 @@ a {
 /* ================================================================ */
 /* Stars */
 .stars-wrapper {
-    border: 1px solid #ffa;
+    border: 1px solid #333;
 }
 
 .stars {
+    color: #606060;
+}
+
+.star {
     color: #ffa;
 }
 

@@ -17,5 +17,5 @@ description = '''
 Build wasm without to be published. Clean, build and
 remove .gitignore from `./pkg/` after build.
 '''
-script = [ "rm ./pkg/.gitignore" ]
-dependencies = [ "clean", "wasm-pack" ]
+script = [ "mv ./pkg ..", "rm ../pkg/.gitignore", "cp ./index.html .." ]
+dependencies = [ "wasm-pack" ]

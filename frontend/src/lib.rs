@@ -132,7 +132,7 @@ impl Mod {
         a![attrs! { At::Href => self.link }, "repository"]
     }
 
-    /// Link to the optional wiki.
+    /// Optional link to a wiki.
     fn wiki_link(&self) -> Node<Msg> {
         match &self.wiki {
             Some(link) => a![attrs! { At::Href => link }, "wiki"],
@@ -140,7 +140,9 @@ impl Mod {
         }
     }
 
+    /// The rendered `time age` string.
     fn last_commit(&self) -> Node<Msg> {
+        // TODO: generate here instead of from Python.
         div![
             attrs! { At::Class => "last-commit" },
             self.delta_ago,
@@ -206,20 +208,24 @@ impl Mod {
         }
     }
 
+    /// The rendered author.
     fn by_author(&self) -> Node<Msg> {
         div![attrs! { At::Class => "by-author" }, "by ", self.author]
     }
 
+    /// The rendered version number.
     fn v_number(&self) -> Node<Msg> {
         let pre = if self.version.is_some() { "v" } else { "" };
         let num = self.version.as_ref().map(|x| x.as_str()).unwrap_or("");
         div![attrs! { At::Class => "v-number" }, pre, num]
     }
 
+    /// The thing the user will probably click on.
     fn title_link(&self) -> Node<Msg> {
+        // TODO: render the local readme?
         div![
             attrs! { At::Class => "title-link" },
-            a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
+            a![attrs! { At::Href => self.link }, self.mod_name()]
         ]
     }
 
@@ -234,12 +240,6 @@ impl Mod {
         ]
     }
 
-    // fn version_render(&self) -> Node<Msg> {
-    //     if let "" = &self.version {
-    //         return span![style! { "display" => "none" }];
-    //     }
-    // }
-
     /// Returns the `Node<Msg>` for the listing.
     fn listing_item(&self) -> Node<Msg> {
         div![
@@ -248,7 +248,6 @@ impl Mod {
                 attrs! { At::Class => "wrapper" },
                 div![attrs! { At::Class => "box icon" }, self.icon()],
                 div![attrs! { At::Class => "box name" }, self.listing_title()],
-                // div![attrs! { At::Class => "box none" }],
                 div![attrs! { At::Class => "box desc" }, self.description()],
                 div![
                     attrs! { At::Class => "box links" },

@@ -79,6 +79,7 @@ header h1 {
     margin: 0;
     padding: 16px;
     border-bottom: 8px solid #ffa;
+    font-family: "Courier New", Courier, monospace;
 }
 
 
@@ -194,7 +195,7 @@ input {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button, input, p
+a, .description, .assets, .contents, button, input, p, header h1
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description

@@ -12,7 +12,7 @@ a {
 /* ================================================================ */
 /* Stars */
 .stars-wrapper {
-    border-bottom: 1px solid #333;
+    border-bottom: 3px solid #333;
 }
 
 .stars {
@@ -97,7 +97,19 @@ button, input {
 }
 
 input, .buttons, button {
+    border: 0;
+    border-left: 3px solid #333;
     background: #333;
+}
+
+button.active {
+    background: #444;
+    border-left: 3px solid #666;
+}
+
+button:active {
+    background: #442;
+    border-left: 3px solid #553;
 }
 
 input, .buttons {
@@ -146,7 +158,7 @@ input {
 .description {
     color: #f0f0f0;
     background: #333;
-    border-left: 2px solid #666;
+    border-left: 3px solid #666;
 }
 
 /* ================================================================ */
@@ -156,8 +168,13 @@ input {
 .v-number
 { padding-right: 0.5em; }
 
-.title-link {
+.title-link a {
     color: #ffa;
+    text-decoration: none;
+    border-left: 3px solid #666;
+    background: #333;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .by-author {
@@ -184,6 +201,17 @@ img, .links a, p, .description
 {
     padding: 4px;
     margin: 0;
+}
+
+/* ================================================================ */
+/* Links container. */
+
+.links {
+    font-size: 0.8em;
+}
+
+.title-link {
+    font-size: 1.1em;
 }
 
 /* ================================================================ */
@@ -232,6 +260,7 @@ img, .links a, p, .description
 .title-box {
     display: flex;
     flex-flow: row wrap;
+    align-items: baseline;
 }
 
 .links {
@@ -321,6 +350,10 @@ img, .links a, p, .description
     .box.links
     {
         flex-flow: row wrap;
+    }
+
+    .desc {
+        font-size: 85%;
     }
 
     /* .box.assets, */

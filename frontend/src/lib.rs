@@ -316,7 +316,7 @@ impl Default for Model {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 enum Sorting {
     Stars,
     Commit,
@@ -364,8 +364,13 @@ fn view(model: &Model) -> impl View<Msg> {
             div![
                 attrs! { At::Class => "buttons" },
                 p!["Order by "],
-                button![simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)), "stars"],
                 button![
+                    attrs! { At::Class => if (model.sorting == Sorting::Stars) {"active"} else { "" }},
+                    simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)),
+                    "stars"
+                ],
+                button![
+                    attrs! { At::Class => if (model.sorting == Sorting::Commit) {"active"} else { "" }},
                     simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),
                     "commit"
                 ],

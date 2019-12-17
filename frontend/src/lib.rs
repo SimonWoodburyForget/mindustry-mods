@@ -222,10 +222,9 @@ impl Mod {
 
     /// The thing the user will probably click on.
     fn title_link(&self) -> Node<Msg> {
-        // TODO: render the local readme?
         div![
             attrs! { At::Class => "title-link" },
-            a![attrs! { At::Href => self.link }, self.mod_name()]
+            a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
         ]
     }
 
@@ -352,9 +351,18 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
 fn view(model: &Model) -> impl View<Msg> {
     div![
         attrs! { At::Class => "app" },
-        header![h1!["Mindustry Mods"]],
-        link("StyleSheet".into(), "css/listing.css".into()),
+        header![
+            link("StyleSheet".into(), "css/header.css".into()),
+            h1!["Mindustry Mods"],
+            a![
+                attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
+                img![attrs! {
+                    At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png"
+                }]
+            ]
+        ],
         div![
+            link("StyleSheet".into(), "css/listing.css".into()),
             attrs! { At::Class => "inputs" },
             input![
                 attrs! { "placeholder" => "filter by words" },

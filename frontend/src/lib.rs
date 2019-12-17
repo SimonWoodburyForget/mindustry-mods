@@ -188,7 +188,7 @@ impl Mod {
                     attrs! { At::Href => self.endpoint_href() },
                     img![attrs! {
                         At::Src => i,
-                        At::OnError => "this.src='../images/nothing.png'"
+                        At::OnError => "this.src='images/nothing.png'"
                     }]
                 ]
             }

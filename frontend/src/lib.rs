@@ -179,7 +179,7 @@ impl Mod {
         match self.icon_raw.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
-                img![attrs! { At::Src => "../images/nothing.png" },]
+                img![attrs! { At::Src => "images/nothing.png" },]
             ],
 
             Some(p) => {

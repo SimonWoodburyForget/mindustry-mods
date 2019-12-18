@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *3 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★ ★  -- crystal edition
+  - *4 hours ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★ ★  -- crystal edition
 
-  - *3 hours ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod)  by sk7725 -- ★ ★  -- A mod that includes components from famous games. WIP!
+  - *4 hours ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod)  by sk7725 -- ★ ★  -- A mod that includes components from famous games. WIP!
 
   - *a day ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
@@ -18,7 +18,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ★  -- This mod is Material Plus Mod for Mindustry.
 
-  - *2 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
+  - *3 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
   - *3 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
@@ -52,7 +52,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *9 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
 
-  - *10 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
+  - *11 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
   - *11 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 

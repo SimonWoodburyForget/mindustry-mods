@@ -4,7 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *21 hours ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
+  - *16 minutes ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★ ★  -- crystal edition
+
+  - *22 hours ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
   - *a day ago* [xamionex/Opore-Mod](https://github.com/xamionex/Opore-Mod) ![](images/opore-mod-icon.png) by amione -- ★ ★ ★ ★ ★ ★ ★ ★ ★  -- Adds multiple vaults, drills, duos, spectres, walls, forges, extractors, conveyors, liquids, mech units, mech pads.
 
@@ -16,7 +18,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod)  by Ruben -- ☆ -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
-  - *2 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *3 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *3 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
@@ -26,13 +28,11 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *3 days ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ☆ -- ohno
 
-  - *3 days ago* [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore)  by jojoblack_fr -- ★ ★ ★  -- Mindustry mod
+  - *4 days ago* [jojoblackFr/more-ore](https://github.com/jojoblackFr/more-ore)  by jojoblack_fr -- ★ ★ ★  -- Mindustry mod
 
   - *5 days ago* [Slava0135/ReFactorium](https://github.com/Slava0135/ReFactorium) ![](images/refactorium-icon.png) by Slava0135 -- ★ ★ ★ ★ ★ ★  -- A new way forward in vanilla style.
 
   - *5 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
-
-  - *5 days ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★  -- crystal edition
 
   - *5 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
@@ -44,7 +44,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *7 days ago* [SolarPH/Mindustry-Crystal-Pack](https://github.com/SolarPH/Mindustry-Crystal-Pack) ![](images/mindustry-crystal-pack-icon.png) by SolarPH -- ☆ -- A mod that contains an OP yet super expensive weapon.
 
-  - *8 days ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
+  - *9 days ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
 
   - *9 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
 
@@ -62,7 +62,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *18 days ago* [TechFish3000/Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ★  -- The core of all Techfish Mods.
 
-  - *19 days ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *20 days ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
 
   - *23 days ago* [TechFish3000/Techfish-Orbital](https://github.com/TechFish3000/Techfish-Orbital)  by Techfish3000 -- ★  -- Orbital shenanigans. Mindustry Mod
 

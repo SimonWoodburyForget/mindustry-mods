@@ -74,7 +74,7 @@ def loads(path):
 
 def load_env():
     from jinja2 import Environment, FileSystemLoader, select_autoescape
-    return Environment(loader=FileSystemLoader('backend/templates/'),
+    return Environment(loader=FileSystemLoader('templates/'),
                        autoescape=select_autoescape(['html']))
 
 def try_hjson(text):
@@ -434,7 +434,7 @@ def update_icons(gh, mods):
         return mod['repo'], update_icon(gh, mod['repo'], icon)
     return dict(update_mod(gh, m) for m in mods)
 
-def build(token, path="backend/mindustry-mods.yaml", update=True):
+def build(token, path="data/mindustry-mods.yaml", update=True):
     '''Builds the README.md out of everything else here.
     '''
     mods = loads(path)

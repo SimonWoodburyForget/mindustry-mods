@@ -256,17 +256,19 @@ def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
     # TODO: implement better caching
     cache_path = Path(cache_path)
     if cache_path.exists():
+        print('[log] path exists')
         with open(cache_path) as f:
             repos = [ Repo.from_dict(d) for d in json.load(f) ]
             old = { r.name: r for r in repos }
     else:
+        print('[log] path not exist')
         repos = []
         old = {}
 
     if update:
-        repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods ]
+        repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods if x is not None]
         with open(cache_path, "w") as f:
-            json.dump([ r.into_dict() for r in repos ], f)
+            json.dump([ r.into_dict() for r in repos if r is not None ], f)
     return repos
 
 @dataclass
@@ -295,7 +297,6 @@ class ModMeta:
     version: str = ''
     '''Link to external official wiki.'''
     wiki: str = ''
-
 
     def icon_url(self):
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
@@ -380,7 +381,7 @@ class ModMeta:
         '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which
         will be used in the templates.
         '''
-        repos = { x.name: x for x in repos }
+        repos = { x.name: x for x in repos if x and x.name }
 
         return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
                  for m in mods if 'issue' not in m ]

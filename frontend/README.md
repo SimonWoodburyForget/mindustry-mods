@@ -28,3 +28,11 @@ This will run the `wasm-dist` task in `Makefile.toml`, which will run
 `wasm-pack` on top of a few commands, which will move the `./pkg` into
 the right place.
 
+# Testing
+
+The simplest way to test/run the app locally is to start a Python
+server, then open your browser at `localhost:9000`.
+
+```
+python3 -m http.server 9000
+```

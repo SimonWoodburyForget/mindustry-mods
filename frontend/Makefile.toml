@@ -1,16 +1,6 @@
-[tasks.wasm-clean]
-script = [ "rm ./pkg/wasm_experiment.* -f" ]
-# adds too much time for it's purpose.
-# dependencies = [ "clean" ]
-
 [tasks.wasm-pack]
 command = "wasm-pack"
 args = [ "build", "--target=web", "--release" ]
-
-[tasks.wasm-run]
-description = "Build wasm and open a Firefox tab."
-script = [ "firefox 0.0.0.0:8000" ]
-dependencies = [ "wasm-pack" ]
 
 [tasks.wasm-dist]
 description = '''

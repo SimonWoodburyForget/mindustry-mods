@@ -119,7 +119,7 @@ impl Mod {
     /// Endpoint link as a string.
     fn endpoint_href(&self) -> String {
         let path = self.repo.replace("/", "--");
-        format!("../m/{}.html", path).into()
+        format!("m/{}.html", path).into()
     }
 
     /// Endpoint link to the locally rendered README.md

@@ -1,1 +1,30 @@
-An experimental work-in progress Rust frontend replacement.
+# Setup
+
+Simply install Rust through [`rustup`](https://rustup.rs/), this tool
+can install Rust and it's build tool Cargo.
+
+Install the Rust apps through Cargo Install.
+
+```
+cargo install wasm-pack cargo-make
+```
+
+- [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
+  is used to build and package the Wasm file for the
+  browser (currently done without a bundler).
+
+- [`cargo-make`](https://github.com/sagiegurari/cargo-make) 
+  is what it sounds like, it's used to run the `Makefile.toml`.
+
+# Building
+
+To build the the Wasm file from `src/lib.rs` you just run
+
+```
+cargo make wasm-pack
+```
+
+This will run the `wasm-dist` task in `Makefile.toml`, which will run
+`wasm-pack` on top of a few commands, which will move the `./pkg` into
+the right place.
+

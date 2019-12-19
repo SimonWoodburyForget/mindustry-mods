@@ -18,7 +18,8 @@ cargo install wasm-pack cargo-make
 
 # Building
 
-To build the the Wasm file from `src/lib.rs` you just run
+To build the the Wasm file from `src/lib.rs` you just run the
+following from the current directory.
 
 ```
 cargo make wasm-pack

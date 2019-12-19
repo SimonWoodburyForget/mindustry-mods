@@ -47,6 +47,14 @@ import bs4
 import urllib
 from jinja2 import Markup
 
+def try_init_pretty_errors():
+    try:
+        import pretty_errors as ppe
+        ppe.configure(filename_display=ppe.FILENAME_EXTENDED)
+    except ImportError:
+        print("[error] pretty_errors module not found")
+try_init_pretty_errors()
+        
 CACHE_PATH = Path.home() / ".github-cache"
 
 def loads(path):

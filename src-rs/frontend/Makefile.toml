@@ -1,0 +1,18 @@
+[tasks.default]
+dependencies = [ "wasm-dist" ]
+
+[tasks.wasm-pack]
+command = "wasm-pack"
+args = [ "build", "--target=web", "--release" ]
+
+[tasks.wasm-dist]
+description = '''
+Build wasm without to be published. Clean, build and
+remove .gitignore from `./pkg/` after build.
+'''
+script = [
+  "rm -rf ../pkg",
+  "cp -r ./pkg ../../",
+  "rm -rf ../pkg/.gitignore",
+]
+dependencies = [ "wasm-pack" ]

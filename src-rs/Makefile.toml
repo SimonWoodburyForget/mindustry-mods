@@ -1,11 +1,5 @@
-[tasks.wasm-pack]
-command = "wasm-pack"
-args = [ "build", "--target=web", "--release" ]
+[env]
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
 
-[tasks.wasm-dist]
-description = '''
-Build wasm without to be published. Clean, build and
-remove .gitignore from `./pkg/` after build.
-'''
-script = [ "rm -r ../pkg", "mv ./pkg ..", "rm ../pkg/.gitignore", "cp ./index.html .." ]
-dependencies = [ "wasm-pack" ]
+[tasks.default]
+clear = true

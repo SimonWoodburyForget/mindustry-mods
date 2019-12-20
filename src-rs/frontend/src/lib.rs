@@ -303,7 +303,7 @@ enum Msg {
 }
 
 fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
-    Request::new("data/modmeta.1.0.json")
+    Request::new(format!("data/modmeta.{}.json", MOD_VERSION))
         .method(Method::Get)
         .fetch_json_data(Msg::FetchData)
 }

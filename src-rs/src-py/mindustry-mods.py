@@ -47,13 +47,13 @@ import bs4
 import urllib
 from jinja2 import Markup
 
-def try_init_pretty_errors():
-    try:
-        import pretty_errors as ppe
-        ppe.configure(filename_display=ppe.FILENAME_EXTENDED)
-    except ImportError:
-        print("[error] pretty_errors module not found")
-try_init_pretty_errors()
+# def try_init_pretty_errors():
+#     try:
+#         import pretty_errors as ppe
+#         ppe.configure(filename_display=ppe.FILENAME_EXTENDED)
+#     except ImportError:
+#         print("[error] pretty_errors module not found")
+# try_init_pretty_errors()
         
 CACHE_PATH = Path.home() / ".github-cache"
 
@@ -350,8 +350,8 @@ class ModMeta:
     def archive_link(self):
         return f"https://github.com/{self.repo}/archive/master.zip"
 
-    def endpoint(self):
-        return Path('m') / (self.repo.replace('/', '--') + ".html")
+    def endpoint(self, path=Path("./")):
+        return path / Path('m') / (self.repo.replace('/', '--') + ".html")
 
     # def keywords(self):
     #     '''Keywords used to filter mods.'''
@@ -403,13 +403,13 @@ class ModMeta:
                  # "keywords": self.keywords(),
                  "delta_ago": self.delta_ago() }
 
-def update_icon(gh, repo_name, image_path=None, force=False):
+def update_icon(path, gh, repo_name, image_path=None, force=False):
     '''Downloads an image from the target repository, and scales
     it down to 16x16, and saves it. Doesn't do anything if the
     image exists.
 
-    Returns the path to the image.
-    '''
+    Returns the path to the image for frontend. 
+    ''' # TODO: split this into two functions
     if image_path is None or force:
         return None
 
@@ -417,7 +417,7 @@ def update_icon(gh, repo_name, image_path=None, force=False):
     icon_name = f"{icon_name}-icon"
     icon_path = f"images/{icon_name}.png"
 
-    if Path(icon_path).exists():
+    if (path / icon_path).exists():
         return icon_path
 
     try:
@@ -434,22 +434,34 @@ def update_icon(gh, repo_name, image_path=None, force=False):
 
     maxsize = (16, 16)
     image.thumbnail(maxsize, Image.ANTIALIAS)
-    image.save(icon_path, "PNG")
+    image.save(path / icon_path, "PNG")
     return icon_path
 
-def update_icons(gh, mods):
+def update_icons(path, gh, mods):
     def update_mod(gh, mod):
         icon = mod['icon'] if 'icon' in mod else None
-        return mod['repo'], update_icon(gh, mod['repo'], icon)
+        return mod['repo'], update_icon(path, gh, mod['repo'], icon)
     return dict(update_mod(gh, m) for m in mods)
 
-def build(token, path="data/mindustry-mods.yaml", update=True):
+def update_data(path, jdata):
+    # backup data before copying
+    # with open('data/modmeta.1.0.json') as a, open('data/modmeta.1.0.json.auto-bak', 'w') as b:
+    #     print(a.read(), file=b)
+
+    # update data to new data
+    with open(path/"data/modmeta.1.0.json", 'w') as f:
+        print(jdata, file=f)
+
+def build(token, path, update=True):
     '''Builds the README.md out of everything else here.
     '''
-    mods = loads(path)
+    path = Path(path)
+    yaml_path = path/"data/mindustry-mods.yaml"
+    
+    mods = loads(yaml_path)
     gh = github.Github(token)
     repos = repos_cached(gh, [ m['repo'] for m in mods], update=update)
-    icons = update_icons(gh, mods)
+    icons = update_icons(path, gh, mods)
 
     mods = ModMeta.builds(mods, repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
@@ -457,42 +469,34 @@ def build(token, path="data/mindustry-mods.yaml", update=True):
     jdata = [ mm.pack_data() for mm in mods ]
     jdata = json.dumps(jdata)
 
-    with open("data/modmeta.1.0.json", 'w') as f:
-        print(jdata, file=f)
+    update_data(path, jdata)
 
     env = load_env()
-    # with open("index.html", 'w') as f:
-    #     # dumping JSON data straight into JS as b64 string to prevent XSS
-        
-    #     bdata = b64encode(jdata.encode("utf8")).decode('utf8')
-        
-    #     data = env.get_template('listing.html').render(mods=mods, data=bdata, style="src/style.css")
-    #     print(data, file=f)
-
-    with open("README.md", 'w') as f:
+    with open(path/"README.md", 'w') as f:
         data = env.get_template('listing.md').render(mods=mods, style="css/readme.css")
         print(data, file=f)
-
-    # # with open("index.html", 'w') as f:
-    # #     data = env.get_template('listing.html').render(mods=mods, style="src/style.css")
-    # #     print(data, file=f)
 
     template = env.get_template('preview.html')
     for mod in mods:
         data = template.render(mod=mod, style="../css/readme.css")
-        with open(mod.endpoint(), 'w') as f:
+        with open(mod.endpoint(path), 'w') as f:
             print(data, file=f)
 
-def main(push=True, update=True):
-    with open(Path.home() / ".github-token") as f:
-        build(f.read(), update=update)
+def main(path, push=True, update=True):
+    path = Path(path)
+
+    with open(Path.home()/".github-token") as f:
+        build(f.read(), path, update=update)
         if not push: return
+
     print("--- END BUILD ---")
     print()
     print()
-    subprocess.run(['git', 'add', 'README.md', 'index.html', 'images/*', 'm/*', 'data/*'])
+
+    subprocess.run(['git', 'add', 'README.md', path/'data/modmeta*', path/'images/*', path/'m/*'])
     subprocess.run(['git', 'commit', '-m', 'autogenerated', '--author=bot'])
     subprocess.run(['git', 'push', 'origin', 'master'])
+
     print("--- END UPLOAD ---")
     print()
     print()
@@ -503,13 +507,18 @@ def main(push=True, update=True):
 @click.option('-h', '--hourly', is_flag=True, help="Keep running hourly.")
 @click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
 @click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
-def cli(instant, push, hourly, clean, fast):
+@click.option('-d', '--path', help="Path to root of directory.")
+def cli(instant, push, hourly, clean, fast, path):
+    if path is None:
+        print("--path is missing")
+        return
+    
     update = not fast
 
     if clean:
         subprocess.run(['rm', CACHE_PATH])
 
-    main_run = lambda: main(push, update)
+    main_run = lambda: main(path, push, update)
 
     if instant:
         main_run()

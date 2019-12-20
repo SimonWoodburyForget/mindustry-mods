@@ -315,7 +315,6 @@ fn view(model: &Model) -> impl View<Msg> {
     div![
         attrs! { At::Class => "app" },
         header![
-            link("StyleSheet".into(), "css/header.css".into()),
             h1!["Mindustry Mods"],
             a![
                 attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
@@ -325,7 +324,6 @@ fn view(model: &Model) -> impl View<Msg> {
             ]
         ],
         div![
-            link("StyleSheet".into(), "css/listing.css".into()),
             attrs! { At::Class => "inputs" },
             input![
                 attrs! { "placeholder" => "filter by words" },

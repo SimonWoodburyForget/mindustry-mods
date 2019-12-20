@@ -296,6 +296,7 @@ class ModMeta:
     stars: int
     author: str
     date: datetime
+    '''UTC time stamp epoch in seconds.'''
     date_tt: float
     repo: str
     contents: List[str]

@@ -512,6 +512,8 @@ def cli(instant, push, hourly, clean, fast, path):
     if path is None:
         print("--path is missing")
         return
+    else:
+        print(path)
     
     update = not fast
 

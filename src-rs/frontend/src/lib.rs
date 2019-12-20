@@ -1,6 +1,6 @@
 #![allow(clippy::non_ascii_literal)]
 
-use mindustry_mods_core::Mod;
+use mindustry_mods_core::{Mod, MOD_VERSION};
 
 use std::convert::TryFrom;
 use std::iter;
@@ -8,36 +8,36 @@ use std::iter;
 // use itertools::IterTools;
 
 use seed::{prelude::*, *};
-use wasm_bindgen::prelude::*;
+// use wasm_bindgen::prelude::*;
 
 use futures::Future;
 use seed::{fetch, Method, Request};
 use serde::Deserialize;
 
-use hifitime::Epoch;
-use humantime;
-use instant::Instant;
+// use hifitime::Epoch;
+// use humantime;
+// use instant::Instant;
 
 use wee_alloc;
 
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-mod date {
-    use js_sys::Date;
-    use std::time::{Duration, SystemTime, UNIX_EPOCH};
+// mod date {
+//     use js_sys::Date;
+//     use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-    pub fn from_tt(x: f64) -> SystemTime {
-        let secs = (x as u64) / 1_000;
-        let nanos = ((x as u32) % 1_000) * 1_000_000;
-        UNIX_EPOCH + Duration::new(secs, nanos)
-    }
+//     pub fn from_tt(x: f64) -> SystemTime {
+//         let secs = (x as u64) / 1_000;
+//         let nanos = ((x as u32) % 1_000) * 1_000_000;
+//         UNIX_EPOCH + Duration::new(secs, nanos)
+//     }
 
-    pub fn now() -> SystemTime {
-        let x = Date::now();
-        from_tt(x)
-    }
-}
+//     pub fn now() -> SystemTime {
+//         let x = Date::now();
+//         from_tt(x)
+//     }
+// }
 
 fn link(rel: String, href: String) -> Node<Msg> {
     custom![
@@ -57,7 +57,6 @@ fn tiny_list(v: &Vec<String>) -> Node<Msg> {
     }
 }
 
-static HOME: &'static str = "/mindustry-mods";
 static RGUC: &'static str = "https://raw.githubusercontent.com";
 
 #[derive(Deserialize, Debug, Clone)]
@@ -104,10 +103,10 @@ impl ListingItem {
         format!("m/{}.html", path).into()
     }
 
-    /// Endpoint link to the locally rendered README.md
-    fn endpoint_link(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.endpoint_href() }, self.0.name]
-    }
+    // /// Endpoint link to the locally rendered README.md
+    // fn endpoint_link(&self) -> Node<Msg> {
+    //     a![attrs! { At::Href => self.endpoint_href() }, self.0.name]
+    // }
 
     /// Link to the mods repository.
     fn repo_link(&self) -> Node<Msg> {
@@ -144,11 +143,11 @@ impl ListingItem {
                 div![attrs! { At::Class => "stars-wrapper"}, "☆"],
                 star_count,
             ],
-            Ok(x) => div![
+            Ok(n) => div![
                 div![
                     attrs! { At::Class => "stars-wrapper" },
                     iter::repeat("★")
-                        .take(self.0.stars as usize)
+                        .take(n)
                         .map(|x| div![attrs! { At::Class => "star" }, x])
                 ],
                 star_count,
@@ -245,14 +244,6 @@ impl ListingItem {
 }
 
 struct Model {
-    count: i32,
-
-    /// instant the app started
-    dt: Instant,
-
-    /// number of requests submitted for date updates
-    data_requested: u32,
-
     /// A vector of mod data.
     data: Vec<ListingItem>,
 
@@ -286,9 +277,6 @@ impl Model {
 impl Default for Model {
     fn default() -> Self {
         Self {
-            count: 0,
-            dt: Instant::now(),
-            data_requested: 0,
             data: vec![],
             sorting: Sorting::Commit,
             filtering: None,
@@ -320,7 +308,7 @@ fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
         .fetch_json_data(Msg::FetchData)
 }
 
-fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
+fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchData(data) => model.data = data.unwrap(),
 
@@ -354,12 +342,12 @@ fn view(model: &Model) -> impl View<Msg> {
                 attrs! { At::Class => "buttons" },
                 p!["Order by "],
                 button![
-                    attrs! { At::Class => if (model.sorting == Sorting::Stars) {"active"} else { "" }},
+                    attrs! { At::Class => if model.sorting == Sorting::Stars {"active"} else { "" }},
                     simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)),
                     "stars"
                 ],
                 button![
-                    attrs! { At::Class => if (model.sorting == Sorting::Commit) {"active"} else { "" }},
+                    attrs! { At::Class => if model.sorting == Sorting::Commit {"active"} else { "" }},
                     simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),
                     "commit"
                 ],

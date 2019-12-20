@@ -444,13 +444,33 @@ def update_icons(path, gh, mods):
     return dict(update_mod(gh, m) for m in mods)
 
 def update_data(path, jdata):
-    # backup data before copying
-    # with open('data/modmeta.1.0.json') as a, open('data/modmeta.1.0.json.auto-bak', 'w') as b:
-    #     print(a.read(), file=b)
+    def copy(a, b):
+        with open(path/a) as a, open(path/b, 'w') as b:
+            print(a.read(), file=b)
 
-    # update data to new data
+    # backup data before copying
+    copy('data/modmeta.1.0.json',
+         'data/modmeta.1.0.json.auto-bak')
+            
+    # update modmeta to with new data
     with open(path/"data/modmeta.1.0.json", 'w') as f:
         print(jdata, file=f)
+
+    # run tests
+    # revert on error
+    try:
+        subprocess.check_output(['cargo', 'test'])
+    except subprocess.CalledProcessError as e:
+        print()
+        print(e)
+        print()
+        print("[error] cargo test failed...")
+
+        try:
+            copy('data/modmeta.1.0.json.auto-bak',
+                 'data/modmeta.1.0.json')
+        except FileNotFoundError:
+            pass
 
 def build(token, path, update=True):
     '''Builds the README.md out of everything else here.
@@ -512,9 +532,7 @@ def cli(instant, push, hourly, clean, fast, path):
     if path is None:
         print("--path is missing")
         return
-    else:
-        print(path)
-    
+
     update = not fast
 
     if clean:

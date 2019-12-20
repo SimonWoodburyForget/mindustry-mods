@@ -18,3 +18,4 @@ pom.xml.asc
 mindustry-mods
 /js/out
 .rebel_readline_history
+*.auto-bak

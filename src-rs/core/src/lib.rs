@@ -23,14 +23,23 @@ pub struct Mod {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::include_str;
+    use std::fs::File;
+    use std::io::BufReader;
 
-    const DATA: &str = include_str!("../../../data/modmeta.1.0.json");
+    fn data_path() -> &'static str {
+        Box::leak(format!("../../data/modmeta.{}.json", MOD_VERSION).into_boxed_str())
+    }
+
+    fn data() -> Result<Vec<Mod>, serde_json::Error> {
+        let file = File::open(data_path()).unwrap();
+        let reader = BufReader::new(file);
+        serde_json::from_reader(reader)
+    }
 
     /// Tests data integrity by simply parsing it, which should
     /// panic if data can't be parsed.
     #[test]
     fn integrity() {
-        let data: Vec<Mod> = serde_json::from_str(DATA).unwrap();
+        assert!(!data().unwrap().is_empty());
     }
 }

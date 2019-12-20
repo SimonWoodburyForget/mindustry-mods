@@ -5,18 +5,11 @@ use mindustry_mods_core::{Mod, MOD_VERSION};
 use std::convert::TryFrom;
 use std::iter;
 
-// use itertools::IterTools;
-
 use seed::{prelude::*, *};
-// use wasm_bindgen::prelude::*;
 
 use futures::Future;
 use seed::{fetch, Method, Request};
 use serde::Deserialize;
-
-// use hifitime::Epoch;
-// use humantime;
-// use instant::Instant;
 
 use wee_alloc;
 

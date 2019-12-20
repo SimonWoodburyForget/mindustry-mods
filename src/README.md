@@ -15,7 +15,9 @@ python3.8 scripts/mindustry-mods.py -iphd ../
 ```
 
 This would executing the script hourly. The `--help` argument can be
-used to get more information.
+used to get more information. This assumes you're running the script
+from the current directory, and `-d` is just the path back to the root
+directory.
 
 # Rust Frontend
 

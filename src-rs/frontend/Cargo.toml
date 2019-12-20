@@ -1,11 +1,9 @@
 [package]
-name = "wasm-experiment"
+name = "mindustry-mods-frontend"
 version = "0.1.2"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 crate-type = ["cdylib"]
@@ -13,7 +11,7 @@ crate-type = ["cdylib"]
 [dependencies]
 wasm-bindgen = "0.2.50"
 seed = "0.5"
-
+serde = "1.0"
 futures = "0.1.26"
 wee_alloc = "0.4.5"
 # stdweb = "0.4.20"
@@ -23,8 +21,5 @@ js-sys = "0.3.4"
 humantime = "1"
 itertools = "0.8.2"
 
-# [dependencies.web-sys]
-# version = "0.3.4"
-# features = [
-#   "Node"
-# ]
+[dependencies.mindustry-mods-core]
+path = "../core"

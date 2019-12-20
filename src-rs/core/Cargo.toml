@@ -1,9 +1,8 @@
 [package]
-name = "mindustry-mods-backend"
+name = "mindustry-mods-core"
 version = "0.1.0"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
-license = "GNUv3"
 
 [dependencies]
 serde = "1.0"

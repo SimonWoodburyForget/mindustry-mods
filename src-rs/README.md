@@ -22,10 +22,10 @@ To build the the Wasm file from `src/lib.rs` you just run the
 following from the current directory.
 
 ```
-cargo make wasm-pack
+cargo make
 ```
 
-This will run the `wasm-dist` task in `Makefile.toml`, which will run
+This will run the `wasm-dist` task in `frontend/Makefile.toml`, which will run
 `wasm-pack` on top of a few commands, which will move the `./pkg` into
 the right place.
 

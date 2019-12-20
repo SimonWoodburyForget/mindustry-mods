@@ -11,8 +11,8 @@ Build wasm without to be published. Clean, build and
 remove .gitignore from `./pkg/` after build.
 '''
 script = [
-  "rm -rf ../pkg",
-  "cp -r ./pkg ../../",
-  "rm -rf ../pkg/.gitignore",
+  "rm -rf ../../pkg",
+  "cp -rf ./pkg ../../",
+  "rm -rf ../../pkg/.gitignore",
 ]
 dependencies = [ "wasm-pack" ]

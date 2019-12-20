@@ -1,16 +1,16 @@
 {
-  "name": "wasm-experiment",
+  "name": "mindustry-mods-frontend",
   "collaborators": [
     "Simon <simonwoodburyforget@gmail.com>"
   ],
   "version": "0.1.2",
   "license": "GNUv3",
   "files": [
-    "wasm_experiment_bg.wasm",
-    "wasm_experiment.js",
-    "wasm_experiment.d.ts"
+    "mindustry_mods_frontend_bg.wasm",
+    "mindustry_mods_frontend.js",
+    "mindustry_mods_frontend.d.ts"
   ],
-  "module": "wasm_experiment.js",
-  "types": "wasm_experiment.d.ts",
+  "module": "mindustry_mods_frontend.js",
+  "types": "mindustry_mods_frontend.d.ts",
   "sideEffects": "false"
 }

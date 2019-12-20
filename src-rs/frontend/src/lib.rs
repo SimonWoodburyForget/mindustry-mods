@@ -1,12 +1,14 @@
 #![allow(clippy::non_ascii_literal)]
 
+use mindustry_mods_core::Mod;
+
 use std::convert::TryFrom;
 use std::iter;
 
 // use itertools::IterTools;
 
 use seed::{prelude::*, *};
-// use wasm_bindgen::prelude::*;
+use wasm_bindgen::prelude::*;
 
 use futures::Future;
 use seed::{fetch, Method, Request};
@@ -16,8 +18,10 @@ use hifitime::Epoch;
 use humantime;
 use instant::Instant;
 
-// #[global_allocator]
-// static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+use wee_alloc;
+
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 mod date {
     use js_sys::Date;
@@ -57,24 +61,9 @@ static HOME: &'static str = "/mindustry-mods";
 static RGUC: &'static str = "https://raw.githubusercontent.com";
 
 #[derive(Deserialize, Debug, Clone)]
-struct Mod {
-    author: String,
-    name: String,
-    stars: u32,
-    date_tt: f64,
-    desc: String,
-    link: String,
-    repo: String,
-    wiki: Option<String>,
-    delta_ago: String,
-    icon_raw: Option<String>,
-    contents: Vec<String>,
-    assets: Vec<String>,
-    version: Option<String>,
-    readme: String,
-}
+struct ListingItem(Mod);
 
-impl Mod {
+impl ListingItem {
     /// Returns whether the mod should be rendered, given a query.
     fn filtering(&self, query: &str) -> bool {
         if query == "" {
@@ -82,12 +71,12 @@ impl Mod {
         } else {
             query.split_whitespace().all(|q| {
                 [
-                    &self.author,
-                    &self.desc,
-                    &self.repo,
-                    &self.readme,
-                    &self.contents.join(" "),
-                    &self.assets.join(" "),
+                    &self.0.author,
+                    &self.0.desc,
+                    &self.0.repo,
+                    &self.0.readme,
+                    &self.0.contents.join(" "),
+                    &self.0.assets.join(" "),
                 ]
                 .iter()
                 .any(|s| s.as_str().to_lowercase().contains(q))
@@ -96,38 +85,38 @@ impl Mod {
     }
 
     fn assets_list(&self) -> Node<Msg> {
-        tiny_list(&self.assets)
+        tiny_list(&self.0.assets)
     }
 
     fn contents_list(&self) -> Node<Msg> {
-        tiny_list(&self.contents)
+        tiny_list(&self.0.contents)
     }
 
     /// Link to the mod's archive.
     fn archive_link(&self) -> Node<Msg> {
-        let l = format!("https://github.com/{}/archive/master.zip", self.repo);
+        let l = format!("https://github.com/{}/archive/master.zip", self.0.repo);
         a![attrs! { At::Href => l }, "zip"]
     }
 
     /// Endpoint link as a string.
     fn endpoint_href(&self) -> String {
-        let path = self.repo.replace("/", "--");
+        let path = self.0.repo.replace("/", "--");
         format!("m/{}.html", path).into()
     }
 
     /// Endpoint link to the locally rendered README.md
     fn endpoint_link(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.endpoint_href() }, self.name]
+        a![attrs! { At::Href => self.endpoint_href() }, self.0.name]
     }
 
     /// Link to the mods repository.
     fn repo_link(&self) -> Node<Msg> {
-        a![attrs! { At::Href => self.link }, "repository"]
+        a![attrs! { At::Href => self.0.link }, "repository"]
     }
 
     /// Optional link to a wiki.
     fn wiki_link(&self) -> Node<Msg> {
-        match &self.wiki {
+        match &self.0.wiki {
             Some(link) => a![attrs! { At::Href => link }, "wiki"],
             None => a![style! { "display" => "none" }],
         }
@@ -138,7 +127,7 @@ impl Mod {
         // TODO: generate here instead of from Python.
         div![
             attrs! { At::Class => "last-commit" },
-            self.delta_ago,
+            self.0.delta_ago,
             " ago"
         ]
     }
@@ -147,9 +136,9 @@ impl Mod {
     fn stars_el(&self) -> Node<Msg> {
         let star_count: Node<Msg> = div![
             attrs! { At::Class => "star-count" },
-            format!("{}", self.stars)
+            format!("{}", self.0.stars)
         ];
-        match usize::try_from(self.stars) {
+        match usize::try_from(self.0.stars) {
             Err(_) => div![star_count, div!["err"]],
             Ok(0) => div![
                 div![attrs! { At::Class => "stars-wrapper"}, "☆"],
@@ -159,7 +148,7 @@ impl Mod {
                 div![
                     attrs! { At::Class => "stars-wrapper" },
                     iter::repeat("★")
-                        .take(self.stars as usize)
+                        .take(self.0.stars as usize)
                         .map(|x| div![attrs! { At::Class => "star" }, x])
                 ],
                 star_count,
@@ -169,14 +158,14 @@ impl Mod {
 
     /// Returns an icon link node.
     fn icon(&self) -> Node<Msg> {
-        match self.icon_raw.as_ref().map(String::as_str) {
+        match self.0.icon_raw.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
                 img![attrs! { At::Src => "images/nothing.png" },]
             ],
 
             Some(p) => {
-                let i = format!("{}/{}/master/{}", RGUC, self.repo, p);
+                let i = format!("{}/{}/master/{}", RGUC, self.0.repo, p);
                 a![
                     attrs! { At::Href => self.endpoint_href() },
                     img![attrs! {
@@ -190,26 +179,26 @@ impl Mod {
 
     /// Description paragraph of the mode for the listing.
     fn description(&self) -> Node<Msg> {
-        p![attrs! { At::Class => "description" }, self.desc]
+        p![attrs! { At::Class => "description" }, self.0.desc]
     }
 
     /// Handles path names, which occur when mod.json doesn't exist.
     fn mod_name(&self) -> String {
-        match self.name.rfind("/") {
-            Some(x) => self.name.split_at(x + 1).1.into(),
-            None => self.name.clone(),
+        match self.0.name.rfind("/") {
+            Some(x) => self.0.name.split_at(x + 1).1.into(),
+            None => self.0.name.clone(),
         }
     }
 
     /// The rendered author.
     fn by_author(&self) -> Node<Msg> {
-        div![attrs! { At::Class => "by-author" }, "by ", self.author]
+        div![attrs! { At::Class => "by-author" }, "by ", self.0.author]
     }
 
     /// The rendered version number.
     fn v_number(&self) -> Node<Msg> {
-        let pre = if self.version.is_some() { "v" } else { "" };
-        let num = self.version.as_ref().map(|x| x.as_str()).unwrap_or("");
+        let pre = if self.0.version.is_some() { "v" } else { "" };
+        let num = self.0.version.as_ref().map(|x| x.as_str()).unwrap_or("");
         div![attrs! { At::Class => "v-number" }, pre, num]
     }
 
@@ -265,7 +254,7 @@ struct Model {
     data_requested: u32,
 
     /// A vector of mod data.
-    data: Vec<Mod>,
+    data: Vec<ListingItem>,
 
     /// Order of rendered content.
     sorting: Sorting,
@@ -279,8 +268,8 @@ impl Model {
     fn listing(&self) -> Vec<Node<Msg>> {
         let mut data = self.data.clone();
         match self.sorting {
-            Sorting::Commit => data.sort_by_key(|x| x.date_tt as u32),
-            Sorting::Stars => data.sort_by_key(|x| x.stars),
+            Sorting::Commit => data.sort_by_key(|x| x.0.date_tt as u32),
+            Sorting::Stars => data.sort_by_key(|x| x.0.stars),
         }
         data.reverse();
         data.iter()
@@ -316,7 +305,7 @@ enum Sorting {
 #[derive(Debug, Clone)]
 enum Msg {
     /// Fetched mod data.
-    FetchData(fetch::ResponseDataResult<Vec<Mod>>),
+    FetchData(fetch::ResponseDataResult<Vec<ListingItem>>),
 
     /// Set sorting.
     SetSort(Sorting),

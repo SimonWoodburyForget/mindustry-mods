@@ -62,6 +62,7 @@ author: jojoblack_fr
 name: more-ore
 about: Mindustry mod
 repo: jojoblackFr/more-ore
+issue: repo empty
 ---
 author: Retrothopter
 name: More-Grass
@@ -236,6 +237,7 @@ repo: hfok/stopBuild
 repo: ZkyLB/Beneath-The-Dark-Life
 ---
 repo: pyro000/Mindustry-BetterBuildsMod
+icon: sprites/items/neon.png
 ---
 repo: OverChock/Playable-reaper-mod
 icon: sprites/mechs/reaper.png
@@ -259,8 +261,14 @@ repo: DeltaNedas/NUL
 icon: sprites/blocks/ohno-conveyor-0-0.png
 ---
 repo: sk7725/Mindustry-Gamers-Mod
+icon: sprites/items/pixellium.png
 ---
 repo: OverChock/Playable-bosses-mod
-# ---
-# repo: DeltaNedas/time-master
+icon: sprites/mechs/reaper.png
+---
+repo: DeltaNedas/vbucks
+icon: sprites/items/vbuck.png
+---
+repo: DeltaNedas/mobile-ui
 ...
+

@@ -55,10 +55,12 @@ the right place.
 ## Testing
 
 The simplest way to test/run the app locally is to start a Python
-server, then open your browser at `localhost:9000`.
+server, then open your browser at `localhost:9000`. Using the latest
+version of Python will ensure the correct wasm mimetype exists, but it
+doesn't really matter otherwise.
 
 ```
-python3 -m http.server 9000
+python3.8 -m http.server 9000
 ```
 
 Faster is just running unit tests.

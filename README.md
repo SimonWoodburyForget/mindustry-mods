@@ -44,7 +44,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *9 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
 
-  - *9 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
+  - *9 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
   - *10 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ☆ -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 
@@ -56,7 +56,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *12 days ago* [SolarPH/Mindustry-Crystal-Pack](https://github.com/SolarPH/Mindustry-Crystal-Pack) ![](images/mindustry-crystal-pack-icon.png) by SolarPH -- ☆ -- A mod that contains an OP yet super expensive weapon.
 
-  - *13 days ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ☆ -- Additional Blocks and items for Vanilla Mindustry
+  - *13 days ago* [SolarPH/Mindustry-Vanilla-Converters](https://github.com/SolarPH/Mindustry-Vanilla-Converters) ![](images/mindustry-vanilla-converters-icon.png) by SolarPH -- ★  -- Additional Blocks and items for Vanilla Mindustry
 
   - *13 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
 

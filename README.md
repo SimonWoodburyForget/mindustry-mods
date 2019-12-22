@@ -8,7 +8,9 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *2 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ☆ -- V-Bucks mod ported to Mindustry.
+  - *3 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ☆ -- V-Bucks mod ported to Mindustry.
+
+  - *3 hours ago* [DeltaNedas/dev-mode](https://github.com/DeltaNedas/dev-mode)  by DeltaNedas -- ☆ -- Lets you type into the console.
 
   - *5 hours ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod) ![](images/mindustry-gamers-mod-icon.png) by sk7725 -- ★ ★  -- A mod that includes components from famous games. Korean translation by sk7725. WIP!
 
@@ -44,7 +46,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *9 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
-  - *9 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ☆ -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
+  - *10 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ☆ -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 
   - *10 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 

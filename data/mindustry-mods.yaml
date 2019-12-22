@@ -270,5 +270,7 @@ repo: DeltaNedas/vbucks
 icon: sprites/items/vbuck.png
 ---
 repo: DeltaNedas/mobile-ui
+---
+repo: DeltaNedas/dev-mode
 ...
 

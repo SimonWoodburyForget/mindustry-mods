@@ -10,7 +10,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *15 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *15 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ☆ -- V-Bucks mod ported to Mindustry.
+  - *16 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ☆ -- V-Bucks mod ported to Mindustry.
 
   - *16 hours ago* [DeltaNedas/dev-mode](https://github.com/DeltaNedas/dev-mode)  by DeltaNedas -- ☆ -- Lets you type into the console.
 

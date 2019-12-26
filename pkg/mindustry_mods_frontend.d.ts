@@ -1,5 +1,6 @@
 /* tslint:disable */
 /**
+* Entry point of app.
 */
 export function render(): void;
 

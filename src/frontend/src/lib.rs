@@ -1,4 +1,6 @@
+//! Frontend application of for a Mindustry-Mods listing.
 #![allow(clippy::non_ascii_literal)]
+#![warn(missing_docs)]
 
 use mindustry_mods_core::{Mod, MOD_VERSION};
 
@@ -32,13 +34,6 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 //         from_tt(x)
 //     }
 // }
-
-fn link(rel: String, href: String) -> Node<Msg> {
-    custom![
-        Tag::Custom("link".into()),
-        attrs! { At::Href => href, At::Rel => rel }
-    ]
-}
 
 fn tiny_list(v: &Vec<String>) -> Node<Msg> {
     if !v.is_empty() {
@@ -349,11 +344,13 @@ fn view(model: &Model) -> impl View<Msg> {
     ]
 }
 
+/// Initialize data.
 fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
     orders.perform_cmd(fetch_data());
     AfterMount::default()
 }
 
+/// Entry point of app.
 #[wasm_bindgen(start)]
 pub fn render() {
     seed::App::builder(update, view)

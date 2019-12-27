@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *58 minutes ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
 
-  - *2 days ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
+  - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *2 days ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ☆ -- V-Bucks mod ported to Mindustry.
 
@@ -44,7 +44,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *13 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
 
-  - *13 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
+  - *14 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
   - *14 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ☆ -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 

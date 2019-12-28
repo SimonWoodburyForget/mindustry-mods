@@ -4,7 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *10 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
+  - *11 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
 
   - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
 
@@ -16,7 +16,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *3 days ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ★  -- ohno
 
-  - *3 days ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod) ![](images/mindustry-gamers-mod-icon.png) by sk7725 -- ★ ★  -- A mod that includes components from famous games. Korean translation by sk7725. WIP!
+  - *4 days ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod) ![](images/mindustry-gamers-mod-icon.png) by sk7725 -- ★ ★  -- A mod that includes components from famous games. Korean translation by sk7725. WIP!
 
   - *4 days ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★ ★ ★ ★  -- PToE: Periodic Table of elements
 
@@ -66,7 +66,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *20 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *20 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *21 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 
   - *21 days ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
 

@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *2 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
+  - *3 hours ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
 
-  - *4 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *5 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *7 hours ago* [jojoblackFr/futuristic-industrie](https://github.com/jojoblackFr/futuristic-industrie)  by Mega777, Jojoblack_fr, EyeOfDarkness and Maxwelllondon -- ★  -- This Mod adds many high-tech Machines, Materials and many new Weapons to survive the very late Waves. Credits : Thx to , Nope.avi, Simon, Violet and TheBlueFênix for helping me!
+  - *8 hours ago* [jojoblackFr/futuristic-industrie](https://github.com/jojoblackFr/futuristic-industrie)  by Mega777, Jojoblack_fr, EyeOfDarkness and Maxwelllondon -- ★  -- This Mod adds many high-tech Machines, Materials and many new Weapons to survive the very late Waves. Credits : Thx to , Nope.avi, Simon, Violet and TheBlueFênix for helping me!
 
-  - *20 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
+  - *21 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
 
   - *4 days ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★  -- V-Bucks mod ported to Mindustry.
 
@@ -64,7 +64,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *19 days ago* [OverChock/Playable-reaper-mod](https://github.com/OverChock/Playable-reaper-mod) ![](images/playable-reaper-mod-icon.png) by OverChock -- ☆ -- This mod adds the option to turn the player on reaper boss with a mech pad. + Lich
 
-  - *20 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
+  - *21 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
   - *21 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 

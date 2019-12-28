@@ -4,13 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *an hour ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *27 minutes ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
 
-  - *4 hours ago* [jojoblackFr/futuristic-industrie](https://github.com/jojoblackFr/futuristic-industrie)  by Mega777, Jojoblack_fr, EyeOfDarkness and Maxwelllondon -- ★  -- This Mod adds many high-tech Machines, Materials and many new Weapons to survive the very late Waves. Credits : Thx to , Nope.avi, Simon, Violet and TheBlueFênix for helping me!
+  - *2 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *17 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
+  - *5 hours ago* [jojoblackFr/futuristic-industrie](https://github.com/jojoblackFr/futuristic-industrie)  by Mega777, Jojoblack_fr, EyeOfDarkness and Maxwelllondon -- ★  -- This Mod adds many high-tech Machines, Materials and many new Weapons to survive the very late Waves. Credits : Thx to , Nope.avi, Simon, Violet and TheBlueFênix for helping me!
 
-  - *a day ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
+  - *18 hours ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
 
   - *3 days ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★  -- V-Bucks mod ported to Mindustry.
 
@@ -52,7 +52,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *15 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ★  -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 
-  - *15 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
+  - *16 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
   - *16 days ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
 
@@ -72,7 +72,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *24 days ago* [hfok/stopBuild](https://github.com/hfok/stopBuild)  by hfok -- ☆ -- Adds a block (of fog) that stop players to build on it.
 
-  - *25 days ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
+  - *26 days ago* [Ramielsaadi2/Slopes-Mod](https://github.com/Ramielsaadi2/Slopes-Mod)  by Zipper Man -- ☆ -- A simple mod that adds slopes for every block.
 
   - *28 days ago* [TechFish3000/Techfish-Core](https://github.com/TechFish3000/Techfish-Core)  by Techfish3000 -- ★  -- The core of all Techfish Mods.
 

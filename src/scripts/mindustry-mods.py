@@ -5,7 +5,6 @@ It uses Jinja2 for templating and eventually will use ClojureScript
 instead, which is probably entirely overkill.
 """
 
-
 from pathlib import Path
 from collections import namedtuple
 from collections import Counter
@@ -36,7 +35,6 @@ import time
 import schedule
 import click
 #import appdirs
-import gitops as gop
 
 # Generation
 import humanize
@@ -47,6 +45,10 @@ import bs4
 import urllib
 from jinja2 import Markup
 
+from caching import repos_cached
+from config import CACHE_PATH
+
+
 # def try_init_pretty_errors():
 #     try:
 #         import pretty_errors as ppe
@@ -54,8 +56,6 @@ from jinja2 import Markup
 #     except ImportError:
 #         print("[error] pretty_errors module not found")
 # try_init_pretty_errors()
-        
-CACHE_PATH = Path.home() / ".github-cache"
 
 def loads(path):
     '''Loads data from path, ensuring duplicates don't exist,
@@ -84,25 +84,6 @@ def load_env():
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     return Environment(loader=FileSystemLoader('templates/'),
                        autoescape=select_autoescape(['html']))
-
-def try_hjson(text):
-    try:
-        return hjson.loads(text)
-    except hjson.scanner.HjsonDecodeError as e:
-        print(f"[error] Hjson error {e}")
-
-def try_mson(text):
-    try:
-        return mson.jsonc.parse(text)
-    except ParseError as e:
-        print(f"[error] Mson error {e}")
-
-def get_file(repo, filename):
-    '''Gets one file from a repository and returns it as a string or None.'''
-    try:
-        return b64decode(repo.get_contents(filename).content).decode('utf8')
-    except GithubException as e:
-        print(f"[error] unable to find {filename} in {repo.name}")
 
 def fix_image_url(url, repo_name):
     '''Fixes a GitHub url, where the url should point to an image.
@@ -141,145 +122,6 @@ def fix_image_url(url, repo_name):
 
     # print('[warning] non github url:', url)
     return url
-
-@dataclass
-class ModInfo:
-    '''Raw mod.json data.'''
-
-    '''mod.json name.'''
-    name: str = None
-    '''mod.json description.'''
-    description: str = None
-    '''mod.json author.'''
-    author: str = None
-    '''mod.json version.'''
-    version: str = None
-    '''mod.json dependencies.'''
-    dependencies: List[str] = None
-    '''mod.json display name.'''
-    displayName: str = None
-    '''mod.json minimum game version.'''
-    minGameVersion: str = None
-
-    @staticmethod
-    def from_repo(repo):
-        '''Get's mod.json from a specific repo.'''
-        text = get_file(repo, "mod.json")
-        if text is None:
-            text = get_file(repo, "mod.hjson")
-        if text is None:
-            return ModInfo()
-        return ModInfo.from_text(text)
-
-    @staticmethod
-    def from_text(text):
-        j = try_hjson(text) or try_mson(text) or None
-
-        # version should always be a string
-        # but it may endup being a number
-        if 'version' in j:
-            j['version'] = str(j['version'])
-
-        if j is not None:
-            return ModInfo(**j)
-        else:
-            print(f"[error] unable to parse mod.json")
-            return ModInfo()
-
-@dataclass
-class Repo:
-    '''Raw untouched data from the repository.
-    '''
-
-    '''Repo endpoint.'''
-    name: str
-    '''Number of stargazers.'''
-    stars: int
-    '''Last commit date.'''
-    date: datetime
-    '''Last commit hash.'''
-    sha: str
-    '''Mod.json of repository.'''
-    mod: Optional[ModInfo]
-    '''README.md of the repository.'''
-    readme: str
-    '''A set of assets found in the repo.'''
-    assets: Set[str]
-    '''A set of contents found in the repo.'''
-    contents: Set[str]
-
-    @staticmethod
-    def from_github(gh, name, old=None, force=False):
-        '''Gets a Github repository from Github, with other
-        data which may require a few requests, and packs this
-        data into a namedtuple to be cached.
-        '''
-
-        try:
-            repo = gh.get_repo(name)
-        except GithubException as e:
-            # repository gone?
-            print(f"[error] get_repo {e.data['message']} -- {name}")
-            return old
-
-        sha = repo.get_branch("master").commit.sha
-        if old and old.sha == sha and not force:
-            print('[skipped] old hash --', name)
-            return old
-        print('[processing] new hash --', name)
-
-        assets = gop.assets(repo)
-        contents = gop.contents(repo) if 'content' in assets else set()
-
-        return Repo(name,
-                    stars=repo.stargazers_count,
-                    date=repo.get_commit(sha).commit.author.date,
-                    sha=sha,
-                    mod=ModInfo.from_repo(repo),
-                    readme=get_file(repo, "README.md"),
-                    assets=assets,
-                    contents=contents)
-
-    def archive_link(self):
-        return f"https://github.com/{self.repo}/archive/master.zip"
-
-    def into_dict(self):
-        '''Called when the object is about to be serialized.'''
-        return { **asdict(self),
-                 'date': str(self.date),
-                 'assets': tuple(self.assets),
-                 'contents': tuple(self.contents) }
-
-    def from_dict(d):
-        '''Called when the object is being deserialized.'''
-        return Repo(**{ **d,
-                        "date": dateutil.parser.parse(d["date"]),
-                        "mod": ModInfo(**d["mod"]),
-                        "assets": set(d["assets"]),
-                        "contents": set(d["contents"]) })
-
-def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
-    '''Gets repos if update is `True` and caches them,
-    otherwise just reads the cached data.
-    '''
-
-    # TODO: implement better caching
-    cache_path = Path(cache_path)
-    if cache_path.exists():
-        print('[log] path exists')
-        with open(cache_path) as f:
-            repos = [ Repo.from_dict(d) for d in json.load(f) ]
-            old = { r.name: r for r in repos }
-    else:
-        print('[log] path not exist')
-        repos = []
-        old = {}
-
-    if update:
-        repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods if x is not None]
-        with open(cache_path, "w") as f:
-            json.dump([ r.into_dict() for r in repos if r is not None ], f)
-    return repos
 
 @dataclass
 class ModMeta:

@@ -1,3 +1,4 @@
+'''Module for caching icons and icon paths.'''
 from github import GithubException
 from base64 import b64decode
 from PIL import Image

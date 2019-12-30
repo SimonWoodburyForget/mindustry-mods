@@ -21,15 +21,11 @@ import mson
 import hjson
 from mson import ParseError
 from minfmt import ignore_sbrack
-from base64 import b64decode, b64encode
 import dateutil.parser
-from PIL import Image
-from io import BytesIO
 import parsec
 
 # Application Stuff
 import github
-from github import GithubException
 import subprocess
 import time
 import schedule
@@ -45,7 +41,8 @@ import bs4
 import urllib
 from jinja2 import Markup
 
-from caching import repos_cached
+from caching.ghrepo import repos_cached
+from caching.icons import update_icons
 from config import CACHE_PATH
 
 
@@ -247,46 +244,6 @@ class ModMeta:
                  # "keywords": self.keywords(),
                  "delta_ago": self.delta_ago() }
 
-def update_icon(path, gh, repo_name, image_path=None, force=False):
-    '''Downloads an image from the target repository, and scales
-    it down to 16x16, and saves it. Doesn't do anything if the
-    image exists.
-
-    Returns the path to the image for frontend. 
-    ''' # TODO: split this into two functions
-    if image_path is None or force:
-        return None
-
-    icon_name = repo_name.split("/")[1].lower().replace(" ", "-")
-    icon_name = f"{icon_name}-icon"
-    icon_path = f"images/{icon_name}.png"
-
-    if (path / icon_path).exists():
-        return icon_path
-
-    try:
-        data = b64decode(gh.get_repo(repo_name).get_contents(image_path).content)
-    except GithubException as e:
-        print(f"[error] update_icon -- {repo_name}")
-        return None
-
-    try:
-        image = Image.open(BytesIO(data))
-    except Exception as e:
-        print(repo_name, ':ohno:', e)
-        return None
-
-    maxsize = (16, 16)
-    image.thumbnail(maxsize, Image.ANTIALIAS)
-    image.save(path / icon_path, "PNG")
-    return icon_path
-
-def update_icons(path, gh, mods):
-    def update_mod(gh, mod):
-        icon = mod['icon'] if 'icon' in mod else None
-        return mod['repo'], update_icon(path, gh, mod['repo'], icon)
-    return dict(update_mod(gh, m) for m in mods)
-
 def update_data(path, jdata):
     def copy(a, b):
         with open(path/a) as a, open(path/b, 'w') as b:
@@ -315,7 +272,7 @@ def update_data(path, jdata):
                  'data/modmeta.1.0.json')
         except FileNotFoundError:
             pass
-
+    
 def build(token, path, update=True):
     '''Builds the README.md out of everything else here.
     '''
@@ -324,6 +281,7 @@ def build(token, path, update=True):
     
     mods = loads(yaml_path)
     gh = github.Github(token)
+
     repos = repos_cached(gh, [ m['repo'] for m in mods], update=update)
     icons = update_icons(path, gh, mods)
 

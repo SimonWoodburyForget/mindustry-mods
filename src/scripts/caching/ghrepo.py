@@ -11,7 +11,6 @@ import mson
 from base64 import b64decode
 
 from github import GithubException
-import gitops as gop
 
 from config import CACHE_PATH
 
@@ -33,7 +32,36 @@ def get_file(repo, filename):
         return b64decode(repo.get_contents(filename).content).decode('utf8')
     except GithubException as e:
         print(f"[error] unable to find {filename} in {repo.name}")
-        
+
+ASSETS = set(x.strip() for x in '''
+content
+bundles
+sounds
+schematics
+sprites-override
+sprites
+scripts
+'''.split('\n'))
+
+CONTENTS = set(x.strip() for x in '''
+items
+blocks
+mechs
+liquids
+units
+zones
+'''.split('\n'))
+
+def assets(repo):
+    '''Returns a set of assets found in repository.'''
+    res = repo.get_dir_contents("/")
+    return set(x.name for x in res if x.name in ASSETS)
+
+def contents(repo):
+    '''Returns a set of contents found in repository.'''
+    res = repo.get_dir_contents("/content")
+    return set(x.name for x in res if x.name in CONTENTS)
+
 @dataclass
 class ModInfo:
     '''mod.json data.'''
@@ -120,8 +148,8 @@ class Repo:
             return old
         print('[processing] new hash --', name)
 
-        assets = gop.assets(repo)
-        contents = gop.contents(repo) if 'content' in assets else set()
+        assets = assets(repo)
+        contents = contents(repo) if 'content' in assets else set()
 
         return Repo(name,
                     stars=repo.stargazers_count,

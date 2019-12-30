@@ -52,8 +52,8 @@ def fix_image_url(url, repo_name):
 
 @dataclass
 class ModMeta:
-    '''The ugly middle layer between Repo and Jinja2 and ClojureScript.
-    '''
+    '''The front for the various data cachers. Handles special cases that 
+    don't specifically need to be cached or know about each other.'''
 
     name: str
     '''Link to repository.'''

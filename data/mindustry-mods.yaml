@@ -271,5 +271,14 @@ icon: sprites/items/vbuck.png
 repo: DeltaNedas/mobile-ui
 ---
 repo: DeltaNedas/dev-mode
+---
+repo: marstef/STAR-WARS
+---
+repo: marstef/hole
+---
+repo: marstef/hole-turret
+issue: zipped
+---
+repo: sodii/mindustry-teleporter
 ...
 

@@ -4,11 +4,11 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *40 minutes ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *33 minutes ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★  -- V-Bucks mod ported to Mindustry.
 
-  - *3 hours ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
+  - *5 hours ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
-  - *5 hours ago* [marstef/STAR-WARS](https://github.com/marstef/STAR-WARS)  by MARS -- ☆ -- This mod is made into star wars style.
+  - *7 hours ago* [marstef/STAR-WARS](https://github.com/marstef/STAR-WARS)  by MARS -- ☆ -- This mod is made into star wars style.
 
   - *a day ago* [marstef/hole](https://github.com/marstef/hole)  by MARS -- ☆ -- powerfull hole items
 
@@ -22,7 +22,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *2 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *2 days ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
+  - *3 days ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
 
   - *6 days ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ★  -- ohno
 

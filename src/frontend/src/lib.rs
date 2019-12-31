@@ -83,7 +83,7 @@ impl ListingItem {
     /// Link to the mod's archive.
     fn archive_link(&self) -> Node<Msg> {
         let l = format!("https://github.com/{}/archive/master.zip", self.0.repo);
-        a![attrs! { At::Href => l, At::Download => "" }, "zip"]
+        a![attrs! { At::Href => l, At::Target => "_self" }, "zip"]
     }
 
     /// Endpoint link as a string.

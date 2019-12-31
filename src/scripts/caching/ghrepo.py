@@ -52,12 +52,12 @@ units
 zones
 '''.split('\n'))
 
-def assets(repo):
+def get_assets(repo):
     '''Returns a set of assets found in repository.'''
     res = repo.get_dir_contents("/")
     return set(x.name for x in res if x.name in ASSETS)
 
-def contents(repo):
+def get_contents(repo):
     '''Returns a set of contents found in repository.'''
     res = repo.get_dir_contents("/content")
     return set(x.name for x in res if x.name in CONTENTS)
@@ -148,8 +148,8 @@ class Repo:
             return old
         print('[processing] new hash --', name)
 
-        assets = assets(repo)
-        contents = contents(repo) if 'content' in assets else set()
+        assets = get_assets(repo)
+        contents = get_contents(repo) if 'content' in assets else set()
 
         return Repo(name,
                     stars=repo.stargazers_count,

@@ -4,7 +4,7 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *4 hours ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter)  by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
+  - *4 hours ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
 
   - *8 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★  -- V-Bucks mod ported to Mindustry.
 
@@ -46,7 +46,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *14 days ago* [Prosta4okua/Ukrajinisator](https://github.com/Prosta4okua/Ukrajinisator)  by Prosta4ok_ua -- ★  -- Нехай проблеми та незгоди не роблять вам в житті погоди!
 
-  - *15 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ★ ★  -- This mod is Material Plus Mod for Mindustry.
+  - *16 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ★ ★  -- This mod is Material Plus Mod for Mindustry.
 
   - *16 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod) ![](images/mindustry-betterbuildsmod-icon.png) by Ruben -- ★  -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 

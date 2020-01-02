@@ -4,11 +4,13 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *6 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★  -- A new way forward in vanilla style.
+  - *56 minutes ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *6 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *7 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★  -- A new way forward in vanilla style.
 
-  - *14 hours ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
+  - *7 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★  -- V-Bucks mod ported to Mindustry.
+
+  - *15 hours ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
 
   - *2 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
@@ -19,8 +21,6 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
   - *3 days ago* [ballgamer56/PToE](https://github.com/ballgamer56/PToE) ![](images/ptoe-icon.png) by Tom Petrou -- ★ ★ ★ ★  -- PToE: Periodic Table of elements
 
   - *4 days ago* [What42Pizza/Mindustry-Production-Mod](https://github.com/What42Pizza/Mindustry-Production-Mod) ![](images/mindustry-production-mod-icon.png) by What42Pizza -- ★ ★ ★ ★ ★ ★ ★  -- This mod gives you iron, steel, aluminum, oil processing, and alternative ways of generating materials like titanium and thorium.
-
-  - *4 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *5 days ago* [MisterCinnabar/Revenge-Of-The-Data-Mod](https://github.com/MisterCinnabar/Revenge-Of-The-Data-Mod)  by Mister Cinnabar -- ☆ -- A mod that adds the Reaper Repeater - an interesting turret made by Reaper spare parts.
 
@@ -40,7 +40,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *12 days ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
 
-  - *13 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
+  - *14 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *14 days ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★ ★  -- crystal edition
 

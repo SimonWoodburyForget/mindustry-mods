@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *7 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
+  - *8 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
 
-  - *15 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *16 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
   - *a day ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
 
@@ -52,13 +52,13 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *18 days ago* [Lukince/Material-Plus](https://github.com/Lukince/Material-Plus) ![](images/material-plus-icon.png) by lukince -- ★ ★  -- This mod is Material Plus Mod for Mindustry.
 
-  - *18 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod) ![](images/mindustry-betterbuildsmod-icon.png) by Ruben -- ★  -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
+  - *19 days ago* [pyro000/Mindustry-BetterBuildsMod](https://github.com/pyro000/Mindustry-BetterBuildsMod) ![](images/mindustry-betterbuildsmod-icon.png) by Ruben -- ★  -- Mod diseñado por Ruben, el cual trae diversos items nurvos, como nether, estrellas, obsidiana, lingotes nucleares, torretas, un proyector de fuerza... Y mucho mas!
 
   - *19 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
   - *21 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
 
-  - *21 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ★  -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
+  - *22 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ★  -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 
   - *22 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 

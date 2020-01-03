@@ -4,11 +4,11 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *5 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
+  - *6 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
 
-  - *5 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *6 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
-  - *22 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *23 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *a day ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
 
@@ -114,7 +114,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *a month ago* [BlindGhostPL/PlaceAnywhere](https://github.com/BlindGhostPL/PlaceAnywhere)  by BlindGhost -- ★ ★  -- Simple mod that allow you to place object on environment walls.
 
-  - *a month ago* [ZkyLB/Dark-Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo -- ★ ★ ★ ★  -- The light and dark awaits you.
+  - *2 months ago* [ZkyLB/Dark-Life](https://github.com/ZkyLB/Dark-Life) ![](images/dark-life-icon.png) by macdowntwo -- ★ ★ ★ ★  -- The light and dark awaits you.
 
   - *2 months ago* [Syoga23/Lenin](https://github.com/Syoga23/Lenin)  by Syoga -- ★  -- A Lenin mod
 

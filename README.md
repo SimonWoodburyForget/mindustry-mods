@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *8 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
+  - *9 hours ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
 
-  - *8 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *9 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
   - *a day ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 

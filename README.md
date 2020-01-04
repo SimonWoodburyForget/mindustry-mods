@@ -4,15 +4,15 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *12 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
+  - *38 minutes ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *20 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
+  - *13 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
+
+  - *21 hours ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
   - *a day ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
 
   - *a day ago* [sodii/mindustry-millionaire](https://github.com/sodii/mindustry-millionaire)  by sodii -- ☆ -- Unlocks everything in campaign and gives you one million items of each kind. Useful when you lost your game data. WARNING! Enabling this mod will erase your campaign progress!
-
-  - *2 days ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *2 days ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
 
@@ -62,7 +62,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *22 days ago* [valtsu41/bundle-chaos](https://github.com/valtsu41/bundle-chaos)  by valtsu41 -- ★  -- This mod replaces all texts in the game with random ones.
 
-  - *22 days ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
+  - *23 days ago* [MEEPofFaith/Ohno-Missiles](https://github.com/MEEPofFaith/Ohno-Missiles) ![](images/ohno-missiles-icon.png) by MEEP of Faith -- ★ ★ ★ ★  -- With the new ballistic missile, you can nuke the enemies with various missile silos.
 
   - *23 days ago* [Hecodie/Refined-Hecodium](https://github.com/Hecodie/Refined-Hecodium) ![](images/refined-hecodium-icon.png) by Hecodie -- ☆ -- The Hecodium mod adds many early game turrets and ammo types for early to mid game. *NEW* Early game unit.
 

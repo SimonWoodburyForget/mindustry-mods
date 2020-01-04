@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *29 minutes ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
+  - *13 minutes ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
 
-  - *6 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *7 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *a day ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
@@ -56,7 +56,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *19 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *21 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
+  - *22 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
 
   - *22 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ★  -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 

@@ -4,17 +4,17 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *13 minutes ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
+  - *32 minutes ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,Maps will come soon,maybe during January 10 or above because i will need my laptop to upload the map files,and also after January 6 2020,i will be uploading new updates more slowly because of School
 
-  - *7 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *8 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
   - *a day ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
   - *a day ago* [Slava0135/reVision](https://github.com/Slava0135/reVision) ![](images/revision-icon.png) by Slava0135 -- ★ ★  -- A new way forward in vanilla style.
 
-  - *a day ago* [sodii/mindustry-millionaire](https://github.com/sodii/mindustry-millionaire)  by sodii -- ☆ -- Unlocks everything in campaign and gives you one million items of each kind. Useful when you lost your game data. WARNING! Enabling this mod will erase your campaign progress!
+  - *2 days ago* [sodii/mindustry-millionaire](https://github.com/sodii/mindustry-millionaire)  by sodii -- ☆ -- Unlocks everything in campaign and gives you one million items of each kind. Useful when you lost your game data. WARNING! Enabling this mod will erase your campaign progress!
 
-  - *2 days ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
+  - *3 days ago* [sodii/mindustry-teleporter](https://github.com/sodii/mindustry-teleporter) ![](images/mindustry-teleporter-icon.png) by sodii -- ☆ -- Reimplements Teleporter from 3.5, which transfer items to other teleporters with the same color. Useful for utterly eradicating the fun.
 
   - *4 days ago* [Anuken/ExampleMod](https://github.com/Anuken/ExampleMod) ![](images/examplemod-icon.png) by Anuke -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- An example mod.
 
@@ -30,7 +30,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *10 days ago* [DeltaNedas/NUL](https://github.com/DeltaNedas/NUL) ![](images/nul-icon.png) by DeltaNedas -- ★  -- ohno
 
-  - *10 days ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod) ![](images/mindustry-gamers-mod-icon.png) by sk7725 -- ★ ★  -- A mod that includes components from famous games. Korean translation by sk7725. WIP!
+  - *11 days ago* [sk7725/Mindustry-Gamers-Mod](https://github.com/sk7725/Mindustry-Gamers-Mod) ![](images/mindustry-gamers-mod-icon.png) by sk7725 -- ★ ★  -- A mod that includes components from famous games. Korean translation by sk7725. WIP!
 
   - *12 days ago* [DeltaNedas/dev-mode](https://github.com/DeltaNedas/dev-mode)  by DeltaNedas -- ☆ -- Lets you type into the console.
 
@@ -74,7 +74,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *27 days ago* [VKLowe-Original/Ripple_planet](https://github.com/VKLowe-Original/Ripple_planet) ![](images/ripple_planet-icon.png) by VKLowe  DefenseX -- ★ ★  -- Russian modding
 
-  - *27 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *28 days ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 
   - *28 days ago* [ZkyLB/Beneath-The-Dark-Life](https://github.com/ZkyLB/Beneath-The-Dark-Life)  by macdowntwo -- ☆ -- Explore the wonders beneath the Dark Life and the secret worlds awaiting for you.
 

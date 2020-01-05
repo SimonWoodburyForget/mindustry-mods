@@ -4,11 +4,11 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *4 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
+  - *20 minutes ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
 
-  - *7 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,will probably not be active during the next week and HOPEFULLY be active at friday,saturday,or sunday,during the whole week if im lucky,school is coming up,i have a feeling ill get a few failing grades but pass,Message me your ideas in discord for this mod at January 10 (my Birthday)
+  - *5 hours ago* [BasedUser/RevenantMod](https://github.com/BasedUser/RevenantMod) ![](images/revenantmod-icon.png) by Beryllium -- ★  -- A mod for Mindustry that adds the Revenant as a playable mech.
 
-  - *10 hours ago* [ThatOneBepis/Infinitodustry](https://github.com/ThatOneBepis/Infinitodustry) ![](images/infinitodustry-icon.png) by Bepis -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- A big crossover episode, mashup of many cultures. Name it how you want
+  - *8 hours ago* [XxSpiritDuoxX/Advance-Mod](https://github.com/XxSpiritDuoxX/Advance-Mod) ![](images/advance-mod-icon.png) by XxSpiritDuoxX -- ★  -- A new mod that tries to expand mindustry,will probably not be active during the next week and HOPEFULLY be active at friday,saturday,or sunday,during the whole week if im lucky,school is coming up,i have a feeling ill get a few failing grades but pass,Message me your ideas in discord for this mod at January 10 (my Birthday)
 
   - *a day ago* [DeltaNedas/vbucks](https://github.com/DeltaNedas/vbucks) ![](images/vbucks-icon.png) by DeltaNedas -- ★ ★ ★  -- V-Bucks mod ported to Mindustry.
 
@@ -46,7 +46,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *15 days ago* [Vortetty/Light](https://github.com/Vortetty/Light) ![](images/light-icon.png) by Vortetty -- ★ ★ ★  -- !!! Previouly known as Mindustryalization, now called 'Light' look for me to release 'Dark' another mod in the works !!! A mod for mindustry, based around using Light. In contrast to Dark based around durability, Light is weaker, but faster.
 
-  - *16 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
+  - *17 days ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *17 days ago* [AmateurPotion/Mindustry-Crystal-edition](https://github.com/AmateurPotion/Mindustry-Crystal-edition) ![](images/mindustry-crystal-edition-icon.png) by Potion -- ★ ★ ★  -- crystal edition
 

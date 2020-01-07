@@ -10,6 +10,7 @@ use std::iter;
 use seed::{prelude::*, *};
 
 use futures::Future;
+use regex::Regex;
 use seed::{fetch, Method, Request};
 use serde::Deserialize;
 
@@ -192,9 +193,18 @@ impl ListingItem {
 
     /// The thing the user will probably click on.
     fn title_link(&self) -> Node<Msg> {
+        let title = match &self.0.displayName {
+            Some(name) => {
+                // hacky way to ignore color formatting
+                let re = Regex::new(r"\[#?[a-zA-Z0-9]*\]").unwrap();
+                re.replace_all(name, "").to_string()
+            }
+            None => self.mod_name(),
+        };
+
         div![
             attrs! { At::Class => "title-link" },
-            a![attrs! { At::Href => self.endpoint_href() }, self.mod_name()]
+            a![attrs! { At::Href => self.endpoint_href() }, title]
         ]
     }
 

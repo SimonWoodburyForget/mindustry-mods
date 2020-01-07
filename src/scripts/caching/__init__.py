@@ -55,6 +55,7 @@ class ModMeta:
     '''The front for the various data cachers. Handles special cases that 
     don't specifically need to be cached or know about each other.'''
 
+    '''mod name'''
     name: str
     '''Link to repository.'''
     link: str
@@ -72,6 +73,8 @@ class ModMeta:
     repo: str
     contents: List[str]
     assets: List[str]
+    '''markup encoded name'''
+    displayName: str
     issue: str = None
     readme: str = ''
     version: str = ''
@@ -152,6 +155,7 @@ class ModMeta:
                        readme=r.readme or '',
                        version=r.mod.version,
                        assets=list(r.assets),
+                       displayName=r.mod.displayName,
                        date_tt=time.mktime(r.date.timetuple()),
                        contents=list(r.contents),
                        wiki=m['wiki'] if 'wiki' in m else None)

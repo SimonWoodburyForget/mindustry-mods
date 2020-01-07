@@ -81,16 +81,20 @@ def load_env():
                        autoescape=select_autoescape(['html']))
 
 def update_data(path, jdata):
+    # TODO: don't hard code modmeta version
     def copy(a, b):
         with open(path/a) as a, open(path/b, 'w') as b:
             print(a.read(), file=b)
 
     # backup data before copying
-    copy('data/modmeta.1.0.json',
-         'data/modmeta.1.0.json.auto-bak')
-            
+    try:
+        copy('data/modmeta.1.1.json',
+             'data/modmeta.1.1.json.auto-bak')
+    except FileNotFoundError as e:
+        print("[warn] modmeta.1.1.json -- file not found")
+        
     # update modmeta to with new data
-    with open(path/"data/modmeta.1.0.json", 'w') as f:
+    with open(path/"data/modmeta.1.1.json", 'w') as f:
         print(jdata, file=f)
 
     # run tests
@@ -104,8 +108,8 @@ def update_data(path, jdata):
         print("[error] cargo test failed...")
 
         try:
-            copy('data/modmeta.1.0.json.auto-bak',
-                 'data/modmeta.1.0.json')
+            copy('data/modmeta.1.1.json.auto-bak',
+                 'data/modmeta.1.1.json')
         except FileNotFoundError:
             pass
     

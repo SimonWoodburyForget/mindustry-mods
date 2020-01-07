@@ -4,9 +4,9 @@ Visit the webpage at: https://simonwoodburyforget.github.io/mindustry-mods/
 A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
 
-  - *6 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
+  - *7 hours ago* [HolyHades/VanillaEnhanced](https://github.com/HolyHades/VanillaEnhanced) ![](images/vanillaenhanced-icon.png) by HolyHades & v1nce -- ★ ★ ★  -- Adds stuff to enhance the vanilla experience.
 
-  - *7 hours ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
+  - *8 hours ago* [MemFaceGo/Better-Blocks-Mod](https://github.com/MemFaceGo/Better-Blocks-Mod) ![](images/better-blocks-mod-icon.png) by MemFaceGo -- ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★  -- This mod made for sandbox and adds more blocks, materials, enemies and new campaign maps.
 
   - *a day ago* [Xusk947/DustryX](https://github.com/Xusk947/DustryX) ![](images/dustryx-icon.png) by Xusk -- ★ ★ ★ ★  -- Hello ^^ , thanks for playing
 
@@ -62,7 +62,7 @@ A list of mods, ordered by most recently committed. *Each `★` is 1 star.*
 
   - *22 days ago* [AeronGreva/AeroMindustry](https://github.com/AeronGreva/AeroMindustry) ![](images/aeromindustry-icon.png) by AeronGreva -- ★ ★ ★ ★ ★  -- Adds multiple machines, resources, and turrets!
 
-  - *24 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
+  - *25 days ago* [ZkyLB/Canvas](https://github.com/ZkyLB/Canvas) ![](images/canvas-icon.png) by macdowntwo -- ☆ -- A mod for the pixel artists. Includes 47 colors. Now with resource counterparts to make pixel art viewable in minimap.
 
   - *25 days ago* [OverChock/Playable-bosses-mod](https://github.com/OverChock/Playable-bosses-mod) ![](images/playable-bosses-mod-icon.png) by OverChock -- ★  -- This mod gives the possibility to turn the player into all available bosses with variable mech pads.
 

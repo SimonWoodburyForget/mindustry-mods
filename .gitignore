@@ -20,3 +20,4 @@ mindustry-mods
 .rebel_readline_history
 *.auto-bak
 node_modules/
+dist/

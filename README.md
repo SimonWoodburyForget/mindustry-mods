@@ -1,5 +1,8 @@
-website: https://simonwoodburyforget.github.io/mindustry-mods/
-adding mods: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md
+# Mindustry Mods
+
+Checkout the website here: https://simonwoodburyforget.github.io/mindustry-mods/
+
+Add mods to listing here: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md
 
 # Python Scripts
 

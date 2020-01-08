@@ -92,7 +92,7 @@ A Python file server is being used, openning the browser at
 version of Python will ensure the correct wasm mimetype exists, which
 make not be the case in your existing Python 3 version.
 
-# Publishing
+## Publishing
 
 - gh-pages 2.2.0
 

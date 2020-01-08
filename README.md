@@ -1,13 +1,15 @@
+website: https://simonwoodburyforget.github.io/mindustry-mods/
+adding mods: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md
 
 # Python Scripts
 
 ## Executing
 
-Python script is used to update data in `data/modmeta.*.json` which is
+Python scripts are used to update data in `dist/data/modmeta.*.json` which is
 used by the frontend. Before changing data `cargo test` is run, and if
 errors are found, the old data is reused instead.
 
-Data is current cached in `~/.github-cache`, and if Git hashes don't
+Data is currently cached in `~/.github-cache`, and if Git hashes don't
 change, the specific repository is skipped. 
 
 ```
@@ -36,16 +38,12 @@ cargo install wasm-pack cargo-make
   is used to build and package the Wasm file for the
   browser (currently done without a bundler).
 
-- [`cargo-make`](https://github.com/sagiegurari/cargo-make) 
-  is what it sounds like, it's used to run the `Makefile.toml`.
-
 ## Building
 
-To build the the Wasm file from `src/lib.rs` you just run the
-following from the current directory.
+To build the Wasm file just run the following:
 
 ```
-cargo make
+wasm-pack build frontend
 ```
 
 This will run the `wasm-dist` task in `frontend/Makefile.toml`, which will run

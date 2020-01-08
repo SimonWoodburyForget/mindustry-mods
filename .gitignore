@@ -19,3 +19,5 @@ mindustry-mods
 /js/out
 .rebel_readline_history
 *.auto-bak
+node_modules/
+dist/

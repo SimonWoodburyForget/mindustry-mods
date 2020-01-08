@@ -28,7 +28,7 @@ mod tests {
     use std::io::BufReader;
 
     fn data_path() -> &'static str {
-        Box::leak(format!("../../data/modmeta.{}.json", MOD_VERSION).into_boxed_str())
+        Box::leak(format!("../dist/data/modmeta.{}.json", MOD_VERSION).into_boxed_str())
     }
 
     fn data() -> Result<Vec<Mod>, serde_json::Error> {

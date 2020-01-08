@@ -3,7 +3,7 @@
 
 To add your or any mod to the listing, all that is required
 is adding an entry into
-[`data/mindustry-mods.yaml`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/data/mindustry-mods.yaml). The smallest entry could look like this:
+[`data/mindustry-mods.yaml`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/mindustry-mods.yaml). The smallest entry could look like this:
 
 ```yaml
 ---

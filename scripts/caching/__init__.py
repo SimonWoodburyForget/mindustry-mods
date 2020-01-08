@@ -74,7 +74,7 @@ class ModMeta:
     contents: List[str]
     assets: List[str]
     '''markup encoded name'''
-    displayName: str
+    displayName: Optional[str]
     issue: str = None
     readme: str = ''
     version: str = ''

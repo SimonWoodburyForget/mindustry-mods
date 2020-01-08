@@ -11,7 +11,7 @@ Data is current cached in `~/.github-cache`, and if Git hashes don't
 change, the specific repository is skipped. 
 
 ```
-python3.8 scripts/mindustry-mods.py -iphd ../
+python3.8 scripts/mindustry-mods.py -iph
 ```
 
 This would executing the script hourly. The `--help` argument can be

@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "deploy": "gh-pages -fd dist --user \"bot <simonwoodburyforget@gmail.com>\""
+        "deploy": "gh-pages -fd dist --user \"bot <noreply@fakemail.com>\""
     },
     "repository": {
         "type": "git",

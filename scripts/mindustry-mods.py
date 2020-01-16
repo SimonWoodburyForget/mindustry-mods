@@ -22,6 +22,7 @@ from mson import ParseError
 from minfmt import ignore_sbrack
 import dateutil.parser
 import parsec
+from base64 import b64decode
 
 # Application Stuff
 import github
@@ -30,6 +31,7 @@ import time
 import schedule
 import click
 #import appdirs
+from github import GithubException
 
 # Generation
 import humanize
@@ -54,7 +56,7 @@ from config import CACHE_PATH
 
 MOD_META_VERSION = "1.1"
 
-def loads(path):
+def loads_yaml(path):
     '''Loads data from path, ensuring duplicates don't exist,
     and turning them into namedtuple, ready for a template to use.
     '''
@@ -113,28 +115,49 @@ def update_data(path, jdata):
                  f'data/modmeta.{MOD_META_VERSION}.json')
         except FileNotFoundError:
             pass
-    
+
+def loads_crawl(gh):
+    '''Loads an officially auto generated modlist, and returns set of repo paths.'''
+    try:
+        repo = gh.get_repo("Anuken/MindustryMods")
+        data = b64decode(repo.get_contents("mods.json").content).decode('utf8')
+    except GithubException as e:
+        print(f"[error] failed to get auto-generated modlist. -- {e}")
+        return []
+    data = json.loads(data)
+    # currently contains no other useful data
+    return { x["repo"] for x in data }
+
 def build(token, path, update=True):
     '''Builds the README.md out of everything else here.
     '''
     path = Path(path)
-    dist = path/"dist"
-    yaml_path = path/"mindustry-mods.yaml"
     
-    mods_yaml = loads(yaml_path)
+    dist_path = path/"dist/"
+    dist_path.mkdir(exist_ok=True)
+    
+    yaml_path = path/"mindustry-mods.yaml"    
+    mods_yaml = loads_yaml(yaml_path)
+
     gh = github.Github(token)
-    mods = modsmeta(dist, gh, mods_yaml, update)
+
+    mods_crawl = loads_crawl(gh)
+    mods_missing = [ { "repo": x } for x in
+                     (mods_crawl - { r['repo'] for r in mods_yaml }) ]
+    mods_yaml += mods_missing
+
+    mods = modsmeta(dist_path, gh, mods_yaml, update)
 
     jdata = [ mm.pack_data() for mm in mods ]
     jdata = json.dumps(jdata)
 
-    update_data(dist, jdata)
+    update_data(dist_path, jdata)
 
     env = load_env()
     template = env.get_template('preview.html')
     for mod in mods:
         data = template.render(mod=mod, style="../css/readme.css")
-        with open(mod.endpoint(dist), 'w') as f:
+        with open(mod.endpoint(dist_path), 'w') as f:
             print(data, file=f)
 
 def main(path, push=True, update=True):

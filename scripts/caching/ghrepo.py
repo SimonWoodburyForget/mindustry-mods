@@ -80,6 +80,8 @@ class ModInfo:
     displayName: str = None
     '''mod.json minimum game version.'''
     minGameVersion: str = None
+    '''mod.json hidden.'''
+    hidden: bool = None
 
     @staticmethod
     def from_repo(repo):

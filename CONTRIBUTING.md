@@ -1,21 +1,14 @@
 # Adding Mods to the Listing
 
+Mods will be added to the listing automatically if your mod is found
+by GitHub while searching for `mindustry mods`, but if further
+configuration is required (missing icons, bad descriptions, etc)
+somethings can be overridden from the local configuration file in 
+[`data/mindustry-mods.yaml`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/mindustry-mods.yaml). 
 
-To add your or any mod to the listing, all that is required
-is adding an entry into
-[`data/mindustry-mods.yaml`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/mindustry-mods.yaml). The smallest entry could look like this:
-
-```yaml
----
-repo: User/Repo
-icon: sprites/blocks/nice-block.png
-...
-```
-  
-An `icon` path is optional, and when added gives the entry 
-an icon by downloading said image and resizing it automatically.
-
--------------------------------------------------------------
+You can put your icon at `icon.png` *(at the root of your
+project)* in your repository, and it'll get picked up
+automatically.
 
 ## Other Fields
 

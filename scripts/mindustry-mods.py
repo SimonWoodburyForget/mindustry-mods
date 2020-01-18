@@ -54,7 +54,7 @@ from config import CACHE_PATH
 #         print("[error] pretty_errors module not found")
 # try_init_pretty_errors()
 
-MOD_META_VERSION = "1.1"
+MOD_META_VERSION = "2.0"
 
 def loads_yaml(path):
     '''Loads data from path, ensuring duplicates don't exist,

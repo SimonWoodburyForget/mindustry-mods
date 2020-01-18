@@ -61,10 +61,8 @@ class ModMeta:
     link: str
     '''Short description.'''
     desc: str
-    '''Internal icon path.'''
-    icon: str
-    '''External icon path.'''
-    icon_raw: str
+    '''Icon relative the mods repository.'''
+    icon: Optional[str]
     stars: int
     author: str
     date: datetime
@@ -147,7 +145,6 @@ class ModMeta:
                        repo=m['repo'],
                        desc=mods_desc,
                        icon=icon,
-                       icon_raw=m['icon'] if 'icon' in m else '',
                        stars=r.stars,
                        author=author.strip(),
                        date=r.date,

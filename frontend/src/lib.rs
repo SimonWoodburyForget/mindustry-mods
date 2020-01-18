@@ -147,7 +147,7 @@ impl ListingItem {
 
     /// Returns an icon link node.
     fn icon(&self) -> Node<Msg> {
-        match self.0.icon_raw.as_ref().map(String::as_str) {
+        match self.0.icon.as_ref().map(String::as_str) {
             Some("") | None => a![
                 attrs! { At::Href => self.endpoint_href() },
                 img![attrs! { At::Src => "images/nothing.png" },]

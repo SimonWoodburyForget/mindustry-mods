@@ -23,8 +23,6 @@ def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*
     '''
     if skip:
         return None
-
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
     
     if not CACHE_PATH.exists():
         cache_data = {}
@@ -67,7 +65,7 @@ def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*
 
     with open(CACHE_PATH, "w") as f:
         json.dump(cache_data, f)
-        
+
     return data_path
 
 def _get_icon(gh_repo, path):

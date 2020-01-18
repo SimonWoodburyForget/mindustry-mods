@@ -44,14 +44,8 @@ from jinja2 import Markup
 
 from caching import modsmeta
 
-# def try_init_pretty_errors():
-#     try:
-#         import pretty_errors as ppe
-#         ppe.configure(filename_display=ppe.FILENAME_EXTENDED)
-#     except ImportError:
-#         print("[error] pretty_errors module not found")
-# try_init_pretty_errors()
-
+# Version number for data, to allow multiple version of data at once,
+# in unavoidably will eventually happen, because of caching.
 MOD_META_VERSION = "2.0"
 
 def loads_yaml(path):

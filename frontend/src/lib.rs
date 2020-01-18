@@ -36,6 +36,12 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 //     }
 // }
 
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(s: &str);
+}
+
 fn tiny_list(v: &Vec<String>) -> Node<Msg> {
     if !v.is_empty() {
         ul![v
@@ -363,6 +369,7 @@ fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
 /// Entry point of app.
 #[wasm_bindgen(start)]
 pub fn render() {
+    log(format!("data v{} loaded", MOD_VERSION).as_str());
     seed::App::builder(update, view)
         .after_mount(after_mount)
         .build_and_start();

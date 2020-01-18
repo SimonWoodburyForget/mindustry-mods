@@ -7,7 +7,8 @@ import hashlib
 import time
 from pathlib import Path
 
-CACHE_DIR = Path.home()/".cache/mindustry-mods/"
+from config import CACHE_DIR
+
 CACHE_PATH = CACHE_DIR/"images.json"
 
 def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*60*24):

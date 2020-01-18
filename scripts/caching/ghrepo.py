@@ -8,11 +8,14 @@ import dateutil
 import json
 import hjson
 import mson
+from mson import ParseError
 from base64 import b64decode
 
 from github import GithubException
 
-from config import CACHE_PATH
+from config import CACHE_DIR
+
+CACHE_PATH = CACHE_DIR/"github-repo-cache.json"
 
 def try_hjson(text):
     try:
@@ -90,12 +93,15 @@ class ModInfo:
         if text is None:
             text = get_file(repo, "mod.hjson")
         if text is None:
-            return ModInfo()
+            return None
         return ModInfo.from_text(text)
 
     @staticmethod
     def from_text(text):
         j = try_hjson(text) or try_mson(text) or None
+
+        if j is None:
+            return None
 
         # version should always be a string
         # but it may endup being a number
@@ -152,12 +158,15 @@ class Repo:
 
         assets = get_assets(repo)
         contents = get_contents(repo) if 'content' in assets else set()
-
+        modinfo = ModInfo.from_repo(repo)
+        if modinfo is None:
+            return None
+        
         return Repo(name,
                     stars=repo.stargazers_count,
                     date=repo.get_commit(sha).commit.author.date,
                     sha=sha,
-                    mod=ModInfo.from_repo(repo),
+                    mod=modinfo,
                     readme=get_file(repo, "README.md"),
                     assets=assets,
                     contents=contents)
@@ -198,7 +207,8 @@ def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
         old = {}
 
     if update:
-        repos = [ Repo.from_github(gh, x, old[x] if x in old else None) for x in mods if x is not None]
+        repos = ( Repo.from_github(gh, x, old[x] if x in old else None) for x in mods if x is not None )
+        repos = [ r for r in repos if r is not None]
         with open(cache_path, "w") as f:
             json.dump([ r.into_dict() for r in repos if r is not None ], f)
     return repos

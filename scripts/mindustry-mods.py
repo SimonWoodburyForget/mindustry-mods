@@ -43,8 +43,6 @@ import urllib
 from jinja2 import Markup
 
 from caching import modsmeta
-from config import CACHE_PATH
-
 
 # def try_init_pretty_errors():
 #     try:
@@ -190,9 +188,6 @@ def cli(instant, push, hourly, clean, fast, path):
         return
 
     update = not fast
-
-    if clean:
-        subprocess.run(['rm', CACHE_PATH])
 
     main_run = lambda: main(path, push, update)
 

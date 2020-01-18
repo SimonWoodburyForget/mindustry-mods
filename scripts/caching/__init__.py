@@ -165,7 +165,7 @@ class ModMeta:
         repos = { x.name: x for x in repos if x and x.name }
 
         return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
-                 for m in mods if 'issue' not in m ]
+                 for m in mods if 'issue' not in m and m['repo'] in repos ]
 
     def pack_data(self):
         '''Packs JSON data for the frontend.'''

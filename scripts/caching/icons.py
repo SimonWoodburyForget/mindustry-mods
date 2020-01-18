@@ -1,8 +1,7 @@
 '''Module for caching icons and icon paths.'''
 from github import GithubException
 from base64 import b64decode
-from PIL import Image
-from io import BytesIO
+
 import json
 import hashlib
 import time
@@ -11,7 +10,7 @@ from pathlib import Path
 CACHE_DIR = Path.home()/".cache/mindustry-mods/"
 CACHE_PATH = CACHE_DIR/"images.json"
 
-def update_icon(path, gh, repo_name, image_path=None, skip=False):
+def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*60*24):
     '''Downloads an image from the target repository, and runs it through sha256
     which is then used to verify whether the icon changed or not.
 
@@ -36,9 +35,12 @@ def update_icon(path, gh, repo_name, image_path=None, skip=False):
         cache_data[repo_name] = {}
     repo_data = cache_data[repo_name]
 
-    # TODO: check time cached.
+    # checks if icon exists and if it's old enough to consider updating
     if "icon-hash" in repo_data:
-        return repo_data["icon-path"]
+        old = repo_data["icon-path"]
+        cached_time = time.time() - repo_data["time-cached"]
+        if not cached_time > cache_time:
+            return old
 
     try:
         gh_repo = gh.get_repo(repo_name)

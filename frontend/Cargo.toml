@@ -17,10 +17,10 @@ seed = "0.5"
 serde = "1.0"
 futures = "0.1.26"
 wee_alloc = "0.4.5"
-# stdweb = "0.4.20"
-# instant = { version = "0.1", features = [ "wasm-bindgen" ] }
+
+instant = { version = "0.1", features = [ "wasm-bindgen" ] }
 # hifitime = "1.0.8"
-# js-sys = "0.3.4"
-# humantime = "1"
+js-sys = "0.3"
+humantime = "2"
 itertools = "0.8.2"
 regex = "1"

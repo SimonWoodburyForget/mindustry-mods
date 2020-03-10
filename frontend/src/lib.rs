@@ -20,21 +20,46 @@ use wee_alloc;
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-// mod date {
-//     use js_sys::Date;
-//     use std::time::{Duration, SystemTime, UNIX_EPOCH};
+mod date {
+    use humantime::{parse_rfc3339_weak, TimestampError};
+    use js_sys::Date;
+    use std::time::{Duration, SystemTime, SystemTimeError, UNIX_EPOCH};
 
-//     pub fn from_tt(x: f64) -> SystemTime {
-//         let secs = (x as u64) / 1_000;
-//         let nanos = ((x as u32) % 1_000) * 1_000_000;
-//         UNIX_EPOCH + Duration::new(secs, nanos)
-//     }
+    pub enum Error {
+        Computation,
+        Formatting,
+    }
 
-//     pub fn now() -> SystemTime {
-//         let x = Date::now();
-//         from_tt(x)
-//     }
-// }
+    impl From<SystemTimeError> for Error {
+        fn from(_: SystemTimeError) -> Self {
+            Self::Computation
+        }
+    }
+
+    impl From<TimestampError> for Error {
+        fn from(_: TimestampError) -> Self {
+            Self::Formatting
+        }
+    }
+
+    pub fn from_tt(x: f64) -> SystemTime {
+        let secs = (x as u64) / 1_000;
+        let nanos = ((x as u32) % 1_000) * 1_000_000;
+        UNIX_EPOCH + Duration::new(secs, nanos)
+    }
+
+    pub fn now() -> SystemTime {
+        let x = Date::now();
+        from_tt(x)
+    }
+
+    /// Parses weak rfc3339 time stamps and returns the duration since now.
+    pub fn ago(date: &str) -> Result<Duration, Error> {
+        let sys = parse_rfc3339_weak(date)?;
+        let ago = now().duration_since(sys)?;
+        Ok(ago)
+    }
+}
 
 #[wasm_bindgen]
 extern "C" {
@@ -119,12 +144,20 @@ impl ListingItem {
 
     /// The rendered `time age` string.
     fn last_commit(&self) -> Node<Msg> {
-        // TODO: generate here instead of from Python.
-        div![
-            attrs! { At::Class => "last-commit" },
-            self.0.delta_ago,
-            " ago"
-        ]
+        // NOTE: may want to consider using chrono instead.
+        use itertools::Itertools;
+        let fmt_ago = match date::ago(&self.0.date) {
+            Ok(d) => format!("{}", humantime::format_duration(d))
+                .split(" ")
+                .interleave(iter::repeat(" ago"))
+                .take(2)
+                .collect(),
+
+            Err(date::Error::Computation) => "computation error".to_string(),
+            Err(date::Error::Formatting) => "formatting error".to_string(),
+        };
+
+        div![attrs! { At::Class => "last-commit" }, fmt_ago]
     }
 
     /// Returns unicode stars.

@@ -19,6 +19,7 @@ pub struct Mod {
     pub version: Option<String>,
     pub readme: String,
     pub displayName: Option<String>,
+    pub date: String,
 }
 
 #[cfg(test)]

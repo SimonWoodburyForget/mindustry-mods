@@ -171,9 +171,7 @@ class ModMeta:
         '''Packs JSON data for the frontend.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
                  "date": str(self.date),
-                 "header": self.header(),
-                 # "keywords": self.keywords(),
-                 "delta_ago": self.delta_ago() }
+                 "header": self.header() }
 
 def modsmeta(path, gh, mods, update):
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 

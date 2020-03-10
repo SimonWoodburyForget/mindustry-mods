@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-pub const MOD_VERSION: &str = "2.0";
+pub const MOD_VERSION: &str = "3.0";
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct Mod {
@@ -12,7 +12,6 @@ pub struct Mod {
     pub link: String,
     pub repo: String,
     pub wiki: Option<String>,
-    pub delta_ago: String,
     pub icon: Option<String>,
     pub contents: Vec<String>,
     pub assets: Vec<String>,

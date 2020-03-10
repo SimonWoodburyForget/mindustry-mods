@@ -86,6 +86,8 @@ class ModInfo:
     '''mod.json hidden.'''
     hidden: bool = None
 
+    mainScript: str = None
+
     @staticmethod
     def from_repo(repo):
         '''Get's mod.json from a specific repo.'''
@@ -109,7 +111,12 @@ class ModInfo:
             j['version'] = str(j['version'])
 
         if j is not None:
-            return ModInfo(**j)
+            try:
+                return ModInfo(**j)
+            except TypeError:
+                # unexpected keywords
+                print(f"[error] type/key error in mod.json -- {j}")
+                return None
         else:
             print(f"[error] unable to parse mod.json")
             return ModInfo()

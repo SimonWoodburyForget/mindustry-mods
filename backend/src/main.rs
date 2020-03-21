@@ -1,3 +1,5 @@
+use mindustry_mods_backend::rate::*;
+
 use anyhow::Result;
 use directories::ProjectDirs;
 use reqwest::{
@@ -23,50 +25,6 @@ enum Encoding {
 struct Contents {
     encoding: Encoding,
     content: String,
-}
-
-#[derive(Deserialize, Debug)]
-struct Rate {
-    limit: u64,
-    remaining: u64,
-    reset: u64,
-}
-
-impl Rate {
-    const X_RATELIMIT_LIMIT: &'static str = "X-RateLimit-Limit";
-    const X_RATELIMIT_REMAINING: &'static str = "X-RateLimit-Remaining";
-    const X_RATELIMIT_RESET: &'static str = "X-RateLimit-Reset";
-
-    fn time_reset(&self) -> SystemTime {
-        UNIX_EPOCH + Duration::from_secs(self.reset)
-    }
-
-    /// Reads hearders for ratelimit.
-    fn from_headers(h: &HeaderMap) -> Option<Self> {
-        // NOTE: shouldn't this return a result?
-        let get_parse = |key| h.get(key)?.to_str().ok()?.parse().ok();
-        let limit = get_parse(Self::X_RATELIMIT_LIMIT)?;
-        let remaining = get_parse(Self::X_RATELIMIT_REMAINING)?;
-        let reset = get_parse(Self::X_RATELIMIT_RESET)?;
-        Some(Self {
-            limit,
-            remaining,
-            reset,
-        })
-    }
-}
-
-#[derive(Deserialize, Debug)]
-struct Resources {
-    core: Rate,
-    search: Rate,
-    graphql: Rate,
-    integration_manifest: Rate,
-}
-
-#[derive(Deserialize, Debug)]
-struct RateLimit {
-    resources: Resources,
 }
 
 struct GitHub {

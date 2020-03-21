@@ -1,4 +1,4 @@
-use mindustry_mods_backend::rate::*;
+use mindustry_mods_backend::request::*;
 
 use anyhow::Result;
 use directories::ProjectDirs;
@@ -14,49 +14,6 @@ use std::{
 };
 use structopt::StructOpt;
 use tokio::prelude::*;
-
-#[derive(Deserialize, Debug)]
-#[serde(rename_all = "camelCase")]
-enum Encoding {
-    Base64,
-}
-
-#[derive(Deserialize, Debug)]
-struct Contents {
-    encoding: Encoding,
-    content: String,
-}
-
-struct GitHub {
-    client: Client,
-    rate_limits: RateLimit,
-}
-
-impl GitHub {
-    const RATE_LIMIT: &'static str = "https://api.github.com/rate_limit";
-
-    async fn new(token: &str) -> Result<Self> {
-        let mut headers = HeaderMap::new();
-        headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
-        headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
-
-        let client = reqwest::Client::builder()
-            .default_headers(headers)
-            .build()?;
-
-        let rate_limits = client.get(Self::RATE_LIMIT).send().await?.json().await?;
-
-        Ok(Self {
-            client,
-            rate_limits,
-        })
-    }
-
-    async fn get(&mut self, url: &str) -> Result<Contents> {
-        let resp = self.client.get(url).send().await?;
-        Ok(resp.json::<Contents>().await?)
-    }
-}
 
 /// Deserializes mods from list at: https://github.com/Anuken/MindustryMods/blob/master/mods.json
 #[derive(Deserialize, Debug)]

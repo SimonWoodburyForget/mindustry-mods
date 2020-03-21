@@ -8,6 +8,8 @@ use std::{collections::HashMap, path::PathBuf};
 use structopt::StructOpt;
 use tokio::prelude::*;
 
+type Error = Box<dyn std::error::Error>;
+
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 enum Encoding {
@@ -25,7 +27,7 @@ struct GitHub {
 }
 
 impl GitHub {
-    fn new(token: &str) -> Result<Self, Box<dyn std::error::Error>> {
+    fn new(token: &str) -> Result<Self, Error> {
         let mut headers = HeaderMap::new();
         headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
         headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
@@ -37,14 +39,17 @@ impl GitHub {
         Ok(Self { client })
     }
 
-    async fn get(&self, url: &str) -> Result<Contents, Box<dyn std::error::Error>> {
-        Ok(self
-            .client
-            .get(url)
-            .send()
-            .await?
-            .json::<Contents>()
-            .await?)
+    async fn get(&self, url: &str) -> Result<Contents, Error> {
+        let resp = self.client.get(url).send().await?;
+
+        if let Some(rate) = resp.headers().get("X-RateLimit-Limit") {
+            println!("{:?}", rate);
+        }
+
+        // X-RateLimit-Remaining: 56
+        // X-RateLimit-Reset: 1372700873
+
+        Ok(resp.json::<Contents>().await?)
     }
 }
 
@@ -101,7 +106,7 @@ struct Opt {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+async fn main() -> Result<(), Error> {
     let opt = Opt::from_args();
 
     let dirs = ProjectDirs::from("", "Mindustry-Mods", "Mindustry-Mods-Backend")
@@ -118,7 +123,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         other => other,
     }?;
 
-    let mut token = String::new();
+    let mut token = "token ".to_string();
     file.read_to_string(&mut token).await?;
 
     let github = GitHub::new(&token);
@@ -132,8 +137,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }?;
 
     let mods_source: Vec<ModSource> = serde_json::from_str(&content).unwrap();
-
-    println!("{:?}", mods_source);
 
     // .json::<Vec<core::Mod>>()
     // .await?;

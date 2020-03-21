@@ -2,16 +2,8 @@ use mindustry_mods_backend::request::*;
 
 use anyhow::Result;
 use directories::ProjectDirs;
-use reqwest::{
-    header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT},
-    Client,
-};
 use serde::Deserialize;
-use std::{
-    collections::HashMap,
-    path::PathBuf,
-    time::{Duration, SystemTime, UNIX_EPOCH},
-};
+use std::path::PathBuf;
 use structopt::StructOpt;
 use tokio::prelude::*;
 

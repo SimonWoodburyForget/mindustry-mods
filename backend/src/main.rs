@@ -6,7 +6,7 @@ use structopt::StructOpt;
 use tokio::prelude::*;
 
 #[derive(Deserialize, Debug)]
-#[serde(rename_all = "lowercase")]
+#[serde(rename_all = "camelCase")]
 enum Encoding {
     Base64,
 }
@@ -15,6 +15,29 @@ enum Encoding {
 struct Contents {
     encoding: Encoding,
     content: String,
+}
+
+/// Deserializes mods from list at: https://github.com/Anuken/MindustryMods/blob/master/mods.json
+#[derive(Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct ModSource {
+    /// ex: `"What42Pizza/Mindustry-Production-Mod"`
+    repo: String,
+
+    /// ex: `"Mindustry-Production-Mod"`
+    name: String,
+
+    /// ex: `"[orange]What42Pizza"`
+    author: String,
+
+    /// ex: `"2020-03-18T16:35:29Z"`
+    last_updated: String,
+
+    /// ex: `25`
+    stars: u32,
+
+    /// ex: `"[white]This mod gives you [orange]iron[white]..."`
+    description: String,
 }
 
 /// Midustry-Mods backend CLI.
@@ -82,15 +105,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .json::<Contents>()
         .await?;
 
-    println!("{:?}", &resp.content[..63]);
-
     let content = match resp.encoding {
         Encoding::Base64 => {
-            String::from_utf8(base64::decode(str::replace(&resp.content, "\n", "")).unwrap())
+            String::from_utf8(base64::decode(str::replace(&resp.content, "\n", ""))?)
         }
-    };
+    }?;
 
-    println!("{:?}", content);
+    let mods_source: Vec<ModSource> = serde_json::from_str(&content).unwrap();
+
+    println!("{:?}", mods_listed);
 
     // .json::<Vec<core::Mod>>()
     // .await?;

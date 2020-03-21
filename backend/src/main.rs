@@ -1,5 +1,8 @@
 use directories::ProjectDirs;
-use reqwest::header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT};
+use reqwest::{
+    header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT},
+    Client,
+};
 use serde::Deserialize;
 use std::{collections::HashMap, path::PathBuf};
 use structopt::StructOpt;
@@ -15,6 +18,34 @@ enum Encoding {
 struct Contents {
     encoding: Encoding,
     content: String,
+}
+
+struct GitHub {
+    client: Client,
+}
+
+impl GitHub {
+    fn new(token: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        let mut headers = HeaderMap::new();
+        headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
+        headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
+
+        let client = reqwest::Client::builder()
+            .default_headers(headers)
+            .build()?;
+
+        Ok(Self { client })
+    }
+
+    async fn get(&self, url: &str) -> Result<Contents, Box<dyn std::error::Error>> {
+        Ok(self
+            .client
+            .get(url)
+            .send()
+            .await?
+            .json::<Contents>()
+            .await?)
+    }
 }
 
 /// Deserializes mods from list at: https://github.com/Anuken/MindustryMods/blob/master/mods.json
@@ -90,21 +121,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut token = String::new();
     file.read_to_string(&mut token).await?;
 
-    let mut headers = HeaderMap::new();
-    headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
-    headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
-
-    let client = reqwest::Client::builder()
-        .default_headers(headers)
-        .build()?;
-
-    let resp = client
+    let github = GitHub::new(&token);
+    let resp = github?
         .get("https://api.github.com/repos/Anuken/MindustryMods/contents/mods.json")
-        .send()
-        .await?
-        .json::<Contents>()
         .await?;
-
     let content = match resp.encoding {
         Encoding::Base64 => {
             String::from_utf8(base64::decode(str::replace(&resp.content, "\n", ""))?)
@@ -113,7 +133,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mods_source: Vec<ModSource> = serde_json::from_str(&content).unwrap();
 
-    println!("{:?}", mods_listed);
+    println!("{:?}", mods_source);
 
     // .json::<Vec<core::Mod>>()
     // .await?;

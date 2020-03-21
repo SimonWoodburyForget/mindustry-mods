@@ -1,10 +1,13 @@
-use crate::rate::RateLimit;
+use crate::rate::{Rate, RateLimit};
 use anyhow::Result;
+use chrono::Utc;
 use reqwest::{
     header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT},
     Client,
 };
 use serde::Deserialize;
+use tokio::time::delay_until;
+use tokio::time::Instant;
 
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -20,7 +23,7 @@ pub struct Contents {
 
 pub struct GitHub {
     client: Client,
-    rate_limits: RateLimit,
+    rate_limit: RateLimit,
 }
 
 impl GitHub {
@@ -35,16 +38,23 @@ impl GitHub {
             .default_headers(headers)
             .build()?;
 
-        let rate_limits = client.get(Self::RATE_LIMIT).send().await?.json().await?;
+        let rate_limit = client.get(Self::RATE_LIMIT).send().await?.json().await?;
 
-        Ok(Self {
-            client,
-            rate_limits,
-        })
+        Ok(Self { client, rate_limit })
     }
 
     pub async fn get(&mut self, url: &str) -> Result<Contents> {
+        let now = Utc::now();
+        if self.rate_limit.resources.core.remaining <= 0 {
+            let dur = self.rate_limit.resources.core.reset - now;
+            let later = Instant::now() + dur.to_std()?;
+            delay_until(later).await;
+        } else {
+            self.rate_limit.resources.core.remaining -= 1;
+        }
+
         let resp = self.client.get(url).send().await?;
+        // self.rate_limit.resources.core = Rate::from_headers(resp.headers());
         Ok(resp.json::<Contents>().await?)
     }
 }

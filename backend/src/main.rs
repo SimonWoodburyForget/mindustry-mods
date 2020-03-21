@@ -4,7 +4,7 @@ use reqwest::{
     Client,
 };
 use serde::Deserialize;
-use std::{collections::HashMap, path::PathBuf};
+use std::{collections::HashMap, path::PathBuf, time::SystemTime};
 use structopt::StructOpt;
 use tokio::prelude::*;
 
@@ -22,12 +22,53 @@ struct Contents {
     content: String,
 }
 
+const X_RATELIMIT_LIMIT: &str = "X-RateLimit-Limit";
+const X_RATELIMIT_REMAINING: &str = "X-RateLimit-Remaining";
+const X_RATELIMIT_RESET: &str = "X-RateLimit-Reset";
+
+#[derive(Deserialize, Debug)]
+struct Rate {
+    limit: u64,
+    remaining: u64,
+    reset: u64,
+}
+
+impl Rate {
+    /// Reads hearders for ratelimit.
+    fn from_headers(h: &HeaderMap) -> Option<Self> {
+        // NOTE: shouldn't this return a result?
+        let get_parse = |key| h.get(key)?.to_str().ok()?.parse().ok();
+        let limit = get_parse(X_RATELIMIT_LIMIT)?;
+        let remaining = get_parse(X_RATELIMIT_REMAINING)?;
+        let reset = get_parse(X_RATELIMIT_RESET)?;
+        Some(Self {
+            limit,
+            remaining,
+            reset,
+        })
+    }
+}
+
+#[derive(Deserialize, Debug)]
+struct Resources {
+    core: Rate,
+    search: Rate,
+    graphql: Rate,
+    integration_manifest: Rate,
+}
+
+#[derive(Deserialize, Debug)]
+struct RateLimit {
+    resources: Resources,
+}
+
 struct GitHub {
     client: Client,
+    rate_limits: RateLimit,
 }
 
 impl GitHub {
-    fn new(token: &str) -> Result<Self, Error> {
+    async fn new(token: &str) -> Result<Self, Error> {
         let mut headers = HeaderMap::new();
         headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
         headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
@@ -36,19 +77,21 @@ impl GitHub {
             .default_headers(headers)
             .build()?;
 
-        Ok(Self { client })
+        let rate_limits = client
+            .get("https://api.github.com/rate_limit")
+            .send()
+            .await?
+            .json()
+            .await?;
+
+        Ok(Self {
+            client,
+            rate_limits,
+        })
     }
 
-    async fn get(&self, url: &str) -> Result<Contents, Error> {
+    async fn get(&mut self, url: &str) -> Result<Contents, Error> {
         let resp = self.client.get(url).send().await?;
-
-        if let Some(rate) = resp.headers().get("X-RateLimit-Limit") {
-            println!("{:?}", rate);
-        }
-
-        // X-RateLimit-Remaining: 56
-        // X-RateLimit-Reset: 1372700873
-
         Ok(resp.json::<Contents>().await?)
     }
 }
@@ -126,8 +169,8 @@ async fn main() -> Result<(), Error> {
     let mut token = "token ".to_string();
     file.read_to_string(&mut token).await?;
 
-    let github = GitHub::new(&token);
-    let resp = github?
+    let mut github = GitHub::new(&token).await?;
+    let resp = github
         .get("https://api.github.com/repos/Anuken/MindustryMods/contents/mods.json")
         .await?;
     let content = match resp.encoding {

@@ -1,14 +1,17 @@
+use anyhow::Result;
 use directories::ProjectDirs;
 use reqwest::{
     header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT},
     Client,
 };
 use serde::Deserialize;
-use std::{collections::HashMap, path::PathBuf, time::SystemTime};
+use std::{
+    collections::HashMap,
+    path::PathBuf,
+    time::{Duration, SystemTime, UNIX_EPOCH},
+};
 use structopt::StructOpt;
 use tokio::prelude::*;
-
-type Error = Box<dyn std::error::Error>;
 
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -22,10 +25,6 @@ struct Contents {
     content: String,
 }
 
-const X_RATELIMIT_LIMIT: &str = "X-RateLimit-Limit";
-const X_RATELIMIT_REMAINING: &str = "X-RateLimit-Remaining";
-const X_RATELIMIT_RESET: &str = "X-RateLimit-Reset";
-
 #[derive(Deserialize, Debug)]
 struct Rate {
     limit: u64,
@@ -34,13 +33,21 @@ struct Rate {
 }
 
 impl Rate {
+    const X_RATELIMIT_LIMIT: &'static str = "X-RateLimit-Limit";
+    const X_RATELIMIT_REMAINING: &'static str = "X-RateLimit-Remaining";
+    const X_RATELIMIT_RESET: &'static str = "X-RateLimit-Reset";
+
+    fn time_reset(&self) -> SystemTime {
+        UNIX_EPOCH + Duration::from_secs(self.reset)
+    }
+
     /// Reads hearders for ratelimit.
     fn from_headers(h: &HeaderMap) -> Option<Self> {
         // NOTE: shouldn't this return a result?
         let get_parse = |key| h.get(key)?.to_str().ok()?.parse().ok();
-        let limit = get_parse(X_RATELIMIT_LIMIT)?;
-        let remaining = get_parse(X_RATELIMIT_REMAINING)?;
-        let reset = get_parse(X_RATELIMIT_RESET)?;
+        let limit = get_parse(Self::X_RATELIMIT_LIMIT)?;
+        let remaining = get_parse(Self::X_RATELIMIT_REMAINING)?;
+        let reset = get_parse(Self::X_RATELIMIT_RESET)?;
         Some(Self {
             limit,
             remaining,
@@ -68,7 +75,9 @@ struct GitHub {
 }
 
 impl GitHub {
-    async fn new(token: &str) -> Result<Self, Error> {
+    const RATE_LIMIT: &'static str = "https://api.github.com/rate_limit";
+
+    async fn new(token: &str) -> Result<Self> {
         let mut headers = HeaderMap::new();
         headers.insert(AUTHORIZATION, HeaderValue::from_str(&token)?);
         headers.insert(USER_AGENT, HeaderValue::from_str("Mindustry-Mods-Backend")?);
@@ -77,12 +86,7 @@ impl GitHub {
             .default_headers(headers)
             .build()?;
 
-        let rate_limits = client
-            .get("https://api.github.com/rate_limit")
-            .send()
-            .await?
-            .json()
-            .await?;
+        let rate_limits = client.get(Self::RATE_LIMIT).send().await?.json().await?;
 
         Ok(Self {
             client,
@@ -90,7 +94,7 @@ impl GitHub {
         })
     }
 
-    async fn get(&mut self, url: &str) -> Result<Contents, Error> {
+    async fn get(&mut self, url: &str) -> Result<Contents> {
         let resp = self.client.get(url).send().await?;
         Ok(resp.json::<Contents>().await?)
     }
@@ -149,7 +153,7 @@ struct Opt {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<()> {
     let opt = Opt::from_args();
 
     let dirs = ProjectDirs::from("", "Mindustry-Mods", "Mindustry-Mods-Backend")

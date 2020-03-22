@@ -6,8 +6,6 @@ use reqwest::{
     Client,
 };
 use serde::Deserialize;
-use tokio::time::delay_until;
-use tokio::time::Instant;
 
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -44,17 +42,10 @@ impl GitHub {
     }
 
     pub async fn get(&mut self, url: &str) -> Result<Contents> {
-        let now = Utc::now();
-        if self.rate_limit.resources.core.remaining <= 0 {
-            let dur = self.rate_limit.resources.core.reset - now;
-            let later = Instant::now() + dur.to_std()?;
-            delay_until(later).await;
-        } else {
-            self.rate_limit.resources.core.remaining -= 1;
-        }
-
+        self.rate_limit.resources.core.tick().await;
+        dbg!(&self.rate_limit.resources.core);
         let resp = self.client.get(url).send().await?;
-        // self.rate_limit.resources.core = Rate::from_headers(resp.headers());
+        self.rate_limit.resources.core = Rate::from_headers(resp.headers())?;
         Ok(resp.json::<Contents>().await?)
     }
 }

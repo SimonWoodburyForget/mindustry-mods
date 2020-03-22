@@ -1,13 +1,13 @@
-//! GitHub rate limiting.
+//! GitHub rate limiting: https://developer.github.com/v3/rate_limit/
 
-use anyhow::Result;
 use chrono::{serde::ts_seconds, DateTime, TimeZone, Utc};
 use reqwest::header::HeaderMap;
 use serde::Deserialize;
 use thiserror::Error;
 
+/// Rate limit http header convertion error.
 #[derive(Error, Debug)]
-enum RateLimitError {
+pub enum RateLimitError {
     #[error("header not found: {0}")]
     HeaderNotFound(&'static str),
     #[error("header is not valid utf8: {0}")]
@@ -38,18 +38,42 @@ pub struct Rate {
     pub reset: DateTime<Utc>,
 }
 
+pub enum RateLimited {
+    Decremented,
+    Waited,
+}
+
 impl Rate {
     const X_RATELIMIT_LIMIT: &'static str = "X-RateLimit-Limit";
     const X_RATELIMIT_REMAINING: &'static str = "X-RateLimit-Remaining";
     const X_RATELIMIT_RESET: &'static str = "X-RateLimit-Reset";
 
-    // pub fn time_reset(&self) -> SystemTime {
-    //     UNIX_EPOCH + Duration::from_secs(self.reset)
-    // }
+    /// Decreament limit by one or delay async operation until reset datetime passes.
+    /// If the time remaining is negative, this function waits zero seconds.
+    pub async fn tick(&mut self) -> RateLimited {
+        let now = Utc::now();
+        // leaves ourselves 500 requests if limit is over 1000
+        if (self.limit > 1000 && self.remaining > 500) || self.remaining > 10 {
+            match (self.reset - now).to_std() {
+                Ok(duration) => {
+                    let later = tokio::time::Instant::now() + duration;
+                    tokio::time::delay_until(later).await;
+                    RateLimited::Waited
+                }
 
-    /// Reads hearders for ratelimit.
-    pub fn from_headers(h: &HeaderMap) -> Result<Self> {
-        fn get_parse(h: &HeaderMap, key: &'static str) -> Result<i64> {
+                // error occurs if duration is negative, which
+                // just means we don't need to wait anymore.
+                Err(_) => RateLimited::Waited,
+            }
+        } else {
+            self.remaining -= 1;
+            RateLimited::Decremented
+        }
+    }
+
+    /// Reads `X-RateLimit-*` headers and packs them into a `Rate` struct.
+    pub fn from_headers(h: &HeaderMap) -> Result<Self, RateLimitError> {
+        fn get_parse(h: &HeaderMap, key: &'static str) -> Result<i64, RateLimitError> {
             use RateLimitError::*;
             Ok(h.get(key)
                 .ok_or(HeaderNotFound(key))?

@@ -53,7 +53,7 @@ impl Rate {
     pub async fn tick(&mut self) -> RateLimited {
         let now = Utc::now();
         // leaves ourselves 500 requests if limit is over 1000
-        if (self.limit > 1000 && self.remaining > 500) || self.remaining > 10 {
+        if self.limit > 1000 && self.remaining < 500 {
             match (self.reset - now).to_std() {
                 Ok(duration) => {
                     let later = tokio::time::Instant::now() + duration;

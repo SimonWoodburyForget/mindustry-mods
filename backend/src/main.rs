@@ -82,7 +82,7 @@ async fn main() -> Result<()> {
 
     let mut github = GitHub::new(&token).await?;
     let resp = github
-        .get("https://api.github.com/repos/Anuken/MindustryMods/contents/mods.json")
+        .get_contents("Anuken/MindustryMods", "mods.json")
         .await?;
     let content = match resp.encoding {
         Encoding::Base64 => {

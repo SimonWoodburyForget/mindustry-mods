@@ -1,6 +1,5 @@
 use crate::rate::{Rate, RateLimit};
 use anyhow::Result;
-use chrono::Utc;
 use reqwest::{
     header::{HeaderMap, HeaderValue, AUTHORIZATION, USER_AGENT},
     Client,
@@ -41,10 +40,11 @@ impl GitHub {
         Ok(Self { client, rate_limit })
     }
 
-    pub async fn get(&mut self, url: &str) -> Result<Contents> {
-        self.rate_limit.resources.core.tick().await;
+    pub async fn get_contents(&mut self, repo: &str, file: &str) -> Result<Contents> {
+        let url = format!("https://api.github.com/repos/{}/contents/{}", repo, file);
         dbg!(&self.rate_limit.resources.core);
-        let resp = self.client.get(url).send().await?;
+        self.rate_limit.resources.core.tick().await;
+        let resp = self.client.get(&url).send().await?;
         self.rate_limit.resources.core = Rate::from_headers(resp.headers())?;
         Ok(resp.json::<Contents>().await?)
     }

@@ -2,9 +2,10 @@ pub mod rate;
 pub mod request;
 
 use anyhow::Result;
+use chrono::{DateTime, Utc};
 use directories::ProjectDirs;
-use request::*;
-use serde::Deserialize;
+use mindustry_mods_core::Mod;
+use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use structopt::StructOpt;
 use tokio::prelude::*;
@@ -30,6 +31,56 @@ struct ModSource {
 
     /// ex: `"[white]This mod gives you [orange]iron[white]..."`
     description: String,
+}
+
+/// The `mod.json` file.
+#[derive(Deserialize, Serialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct ModInfo {
+    name: Option<String>,
+    description: Option<String>,
+    author: Option<String>,
+    version: Option<String>,
+    dependencies: Option<Vec<String>>,
+    display_name: Option<String>,
+    min_game_version: Option<String>,
+    hidden: Option<bool>,
+    main_script: Option<String>,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+enum Assets {
+    Content,
+    Bundles,
+    Sounds,
+    Schematics,
+    SpritesOverride,
+    Sprites,
+    Scripts,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+enum Contents {
+    Items,
+    Blocks,
+    Mechs,
+    Liquids,
+    Units,
+    Zones,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+struct Cache {
+    name: String,
+    stars: u32,
+    date: DateTime<Utc>,
+    sha: String,
+    mod_info: ModInfo,
+    readme: String,
+    assets: Vec<Assets>,
+    contents: Vec<Contents>,
 }
 
 /// Midustry-Mods backend CLI.
@@ -81,30 +132,14 @@ pub async fn main() -> Result<()> {
     let mut token = "token ".to_string();
     file.read_to_string(&mut token).await?;
 
-    let mut github = GitHub::new(&token).await?;
-    let resp = github
-        .get_contents("Anuken/MindustryMods", "mods.json")
+    let mut github = request::GitHub::new(&token).await?;
+    let data = github
+        .get_decoded("Anuken/MindustryMods", "mods.json")
         .await?;
-    let content = match resp.encoding {
-        Encoding::Base64 => {
-            String::from_utf8(base64::decode(str::replace(&resp.content, "\n", ""))?)
-        }
-    }?;
 
-    let mods_source: Vec<ModSource> = serde_json::from_str(&content).unwrap();
+    let mods_source: Vec<ModSource> = serde_json::from_str(&data).unwrap();
 
-    // .json::<Vec<core::Mod>>()
-    // .await?;
+    // let mods_meta: Vec<Mod> = mods_source.iter();
 
-    // let yaml_path = dirs.config_dirs() / "mindustry-mods.yaml";
-
-    // let mut file = File::open().await?;
-
-    // // Authorization: token OAUTH-TOKEN
-    // let resp = reqwest::get("https://api.github.com/user")
-    //     .await?
-    //     .json::<HashMap<String, String>>()
-    //     .await?;
-    // println!("{:#?}", resp);
     Ok(())
 }

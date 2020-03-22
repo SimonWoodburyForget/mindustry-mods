@@ -48,4 +48,14 @@ impl GitHub {
         self.rate_limit.resources.core = Rate::from_headers(resp.headers())?;
         Ok(resp.json::<Contents>().await?)
     }
+
+    /// Get base64 decoded contents.
+    pub async fn get_decoded(&mut self, repo: &str, file: &str) -> Result<String> {
+        let resp = self.get_contents(repo, file).await?;
+        Ok(match resp.encoding {
+            Encoding::Base64 => {
+                String::from_utf8(base64::decode(str::replace(&resp.content, "\n", ""))?)
+            }
+        }?)
+    }
 }

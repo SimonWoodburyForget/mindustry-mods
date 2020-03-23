@@ -154,7 +154,9 @@ class Repo:
             repo = gh.get_repo(name)
         except GithubException as e:
             # repository gone?
-            print(f"[error] get_repo {e.data['message']} -- {name}")
+            # FIXME: message not always in exception?
+            # print(f"[error] get_repo {e.data['message']} -- {name}")
+            print(f"[error] get_repo -- {name} -- {e}")
             return old
 
         sha = repo.get_branch("master").commit.sha

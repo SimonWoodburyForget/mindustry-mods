@@ -3,6 +3,7 @@
 use chrono::{serde::ts_seconds, DateTime, TimeZone, Utc};
 use reqwest::header::HeaderMap;
 use serde::Deserialize;
+use std::sync::atomic::{AtomicI64, Ordering};
 use thiserror::Error;
 
 /// Rate limit http header convertion error.
@@ -32,7 +33,7 @@ pub struct RateLimit {
 #[derive(Deserialize, Debug)]
 pub struct Rate {
     pub limit: i64,
-    pub remaining: i64,
+    pub remaining: AtomicI64,
 
     #[serde(with = "ts_seconds")]
     pub reset: DateTime<Utc>,
@@ -50,10 +51,10 @@ impl Rate {
 
     /// Decreament limit by one or delay async operation until reset datetime passes.
     /// If the time remaining is negative, this function waits zero seconds.
-    pub async fn tick(&mut self) -> RateLimited {
+    pub async fn tick(&self) -> RateLimited {
         let now = Utc::now();
         // leaves ourselves 500 requests if limit is over 1000
-        if self.limit > 1000 && self.remaining < 500 {
+        if self.limit > 1000 && self.remaining.load(Ordering::SeqCst) < 500 {
             match (self.reset - now).to_std() {
                 Ok(duration) => {
                     let later = tokio::time::Instant::now() + duration;
@@ -66,7 +67,8 @@ impl Rate {
                 Err(_) => RateLimited::Waited,
             }
         } else {
-            self.remaining -= 1;
+            self.remaining
+                .store(self.remaining.load(Ordering::SeqCst) - 1, Ordering::SeqCst);
             RateLimited::Decremented
         }
     }
@@ -81,7 +83,7 @@ impl Rate {
                 .parse::<i64>()?)
         }
         let limit = get_parse(h, Self::X_RATELIMIT_LIMIT)?;
-        let remaining = get_parse(h, Self::X_RATELIMIT_REMAINING)?;
+        let remaining = AtomicI64::new(get_parse(h, Self::X_RATELIMIT_REMAINING)?);
         let ts = get_parse(h, Self::X_RATELIMIT_RESET)?;
         let reset = Utc.timestamp(ts, 0);
         Ok(Self {

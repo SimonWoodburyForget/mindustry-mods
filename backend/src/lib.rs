@@ -5,10 +5,10 @@ use crate::request::Content;
 use anyhow::Result;
 use chrono::{DateTime, Utc};
 use directories::ProjectDirs;
-use futures::future::join_all;
-use mindustry_mods_core::Mod;
 use serde::{Deserialize, Serialize};
-use serde_hjson::{Map, Value};
+use serde_hjson::value::ToJson;
+use serde_json::json;
+use std::collections::HashMap;
 use std::path::PathBuf;
 use structopt::StructOpt;
 use tokio::prelude::*;
@@ -115,8 +115,33 @@ struct Opt {
     path: PathBuf,
 }
 
+/// Type to allow conversion of Hjson and Json value.
+struct Hjson(serde_hjson::Value);
+
+impl From<Hjson> for serde_json::Value {
+    fn from(value: Hjson) -> Self {
+        let Hjson(value) = value;
+        match value {
+            serde_hjson::Value::Null => serde_json::Value::Null,
+            serde_hjson::Value::Bool(x) => json!(x),
+            serde_hjson::Value::I64(x) => json!(x),
+            serde_hjson::Value::U64(x) => json!(x),
+            serde_hjson::Value::F64(x) => json!(x),
+            serde_hjson::Value::String(x) => json!(x),
+            serde_hjson::Value::Array(x) => json!(x
+                .into_iter()
+                .map(|x| Hjson(x).into())
+                .collect::<Vec<serde_json::Value>>()),
+            serde_hjson::Value::Object(x) => json!(x
+                .into_iter()
+                .map(|(k, v)| (k, Hjson(v).into()))
+                .collect::<HashMap<_, serde_json::Value>>()),
+        }
+    }
+}
+
 pub async fn main() -> Result<()> {
-    let opt = Opt::from_args();
+    let _opt = Opt::from_args();
 
     let dirs = ProjectDirs::from("", "Mindustry-Mods", "Mindustry-Mods-Backend")
         .expect("Project directories returned None.");
@@ -147,7 +172,7 @@ pub async fn main() -> Result<()> {
         serde_json::from_str(&data)
     }?;
 
-    let mods_meta: Vec<Map<String, Value>> = github
+    let mods_meta: Vec<serde_hjson::Value> = github
         .get_all_decoded(mods_source.iter().take(3).map(|m| Content {
             repo: &m.repo,
             file: "mod.json",
@@ -161,7 +186,12 @@ pub async fn main() -> Result<()> {
         })
         .collect();
 
-    dbg!(mods_meta);
+    let x: serde_json::Value = Hjson(mods_meta.to_json()).into();
+
+    // let x: JValue = mods_meta.into();
+    // let x: Vec<HashMap<String, JValue>> = serde_json::from_str(&x).unwrap();
+
+    println!("{:?}", x);
 
     // let mods_meta: Vec<Mod> = mods_source.iter();
 

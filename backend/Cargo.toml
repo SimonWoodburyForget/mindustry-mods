@@ -17,7 +17,10 @@ anyhow = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 thiserror = "1.0"
 futures = "0.3"
-serde-hjson = "0.9"
+
+[dependencies.serde-hjson]
+version = "0.9.1"
+default-features = false
 
 [dependencies.mindustry-mods-core]
 path = "../core"

@@ -1,7 +1,10 @@
 pub mod rate;
 pub mod request;
+pub mod version;
 
 use crate::request::Content;
+use crate::version::Version;
+
 use anyhow::Result;
 use chrono::{DateTime, Utc};
 use directories::ProjectDirs;
@@ -43,7 +46,7 @@ struct ModInfo {
     name: Option<String>,
     description: Option<String>,
     author: Option<String>,
-    version: Option<String>,
+    version: Version,
     dependencies: Option<Vec<String>>,
     display_name: Option<String>,
     min_game_version: Option<String>,
@@ -186,7 +189,7 @@ pub async fn main() -> Result<()> {
         })
         .collect();
 
-    let x: serde_json::Value = Hjson(mods_meta.to_json()).into();
+    let x: Vec<ModInfo> = serde_json::from_value(Hjson(mods_meta.to_json()).into())?;
 
     // let x: JValue = mods_meta.into();
     // let x: Vec<HashMap<String, JValue>> = serde_json::from_str(&x).unwrap();

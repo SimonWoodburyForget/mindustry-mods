@@ -1,4 +1,4 @@
-use crate::rate::{Rate, RateLimit};
+use crate::rate::RateLimit;
 use anyhow::Result;
 use futures::future::join_all;
 use reqwest::{

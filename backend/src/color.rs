@@ -68,8 +68,10 @@ fn hex_color(input: &str) -> PResult<ColorTag> {
 }
 
 fn text_color(input: &str) -> PResult<Text<'_>> {
-    let (input, color) = opt(delimited(tag("["), hex_color, tag("]")))(input)?;
-    let color = color.unwrap_or(ColorTag::LastColor);
+    let (input, color) = opt(delimited(tag("["), opt(hex_color), tag("]")))(input)?;
+    let color = color
+        .unwrap_or(Some(ColorTag::LastColor))
+        .unwrap_or(ColorTag::LastColor);
     let (input, text) = is_not("[")(input)?;
     Ok((input, Text { color, text }))
 }
@@ -125,6 +127,20 @@ fn parse_no_leading_color() {
             vec![
                 Text::new("texta"),
                 Text::new("textb").with_color(4, 3, 2, 1),
+            ]
+        ))
+    );
+}
+
+#[test]
+fn parse_last_color() {
+    assert_eq!(
+        text_colors("[#010203]texta[]textb"),
+        Ok((
+            "",
+            vec![
+                Text::new("texta").with_color(1, 2, 3, 0),
+                Text::new("textb"),
             ]
         ))
     );

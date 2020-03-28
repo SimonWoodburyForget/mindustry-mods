@@ -1,5 +1,5 @@
 [package]
-name = "mindustry-mods-backend"
+name = "backend"
 version = "0.1.0"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
@@ -17,6 +17,7 @@ anyhow = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 thiserror = "1.0"
 futures = "0.3"
+nom = "5.1"
 
 [dependencies.serde-hjson]
 version = "0.9.1"

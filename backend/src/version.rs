@@ -39,6 +39,18 @@ impl<'a> Visitor<'a> for Vis {
     fn visit_f64<E: de::Error>(self, value: f64) -> Result<E> {
         Ok(Version::new(value))
     }
+
+    fn visit_none<E: de::Error>(self) -> Result<E> {
+        Ok(Version::new(""))
+    }
+
+    fn visit_unit<E: de::Error>(self) -> Result<E> {
+        Ok(Version::new(""))
+    }
+
+    fn visit_some<D: Deserializer<'a>>(self, de: D) -> Result<D::Error> {
+        Deserialize::deserialize(de)
+    }
 }
 
 impl<'a> Deserialize<'a> for Version {
@@ -87,4 +99,12 @@ mod test {
         let v = Version::new(x);
         assert_eq!(t, T { v });
     }
+
+    // #[test]
+    // fn version_none() {
+    //     let i = "{}";
+    //     let t: T = serde_json::from_str(&i).unwrap();
+    //     let v = Version::new("");
+    //     assert_eq!(t, T { v });
+    // }
 }

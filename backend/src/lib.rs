@@ -1,3 +1,4 @@
+pub mod color;
 pub mod rate;
 pub mod request;
 pub mod version;

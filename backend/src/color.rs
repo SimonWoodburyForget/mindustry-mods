@@ -1,5 +1,7 @@
 use nom::{
+    branch::alt,
     bytes::complete::{is_not, tag, take_while_m_n},
+    character::complete::alpha1,
     combinator::{map_res, opt},
     multi::many0,
     sequence::{delimited, tuple},
@@ -8,21 +10,51 @@ use nom::{
 
 type PResult<'a, E> = IResult<&'a str, E>;
 
+/// Token representing color of the following text.
 #[derive(Debug, PartialEq)]
-pub enum ColorTag {
+pub enum ColorTag<'a> {
+    /// Empty square brackets, picking the color before the current one.
     LastColor,
-    Color { r: u8, g: u8, b: u8, a: u8 },
+
+    /// Parsed hex-rgb(a) string.
+    HexColor { r: u8, g: u8, b: u8, a: u8 },
+
+    /// Parsed named string.
+    Named(&'a str),
 }
 
-impl ColorTag {
+impl<'a> ColorTag<'a> {
     pub fn new(r: u8, g: u8, b: u8, a: u8) -> Self {
-        Self::Color { r, g, b, a }
+        Self::HexColor { r, g, b, a }
+    }
+
+    pub fn named(name: &'a str) -> Self {
+        name.into()
+    }
+}
+
+impl<'a> From<&'a str> for ColorTag<'a> {
+    fn from(x: &'a str) -> Self {
+        Self::Named(x)
+    }
+}
+
+impl From<[u8; 4]> for ColorTag<'_> {
+    fn from([r, g, b, a]: [u8; 4]) -> Self {
+        Self::HexColor { r, g, b, a }
+    }
+}
+
+impl From<[u8; 3]> for ColorTag<'_> {
+    fn from([r, g, b]: [u8; 3]) -> Self {
+        let a = 0;
+        Self::HexColor { r, g, b, a }
     }
 }
 
 #[derive(Debug, PartialEq)]
 pub struct Text<'a> {
-    pub color: ColorTag,
+    pub color: ColorTag<'a>,
     pub text: &'a str,
 }
 
@@ -32,8 +64,8 @@ impl<'a> Text<'a> {
         Self { text, color }
     }
 
-    pub fn with_color(self, r: u8, g: u8, b: u8, a: u8) -> Self {
-        let color = ColorTag::new(r, g, b, a);
+    pub fn with_color<T: Into<ColorTag<'a>>>(self, color: T) -> Self {
+        let color = color.into();
         Self { color, ..self }
     }
 }
@@ -41,9 +73,8 @@ impl<'a> Text<'a> {
 #[derive(Debug, PartialEq)]
 pub struct Markup<'a> {
     /// Default color.
-    color: ColorTag,
+    color: ColorTag<'a>,
 
-    ///
     texts: Vec<Text<'a>>,
 }
 
@@ -67,8 +98,17 @@ fn hex_color(input: &str) -> PResult<ColorTag> {
     Ok((input, ColorTag::new(r, g, b, a)))
 }
 
+fn named_color(input: &str) -> PResult<ColorTag> {
+    let (input, color) = alpha1(input)?;
+    Ok((input, ColorTag::Named(color)))
+}
+
 fn text_color(input: &str) -> PResult<Text<'_>> {
-    let (input, color) = opt(delimited(tag("["), opt(hex_color), tag("]")))(input)?;
+    let (input, color) = opt(delimited(
+        tag("["),
+        opt(alt((hex_color, named_color))),
+        tag("]"),
+    ))(input)?;
     let color = color
         .unwrap_or(Some(ColorTag::LastColor))
         .unwrap_or(ColorTag::LastColor);
@@ -89,6 +129,27 @@ fn parse_color() {
 }
 
 #[test]
+fn parse_color_lower_case() {
+    assert_eq!(
+        hex_color("#2f14df"),
+        Ok(("", ColorTag::new(47, 20, 223, 0)))
+    );
+}
+
+#[test]
+fn parse_color_mixed_case() {
+    assert_eq!(
+        hex_color("#2F14df"),
+        Ok(("", ColorTag::new(47, 20, 223, 0)))
+    );
+}
+
+#[test]
+fn parse_named_color() {
+    assert_eq!(named_color("red"), Ok(("", ColorTag::Named("red"))));
+}
+
+#[test]
 fn parse_color_alpha() {
     assert_eq!(
         hex_color("#2F14DF05"),
@@ -100,7 +161,15 @@ fn parse_color_alpha() {
 fn parse_one_colored_text() {
     assert_eq!(
         text_color("[#01020304]text"),
-        Ok(("", Text::new("text").with_color(1, 2, 3, 4)))
+        Ok(("", Text::new("text").with_color([1, 2, 3, 4])))
+    );
+}
+
+#[test]
+fn parse_one_named_color_text() {
+    assert_eq!(
+        text_color("[red]text"),
+        Ok(("", Text::new("text").with_color("red")))
     );
 }
 
@@ -111,8 +180,8 @@ fn parse_many_colored_text() {
         Ok((
             "",
             vec![
-                Text::new("texta").with_color(1, 2, 3, 4),
-                Text::new("textb").with_color(4, 3, 2, 1),
+                Text::new("texta").with_color([1, 2, 3, 4]),
+                Text::new("textb").with_color([4, 3, 2, 1]),
             ]
         ))
     );
@@ -126,8 +195,19 @@ fn parse_no_leading_color() {
             "",
             vec![
                 Text::new("texta"),
-                Text::new("textb").with_color(4, 3, 2, 1),
+                Text::new("textb").with_color([4, 3, 2, 1]),
             ]
+        ))
+    );
+}
+
+#[test]
+fn parse_no_leading_named_color() {
+    assert_eq!(
+        text_colors("texta[red]textb"),
+        Ok((
+            "",
+            vec![Text::new("texta"), Text::new("textb").with_color("red"),]
         ))
     );
 }
@@ -138,10 +218,18 @@ fn parse_last_color() {
         text_colors("[#010203]texta[]textb"),
         Ok((
             "",
-            vec![
-                Text::new("texta").with_color(1, 2, 3, 0),
-                Text::new("textb"),
-            ]
+            vec![Text::new("texta").with_color([1, 2, 3]), Text::new("textb"),]
+        ))
+    );
+}
+
+#[test]
+fn parse_last_color_named() {
+    assert_eq!(
+        text_colors("[red]texta[]textb"),
+        Ok((
+            "",
+            vec![Text::new("texta").with_color("red"), Text::new("textb"),]
         ))
     );
 }

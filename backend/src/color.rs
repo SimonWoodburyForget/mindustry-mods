@@ -1,7 +1,8 @@
+#![allow(dead_code)]
 use nom::{
     branch::alt,
-    bytes::complete::{is_not, tag, take_while_m_n},
-    character::complete::alpha1,
+    bytes::complete::{escaped, is_not, tag, take_while_m_n},
+    character::complete::{alpha1, char, none_of},
     combinator::{map_res, opt},
     multi::many0,
     sequence::{delimited, tuple},
@@ -103,16 +104,19 @@ fn named_color(input: &str) -> PResult<ColorTag> {
     Ok((input, ColorTag::Named(color)))
 }
 
+fn last_color(input: &str) -> PResult<ColorTag> {
+    Ok((input, ColorTag::LastColor))
+}
+
+fn color(input: &str) -> PResult<ColorTag> {
+    let color_parser = alt((hex_color, named_color, last_color));
+    Ok(delimited(char('['), color_parser, char(']'))(input)?)
+}
+
 fn text_color(input: &str) -> PResult<Text<'_>> {
-    let (input, color) = opt(delimited(
-        tag("["),
-        opt(alt((hex_color, named_color))),
-        tag("]"),
-    ))(input)?;
-    let color = color
-        .unwrap_or(Some(ColorTag::LastColor))
-        .unwrap_or(ColorTag::LastColor);
+    let (input, color) = opt(color)(input)?;
     let (input, text) = is_not("[")(input)?;
+    let color = color.unwrap_or(ColorTag::LastColor);
     Ok((input, Text { color, text }))
 }
 
@@ -224,9 +228,25 @@ fn parse_last_color() {
 }
 
 #[test]
+fn parse_last_color_alone() {
+    assert_eq!(color("[]"), Ok(("", ColorTag::LastColor)));
+}
+
+#[test]
 fn parse_last_color_named() {
     assert_eq!(
         text_colors("[red]texta[]textb"),
+        Ok((
+            "",
+            vec![Text::new("texta").with_color("red"), Text::new("textb"),]
+        ))
+    );
+}
+
+// #[test]
+fn parse_escaped() {
+    assert_eq!(
+        text_colors("[[red]texta[]textb"),
         Ok((
             "",
             vec![Text::new("texta").with_color("red"), Text::new("textb"),]

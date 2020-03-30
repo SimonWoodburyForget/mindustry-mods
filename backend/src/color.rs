@@ -3,9 +3,9 @@ use nom::{
     branch::alt,
     bytes::complete::{escaped, is_not, tag, take_while_m_n},
     character::complete::{alpha1, char, none_of},
-    combinator::{map_res, opt},
+    combinator::{map_res, opt, rest},
     multi::many0,
-    sequence::{delimited, tuple},
+    sequence::{delimited, preceded, tuple},
     IResult,
 };
 
@@ -92,8 +92,8 @@ fn hex_primary(input: &str) -> PResult<u8> {
 }
 
 fn hex_color(input: &str) -> PResult<ColorTag> {
-    let (input, _) = tag("#")(input)?;
-    let (input, (r, g, b)) = tuple((hex_primary, hex_primary, hex_primary))(input)?;
+    let (input, (r, g, b)) =
+        preceded(char('#'), tuple((hex_primary, hex_primary, hex_primary)))(input)?;
     let (input, a) = opt(hex_primary)(input)?;
     let a = a.unwrap_or(0);
     Ok((input, ColorTag::new(r, g, b, a)))
@@ -111,6 +111,25 @@ fn last_color(input: &str) -> PResult<ColorTag> {
 fn color(input: &str) -> PResult<ColorTag> {
     let color_parser = alt((hex_color, named_color, last_color));
     Ok(delimited(char('['), color_parser, char(']'))(input)?)
+}
+
+#[derive(Debug, PartialEq)]
+enum Token<'a> {
+    Color(ColorTag<'a>),
+    Text(&'a str),
+}
+
+fn color_block(input: &str) -> PResult<Token> {
+    todo!();
+}
+
+fn escaped_text(input: &str) -> PResult<Token> {
+    let (input, text) = preceded(char('['), alt((is_not("["), rest)))(input)?;
+    Ok((input, Token::Text(text)))
+}
+
+fn block(input: &str) -> PResult<Token> {
+    Ok(alt((color_block, escaped_text))(input)?)
 }
 
 fn text_color(input: &str) -> PResult<Text<'_>> {
@@ -243,13 +262,10 @@ fn parse_last_color_named() {
     );
 }
 
-// #[test]
+#[test]
 fn parse_escaped() {
     assert_eq!(
-        text_colors("[[red]texta[]textb"),
-        Ok((
-            "",
-            vec![Text::new("texta").with_color("red"), Text::new("textb"),]
-        ))
+        escaped_text("[[red]text"),
+        Ok(("", Token::Text("[red]text")))
     );
 }

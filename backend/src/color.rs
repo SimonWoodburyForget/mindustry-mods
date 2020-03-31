@@ -1,11 +1,12 @@
-#![allow(dead_code)]
+#![allow(dead_code, unused_imports)]
+
 use nom::{
     branch::alt,
     bytes::complete::{escaped, is_not, tag, take_while_m_n},
-    character::complete::{alpha1, char, none_of},
+    character::complete::{alpha1, char, none_of, one_of},
     combinator::{map_res, opt, rest},
     multi::many0,
-    sequence::{delimited, preceded, tuple},
+    sequence::{delimited, pair, preceded, tuple},
     IResult,
 };
 
@@ -113,159 +114,174 @@ fn color(input: &str) -> PResult<ColorTag> {
     Ok(delimited(char('['), color_parser, char(']'))(input)?)
 }
 
-#[derive(Debug, PartialEq)]
-enum Token<'a> {
-    Color(ColorTag<'a>),
-    Text(&'a str),
+fn escaped_text(input: &str) -> PResult<&str> {
+    let (input, text) = preceded(char('['), is_not("["))(input)?;
+    Ok((input, text))
 }
 
-fn color_block(input: &str) -> PResult<Token> {
-    todo!();
-}
-
-fn escaped_text(input: &str) -> PResult<Token> {
-    let (input, text) = preceded(char('['), alt((is_not("["), rest)))(input)?;
-    Ok((input, Token::Text(text)))
-}
-
-fn block(input: &str) -> PResult<Token> {
-    Ok(alt((color_block, escaped_text))(input)?)
-}
-
-fn text_color(input: &str) -> PResult<Text<'_>> {
+fn text_color(input: &str) -> PResult<Text> {
     let (input, color) = opt(color)(input)?;
     let (input, text) = is_not("[")(input)?;
     let color = color.unwrap_or(ColorTag::LastColor);
     Ok((input, Text { color, text }))
 }
 
-fn text_colors(input: &str) -> PResult<Vec<Text<'_>>> {
+fn text_colors(input: &str) -> PResult<Vec<Text>> {
     Ok(many0(text_color)(input)?)
 }
 
-#[test]
-fn parse_color() {
-    assert_eq!(
-        hex_color("#2F14DF"),
-        Ok(("", ColorTag::new(47, 20, 223, 0)))
-    );
-}
+#[cfg(test)]
+mod test {
+    use super::*;
 
-#[test]
-fn parse_color_lower_case() {
-    assert_eq!(
-        hex_color("#2f14df"),
-        Ok(("", ColorTag::new(47, 20, 223, 0)))
-    );
-}
+    mod color_tag {
+        use super::*;
 
-#[test]
-fn parse_color_mixed_case() {
-    assert_eq!(
-        hex_color("#2F14df"),
-        Ok(("", ColorTag::new(47, 20, 223, 0)))
-    );
-}
+        #[test]
+        fn simple() {
+            assert_eq!(
+                hex_color("#2F14DF"),
+                Ok(("", ColorTag::new(47, 20, 223, 0)))
+            );
+        }
 
-#[test]
-fn parse_named_color() {
-    assert_eq!(named_color("red"), Ok(("", ColorTag::Named("red"))));
-}
+        #[test]
+        fn lower_case() {
+            assert_eq!(
+                hex_color("#2f14df"),
+                Ok(("", ColorTag::new(47, 20, 223, 0)))
+            );
+        }
 
-#[test]
-fn parse_color_alpha() {
-    assert_eq!(
-        hex_color("#2F14DF05"),
-        Ok(("", ColorTag::new(47, 20, 223, 5)))
-    );
-}
+        #[test]
+        fn mixed_case() {
+            assert_eq!(
+                hex_color("#2F14df"),
+                Ok(("", ColorTag::new(47, 20, 223, 0)))
+            );
+        }
 
-#[test]
-fn parse_one_colored_text() {
-    assert_eq!(
-        text_color("[#01020304]text"),
-        Ok(("", Text::new("text").with_color([1, 2, 3, 4])))
-    );
-}
+        #[test]
+        fn named() {
+            assert_eq!(named_color("red"), Ok(("", ColorTag::Named("red"))));
+        }
 
-#[test]
-fn parse_one_named_color_text() {
-    assert_eq!(
-        text_color("[red]text"),
-        Ok(("", Text::new("text").with_color("red")))
-    );
-}
+        #[test]
+        fn alpha() {
+            assert_eq!(
+                hex_color("#2F14DF05"),
+                Ok(("", ColorTag::new(47, 20, 223, 5)))
+            );
+        }
+    }
 
-#[test]
-fn parse_many_colored_text() {
-    assert_eq!(
-        text_colors("[#01020304]texta[#04030201]textb"),
-        Ok((
-            "",
-            vec![
-                Text::new("texta").with_color([1, 2, 3, 4]),
-                Text::new("textb").with_color([4, 3, 2, 1]),
-            ]
-        ))
-    );
-}
+    mod one_tagged {
+        use super::*;
 
-#[test]
-fn parse_no_leading_color() {
-    assert_eq!(
-        text_colors("texta[#04030201]textb"),
-        Ok((
-            "",
-            vec![
-                Text::new("texta"),
-                Text::new("textb").with_color([4, 3, 2, 1]),
-            ]
-        ))
-    );
-}
+        #[test]
+        fn hex() {
+            assert_eq!(
+                text_color("[#01020304]text"),
+                Ok(("", Text::new("text").with_color([1, 2, 3, 4])))
+            );
+        }
 
-#[test]
-fn parse_no_leading_named_color() {
-    assert_eq!(
-        text_colors("texta[red]textb"),
-        Ok((
-            "",
-            vec![Text::new("texta"), Text::new("textb").with_color("red"),]
-        ))
-    );
-}
+        #[test]
+        fn named() {
+            assert_eq!(
+                text_color("[red]text"),
+                Ok(("", Text::new("text").with_color("red")))
+            );
+        }
+    }
 
-#[test]
-fn parse_last_color() {
-    assert_eq!(
-        text_colors("[#010203]texta[]textb"),
-        Ok((
-            "",
-            vec![Text::new("texta").with_color([1, 2, 3]), Text::new("textb"),]
-        ))
-    );
-}
+    mod multi_tagged {
+        use super::*;
 
-#[test]
-fn parse_last_color_alone() {
-    assert_eq!(color("[]"), Ok(("", ColorTag::LastColor)));
-}
+        #[test]
+        fn colored() {
+            assert_eq!(
+                text_colors("[#01020304]texta[#04030201]textb"),
+                Ok((
+                    "",
+                    vec![
+                        Text::new("texta").with_color([1, 2, 3, 4]),
+                        Text::new("textb").with_color([4, 3, 2, 1]),
+                    ]
+                ))
+            );
+        }
 
-#[test]
-fn parse_last_color_named() {
-    assert_eq!(
-        text_colors("[red]texta[]textb"),
-        Ok((
-            "",
-            vec![Text::new("texta").with_color("red"), Text::new("textb"),]
-        ))
-    );
-}
+        #[test]
+        fn no_leading() {
+            assert_eq!(
+                text_colors("texta[#04030201]textb"),
+                Ok((
+                    "",
+                    vec![
+                        Text::new("texta"),
+                        Text::new("textb").with_color([4, 3, 2, 1]),
+                    ]
+                ))
+            );
+        }
 
-#[test]
-fn parse_escaped() {
-    assert_eq!(
-        escaped_text("[[red]text"),
-        Ok(("", Token::Text("[red]text")))
-    );
+        #[test]
+        fn no_leading_named() {
+            assert_eq!(
+                text_colors("texta[red]textb"),
+                Ok((
+                    "",
+                    vec![Text::new("texta"), Text::new("textb").with_color("red"),]
+                ))
+            );
+        }
+
+        #[test]
+        fn last_color() {
+            assert_eq!(
+                text_colors("[#010203]texta[]textb"),
+                Ok((
+                    "",
+                    vec![Text::new("texta").with_color([1, 2, 3]), Text::new("textb"),]
+                ))
+            );
+        }
+
+        #[test]
+        fn last_color_alone() {
+            assert_eq!(color("[]"), Ok(("", ColorTag::LastColor)));
+        }
+
+        #[test]
+        fn last_color_named() {
+            assert_eq!(
+                text_colors("[red]texta[]textb"),
+                Ok((
+                    "",
+                    vec![Text::new("texta").with_color("red"), Text::new("textb"),]
+                ))
+            );
+        }
+    }
+
+    // #[test]
+    // fn parse_escaped() {
+    //     assert_eq!(escaped_text("[[red]text"), Ok(("", "[red]text")));
+    // }
+
+    // #[test]
+    // fn parse_unescaped() {
+    //     assert_eq!(escaped_text("text"), Ok(("", Token::Text("text"))));
+    // }
+
+    // #[test]
+    // fn parse_escaped_stop_early() {
+    //     assert_eq!(escaped_text("[[text[]"), Ok(("[]", Token::Text("[text"))));
+    // }
+
+    // #[test]
+    // fn parse_unescaped_stop_early() {
+    //     assert_eq!(escaped_text("text[]"), Ok(("[]", Token::Text("text"))));
+    // }
 }

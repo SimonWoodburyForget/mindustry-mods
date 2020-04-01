@@ -1,58 +1,68 @@
-#![allow(unused_imports)]
-
 use nom::{
-    branch::{alt, permutation},
-    bytes::complete::{escaped, is_not, tag, take_while_m_n},
-    character::complete::{alpha1, char, none_of, one_of},
-    combinator::{map, map_res, not, opt, peek, rest},
-    multi::{many0, separated_list},
-    sequence::{delimited, pair, preceded, terminated, tuple},
+    branch::alt,
+    bytes::complete::{is_not, tag, take_while_m_n},
+    character::complete::{alpha1, char},
+    combinator::{map, map_res, opt},
+    multi::many0,
+    sequence::{preceded, terminated, tuple},
     IResult,
 };
 
 type PResult<'a, E> = IResult<&'a str, E>;
 
-/// Token representing color of the following text.
+/// Represents a color markup value.
 #[derive(Debug, PartialEq)]
-pub enum ColorTag<'a> {
-    /// Parsed hex-rgb(a) string.
-    HexColor { r: u8, g: u8, b: u8, a: u8 },
+pub enum Markup<'a> {
+    /// Parsed (`[#rrggbbaa]`) hex-rgb(a) color tag.
+    HexColor { r: u8, g: u8, b: u8, a: Option<u8> },
 
-    /// Parsed named string.
+    /// Parsed (`[red]) named color tag.
     Named(&'a str),
 
-    /// Parsed escaped color tag.
+    /// Parsed (`[[`) escaped color tag.
     Escaped,
 
-    /// Parsed *pop* current color tag.
+    /// Parsed (`[]`) *pop* current color tag.
     Popped,
 
     /// Parsed text which should be rendered visible.
     Text(&'a str),
+
+    /// Parsed newline.
+    NewLine,
 }
 
-impl std::fmt::Display for ColorTag<'_> {
+impl std::fmt::Display for Markup<'_> {
+    /// Writes back what was encoded.
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Escaped => write!(f, "["),
+            Self::NewLine => write!(f, "\n"),
+            Self::Escaped => write!(f, "[["),
             Self::Popped => write!(f, "[]"),
-            Self::HexColor { r, g, b, a } => write!(f, "[#{}{}{}{}]", r, g, b, a),
             Self::Named(color) => write!(f, "[{}]", color),
             Self::Text(text) => write!(f, "{}", text),
+            Self::HexColor { r, g, b, a } => match a {
+                Some(a) => write!(f, "[#{}{}{}{}]", r, g, b, a),
+                None => write!(f, "[#{}{}{}]", r, g, b),
+            },
         }
     }
 }
 
-impl From<[u8; 4]> for ColorTag<'_> {
+impl From<[u8; 4]> for Markup<'_> {
     fn from([r, g, b, a]: [u8; 4]) -> Self {
-        Self::HexColor { r, g, b, a }
+        Self::HexColor {
+            r,
+            g,
+            b,
+            a: Some(a),
+        }
     }
 }
 
-impl From<[u8; 3]> for ColorTag<'_> {
+impl From<[u8; 3]> for Markup<'_> {
     fn from([r, g, b]: [u8; 3]) -> Self {
-        let a = 0;
-        Self::HexColor { r, g, b, a }
+        Self::HexColor { r, g, b, a: None }
     }
 }
 
@@ -68,35 +78,34 @@ fn hex_primary(input: &str) -> PResult<u8> {
     map_res(take_while_m_n(2, 2, is_hex_digit), from_hex)(input)
 }
 
-fn hex_color(input: &str) -> PResult<ColorTag> {
+fn hex_color(input: &str) -> PResult<Markup> {
     let (input, (r, g, b)) =
         preceded(char('#'), tuple((hex_primary, hex_primary, hex_primary)))(input)?;
     let (input, a) = opt(hex_primary)(input)?;
-    let a = a.unwrap_or(0);
-    Ok((input, [r, g, b, a].into()))
+    Ok((input, Markup::HexColor { r, g, b, a }))
 }
 
-fn named_color(input: &str) -> PResult<ColorTag> {
+fn named_color(input: &str) -> PResult<Markup> {
     let (input, color) = alpha1(input)?;
-    Ok((input, ColorTag::Named(color)))
+    Ok((input, Markup::Named(color)))
 }
 
-fn color_markup(input: &str) -> PResult<ColorTag> {
+fn color_markup(input: &str) -> PResult<Markup> {
     preceded(
         tag("["),
         alt((
             terminated(hex_color, tag("]")),
-            map(tag("["), |_| ColorTag::Escaped),
-            map(tag("]"), |_| ColorTag::Popped),
+            map(tag("["), |_| Markup::Escaped),
+            map(tag("]"), |_| Markup::Popped),
             terminated(named_color, tag("]")),
         )),
     )(input)
 }
 
-pub fn markup(input: &str) -> PResult<Vec<ColorTag>> {
+pub fn markup(input: &str) -> PResult<Vec<Markup>> {
     many0(alt((
         color_markup,
-        map(is_not("["), |text| ColorTag::Text(text)),
+        map(is_not("["), |text| Markup::Text(text)),
     )))(input)
 }
 
@@ -113,13 +122,13 @@ mod test {
             assert_eq!(hex_color("#2f14df"), Ok(("", [47, 20, 223].into())));
             assert_eq!(hex_color("#2F14df"), Ok(("", [47, 20, 223].into())));
             assert_eq!(hex_color("#2F14DF05"), Ok(("", [47, 20, 223, 5].into())));
-            assert_eq!(named_color("red"), Ok(("", ColorTag::Named("red"))));
+            assert_eq!(named_color("red"), Ok(("", Markup::Named("red"))));
         }
     }
 
     mod color_markup {
         use super::*;
-        use ColorTag::*;
+        use Markup::*;
 
         #[test]
         fn tag() {

@@ -4,7 +4,7 @@ use nom::{
     branch::alt,
     bytes::complete::{escaped, is_not, tag, take_while_m_n},
     character::complete::{alpha1, char, none_of, one_of},
-    combinator::{map_res, opt, rest},
+    combinator::{map_res, not, opt, peek, rest},
     multi::many0,
     sequence::{delimited, pair, preceded, tuple},
     IResult,
@@ -120,9 +120,21 @@ fn escaped_text(input: &str) -> PResult<&str> {
 }
 
 fn text_color(input: &str) -> PResult<Text> {
-    let (input, color) = opt(color)(input)?;
-    let (input, text) = is_not("[")(input)?;
-    let color = color.unwrap_or(ColorTag::LastColor);
+    let (input, c) = opt(color)(input)?;
+    // FIXME: escaping one `[[` in a very hacky way, should probably
+    // consider allocating a string somewhere to change the lenght of
+    // the string.
+    let (esc_len, esc_skip) = match peek(opt(tag("[[")))(input)? {
+        (_, Some(x)) => (2, 1),
+        _ => (0, 0),
+    };
+    let text_len = match is_not("[")(&input[esc_len..])? {
+        (_, x) => x.len(),
+    };
+    let input = &input[esc_skip..];
+    let text = &input[..esc_skip + text_len];
+    let input = &input[esc_len - esc_skip + text_len..];
+    let color = c.unwrap_or(ColorTag::LastColor);
     Ok((input, Text { color, text }))
 }
 
@@ -265,6 +277,20 @@ mod test {
         }
     }
 
+    mod escaped {
+        use super::*;
+
+        #[test]
+        fn simple() {
+            assert_eq!(text_colors("[[red]"), Ok(("", vec![Text::new("[red]")])));
+        }
+
+        /// TODO: make this work?
+        // #[test]
+        fn double() {
+            assert_eq!(text_colors("[[[[red]"), Ok(("", vec![Text::new("[[red]")])));
+        }
+    }
     // #[test]
     // fn parse_escaped() {
     //     assert_eq!(escaped_text("[[red]text"), Ok(("", "[red]text")));

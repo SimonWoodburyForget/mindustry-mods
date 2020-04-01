@@ -1,12 +1,12 @@
-#![allow(dead_code, unused_imports)]
+#![allow(unused_imports)]
 
 use nom::{
-    branch::alt,
+    branch::{alt, permutation},
     bytes::complete::{escaped, is_not, tag, take_while_m_n},
     character::complete::{alpha1, char, none_of, one_of},
-    combinator::{map_res, not, opt, peek, rest},
-    multi::many0,
-    sequence::{delimited, pair, preceded, tuple},
+    combinator::{map, map_res, not, opt, peek, rest},
+    multi::{many0, separated_list},
+    sequence::{delimited, pair, preceded, terminated, tuple},
     IResult,
 };
 
@@ -15,29 +15,37 @@ type PResult<'a, E> = IResult<&'a str, E>;
 /// Token representing color of the following text.
 #[derive(Debug, PartialEq)]
 pub enum ColorTag<'a> {
-    /// Empty square brackets, picking the color before the current one.
-    LastColor,
-
     /// Parsed hex-rgb(a) string.
     HexColor { r: u8, g: u8, b: u8, a: u8 },
 
     /// Parsed named string.
     Named(&'a str),
+
+    /// Parsed escaped color tag.
+    Escaped(&'a str),
+
+    /// Parsed *pop* current color tag.
+    Popped,
+
+    /// Parsed text which should be rendered visible.
+    Text(&'a str),
+}
+
+impl std::fmt::Display for ColorTag<'_> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Escaped(t) => write!(f, "[{}", t),
+            Self::Popped => write!(f, "[]"),
+            Self::HexColor { r, g, b, a } => write!(f, "[#{}{}{}{}]", r, g, b, a),
+            Self::Named(color) => write!(f, "[{}]", color),
+            Self::Text(text) => write!(f, "{}", text),
+        }
+    }
 }
 
 impl<'a> ColorTag<'a> {
     pub fn new(r: u8, g: u8, b: u8, a: u8) -> Self {
         Self::HexColor { r, g, b, a }
-    }
-
-    pub fn named(name: &'a str) -> Self {
-        name.into()
-    }
-}
-
-impl<'a> From<&'a str> for ColorTag<'a> {
-    fn from(x: &'a str) -> Self {
-        Self::Named(x)
     }
 }
 
@@ -52,32 +60,6 @@ impl From<[u8; 3]> for ColorTag<'_> {
         let a = 0;
         Self::HexColor { r, g, b, a }
     }
-}
-
-#[derive(Debug, PartialEq)]
-pub struct Text<'a> {
-    pub color: ColorTag<'a>,
-    pub text: &'a str,
-}
-
-impl<'a> Text<'a> {
-    pub fn new(text: &'a str) -> Self {
-        let color = ColorTag::LastColor;
-        Self { text, color }
-    }
-
-    pub fn with_color<T: Into<ColorTag<'a>>>(self, color: T) -> Self {
-        let color = color.into();
-        Self { color, ..self }
-    }
-}
-
-#[derive(Debug, PartialEq)]
-pub struct Markup<'a> {
-    /// Default color.
-    color: ColorTag<'a>,
-
-    texts: Vec<Text<'a>>,
 }
 
 fn from_hex(input: &str) -> Result<u8, std::num::ParseIntError> {
@@ -105,41 +87,24 @@ fn named_color(input: &str) -> PResult<ColorTag> {
     Ok((input, ColorTag::Named(color)))
 }
 
-fn last_color(input: &str) -> PResult<ColorTag> {
-    Ok((input, ColorTag::LastColor))
+fn color_markup(input: &str) -> PResult<ColorTag> {
+    preceded(
+        tag("["),
+        alt((
+            terminated(hex_color, tag("]")),
+            preceded(tag("["), map(is_not("["), |t| ColorTag::Escaped(t))),
+            map(tag("["), |_| ColorTag::Escaped("")),
+            map(tag("]"), |_| ColorTag::Popped),
+            terminated(named_color, tag("]")),
+        )),
+    )(input)
 }
 
-fn color(input: &str) -> PResult<ColorTag> {
-    let color_parser = alt((hex_color, named_color, last_color));
-    Ok(delimited(char('['), color_parser, char(']'))(input)?)
-}
-
-fn escaped_text(input: &str) -> PResult<&str> {
-    let (input, text) = preceded(char('['), is_not("["))(input)?;
-    Ok((input, text))
-}
-
-fn text_color(input: &str) -> PResult<Text> {
-    let (input, c) = opt(color)(input)?;
-    // FIXME: escaping one `[[` in a very hacky way, should probably
-    // consider allocating a string somewhere to change the lenght of
-    // the string.
-    let (esc_len, esc_skip) = match peek(opt(tag("[[")))(input)? {
-        (_, Some(x)) => (2, 1),
-        _ => (0, 0),
-    };
-    let text_len = match is_not("[")(&input[esc_len..])? {
-        (_, x) => x.len(),
-    };
-    let input = &input[esc_skip..];
-    let text = &input[..esc_skip + text_len];
-    let input = &input[esc_len - esc_skip + text_len..];
-    let color = c.unwrap_or(ColorTag::LastColor);
-    Ok((input, Text { color, text }))
-}
-
-fn text_colors(input: &str) -> PResult<Vec<Text>> {
-    Ok(many0(text_color)(input)?)
+pub fn markup(input: &str) -> PResult<Vec<ColorTag>> {
+    many0(alt((
+        color_markup,
+        map(is_not("["), |text| ColorTag::Text(text)),
+    )))(input)
 }
 
 #[cfg(test)]
@@ -187,127 +152,50 @@ mod test {
         }
     }
 
-    mod one_tagged {
+    mod color_markup {
         use super::*;
+        use ColorTag::*;
 
         #[test]
-        fn hex() {
-            assert_eq!(
-                text_color("[#01020304]text"),
-                Ok(("", Text::new("text").with_color([1, 2, 3, 4])))
-            );
+        fn tag() {
+            assert_eq!(color_markup("[#010203]"), Ok(("", [1, 2, 3].into())));
+            assert_eq!(color_markup("[red]"), Ok(("", Named("red"))));
+            assert_eq!(color_markup("[[e"), Ok(("", Escaped("e"))));
+            assert_eq!(color_markup("[["), Ok(("", Escaped(""))));
+            assert_eq!(color_markup("[]"), Ok(("", Popped)));
         }
 
         #[test]
-        fn named() {
+        fn text() {
+            assert_eq!(markup("[red]"), Ok(("", vec![Named("red")])));
             assert_eq!(
-                text_color("[red]text"),
-                Ok(("", Text::new("text").with_color("red")))
+                markup("[red][blue]"),
+                Ok(("", vec![Named("red"), Named("blue")]))
+            );
+            assert_eq!(
+                markup("[red][[blue[green]"),
+                Ok(("", vec![Named("red"), Escaped("blue"), Named("green")]))
+            );
+            assert_eq!(
+                markup("[][[blue[green]"),
+                Ok(("", vec![Popped, Escaped("blue"), Named("green")]))
+            );
+            assert_eq!(
+                markup("[#01020304][[blue"),
+                Ok(("", vec![[1, 2, 3, 4].into(), Escaped("blue")]))
+            );
+            assert_eq!(
+                markup("[red]text"),
+                Ok(("", vec![Named("red"), Text("text")]))
+            );
+            assert_eq!(
+                markup("[red]text[green]"),
+                Ok(("", vec![Named("red"), Text("text"), Named("green")]))
+            );
+            assert_eq!(
+                markup("text[red][green]"),
+                Ok(("", vec![Text("text"), Named("red"), Named("green")]))
             );
         }
     }
-
-    mod multi_tagged {
-        use super::*;
-
-        #[test]
-        fn colored() {
-            assert_eq!(
-                text_colors("[#01020304]texta[#04030201]textb"),
-                Ok((
-                    "",
-                    vec![
-                        Text::new("texta").with_color([1, 2, 3, 4]),
-                        Text::new("textb").with_color([4, 3, 2, 1]),
-                    ]
-                ))
-            );
-        }
-
-        #[test]
-        fn no_leading() {
-            assert_eq!(
-                text_colors("texta[#04030201]textb"),
-                Ok((
-                    "",
-                    vec![
-                        Text::new("texta"),
-                        Text::new("textb").with_color([4, 3, 2, 1]),
-                    ]
-                ))
-            );
-        }
-
-        #[test]
-        fn no_leading_named() {
-            assert_eq!(
-                text_colors("texta[red]textb"),
-                Ok((
-                    "",
-                    vec![Text::new("texta"), Text::new("textb").with_color("red"),]
-                ))
-            );
-        }
-
-        #[test]
-        fn last_color() {
-            assert_eq!(
-                text_colors("[#010203]texta[]textb"),
-                Ok((
-                    "",
-                    vec![Text::new("texta").with_color([1, 2, 3]), Text::new("textb"),]
-                ))
-            );
-        }
-
-        #[test]
-        fn last_color_alone() {
-            assert_eq!(color("[]"), Ok(("", ColorTag::LastColor)));
-        }
-
-        #[test]
-        fn last_color_named() {
-            assert_eq!(
-                text_colors("[red]texta[]textb"),
-                Ok((
-                    "",
-                    vec![Text::new("texta").with_color("red"), Text::new("textb"),]
-                ))
-            );
-        }
-    }
-
-    mod escaped {
-        use super::*;
-
-        #[test]
-        fn simple() {
-            assert_eq!(text_colors("[[red]"), Ok(("", vec![Text::new("[red]")])));
-        }
-
-        /// TODO: make this work?
-        // #[test]
-        fn double() {
-            assert_eq!(text_colors("[[[[red]"), Ok(("", vec![Text::new("[[red]")])));
-        }
-    }
-    // #[test]
-    // fn parse_escaped() {
-    //     assert_eq!(escaped_text("[[red]text"), Ok(("", "[red]text")));
-    // }
-
-    // #[test]
-    // fn parse_unescaped() {
-    //     assert_eq!(escaped_text("text"), Ok(("", Token::Text("text"))));
-    // }
-
-    // #[test]
-    // fn parse_escaped_stop_early() {
-    //     assert_eq!(escaped_text("[[text[]"), Ok(("[]", Token::Text("[text"))));
-    // }
-
-    // #[test]
-    // fn parse_unescaped_stop_early() {
-    //     assert_eq!(escaped_text("text[]"), Ok(("[]", Token::Text("text"))));
-    // }
 }

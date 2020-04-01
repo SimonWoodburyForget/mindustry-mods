@@ -146,6 +146,7 @@ input {
     color: #f0f0f0;
     background: #333;
     border-left: 3px solid #666;
+    white-space: pre-line;
 }
 
 /* ================================================================ */

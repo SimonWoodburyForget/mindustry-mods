@@ -1,5 +1,7 @@
 #![allow(bad_style)]
 
+mod color;
+
 use serde::Deserialize;
 
 pub const MOD_VERSION: &str = "3.0";

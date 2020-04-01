@@ -634,6 +634,7 @@ dependencies = [
 name = "mindustry-mods-core"
 version = "0.1.0"
 dependencies = [
+ "nom 5.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.44 (registry+https://github.com/rust-lang/crates.io-index)",
 ]

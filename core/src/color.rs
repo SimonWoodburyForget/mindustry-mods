@@ -10,7 +10,8 @@ use nom::{
 
 type PResult<'a, E> = IResult<&'a str, E>;
 
-/// Represents a color markup value.
+/// Represents a color markup token, for the purposes of
+/// being encoded into something like HTML.
 #[derive(Debug, PartialEq)]
 pub enum Markup<'a> {
     /// Parsed (`[#rrggbbaa]`) hex-rgb(a) color tag.
@@ -28,7 +29,7 @@ pub enum Markup<'a> {
     /// Parsed text which should be rendered visible.
     Text(&'a str),
 
-    /// Parsed newline.
+    /// Parsed newline inserted by user.
     NewLine,
 }
 
@@ -105,7 +106,8 @@ fn color_markup(input: &str) -> PResult<Markup> {
 pub fn markup(input: &str) -> PResult<Vec<Markup>> {
     many0(alt((
         color_markup,
-        map(is_not("["), |text| Markup::Text(text)),
+        map(char('\n'), |_| Markup::NewLine),
+        map(is_not("[\n"), |text| Markup::Text(text)),
     )))(input)
 }
 
@@ -171,6 +173,19 @@ mod test {
             assert_eq!(
                 markup("text[red][green]"),
                 Ok(("", vec![Text("text"), Named("red"), Named("green")]))
+            );
+            assert_eq!(
+                markup("[red]text\n[green]text"),
+                Ok((
+                    "",
+                    vec![
+                        Named("red"),
+                        Text("text"),
+                        NewLine,
+                        Named("green"),
+                        Text("text")
+                    ]
+                ))
             );
         }
     }

@@ -2,7 +2,7 @@
 #![allow(clippy::non_ascii_literal)]
 #![warn(missing_docs)]
 
-use mindustry_mods_core::{Mod, MOD_VERSION};
+use mindustry_mods_core::{color, Mod, MOD_VERSION};
 
 use std::convert::TryFrom;
 use std::iter;
@@ -232,7 +232,7 @@ impl ListingItem {
 
     /// The thing the user will probably click on.
     fn title_link(&self) -> Node<Msg> {
-        let title = match &self.0.displayName {
+        let title = match &self.0.display_name {
             Some(name) => {
                 // hacky way to ignore color formatting
                 let re = Regex::new(r"\[#?[a-zA-Z0-9]*\]").unwrap();

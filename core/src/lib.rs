@@ -1,10 +1,7 @@
-#![allow(bad_style)]
-
-mod color;
+pub mod color;
 
 use serde::Deserialize;
-
-pub const MOD_VERSION: &str = "3.0";
+pub const MOD_VERSION: &str = "3.1";
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct Mod {
@@ -13,6 +10,7 @@ pub struct Mod {
     pub stars: u32,
     pub date_tt: f64,
     pub desc: String,
+    pub desc_markup: Option<String>,
     pub link: String,
     pub repo: String,
     pub wiki: Option<String>,
@@ -21,7 +19,8 @@ pub struct Mod {
     pub assets: Vec<String>,
     pub version: Option<String>,
     pub readme: String,
-    pub displayName: Option<String>,
+    #[serde(rename = "camelCase")]
+    pub display_name: Option<String>,
     pub date: String,
 }
 

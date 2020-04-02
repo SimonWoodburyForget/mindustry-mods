@@ -61,6 +61,8 @@ class ModMeta:
     link: str
     '''Short description.'''
     desc: str
+    '''Short description, raw markup.'''
+    desc_markup: str
     '''Icon relative the mods repository.'''
     icon: Optional[str]
     stars: int
@@ -144,6 +146,7 @@ class ModMeta:
                        link=f"https://github.com/{repo_name}",
                        repo=m['repo'],
                        desc=mods_desc,
+                       desc_markup=r.mod.description,
                        icon=icon,
                        stars=r.stars,
                        author=author.strip(),

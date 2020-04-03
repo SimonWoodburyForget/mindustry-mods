@@ -1,54 +1,43 @@
 //! Frontend application of for a Mindustry-Mods listing.
-#![allow(clippy::non_ascii_literal)]
-#![warn(missing_docs)]
 
-use mindustry_mods_core::{color, Mod, MOD_VERSION};
-
-use std::convert::TryFrom;
-use std::iter;
-
-use seed::{prelude::*, *};
+use mindustry_mods_core::{Mod, MOD_VERSION};
 
 use futures::Future;
 use regex::Regex;
 use seed::{fetch, Method, Request};
+use seed::{prelude::*, *};
 use serde::Deserialize;
-
+use std::convert::TryFrom;
+use std::iter;
 use wee_alloc;
 
 // #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-mod date {
+/// Simple DateTime utilities.
+pub mod date {
     use humantime::{parse_rfc3339_weak, TimestampError};
     use js_sys::Date;
     use std::time::{Duration, SystemTime, SystemTimeError, UNIX_EPOCH};
+    use thiserror::Error as ThisError;
 
+    /// DateTime related error.
+    #[derive(Debug, ThisError)]
     pub enum Error {
-        Computation,
-        Formatting,
+        #[error("computation error: {0}")]
+        Computation(#[from] SystemTimeError),
+        #[error("formatting error: {0}")]
+        Formatting(#[from] TimestampError),
     }
 
-    impl From<SystemTimeError> for Error {
-        fn from(_: SystemTimeError) -> Self {
-            Self::Computation
-        }
-    }
-
-    impl From<TimestampError> for Error {
-        fn from(_: TimestampError) -> Self {
-            Self::Formatting
-        }
-    }
-
-    pub fn from_tt(x: f64) -> SystemTime {
+    fn from_tt(x: f64) -> SystemTime {
         let secs = (x as u64) / 1_000;
         let nanos = ((x as u32) % 1_000) * 1_000_000;
         UNIX_EPOCH + Duration::new(secs, nanos)
     }
 
-    pub fn now() -> SystemTime {
+    fn now() -> SystemTime {
         let x = Date::now();
         from_tt(x)
     }
@@ -153,8 +142,8 @@ impl ListingItem {
                 .take(2)
                 .collect(),
 
-            Err(date::Error::Computation) => "computation error".to_string(),
-            Err(date::Error::Formatting) => "formatting error".to_string(),
+            Err(date::Error::Computation(_)) => "computation error".to_string(),
+            Err(date::Error::Formatting(_)) => "formatting error".to_string(),
         };
 
         div![attrs! { At::Class => "last-commit" }, fmt_ago]

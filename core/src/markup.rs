@@ -112,6 +112,7 @@ impl Markup<'_> {
         )))(input)
     }
 }
+
 #[cfg(test)]
 mod test {
     use super::*;

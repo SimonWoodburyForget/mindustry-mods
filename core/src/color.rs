@@ -133,12 +133,14 @@ impl Name {
     fn from_str(input: &str) -> Result<Self, NameError> {
         use Name::*;
         Ok(match input {
+            "clear" => Clear,
+            "black" => Black,
+
             "white" => White,
             "lightgray" => LightGray,
             "gray" => Gray,
             "darkgray" => DarkGray,
-            "black" => Black,
-            "clear" => Clear,
+
             "blue" => Blue,
             "navy" => Navy,
             "royal" => Royal,
@@ -146,27 +148,34 @@ impl Name {
             "sky" => Sky,
             "cyan" => Cyan,
             "teal" => Teal,
+
             "green" => Green,
             "acid" => Acid,
             "lime" => Lime,
             "forest" => Forest,
             "olive" => Olive,
+
             "yellow" => Yellow,
             "gold" => Gold,
             "goldenrod" => Goldenrod,
             "orange" => Orange,
+
             "brown" => Brown,
             "tan" => Tan,
             "brick" => Brick,
+
             "red" => Red,
             "scarlet" => Scarlet,
             "coral" => Coral,
             "salmon" => Salmon,
             "pink" => Pink,
             "magenta" => Magenta,
+
             "purple" => Purple,
             "violet" => Violet,
             "maroon" => Maroon,
+            "crimson" => Scarlet,
+
             name => Err(NameError::Unknown(name))?,
         })
     }

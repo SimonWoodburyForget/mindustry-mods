@@ -1,5 +1,3 @@
-use std::convert::TryFrom;
-
 pub struct Color {
     r: u8,
     g: u8,
@@ -83,46 +81,46 @@ pub enum Name {
 
 impl From<Name> for Color {
     #[rustfmt::skip]
-        fn from(input: Name) -> Self {
-            use Name::*;
-            match input {
-                Maroon     => 0xb03060ff,
-                Violet     => 0xee82eeff,
-                Purple     => 0xa020f0ff,
-                Magenta    => 0xff00ffff,
-                Pink       => 0xff69b4ff,
-                Salmon     => 0xfa8072ff,
-                Coral      => 0xff7f50ff,
-                Scarlet    => 0xff341cff,
-                Red        => 0xff0000ff,
-                Brick      => 0xb22222ff,
-                Tan        => 0xd2b48cff,
-                Brown      => 0x8b4513ff,
-                Orange     => 0xffa500ff,
-                Goldenrod  => 0xdaa520ff,
-                Gold       => 0xffd700ff,
-                Yellow     => 0xffff00ff,
-                Olive      => 0x6b8e23ff,
-                Forest     => 0x228b22ff,
-                Lime       => 0x32cd32ff,
-                Acid       => 0x7fff00ff,
-                Green      => 0x00ff00ff,
-                Teal       => 0x008888ff,
-                Cyan       => 0x00ffffff,
-                Sky        => 0x87ceebff,
-                Slate      => 0x708090ff,
-                Royal      => 0x4169e1ff,
-                Navy       => 0x000088ff,
-                Blue       => 0x0000ffff,
-                Clear      =>          0,
-                Black      =>       0xff,
-                DarkGray   => 0x3f3f3fff,
-                Gray       => 0x7f7f7fff,
-                LightGray  => 0xbfbfbfff,
-                White      => 0xffffffff,
-            }
-            .into()
+    fn from(input: Name) -> Self {
+        use Name::*;
+        match input {
+            Maroon     => 0xb03060ff,
+            Violet     => 0xee82eeff,
+            Purple     => 0xa020f0ff,
+            Magenta    => 0xff00ffff,
+            Pink       => 0xff69b4ff,
+            Salmon     => 0xfa8072ff,
+            Coral      => 0xff7f50ff,
+            Scarlet    => 0xff341cff,
+            Red        => 0xff0000ff,
+            Brick      => 0xb22222ff,
+            Tan        => 0xd2b48cff,
+            Brown      => 0x8b4513ff,
+            Orange     => 0xffa500ff,
+            Goldenrod  => 0xdaa520ff,
+            Gold       => 0xffd700ff,
+            Yellow     => 0xffff00ff,
+            Olive      => 0x6b8e23ff,
+            Forest     => 0x228b22ff,
+            Lime       => 0x32cd32ff,
+            Acid       => 0x7fff00ff,
+            Green      => 0x00ff00ff,
+            Teal       => 0x008888ff,
+            Cyan       => 0x00ffffff,
+            Sky        => 0x87ceebff,
+            Slate      => 0x708090ff,
+            Royal      => 0x4169e1ff,
+            Navy       => 0x000088ff,
+            Blue       => 0x0000ffff,
+            Clear      =>          0,
+            Black      =>       0xff,
+            DarkGray   => 0x3f3f3fff,
+            Gray       => 0x7f7f7fff,
+            LightGray  => 0xbfbfbfff,
+            White      => 0xffffffff,
         }
+        .into()
+    }
 }
 
 #[derive(thiserror::Error, Debug)]

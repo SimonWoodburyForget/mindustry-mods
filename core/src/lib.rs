@@ -1,3 +1,4 @@
+pub mod color;
 pub mod markup;
 
 use serde::Deserialize;

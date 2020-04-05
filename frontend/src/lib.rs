@@ -70,7 +70,7 @@ fn tiny_list(v: &Vec<String>) -> Node<Msg> {
 static RGUC: &'static str = "https://raw.githubusercontent.com";
 
 #[derive(Deserialize, Debug, Clone)]
-struct ListingItem(Mod);
+pub struct ListingItem(Mod);
 
 impl ListingItem {
     /// Returns whether the mod should be rendered, given a query.
@@ -196,7 +196,14 @@ impl ListingItem {
 
     /// Description paragraph of the mode for the listing.
     fn description(&self) -> Node<Msg> {
-        p![attrs! { At::Class => "description" }, self.0.desc]
+        p![
+            style! { St::Background => "#0f0f0f" },
+            attrs! { At::Class => "description" },
+            match self.0.desc_markup.as_ref() {
+                Some(x) => markup::from_str(x),
+                None => vec![],
+            }
+        ]
     }
 
     /// Handles path names, which occur when mod.json doesn't exist.
@@ -270,7 +277,7 @@ impl ListingItem {
     }
 }
 
-pub mod color {
+pub mod markup {
     use super::Msg;
     use mindustry_mods_core::{
         color::{Color, Name},
@@ -289,7 +296,7 @@ pub mod color {
         }
     }
 
-    fn from_str(x: &str) -> Vec<Node<Msg>> {
+    pub fn from_str(x: &str) -> Vec<Node<Msg>> {
         let mut colors: Vec<Color> = vec![Name::White.into()];
         let last = |v: &[Color]| v[v.len() - 1].to_style();
         let mut output: Vec<Node<Msg>> = vec![];
@@ -304,9 +311,9 @@ pub mod color {
                 Popped => {
                     colors.pop();
                 }
-                Text(text) => output.push(div![last(&colors), text]),
-                Escaped => output.push(div![last(&colors), "["]),
-                NewLine => output.push(div![last(&colors), "\n"]),
+                Text(text) => output.push(span![last(&colors), text]),
+                Escaped => output.push(span![last(&colors), "["]),
+                NewLine => output.push(span![last(&colors), "\n"]),
             }
         }
         output
@@ -355,13 +362,13 @@ impl Default for Model {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-enum Sorting {
+pub enum Sorting {
     Stars,
     Commit,
 }
 
 #[derive(Debug, Clone)]
-enum Msg {
+pub enum Msg {
     /// Fetched mod data.
     FetchData(fetch::ResponseDataResult<Vec<ListingItem>>),
 

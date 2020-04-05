@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq)]
 pub struct Color {
     r: u8,
     g: u8,
@@ -7,10 +8,10 @@ pub struct Color {
 
 impl ToString for Color {
     fn to_string(&self) -> String {
-        let Color { r, g, b, a } = self;
+        let Color { r, g, b, a } = *self;
         match a {
-            Some(a) => format!("#{}{}{}{}", r, g, b, a),
-            None => format!("#{}{}{}", r, g, b),
+            Some(a) => format!("#{:08x}", u32::from_be_bytes([r, g, b, a])),
+            None => format!("#{:06x}", u32::from_be_bytes([r, g, b, 0]).rotate_right(8)),
         }
     }
 }
@@ -84,40 +85,40 @@ impl From<Name> for Color {
     fn from(input: Name) -> Self {
         use Name::*;
         match input {
-            Maroon     => 0xb03060ff,
-            Violet     => 0xee82eeff,
-            Purple     => 0xa020f0ff,
-            Magenta    => 0xff00ffff,
-            Pink       => 0xff69b4ff,
-            Salmon     => 0xfa8072ff,
-            Coral      => 0xff7f50ff,
-            Scarlet    => 0xff341cff,
-            Red        => 0xff0000ff,
-            Brick      => 0xb22222ff,
-            Tan        => 0xd2b48cff,
-            Brown      => 0x8b4513ff,
-            Orange     => 0xffa500ff,
-            Goldenrod  => 0xdaa520ff,
-            Gold       => 0xffd700ff,
-            Yellow     => 0xffff00ff,
-            Olive      => 0x6b8e23ff,
-            Forest     => 0x228b22ff,
-            Lime       => 0x32cd32ff,
-            Acid       => 0x7fff00ff,
-            Green      => 0x00ff00ff,
-            Teal       => 0x008888ff,
-            Cyan       => 0x00ffffff,
-            Sky        => 0x87ceebff,
-            Slate      => 0x708090ff,
-            Royal      => 0x4169e1ff,
-            Navy       => 0x000088ff,
-            Blue       => 0x0000ffff,
+            Maroon     => 0xb03060_ff_u32,
+            Violet     => 0xee82ee_ff,
+            Purple     => 0xa020f0_ff,
+            Magenta    => 0xff00ff_ff,
+            Pink       => 0xff69b4_ff,
+            Salmon     => 0xfa8072_ff,
+            Coral      => 0xff7f50_ff,
+            Scarlet    => 0xff341c_ff,
+            Red        => 0xff0000_ff,
+            Brick      => 0xb22222_ff,
+            Tan        => 0xd2b48c_ff,
+            Brown      => 0x8b4513_ff,
+            Orange     => 0xffa500_ff,
+            Goldenrod  => 0xdaa520_ff,
+            Gold       => 0xffd700_ff,
+            Yellow     => 0xffff00_ff,
+            Olive      => 0x6b8e23_ff,
+            Forest     => 0x228b22_ff,
+            Lime       => 0x32cd32_ff,
+            Acid       => 0x7fff00_ff,
+            Green      => 0x00ff00_ff,
+            Teal       => 0x008888_ff,
+            Cyan       => 0x00ffff_ff,
+            Sky        => 0x87ceeb_ff,
+            Slate      => 0x708090_ff,
+            Royal      => 0x4169e1_ff,
+            Navy       => 0x000088_ff,
+            Blue       => 0x0000ff_ff,
             Clear      =>          0,
-            Black      =>       0xff,
-            DarkGray   => 0x3f3f3fff,
-            Gray       => 0x7f7f7fff,
-            LightGray  => 0xbfbfbfff,
-            White      => 0xffffffff,
+            Black      => 0x000000_ff,
+            DarkGray   => 0x3f3f3f_ff,
+            Gray       => 0x7f7f7f_ff,
+            LightGray  => 0xbfbfbf_ff,
+            White      => 0xffffff_ff,
         }
         .into()
     }
@@ -178,5 +179,44 @@ impl Name {
 
             name => Err(NameError::Unknown(name))?,
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const RED_FF: Color = Color {
+        r: 0xff,
+        g: 0,
+        b: 0,
+        a: Some(0xff),
+    };
+
+    const RED: Color = Color {
+        r: 0xff,
+        g: 0,
+        b: 0,
+        a: None,
+    };
+
+    const BLUE_FF: Color = Color {
+        r: 0,
+        g: 0,
+        b: 0xff,
+        a: Some(0xff),
+    };
+
+    #[test]
+    fn names() {
+        assert_eq!(RED_FF, "red".into());
+        assert_eq!(BLUE_FF, "blue".into());
+    }
+
+    #[test]
+    fn formatting() {
+        assert_eq!(RED_FF.to_string(), "#ff0000ff");
+        assert_eq!(RED.to_string(), "#ff0000");
+        assert_eq!(BLUE_FF.to_string(), "#0000ffff");
     }
 }

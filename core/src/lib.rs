@@ -1,4 +1,4 @@
-pub mod color;
+pub mod markup;
 
 use serde::Deserialize;
 pub const MOD_VERSION: &str = "3.1";

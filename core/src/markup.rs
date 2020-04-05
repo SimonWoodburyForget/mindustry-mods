@@ -103,14 +103,15 @@ fn color_markup(input: &str) -> PResult<Markup> {
     )(input)
 }
 
-pub fn markup(input: &str) -> PResult<Vec<Markup>> {
-    many0(alt((
-        color_markup,
-        map(char('\n'), |_| Markup::NewLine),
-        map(is_not("[\n"), |text| Markup::Text(text)),
-    )))(input)
+impl Markup<'_> {
+    pub fn from_str(input: &str) -> PResult<Vec<Markup>> {
+        many0(alt((
+            color_markup,
+            map(char('\n'), |_| Markup::NewLine),
+            map(is_not("[\n"), |text| Markup::Text(text)),
+        )))(input)
+    }
 }
-
 #[cfg(test)]
 mod test {
     use super::*;

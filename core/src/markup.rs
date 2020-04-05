@@ -143,40 +143,40 @@ mod test {
 
         #[test]
         fn text() {
-            assert_eq!(markup("[red]"), Ok(("", vec![Named("red")])));
+            assert_eq!(Markup::from_str("[red]"), Ok(("", vec![Named("red")])));
             assert_eq!(
-                markup("[red][blue]"),
+                Markup::from_str("[red][blue]"),
                 Ok(("", vec![Named("red"), Named("blue")]))
             );
             assert_eq!(
-                markup("[red][[blue[green]"),
+                Markup::from_str("[red][[blue[green]"),
                 Ok((
                     "",
                     vec![Named("red"), Escaped, Text("blue"), Named("green")]
                 ))
             );
             assert_eq!(
-                markup("[][[blue[green]"),
+                Markup::from_str("[][[blue[green]"),
                 Ok(("", vec![Popped, Escaped, Text("blue"), Named("green")]))
             );
             assert_eq!(
-                markup("[#01020304][[blue"),
+                Markup::from_str("[#01020304][[blue"),
                 Ok(("", vec![[1, 2, 3, 4].into(), Escaped, Text("blue")]))
             );
             assert_eq!(
-                markup("[red]text"),
+                Markup::from_str("[red]text"),
                 Ok(("", vec![Named("red"), Text("text")]))
             );
             assert_eq!(
-                markup("[red]text[green]"),
+                Markup::from_str("[red]text[green]"),
                 Ok(("", vec![Named("red"), Text("text"), Named("green")]))
             );
             assert_eq!(
-                markup("text[red][green]"),
+                Markup::from_str("text[red][green]"),
                 Ok(("", vec![Text("text"), Named("red"), Named("green")]))
             );
             assert_eq!(
-                markup("[red]text\n[green]text"),
+                Markup::from_str("[red]text\n[green]text"),
                 Ok((
                     "",
                     vec![

@@ -216,14 +216,23 @@ impl ListingItem {
 
     /// The rendered author.
     fn by_author(&self) -> Node<Msg> {
-        div![attrs! { At::Class => "by-author" }, "by ", self.0.author]
+        div![
+            attrs! { At::Class => "by-author" },
+            "by ",
+            markup::from_str(&self.0.author_markup)
+        ]
     }
 
     /// The rendered version number.
     fn v_number(&self) -> Node<Msg> {
         let pre = if self.0.version.is_some() { "v" } else { "" };
         let num = self.0.version.as_ref().map(|x| x.as_str()).unwrap_or("");
-        div![attrs! { At::Class => "v-number" }, pre, num]
+        div![
+            attrs! { At::Class => "v-number" },
+            style! { St::Color => "#383838" },
+            pre,
+            markup::from_str(num)
+        ]
     }
 
     /// The thing the user will probably click on.
@@ -233,7 +242,7 @@ impl ListingItem {
             attrs! { At::Class => "title-link" },
             a![
                 attrs! { At::Href => self.endpoint_href() },
-                style! { St::Background => "#181818" },
+                style! { St::Background => "#282828" },
                 markup::from_str(name)
             ]
         ]
@@ -254,6 +263,7 @@ impl ListingItem {
     fn listing_item(&self) -> Node<Msg> {
         div![
             attrs! { At::Class => "outside" },
+            style! { St::Background => "#181818" },
             div![
                 attrs! { At::Class => "wrapper" },
                 div![attrs! { At::Class => "box icon" }, self.icon()],

@@ -69,6 +69,8 @@ class ModMeta:
     icon: Optional[str]
     stars: int
     author: str
+    '''author name with markup.'''
+    author_markup: str
     date: datetime
     '''UTC time stamp epoch in seconds.'''
     date_tt: float
@@ -153,6 +155,7 @@ class ModMeta:
                        icon=icon,
                        stars=r.stars,
                        author=author.strip(),
+                       author_markup=r.mod.author,
                        date=r.date,
                        issue=m["issue"] if 'issue' in m else None,
                        readme=r.readme or '',

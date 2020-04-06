@@ -2,12 +2,13 @@ pub mod color;
 pub mod markup;
 
 use serde::Deserialize;
-pub const MOD_VERSION: &str = "3.1";
+pub const MOD_VERSION: &str = "3.2";
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct Mod {
     pub author: String,
     pub name: String,
+    pub name_markup: String,
     pub stars: u32,
     pub date_tt: f64,
     pub desc: String,

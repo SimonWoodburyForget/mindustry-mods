@@ -228,18 +228,14 @@ impl ListingItem {
 
     /// The thing the user will probably click on.
     fn title_link(&self) -> Node<Msg> {
-        let title = match &self.0.display_name {
-            Some(name) => {
-                // hacky way to ignore color formatting
-                let re = Regex::new(r"\[#?[a-zA-Z0-9]*\]").unwrap();
-                re.replace_all(name, "").to_string()
-            }
-            None => self.mod_name(),
-        };
-
+        let name = &self.0.name_markup;
         div![
             attrs! { At::Class => "title-link" },
-            a![attrs! { At::Href => self.endpoint_href() }, title]
+            a![
+                attrs! { At::Href => self.endpoint_href() },
+                style! { St::Background => "#181818" },
+                markup::from_str(name)
+            ]
         ]
     }
 

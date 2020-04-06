@@ -45,8 +45,8 @@ from jinja2 import Markup
 from caching import modsmeta
 
 # Version number for data, to allow multiple version of data at once,
-# in unavoidably will eventually happen, because of caching.
-MOD_META_VERSION = "3.1"
+# which unavoidably may eventually happen, because of caching.
+MOD_META_VERSION = "3.2"
 
 def loads_yaml(path):
     '''Loads data from path, ensuring duplicates don't exist,

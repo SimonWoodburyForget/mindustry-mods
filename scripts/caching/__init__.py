@@ -57,6 +57,8 @@ class ModMeta:
 
     '''mod name'''
     name: str
+    '''mod name with markup.'''
+    name_markup: str
     '''Link to repository.'''
     link: str
     '''Short description.'''
@@ -143,6 +145,7 @@ class ModMeta:
         mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
 
         return ModMeta(name=mods_name,
+                       name_markup=r.mod.displayName or r.mod.name,
                        link=f"https://github.com/{repo_name}",
                        repo=m['repo'],
                        desc=mods_desc,

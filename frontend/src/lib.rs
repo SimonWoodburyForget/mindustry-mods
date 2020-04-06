@@ -1,9 +1,8 @@
 //! Frontend application of for a Mindustry-Mods listing.
+#![warn(missing_docs)]
 
 use mindustry_mods_core::{Mod, MOD_VERSION};
 
-use futures::Future;
-use regex::Regex;
 use seed::{fetch, Method, Request};
 use seed::{prelude::*, *};
 use serde::Deserialize;
@@ -25,8 +24,11 @@ pub mod date {
     /// DateTime related error.
     #[derive(Debug, ThisError)]
     pub enum Error {
+        /// Error which occurs if times is negative.
         #[error("computation error: {0}")]
         Computation(#[from] SystemTimeError),
+
+        /// Error which occurs if decoding/encoding error occurs.
         #[error("formatting error: {0}")]
         Formatting(#[from] TimestampError),
     }
@@ -69,6 +71,7 @@ fn tiny_list(v: &Vec<String>) -> Node<Msg> {
 
 static RGUC: &'static str = "https://raw.githubusercontent.com";
 
+/// Wraps mod meta data.
 #[derive(Deserialize, Debug, Clone)]
 pub struct ListingItem(Mod);
 
@@ -207,7 +210,7 @@ impl ListingItem {
     }
 
     /// Handles path names, which occur when mod.json doesn't exist.
-    fn mod_name(&self) -> String {
+    fn _mod_name(&self) -> String {
         match self.0.name.rfind("/") {
             Some(x) => self.0.name.split_at(x + 1).1.into(),
             None => self.0.name.clone(),
@@ -287,6 +290,7 @@ impl ListingItem {
     }
 }
 
+/// Color markup rendering layer.
 pub mod markup {
     use super::Msg;
     use mindustry_mods_core::{
@@ -294,7 +298,6 @@ pub mod markup {
         markup::Markup,
     };
     use seed::{prelude::*, Style, *};
-    use std::convert::TryFrom;
 
     trait ToStyle {
         fn to_style(&self) -> Style;
@@ -306,11 +309,12 @@ pub mod markup {
         }
     }
 
-    pub fn from_str(x: &str) -> Vec<Node<Msg>> {
+    /// Converts input markup string to html nodes.
+    pub fn from_str(input: &str) -> Vec<Node<Msg>> {
         let mut colors: Vec<Color> = vec![Name::White.into()];
         let last = |v: &[Color]| v[v.len() - 1].to_style();
         let mut output: Vec<Node<Msg>> = vec![];
-        for x in Markup::from_str(x).unwrap_or(("", vec![])).1 {
+        for x in Markup::from_str(input).unwrap_or(("", vec![])).1 {
             use Markup::*;
             match x {
                 HexColor { r, g, b, a } => match a {
@@ -371,21 +375,26 @@ impl Default for Model {
     }
 }
 
+/// Sorting of listing.
 #[derive(Debug, Clone, PartialEq)]
 pub enum Sorting {
+    /// Github stars.
     Stars,
+
+    /// Commit datetime.
     Commit,
 }
 
+/// Main message type for seed-rs application.
 #[derive(Debug, Clone)]
 pub enum Msg {
-    /// Fetched mod data.
+    /// Fetched mod data for listing.
     FetchData(fetch::ResponseDataResult<Vec<ListingItem>>),
 
-    /// Set sorting.
+    /// Set sorting order of listing.
     SetSort(Sorting),
 
-    /// Filter by (words?) in string.
+    /// Filter by (words?) in string for listing.
     FilterWords(String),
 }
 

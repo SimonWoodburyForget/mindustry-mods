@@ -176,13 +176,26 @@ impl ListingItem {
         }
     }
 
-    /// Returns an icon link node.
+    /// Returns an icon link node. This is a three stage process.
+    ///
+    /// 1. if official icon exist use it, and this can either be
+    ///   a) icon.png (automatic),
+    ///   b) yaml path (manual override);
+    /// 2. (most-likely) else try out the github user icon;
+    /// 3. otherwise, if all fails just pick a `nothing.png` placeholder;
     fn icon(&self) -> Node<Msg> {
         match self.0.icon.as_ref().map(String::as_str) {
-            Some("") | None => a![
-                attrs! { At::Href => self.endpoint_href() },
-                img![attrs! { At::Src => "images/nothing.png" },]
-            ],
+            Some("") | None => {
+                let base = "https://github.com".to_string();
+                let icon = match self.0.repo.split("/").next() {
+                    Some(user) => base + "/" + user + ".png?size=64",
+                    None => "images/nothing.png".into(),
+                };
+                a![
+                    attrs! { At::Href => self.endpoint_href() },
+                    img![attrs! { At::Src => &icon },]
+                ]
+            }
 
             Some(p) => {
                 let i = format!("{}/{}/master/{}", RGUC, self.0.repo, p);
@@ -207,14 +220,6 @@ impl ListingItem {
                 None => vec![],
             }
         ]
-    }
-
-    /// Handles path names, which occur when mod.json doesn't exist.
-    fn _mod_name(&self) -> String {
-        match self.0.name.rfind("/") {
-            Some(x) => self.0.name.split_at(x + 1).1.into(),
-            None => self.0.name.clone(),
-        }
     }
 
     /// The rendered author.

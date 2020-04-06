@@ -289,7 +289,7 @@ pub mod markup {
         color::{Color, Name},
         markup::Markup,
     };
-    use seed::{dom_types::Style, prelude::*, *};
+    use seed::{prelude::*, Style, *};
     use std::convert::TryFrom;
 
     trait ToStyle {
@@ -385,10 +385,11 @@ pub enum Msg {
     FilterWords(String),
 }
 
-fn fetch_data() -> impl Future<Item = Msg, Error = Msg> {
+async fn fetch_data() -> Result<Msg, Msg> {
     Request::new(format!("data/modmeta.{}.json", MOD_VERSION))
         .method(Method::Get)
         .fetch_json_data(Msg::FetchData)
+        .await
 }
 
 fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {

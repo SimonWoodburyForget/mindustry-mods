@@ -218,6 +218,7 @@ impl ListingItem {
     fn by_author(&self) -> Node<Msg> {
         div![
             attrs! { At::Class => "by-author" },
+            style! { St::Opacity => "60%" },
             "by ",
             markup::from_str(&self.0.author_markup)
         ]
@@ -229,7 +230,10 @@ impl ListingItem {
         let num = self.0.version.as_ref().map(|x| x.as_str()).unwrap_or("");
         div![
             attrs! { At::Class => "v-number" },
-            style! { St::Color => "#383838" },
+            style! {
+                St::Color => "#484848",
+                St::Opacity => "50%",
+            },
             pre,
             markup::from_str(num)
         ]
@@ -448,7 +452,8 @@ fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
 /// Entry point of app.
 #[wasm_bindgen(start)]
 pub fn render() {
-    log(format!("data v{} loaded", MOD_VERSION).as_str());
+    log("app v0.1.3");
+    log(&format!("data v{} loaded", MOD_VERSION));
     seed::App::builder(update, view)
         .after_mount(after_mount)
         .build_and_start();

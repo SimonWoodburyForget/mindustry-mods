@@ -10,9 +10,11 @@ use std::convert::TryFrom;
 use std::iter;
 use wee_alloc;
 
-// #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+/// Package version string.
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// Simple DateTime utilities.
 pub mod date {
@@ -466,7 +468,7 @@ fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
 /// Entry point of app.
 #[wasm_bindgen(start)]
 pub fn render() {
-    log("app v0.1.3");
+    log(&format!("app v{}", VERSION));
     log(&format!("data v{} loaded", MOD_VERSION));
     seed::App::builder(update, view)
         .after_mount(after_mount)

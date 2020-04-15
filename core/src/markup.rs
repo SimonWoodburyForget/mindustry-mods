@@ -8,7 +8,7 @@ use nom::{
     IResult,
 };
 
-type PResult<'a, E> = IResult<&'a str, E>;
+type PResult<'a, T> = IResult<&'a str, T>;
 
 /// Represents a color markup token, for the purposes of
 /// being encoded into something like HTML.

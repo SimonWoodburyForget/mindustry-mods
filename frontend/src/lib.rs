@@ -5,7 +5,7 @@
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 /// Simple DateTime utilities.
-pub mod date {
+mod date {
     use humantime::{parse_rfc3339_weak, TimestampError};
     use js_sys::Date;
     use std::time::{Duration, SystemTime, SystemTimeError, UNIX_EPOCH};
@@ -103,9 +103,15 @@ mod listing {
         }
 
         /// Endpoint link as a string.
-        fn endpoint_href(&self) -> String {
+        fn _endpoint_href(&self) -> String {
             let path = self.0.repo.replace("/", "--");
             format!("m/{}.html", path).into()
+        }
+
+        /// Endpoint url query string for mod.
+        pub fn endpoint_query(&self) -> String {
+            let path = self.0.repo.replace("/", "--");
+            format!("{}", path)
         }
 
         // /// Endpoint link to the locally rendered README.md
@@ -183,8 +189,8 @@ mod listing {
                         Some(user) => base + "/" + user + ".png?size=64",
                         None => "images/nothing.png".into(),
                     };
-                    a![
-                        attrs! { At::Href => self.endpoint_href() },
+                    button![
+                        simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
                         img![attrs! {
                             At::Src => &icon,
                             // At::Custom("loading".into()) => "lazy",
@@ -194,8 +200,8 @@ mod listing {
 
                 Some(p) => {
                     let i = format!("{}/{}/master/{}", RGUC, self.0.repo, p);
-                    a![
-                        attrs! { At::Href => self.endpoint_href() },
+                    button![
+                        simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
                         img![attrs! {
                             At::Src => i,
                             At::OnError => "this.src='images/nothing.png'",
@@ -248,10 +254,10 @@ mod listing {
             let name = &self.0.name_markup;
             div![
                 attrs! { At::Class => "title-link" },
-                a![
-                    attrs! { At::Href => self.endpoint_href() },
+                button![
                     style! { St::Background => "#282828" },
-                    markup::from_str(name)
+                    simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
+                    markup::from_str(name),
                 ]
             ]
         }
@@ -271,7 +277,6 @@ mod listing {
         pub fn listing_item(&self) -> Node<Msg> {
             div![
                 attrs! { At::Class => "outside" },
-                style! { St::Background => "#181818" },
                 div![
                     attrs! { At::Class => "wrapper" },
                     div![attrs! { At::Class => "box icon" }, self.icon()],
@@ -288,6 +293,30 @@ mod listing {
                     div![attrs! { At::Class => "box stars" }, self.stars_el()],
                 ]
             ]
+        }
+
+        /// Returns the `Node<Msg>` for the overview/readme page.
+        pub fn overview_item(&self) -> Node<Msg> {
+            div! {
+                div![
+                    class!["outside"],
+                    button![
+                        style! { St::Background => "#282828" },
+                        simple_ev(Ev::Click, Msg::Overview(None)),
+                        "back",
+                    ],
+                ],
+
+                self.listing_item(),
+
+                div![
+                    class!["outside"],
+                    div! [
+                        class!("markdown"),
+                        md!(&self.0.readme)
+                    ]
+                ]
+            }
         }
     }
 }
@@ -361,6 +390,9 @@ pub mod app {
 
         /// Filtering characters entered by user.
         filtering: Option<String>,
+
+        /// Overview of specific listing item.
+        overview: Option<String>,
     }
 
     impl Model {
@@ -389,6 +421,7 @@ pub mod app {
                 data: vec![],
                 sorting: Sorting::Commit,
                 filtering: None,
+                overview: None,
             }
         }
     }
@@ -414,6 +447,93 @@ pub mod app {
 
         /// Filter by (words?) in string for listing.
         FilterWords(String),
+
+        /// Enables overview for some target mod.
+        Overview(Option<String>),
+    }
+
+    fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
+        match msg {
+            Msg::FetchData(data) => model.data = data.unwrap(),
+            Msg::SetSort(sorting) => model.sorting = sorting,
+            Msg::FilterWords(words) => model.filtering = Some(words),
+            Msg::Overview(name) => {
+                match name {
+                    Some(ref modname) => {
+                        seed::push_route(
+                            seed::Url::new(vec!["mindustry-mods"])
+                                .search(&format!("mod={}", modname)),
+                        );
+                    }
+
+                    None => {
+                        seed::push_route(seed::Url::new(vec!["mindustry-mods"]));
+                    }
+                }
+
+                model.overview = name;
+            }
+        }
+    }
+
+    fn view(model: &Model) -> impl View<Msg> {
+        div! {
+            attrs! { At::Class => "app" },
+            header![
+                match &model.overview {
+                    None => h1!["Mindustry Mods"],
+                    Some(_) => a![
+                        // attrs! { At::Href => "/" },
+                        simple_ev(Ev::Click, Msg::Overview(None)),
+                        h1!["Mindustry Mods"]
+                    ]
+                },
+
+                a![
+                    attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
+                    img![attrs! {
+                        At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png"
+                    }]
+                ]
+            ],
+
+            match &model.overview {
+                None => div! {
+                    attrs! { At::Class => "inputs" },
+                    input![
+                        attrs! { "placeholder" => "filter by words" },
+                        input_ev(Ev::Input, Msg::FilterWords)
+                    ],
+                    div! {
+                        attrs! { At::Class => "buttons" },
+                        p!["Order by "],
+                        button![
+                            attrs! { At::Class => if model.sorting == Sorting::Stars {"active"} else {""}},
+                            simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)),
+                            "stars"
+                        ],
+                        button![
+                            attrs! { At::Class => if model.sorting == Sorting::Commit {"active"} else {""}},
+                            simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),
+                            "commit"
+                        ],
+                    }
+                },
+
+                Some(_) => div![],
+            },
+
+            match &model.data
+                .iter()
+                .find(|x| Some(x.endpoint_query()) == model.overview)
+            {
+                Some(overview) => overview.overview_item(),
+                None => div! {
+                    attrs! { At::Class => "listing-container" },
+                    model.listing(),
+                },
+            }
+        }
     }
 
     async fn fetch_data() -> Result<Msg, Msg> {
@@ -423,57 +543,27 @@ pub mod app {
             .await
     }
 
-    fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
-        match msg {
-            Msg::FetchData(data) => model.data = data.unwrap(),
-
-            Msg::SetSort(sorting) => model.sorting = sorting,
-
-            Msg::FilterWords(words) => model.filtering = Some(words),
-        }
-    }
-
-    fn view(model: &Model) -> impl View<Msg> {
-        div![
-            attrs! { At::Class => "app" },
-            header![
-                h1!["Mindustry Mods"],
-                a![
-                    attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
-                    img![attrs! {
-                        At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png"
-                    }]
-                ]
-            ],
-            div![
-                attrs! { At::Class => "inputs" },
-                input![
-                    attrs! { "placeholder" => "filter by words" },
-                    input_ev(Ev::Input, Msg::FilterWords)
-                ],
-                div![
-                    attrs! { At::Class => "buttons" },
-                    p!["Order by "],
-                    button![
-                        attrs! { At::Class => if model.sorting == Sorting::Stars {"active"} else { "" }},
-                        simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)),
-                        "stars"
-                    ],
-                    button![
-                        attrs! { At::Class => if model.sorting == Sorting::Commit {"active"} else { "" }},
-                        simple_ev(Ev::Click, Msg::SetSort(Sorting::Commit)),
-                        "commit"
-                    ],
-                ]
-            ],
-            div![attrs! { At::Class => "listing-container" }, model.listing()]
-        ]
-    }
-
     /// Initialize data.
     fn after_mount(_: Url, orders: &mut impl Orders<Msg>) -> AfterMount<Model> {
         orders.perform_cmd(fetch_data());
         AfterMount::default()
+    }
+
+    fn routes(url: Url) -> Option<Msg> {
+        let Url { search, .. } = url;
+        Some(match search {
+            Some(search) => {
+                let mut args = search.split("=");
+                let k = args.next();
+                let v = args.next();
+                match (k, v) {
+                    (Some("mod"), Some(name)) => Msg::Overview(Some(name.to_string())),
+                    _ => Msg::Overview(None),
+                }
+            }
+
+            None => Msg::Overview(None),
+        })
     }
 
     /// Entry point of app.
@@ -482,6 +572,7 @@ pub mod app {
         log(&format!("frontend v{}", VERSION));
         log(&format!("data v{} loaded", MOD_VERSION));
         seed::App::builder(update, view)
+            .routes(routes)
             .after_mount(after_mount)
             .build_and_start();
     }

@@ -12,3 +12,11 @@ build:
 publish:
 	python3.8 scripts/mindustry-mods.py -i
 	npm run deploy
+
+test:
+	wasm-pack build frontend --target web -- --features test-mode
+	cp frontend/pkg dist -rf
+	cp css dist -rf
+	cp frontend/index.html dist -f
+
+	cp dist/* ../minmods-test/ -r

@@ -4,6 +4,16 @@
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+mod path {
+    /// root for test repository
+    #[cfg(feature = "test-mode")]
+    pub const ROOT: &str = "minmods-test";
+
+    /// root for main repository
+    #[cfg(not(feature = "test-mode"))]
+    pub const ROOT: &str = "mindustry-mods";
+}
+
 /// Simple DateTime utilities.
 mod date {
     use humantime::{parse_rfc3339_weak, TimestampError};
@@ -368,7 +378,7 @@ pub mod markup {
 
 /// Base model/msg for application.
 pub mod app {
-    use super::listing::ListingItem;
+    use super::{listing::ListingItem, path::ROOT};
     use mindustry_mods_core::MOD_VERSION;
     use seed::{prelude::*, *};
 
@@ -454,20 +464,26 @@ pub mod app {
 
     fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
         match msg {
-            Msg::FetchData(data) => model.data = data.unwrap(),
+            Msg::FetchData(data) => match data {
+                Ok(x) => model.data = x,
+                Err(e) => {
+                    log("modmeta loading failed");
+                    log(&format!("{:?}", e));
+                }
+            },
+
             Msg::SetSort(sorting) => model.sorting = sorting,
             Msg::FilterWords(words) => model.filtering = Some(words),
             Msg::Overview(name) => {
                 match name {
                     Some(ref modname) => {
                         seed::push_route(
-                            seed::Url::new(vec!["mindustry-mods"])
-                                .search(&format!("mod={}", modname)),
+                            seed::Url::new(vec![ROOT]).search(&format!("mod={}", modname)),
                         );
                     }
 
                     None => {
-                        seed::push_route(seed::Url::new(vec!["mindustry-mods"]));
+                        seed::push_route(seed::Url::new(vec![ROOT]));
                     }
                 }
 
@@ -492,7 +508,7 @@ pub mod app {
                 a![
                     attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
                     img![attrs! {
-                        At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png"
+                        At::Src => format!("{}/images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png", ROOT),
                     }]
                 ]
             ],
@@ -537,7 +553,7 @@ pub mod app {
     }
 
     async fn fetch_data() -> Result<Msg, Msg> {
-        Request::new(format!("data/modmeta.{}.json", MOD_VERSION))
+        Request::new(format!("{}/data/modmeta.{}.json", ROOT, MOD_VERSION))
             .method(Method::Get)
             .fetch_json_data(Msg::FetchData)
             .await

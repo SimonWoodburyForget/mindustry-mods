@@ -1,9 +1,6 @@
 //! Frontend application of for a Mindustry-Mods listing.
 #![warn(missing_docs)]
 
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
 mod path {
     /// root for test repository
     #[cfg(feature = "test-mode")]

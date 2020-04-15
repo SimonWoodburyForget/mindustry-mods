@@ -1,0 +1,16 @@
+{
+  "name": "mindustry-mods-frontend",
+  "collaborators": [
+    "Simon <simonwoodburyforget@gmail.com>"
+  ],
+  "version": "0.1.5",
+  "license": "GNUv3",
+  "files": [
+    "mindustry_mods_frontend_bg.wasm",
+    "mindustry_mods_frontend.js",
+    "mindustry_mods_frontend.d.ts"
+  ],
+  "module": "mindustry_mods_frontend.js",
+  "types": "mindustry_mods_frontend.d.ts",
+  "sideEffects": "false"
+}

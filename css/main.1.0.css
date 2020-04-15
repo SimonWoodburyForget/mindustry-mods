@@ -1,4 +1,10 @@
-/* * { border: 1px solid; } */
+header h1 {
+    text-decoration: underline;
+}
+
+header a h1:hover {
+    color: #ffc;
+}
 
 body {
     margin: 0;
@@ -44,7 +50,7 @@ a {
     /* min-height: 15px; */
     min-width: 20px;
     max-height: 50px;
-    background: #333;
+    /* background: #333; */
 }
 
 .icon {
@@ -76,7 +82,12 @@ button, input {
     text-decoration: none;
     color: #ffa;
     border:0;
+}
 
+button,
+a
+{
+    cursor: pointer;
 }
 
 .buttons p {
@@ -182,7 +193,7 @@ input {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button, input, p
+a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description
@@ -207,7 +218,7 @@ img, .links a, p, .description
 .outside {
     /* margin-left: 3em; */
     /* margin-right: 3em; */
-    background: #222;
+    background: #181818;
     max-width: 64em;
     padding-left: 1em;
     padding-right: 1em;
@@ -350,4 +361,41 @@ img, .links a, p, .description
     /*     align-self:start; */
     /* } */
     
+}
+
+/* ================================================================ */
+/* Markdown */
+
+.markdown {
+    color: #a1a1a1;
+    padding: 2em;
+}
+
+.markdown h1,
+.markdown h2
+{
+    text-decoration: underline;
+}
+
+.markdown h1, 
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6
+{
+    color: #a1a1a1;
+}
+
+.markdown pre
+{
+    border-left: #f1f1f1 solid 2px;
+    padding: 0.5em;
+    background: #2f2f2f;
+}
+
+.markdown img 
+{
+    background: #323232;
+    max-width: 100%;
 }

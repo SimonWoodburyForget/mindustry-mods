@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf8">
+    <link rel="stylesheet" type="text/css" href="../css/readme.css">
+    <title>resources - Mindustry Mods</title>
+    
+  </head>
+  
+  <body>
+
+    <header>
+      
+<a href="../index.html"><h1>Mindustry Mods</h1></a>      
+
+    </header>
+    <content>
+      
+
+<p>
+  <code>DeltaNedas/resources</code>
+  <span class="version">v0.1.0</a>
+  <a href="https://github.com/DeltaNedas/resources">repository</a>
+  <a href="https://github.com/DeltaNedas/resources/archive/master.zip">zip</a>
+</p>
+
+<h1>Resources</h1>
+<p>Mod, and library, that adds various resources in order to encourage item reuse.</p>
+<h1>How it works</h1>
+<h1>How to use</h1>
+<h2>As an item mod</h2>
+<p>See <code>scripts/builtin.js</code> for a list of items.</p>
+<p>Use items in the format <code>resources-ID</code> where ID is the JSON key of the object.</p>
+<p>Example: <code>"outputItem": "resources-bronze/2"</code></p>
+<h2>As a library for your own items</h2>
+<p>See example code below:
+<code>js
+const res = this.global.resources;
+res.add("cool-alloy", "ingot-alloy", Color.valueOf("#00aaff"), {});
+// Or JSON style
+res.add({
+    "cool-alloy": {
+        "mask": "resources-ingot-alloy",
+        "color": "#00aaff"
+    }
+});</code></p>
+<p>Then add bundles as needed:
+<code>item.coolmod-cool-alloy.name = Cool Alloy
+item.coolmod-cool-alloy.description = B)</code></p>
+<h2>Notes</h2>
+<p>By default, the new item's type is set to <code>ItemType.material</code>.</p>
+<p>If you do not want this, override it with <code>"def": {"type": ItemType.resource}</code></p>
+<p>Color should be the brightest part of the texture.</p>
+<p>For JSON style item adding, the object argument must contain any number of objects in the following formats:
+<code>json
+"itemname": {
+    "color": "color",
+    "mask": "modname-mask-texture",
+    "def": {
+        "extra": "fields for Item"
+    }
+}</code>
+OR
+<code>"itemname": "color"</code></p>
+<p>The mask may be one of the following builtin masks, prefixed with <code>resources-</code>:
+* ingot-alloy (Surge Alloy based)
+* ingot-dull (Lead based)
+* ingot-rare (Titanium based)
+* ingot-shiny (Copper based, default)
+* dust (Sand based)
+* clump (Coal based)
+or your own.</p>
+<p>Color may be:
+* #rrggbbaa
+* #rrggbb
+* color name, see Color.java and Pal.java
+* 32 bit int color value in decimal
+* an explicitly defined <code>Color</code> value</p>
+<p>If you see a color of #FF00FF, (#FF00FFFF in rgba) it means that your colour failed to parse.</p>
+<p>add(String, String, Color, Object) returns the newly created Item.</p>
+<p>add(Object<itemname, Object>) returns an object of <em>itemname</em> -&gt; Item</p>
+
+    </content>
+  </body>
+</html>

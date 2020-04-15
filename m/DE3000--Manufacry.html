@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf8">
+    <link rel="stylesheet" type="text/css" href="../css/readme.css">
+    <title>DE3000/Manufacry - Mindustry Mods</title>
+    
+  </head>
+  
+  <body>
+
+    <header>
+      
+<a href="../index.html"><h1>Mindustry Mods</h1></a>      
+
+    </header>
+    <content>
+      
+
+<p>
+  <code>DE3000/Manufacry</code>
+  <span class="version">vNone</a>
+  <a href="https://github.com/DE3000/Manufacry">repository</a>
+  <a href="https://github.com/DE3000/Manufacry/archive/master.zip">zip</a>
+</p>
+
+<h1>Manufacry</h1>
+<p>Bringing more manufacturing and factory components to
+<a href="https://mindustrygame.github.io/">Mindustry</a>.</p>
+<h5>Note</h5>
+<p>Manufacry is a <strong>code</strong> mod for Mindustry and therefor needs a custom build
+ (bleeding edge builds currently will not work).</p>
+<h5>Releases</h5>
+<p>Check releases page (desktop version only).</p>
+<h2>Features</h2>
+<ul>
+<li>[ ] Configurable crafters - Crafters where you can choose what to manufacture.</li>
+<li>[ ] Addon modules - Blocks that enhance or modify the functionality of related crafters.</li>
+<li>[ ] <a href="#power-production">Power production</a> - Power generation using steam</li>
+<li>[ ] <a href="#oil-distillation">Oil distillation</a> - Use vanilla oil to produce
+    more refined oils.</li>
+<li>[ ] <a href="#factories">Factories</a> - Produce new items/liquids</li>
+<li>[ ] <a href="#workforce">Workforce</a> - New aircraft and mechs for utility/defense/offence </li>
+<li>[ ] <a href="#logic-system">Logic System</a> - Basic logic circuit components.</li>
+</ul>
+<h3>Power production</h3>
+<ul>
+<li>Steam Power<ul>
+<li>Steam Pressure<ul>
+<li>Low pressure steam - moderate heat</li>
+<li>High pressure steam - high heat (causes damage on contact)</li>
+</ul>
+</li>
+<li>Steam Boilers<ul>
+<li>Outputs steam (used for power and oil distillation)</li>
+<li>Inputs<ul>
+<li>Water (vanilla)</li>
+<li>Distilled water (more efficient)</li>
+</ul>
+</li>
+<li>Types<ul>
+<li>Solid Fuelled - Burns items (similar to vanilla steam generator)<ul>
+<li>Coal - produces low pressure</li>
+<li>Blast - produces low pressure</li>
+<li>Pyrite - produces high pressure</li>
+</ul>
+</li>
+<li>Liquid Fuelled - Burns liquid fuel<ul>
+<li>Crude Oil (vanilla) - produces low pressure</li>
+<li>Fuel Oil  (distillation) - produces high pressure</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Steam Turbine<ul>
+<li>Uses steam for power</li>
+<li>Produces distilled water output</li>
+<li>Pressure<ul>
+<li>Low - less power, less distilled water</li>
+<li>High - more power, more distilled water</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Gas Power<ul>
+<li>Gas Turbine - Use natural gas for power.</li>
+</ul>
+</li>
+</ul>
+<h3>Oil Distillation</h3>
+<p>Inspiration from oil refining in other games/mods and also from the image below.</p>
+<p><img alt="Test" src="https://1.bp.blogspot.com/-TSvZKkzZ9mY/V9PhdzD344I/AAAAAAAAAGI/3B3Q4EkLhAMfY6es3CeUYzzDTxlWGEavACLcB/s1600/oil-distillation.gif" />
+(Image from <a href="http://allabtinstru.blogspot.com/2016/09/ProcessofRefiningCrudeOil.html">here</a>)
+- Distillation Tower - Used in the refining of crude oil
+    - Outputs
+        - Lubricant - Used as a booster for new crafters (less power/less craft time)
+        - Fuel Oil - Used in liquid fuelled boilers for high pressure steam
+- Cracking Unit - Addon for distillation tower
+    - Additional outputs
+        - Kerosene - Used for new unit fuelling
+        - Propane - Used for power generation
+        - Diesel - Used for new unit fuelling        </p>
+<h3>Factories</h3>
+<ul>
+<li>TODO<ul>
+<li>Items<ul>
+<li>Vanilla upgrades<ul>
+<li>Copper (wires, plates)</li>
+<li>Lead (batteries?)</li>
+<li>Graphite (TODO)</li>
+<li>Titanium (rods?, plates)</li>
+<li>Thorium (rods, plates)</li>
+<li>Silicon (circuits)</li>
+<li>Plastanium (TODO)</li>
+<li>Phase Fabric (TODO)</li>
+<li>Surge Alloy (rods, plates)</li>
+<li>Spore Pod (TODO)</li>
+<li>Sand (?)</li>
+<li>Blast/Pyratitem</li>
+<li>Metaglass (capsules/containers)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Workforce</h3>
+<ul>
+<li>General<ul>
+<li>New units require fuel to operate</li>
+<li>Refuelling stations - requires petrol<ul>
+<li>Dedicated stations or also smaller slower filling at factory.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Roles<ul>
+<li>Utility<ul>
+<li>New miner with drop-off at factory or specific storage block.</li>
+</ul>
+</li>
+<li>Defence<ul>
+<li>TODO</li>
+</ul>
+</li>
+<li>Offence<ul>
+<li>TODO</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Logic System</h3>
+<ul>
+<li>Basic<ul>
+<li>Wire with on/off signal</li>
+<li>Gates (AND, OR, NOT)</li>
+<li>Readers<ul>
+<li>Inventory reader (signal based on item count)</li>
+<li>Tank reader (signal based on liquid count)</li>
+<li>Power reader (signal based on power input/output/usage)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </content>
+  </body>
+</html>

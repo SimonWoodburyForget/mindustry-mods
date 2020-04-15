@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf8">
+    <link rel="stylesheet" type="text/css" href="../css/readme.css">
+    <title>entity-lib - Mindustry Mods</title>
+    
+  </head>
+  
+  <body>
+
+    <header>
+      
+<a href="../index.html"><h1>Mindustry Mods</h1></a>      
+
+    </header>
+    <content>
+      
+
+<p>
+  <code>DeltaNedas/entity-lib</code>
+  <span class="version">v1.3.0</a>
+  <a href="https://github.com/DeltaNedas/entity-lib">repository</a>
+  <a href="https://github.com/DeltaNedas/entity-lib/archive/master.zip">zip</a>
+</p>
+
+<h1>Entity Lib</h1>
+<p>Adds a field <code>this.global.entityLib</code>.</p>
+<p>You can extend custom mechs/units with certain attributes such as:
+* Limiting rotation speed
+* Multiple unique weapons
+* more</p>
+<p>By default, they function like vanilla ones.</p>
+<h1>How to use</h1>
+<p>Add <code>entity-lib</code> to your <code>dependencies: []</code> in <strong>mod.hjson</strong>.</p>
+<p>You may extend: (where Entity is Player or Unit)</p>
+<ul>
+<li>drawWeapon(Entity entity, float rotation, int number, uint index): draw weapons how you wish. May be optional.</li>
+<li>drawUnder(Entity entity, float rotation): draw sprites underneath the weapons. Optional.</li>
+<li>drawAbove(Entity entity, float rotation): draw sprites above the weapons. Optional.</li>
+<li>some others, I really need to update docs (read code intead)</li>
+</ul>
+<p><strong><strong>Do not set this.region as its entity will draw it with raw rotation.</strong></strong></p>
+<p>For each weapon, you can set <code>recoilRecovery</code> which determines how fast recoil is recovered, by default it is <code>1 / (reload + 1)</code>.</p>
+<h1>Functions and fields</h1>
+<p><code>trueRotation(Entity entity)</code>: get rotation after all limits are processed.</p>
+<p><code>trueRotation(Entity entity, float rotation)</code>: set the true rotation.</p>
+<p><code>rotationLimit</code> is maximum rotation per tick.</p>
+<p><code>weapons</code> are an array of <code>Weapon</code>s to be fired.</p>
+<p>See example code below:
+<code>js
+const entityLib = this.global.entityLib; // Like Java import
+const myMech = entityLib.extendMech(Mech, "my-mech", [{
+    loadAfter(){
+        this.underRegion = Core.atlas.find("error");
+    },
+    drawUnder(player, rot){
+        Draw.rect(this.underRegion, player.x, player.y, rot);
+    }
+}]);
+myMech.rotationLimit = 1; // 60' per second usually
+myMech.rotationLerp = 0.02;
+myMech.weapons = [
+    Mechs.omega.weapon,
+    Mechs.dart.weapon,
+    Mechs.delta.weapon
+];</code></p>
+<p>You can also look at some full examples:
+* https://github.com/DeltaNedas/entity-lib-example/blob/master/scripts/routertron.js
+* https://github.com/DeltaNedas/vbucks/blob/master/scripts/mechs/hurricane.js
+* https://github.com/DeltaNedas/vbucks/blob/master/scripts/mechs/mother-hen.js</p>
+
+    </content>
+  </body>
+</html>

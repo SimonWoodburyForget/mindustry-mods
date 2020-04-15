@@ -514,7 +514,10 @@ pub mod app {
                 None => div! {
                     attrs! { At::Class => "inputs" },
                     input![
-                        attrs! { "placeholder" => "filter by words" },
+                        attrs! {
+                            "placeholder" => "filter by words",
+                            At::Value => &model.filtering.as_deref().unwrap_or(""),
+                        },
                         input_ev(Ev::Input, Msg::FilterWords)
                     ],
                     div! {

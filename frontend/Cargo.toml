@@ -1,6 +1,6 @@
 [package]
 name = "mindustry-mods-frontend"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"
@@ -19,7 +19,7 @@ wasm-bindgen = "0.2.50"
 seed = "0.6"
 serde = "1.0"
 futures = "0.1.26"
-wee_alloc = "0.4.5"
+# wee_alloc = "0.4.5"
 thiserror = "1.0"
 instant = { version = "0.1", features = [ "wasm-bindgen" ] }
 # hifitime = "1.0.8"

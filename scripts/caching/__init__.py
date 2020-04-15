@@ -7,6 +7,8 @@ import time
 import bs4
 import humanize
 from jinja2 import Markup
+import re
+import functools
 
 from minfmt import ignore_sbrack
 from caching.ghrepo import repos_cached
@@ -47,8 +49,20 @@ def fix_image_url(url, repo_name):
     if o.netloc == "":
         return f"https://raw.githubusercontent.com/{repo_name}/master/{o.path}"
 
-    # print('[warning] non github url:', url)
     return url
+
+def fix_urls(md, repo_name):
+    def on_match(link):
+        desc = link.group(1)
+        old = link.group(2)
+        href = fix_image_url(link.group(2), repo_name)
+        old, new = f'[{desc}]({old})', f'[{desc}]({href})'
+        if repo_name == "AeronGreva/AeroMindustry":
+            print(old, new)
+        return old, new
+
+    replacers = set((on_match(x) for x in re.finditer(r'\[([^\]\[]*)\]\(([^\)]*)\)', md)))
+    return functools.reduce(lambda md, x: md.replace(x[0], x[1]), replacers, md)
 
 @dataclass
 class ModMeta:
@@ -87,7 +101,7 @@ class ModMeta:
 
     def icon_url(self):
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
-
+    
     def readme_html(self):
         from markdown import markdown
 
@@ -158,7 +172,7 @@ class ModMeta:
                        author_markup=r.mod.author,
                        date=r.date,
                        issue=m["issue"] if 'issue' in m else None,
-                       readme=r.readme or '',
+                       readme=fix_urls(r.readme or '', repo_name),
                        version=r.mod.version,
                        assets=list(r.assets),
                        displayName=r.mod.displayName,

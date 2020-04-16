@@ -3,6 +3,10 @@ pub mod markup;
 
 use serde::Deserialize;
 
+mod path {
+    pub const GITHUB: &str = "https:://github.com";
+}
+
 pub const MOD_VERSION: &str = "3.2";
 
 #[derive(Deserialize, Debug, Clone)]
@@ -26,6 +30,12 @@ pub struct Mod {
     #[serde(rename = "camelCase")]
     pub display_name: Option<String>,
     pub date: String,
+}
+
+impl Mod {
+    pub fn archieve_link(&self) -> String {
+        format!("{}/{}/archieve/master.zip", path::GITHUB, &self.repo)
+    }
 }
 
 #[cfg(test)]

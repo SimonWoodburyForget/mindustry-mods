@@ -1,5 +1,5 @@
 [package]
-name = "backend"
+name = "mindustry-mods-backend"
 version = "0.1.0"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"

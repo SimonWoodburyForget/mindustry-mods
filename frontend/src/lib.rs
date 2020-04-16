@@ -1,6 +1,7 @@
 //! Frontend application of for a Mindustry-Mods listing.
 #![warn(missing_docs)]
 
+/// Some important constant path stuff.
 mod path {
     /// root for test repository
     #[cfg(feature = "test-mode")]
@@ -57,7 +58,8 @@ mod listing {
     use serde::Deserialize;
     use std::{convert::TryFrom, iter};
 
-    fn tiny_list(v: &Vec<String>) -> Node<Msg> {
+    /// Makes the tiny contents/assets overview lists.
+    fn tiny_list(v: &[String]) -> Node<Msg> {
         if !v.is_empty() {
             ul![v
                 .iter()
@@ -67,8 +69,6 @@ mod listing {
             div![]
         }
     }
-
-    static RGUC: &'static str = "https://raw.githubusercontent.com";
 
     /// Wraps mod meta data.
     #[derive(Deserialize, Debug, Clone)]
@@ -104,9 +104,14 @@ mod listing {
         }
 
         /// Link to the mod's archive.
-        fn archive_link(&self) -> Node<Msg> {
-            let l = format!("https://github.com/{}/archive/master.zip", self.0.repo);
-            a![attrs! { At::Href => l, At::Target => "_self" }, "zip"]
+        fn archieve_link(&self) -> Node<Msg> {
+            a![
+                attrs! {
+                    At::Href => self.0.archieve_link(),
+                    At::Target => "_self"
+                },
+                "zip"
+            ]
         }
 
         /// Endpoint link as a string.
@@ -115,7 +120,7 @@ mod listing {
             format!("m/{}.html", path).into()
         }
 
-        /// Endpoint url query string for mod.
+        /// Endpoint url query string for mod. Essentially used as an ID internally.
         pub fn endpoint_query(&self) -> String {
             let path = self.0.repo.replace("/", "--");
             format!("{}", path)
@@ -206,7 +211,10 @@ mod listing {
                 }
 
                 Some(p) => {
-                    let i = format!("{}/{}/master/{}", RGUC, self.0.repo, p);
+                    let i = format!(
+                        "{}/{}/master/{}",
+                        "https://raw.githubusercontent.com", self.0.repo, p
+                    );
                     button![
                         simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
                         img![attrs! {
@@ -292,7 +300,7 @@ mod listing {
                     div![
                         attrs! { At::Class => "box links" },
                         self.repo_link(),
-                        self.archive_link(),
+                        self.archieve_link(),
                         self.wiki_link(),
                     ],
                     div![attrs! { At::Class => "box assets" }, self.assets_list()],
@@ -331,7 +339,6 @@ mod listing {
 /// Color markup rendering layer.
 pub mod markup {
     use super::app::Msg;
-
     use mindustry_mods_core::{
         color::{Color, Name},
         markup::Markup,
@@ -478,6 +485,8 @@ pub mod app {
             Msg::SetSort(sorting) => model.sorting = sorting,
             Msg::FilterWords(words) => model.filtering = Some(words),
             Msg::Overview(name) => {
+                // FIXME: something here isn't right, this breaks returning the
+                // last page from within the app for some reason or another.
                 match name {
                     Some(ref modname) => {
                         seed::push_route(

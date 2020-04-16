@@ -398,7 +398,13 @@ pub mod app {
         /// Filtering characters entered by user.
         filtering: Option<String>,
 
-        /// Overview of specific listing item.
+        /// Overview of specific mod. -- This is stored as a string,
+        /// because it could come from the url query or from the
+        /// loaded mod itself when clicked onto.
+        ///
+        /// It's simply string of `"user--repo"` which should prevent
+        /// all imaginable collisions, those strings come from the repository
+        /// strings, because they're already URL encoded.
         overview: Option<String>,
     }
 
@@ -492,6 +498,8 @@ pub mod app {
     fn view(model: &Model) -> impl View<Msg> {
         div! {
             attrs! { At::Class => "app" },
+
+            // header section
             header![
                 match &model.overview {
                     None => h1!["Mindustry Mods"],
@@ -501,7 +509,6 @@ pub mod app {
                         h1!["Mindustry Mods"]
                     ]
                 },
-
                 a![
                     attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
                     img![attrs! {
@@ -510,6 +517,8 @@ pub mod app {
                 ]
             ],
 
+            // button and search bar section
+            // (or nothing if overview mode)
             match &model.overview {
                 None => div! {
                     attrs! { At::Class => "inputs" },
@@ -535,10 +544,10 @@ pub mod app {
                         ],
                     }
                 },
-
                 Some(_) => div![],
             },
 
+            // listing or overview section
             match &model.data
                 .iter()
                 .find(|x| Some(x.endpoint_query()) == model.overview)

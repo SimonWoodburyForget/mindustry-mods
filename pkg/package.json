@@ -3,7 +3,7 @@
   "collaborators": [
     "Simon <simonwoodburyforget@gmail.com>"
   ],
-  "version": "0.1.8",
+  "version": "0.1.7",
   "license": "GNUv3",
   "files": [
     "mindustry_mods_frontend_bg.wasm",

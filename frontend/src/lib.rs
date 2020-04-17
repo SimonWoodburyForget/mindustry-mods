@@ -395,6 +395,16 @@ pub mod app {
         fn log(s: &str);
     }
 
+    struct MaxCount(usize);
+
+    impl Default for MaxCount {
+        /// Default is 8 for no specific reason.
+        fn default() -> Self {
+            Self(8)
+        }
+    }
+
+    #[derive(Default)]
     struct Model {
         /// A vector of mod data.
         data: Vec<ListingItem>,
@@ -413,6 +423,19 @@ pub mod app {
         /// all imaginable collisions, those strings come from the repository
         /// strings, because they're already URL encoded.
         overview: Option<String>,
+
+        /// Maximum number of elements to render in listing; this is
+        /// done mainly to decrease load time, which also includes
+        /// time required to sort the listing and time required
+        /// to filter the listing.
+        ///
+        /// This is a performance optimization, required by sending
+        /// `Node<Msg>` through seed-rs being a very expensive operation,
+        /// for example a list of 100 mods could easily take 300ms to render.
+        ///
+        /// This also cuts down the number of icon which needs to
+        /// be loaded at once.
+        max_count: MaxCount,
     }
 
     impl Model {
@@ -430,19 +453,9 @@ pub mod app {
                         .as_ref()
                         .map_or(true, |f| x.filtering(f.as_str()))
                 })
+                .take(self.max_count.0)
                 .map(|x| x.listing_item())
                 .collect()
-        }
-    }
-
-    impl Default for Model {
-        fn default() -> Self {
-            Self {
-                data: vec![],
-                sorting: Sorting::Commit,
-                filtering: None,
-                overview: None,
-            }
         }
     }
 
@@ -456,9 +469,27 @@ pub mod app {
         Commit,
     }
 
+    impl Default for Sorting {
+        fn default() -> Self {
+            Self::Commit
+        }
+    }
+
     /// Main message type for seed-rs application.
     #[derive(Debug, Clone)]
     pub enum Msg {
+        /// On scroll triggered event.
+        Scroll {
+            /// Scroll position
+            scroll: i64,
+
+            /// Window height
+            height: i64,
+
+            /// Document offset
+            offset: i64,
+        },
+
         /// Fetched mod data for listing.
         FetchData(fetch::ResponseDataResult<Vec<ListingItem>>),
 
@@ -474,6 +505,16 @@ pub mod app {
 
     fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
         match msg {
+            Msg::Scroll {
+                scroll,
+                height,
+                offset,
+            } => {
+                if (height + scroll) > (offset - 50) {
+                    model.max_count.0 += model.max_count.0;
+                }
+            }
+
             Msg::FetchData(data) => match data {
                 Ok(x) => model.data = x,
                 Err(e) => {
@@ -482,8 +523,16 @@ pub mod app {
                 }
             },
 
-            Msg::SetSort(sorting) => model.sorting = sorting,
-            Msg::FilterWords(words) => model.filtering = Some(words),
+            Msg::SetSort(sorting) => {
+                model.max_count = Default::default();
+                model.sorting = sorting
+            }
+
+            Msg::FilterWords(words) => {
+                model.max_count = Default::default();
+                model.filtering = Some(words);
+            }
+
             Msg::Overview(name) => {
                 // FIXME: something here isn't right, this breaks returning the
                 // last page from within the app for some reason or another.
@@ -600,12 +649,29 @@ pub mod app {
         })
     }
 
+    fn events(_model: &Model) -> Vec<EventHandler<Msg>> {
+        let window = web_sys::window().unwrap();
+        let height = window.inner_height().unwrap().as_f64().unwrap().round() as i64;
+        let mut scroll = window.scroll_y().unwrap().round() as i64;
+
+        vec![ev(Ev::Scroll, move |_| {
+            let offset = window.document().unwrap().body().unwrap().offset_height() as i64;
+            scroll = window.scroll_y().unwrap().round() as i64;
+            Msg::Scroll {
+                scroll,
+                height,
+                offset,
+            }
+        })]
+    }
+
     /// Entry point of app.
     #[wasm_bindgen(start)]
     pub fn render() {
         log(&format!("frontend v{}", VERSION));
         log(&format!("data v{} loaded", MOD_VERSION));
         seed::App::builder(update, view)
+            .window_events(events)
             .routes(routes)
             .after_mount(after_mount)
             .build_and_start();

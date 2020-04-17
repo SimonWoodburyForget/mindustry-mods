@@ -1,6 +1,6 @@
 [package]
 name = "mindustry-mods-frontend"
-version = "0.1.7"
+version = "0.1.10"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"
@@ -27,3 +27,4 @@ js-sys = "0.3"
 humantime = "2"
 itertools = "0.8.2"
 regex = "1"
+web-sys = "0.3.37"

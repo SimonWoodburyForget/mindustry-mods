@@ -525,12 +525,18 @@ pub mod app {
         ChangePage(Page),
     }
 
+    fn scroll_to_top() -> Option<()> {
+        web_sys::window()?.scroll_to_with_x_and_y(0.0, 0.0);
+        Some(())
+    }
+
     fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
         match msg {
             Msg::Route(Page::Overview(name)) => {
                 let q = format!("mod={}", name);
                 let url = seed::Url::new(vec![ROOT]).search(&q);
                 seed::push_route(url);
+                scroll_to_top();
                 orders
                     .skip()
                     .send_msg(Msg::ChangePage(Page::Overview(name)));

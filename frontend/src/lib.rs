@@ -104,10 +104,10 @@ mod listing {
         }
 
         /// Link to the mod's archive.
-        fn archieve_link(&self) -> Node<Msg> {
+        fn archive_link(&self) -> Node<Msg> {
             a![
                 attrs! {
-                    At::Href => self.0.archieve_link(),
+                    At::Href => self.0.archive_link(),
                     At::Target => "_self"
                 },
                 "zip"
@@ -300,7 +300,7 @@ mod listing {
                     div![
                         attrs! { At::Class => "box links" },
                         self.repo_link(),
-                        self.archieve_link(),
+                        self.archive_link(),
                         self.wiki_link(),
                     ],
                     div![attrs! { At::Class => "box assets" }, self.assets_list()],

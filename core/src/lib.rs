@@ -33,8 +33,8 @@ pub struct Mod {
 }
 
 impl Mod {
-    pub fn archieve_link(&self) -> String {
-        format!("{}/{}/archieve/master.zip", path::GITHUB, &self.repo)
+    pub fn archive_link(&self) -> String {
+        format!("{}/{}/archive/master.zip", path::GITHUB, &self.repo)
     }
 }
 

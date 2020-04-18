@@ -404,9 +404,12 @@ pub mod app {
         }
     }
 
+    /// Represents a separete page within the app.
     #[derive(Clone, Debug, PartialEq)]
     pub enum Page {
-        /// Overview of specific mod. -- This is stored as a string,
+        /// Overview of specific mod.
+        ///
+        /// This is stored as a string,
         /// because it could come from the url query or from the
         /// loaded mod itself when clicked onto.
         ///
@@ -414,6 +417,8 @@ pub mod app {
         /// all imaginable collisions, those strings come from the repository
         /// strings, because they're already URL encoded.
         Overview(String),
+
+        /// Listing of mod items.
         Listing,
     }
 
@@ -512,8 +517,11 @@ pub mod app {
         /// Filter by (words?) in string for listing.
         FilterWords(String),
 
+        /// Change the route and then change the page.
         Route(Page),
 
+        /// Change page without changing the route. (used when page is
+        /// already the URL and pushing a new route would be incorrect)
         ChangePage(Page),
     }
 
@@ -586,7 +594,7 @@ pub mod app {
                 a![
                     attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
                     img![attrs! {
-                        At::Src => format!("{}/images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png", ROOT),
+                        At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png",
                     }]
                 ]
             ],
@@ -641,7 +649,7 @@ pub mod app {
     }
 
     async fn fetch_data() -> Result<Msg, Msg> {
-        Request::new(format!("{}/data/modmeta.{}.json", ROOT, MOD_VERSION))
+        Request::new(format!("data/modmeta.{}.json", MOD_VERSION))
             .method(Method::Get)
             .fetch_json_data(Msg::FetchData)
             .await
@@ -661,12 +669,12 @@ pub mod app {
                 let k = args.next();
                 let v = args.next();
                 match (k, v) {
-                    (Some("mod"), Some(name)) => Msg::Route(Page::Overview(name.to_string())),
-                    _ => Msg::Route(Page::Listing),
+                    (Some("mod"), Some(name)) => Msg::ChangePage(Page::Overview(name.to_string())),
+                    _ => Msg::ChangePage(Page::Listing),
                 }
             }
 
-            None => Msg::Route(Page::Listing),
+            None => Msg::ChangePage(Page::Listing),
         })
     }
 

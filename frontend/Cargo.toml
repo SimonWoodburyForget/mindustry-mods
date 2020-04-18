@@ -1,6 +1,6 @@
 [package]
 name = "mindustry-mods-frontend"
-version = "0.1.11"
+version = "0.1.12"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"

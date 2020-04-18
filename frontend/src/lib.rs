@@ -525,9 +525,14 @@ pub mod app {
         ChangePage(Page),
     }
 
-    fn scroll_to_top() -> Option<()> {
-        web_sys::window()?.scroll_to_with_x_and_y(0.0, 0.0);
-        Some(())
+    fn scroll_to_top() {
+        scroll_to_y(0);
+    }
+
+    fn scroll_to_y(y: i64) {
+        web_sys::window()
+            .unwrap()
+            .scroll_to_with_x_and_y(0.0, y as _);
     }
 
     fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
@@ -545,7 +550,7 @@ pub mod app {
             Msg::Route(Page::Listing) => {
                 let url = seed::Url::new(vec![ROOT]);
                 seed::push_route(url);
-                model.page = Page::Listing;
+                model.max_count = Default::default();
                 orders.skip().send_msg(Msg::ChangePage(Page::Listing));
             }
 

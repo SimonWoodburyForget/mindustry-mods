@@ -387,15 +387,26 @@ img, .links a, p, .description
     color: #a1a1a1;
 }
 
-.markdown pre
-{
-    border-left: #f1f1f1 solid 2px;
-    padding: 0.5em;
-    background: #2f2f2f;
-}
-
 .markdown img 
 {
     background: #323232;
     max-width: 100%;
+}
+
+.markdown pre,
+.markdown blockquote
+{
+    padding: 0.5em;
+}
+
+.markdown pre
+{
+    border-left: #f1f1f1 solid 4px;
+    background: #2f2f2f;
+}
+
+.markdown blockquote
+{
+    border-left: #333 solid 4px;
+    background: #222;
 }

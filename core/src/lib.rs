@@ -4,7 +4,7 @@ pub mod markup;
 use serde::Deserialize;
 
 mod path {
-    pub const GITHUB: &str = "https:://github.com";
+    pub const GITHUB: &str = "https://github.com";
 }
 
 pub const MOD_VERSION: &str = "3.2";

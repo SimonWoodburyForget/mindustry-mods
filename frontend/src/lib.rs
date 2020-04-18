@@ -52,7 +52,7 @@ mod date {
 
 /// Mod listing functions.
 mod listing {
-    use super::{app::Msg, date, markup};
+    use super::{app::Msg, app::Page, date, markup};
     use mindustry_mods_core::Mod;
     use seed::{prelude::*, *};
     use serde::Deserialize;
@@ -202,7 +202,7 @@ mod listing {
                         None => "images/nothing.png".into(),
                     };
                     button![
-                        simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
+                        simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
                         img![attrs! {
                             At::Src => &icon,
                             // At::Custom("loading".into()) => "lazy",
@@ -216,7 +216,7 @@ mod listing {
                         "https://raw.githubusercontent.com", self.0.repo, p
                     );
                     button![
-                        simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
+                        simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
                         img![attrs! {
                             At::Src => i,
                             At::OnError => "this.src='images/nothing.png'",
@@ -271,7 +271,7 @@ mod listing {
                 attrs! { At::Class => "title-link" },
                 button![
                     style! { St::Background => "#282828" },
-                    simple_ev(Ev::Click, Msg::Overview(Some(self.endpoint_query()))),
+                    simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
                     markup::from_str(name),
                 ]
             ]
@@ -317,7 +317,7 @@ mod listing {
                     class!["outside"],
                     button![
                         style! { St::Background => "#282828" },
-                        simple_ev(Ev::Click, Msg::Overview(None)),
+                        simple_ev(Ev::Click, Msg::Route(Page::Listing)),
                         "back",
                     ],
                 ],
@@ -404,6 +404,25 @@ pub mod app {
         }
     }
 
+    #[derive(Clone, Debug, PartialEq)]
+    pub enum Page {
+        /// Overview of specific mod. -- This is stored as a string,
+        /// because it could come from the url query or from the
+        /// loaded mod itself when clicked onto.
+        ///
+        /// It's simply string of `"user--repo"` which should prevent
+        /// all imaginable collisions, those strings come from the repository
+        /// strings, because they're already URL encoded.
+        Overview(String),
+        Listing,
+    }
+
+    impl Default for Page {
+        fn default() -> Self {
+            Self::Listing
+        }
+    }
+
     #[derive(Default)]
     struct Model {
         /// A vector of mod data.
@@ -415,14 +434,8 @@ pub mod app {
         /// Filtering characters entered by user.
         filtering: Option<String>,
 
-        /// Overview of specific mod. -- This is stored as a string,
-        /// because it could come from the url query or from the
-        /// loaded mod itself when clicked onto.
-        ///
-        /// It's simply string of `"user--repo"` which should prevent
-        /// all imaginable collisions, those strings come from the repository
-        /// strings, because they're already URL encoded.
-        overview: Option<String>,
+        /// Active page which should be rendered.
+        page: Page,
 
         /// Maximum number of elements to render in listing; this is
         /// done mainly to decrease load time, which also includes
@@ -499,12 +512,33 @@ pub mod app {
         /// Filter by (words?) in string for listing.
         FilterWords(String),
 
-        /// Enables overview for some target mod.
-        Overview(Option<String>),
+        Route(Page),
+
+        ChangePage(Page),
     }
 
-    fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
+    fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
         match msg {
+            Msg::Route(Page::Overview(name)) => {
+                let q = format!("mod={}", name);
+                let url = seed::Url::new(vec![ROOT]).search(&q);
+                seed::push_route(url);
+                orders
+                    .skip()
+                    .send_msg(Msg::ChangePage(Page::Overview(name)));
+            }
+
+            Msg::Route(Page::Listing) => {
+                let url = seed::Url::new(vec![ROOT]);
+                seed::push_route(url);
+                model.page = Page::Listing;
+                orders.skip().send_msg(Msg::ChangePage(Page::Listing));
+            }
+
+            Msg::ChangePage(page) => {
+                model.page = page;
+            }
+
             Msg::Scroll {
                 scroll,
                 height,
@@ -532,24 +566,6 @@ pub mod app {
                 model.max_count = Default::default();
                 model.filtering = Some(words);
             }
-
-            Msg::Overview(name) => {
-                // FIXME: something here isn't right, this breaks returning the
-                // last page from within the app for some reason or another.
-                match name {
-                    Some(ref modname) => {
-                        seed::push_route(
-                            seed::Url::new(vec![ROOT]).search(&format!("mod={}", modname)),
-                        );
-                    }
-
-                    None => {
-                        seed::push_route(seed::Url::new(vec![ROOT]));
-                    }
-                }
-
-                model.overview = name;
-            }
         }
     }
 
@@ -559,11 +575,11 @@ pub mod app {
 
             // header section
             header![
-                match &model.overview {
-                    None => h1!["Mindustry Mods"],
-                    Some(_) => a![
+                match &model.page {
+                    Page::Listing => h1!["Mindustry Mods"],
+                    Page::Overview(_) => a![
                         // attrs! { At::Href => "/" },
-                        simple_ev(Ev::Click, Msg::Overview(None)),
+                        simple_ev(Ev::Click, Msg::Route(Page::Listing)),
                         h1!["Mindustry Mods"]
                     ]
                 },
@@ -577,8 +593,8 @@ pub mod app {
 
             // button and search bar section
             // (or nothing if overview mode)
-            match &model.overview {
-                None => div! {
+            match &model.page {
+                Page::Listing => div! {
                     attrs! { At::Class => "inputs" },
                     input![
                         attrs! {
@@ -602,19 +618,24 @@ pub mod app {
                         ],
                     }
                 },
-                Some(_) => div![],
+                Page::Overview(_) => div![],
             },
 
             // listing or overview section
-            match &model.data
-                .iter()
-                .find(|x| Some(x.endpoint_query()) == model.overview)
-            {
-                Some(overview) => overview.overview_item(),
-                None => div! {
+            match &model.page {
+                Page::Overview(ref value) => match &model.data.iter()
+                    .find(|x| x.endpoint_query().as_str() == value.as_str()) {
+                        Some(item) => item.overview_item(),
+                        None => div! {
+                            attrs! { At::Class => "listing-container" },
+                            model.listing(),
+                        }
+                    }
+
+                Page::Listing => div! {
                     attrs! { At::Class => "listing-container" },
                     model.listing(),
-                },
+                }
             }
         }
     }
@@ -640,12 +661,12 @@ pub mod app {
                 let k = args.next();
                 let v = args.next();
                 match (k, v) {
-                    (Some("mod"), Some(name)) => Msg::Overview(Some(name.to_string())),
-                    _ => Msg::Overview(None),
+                    (Some("mod"), Some(name)) => Msg::Route(Page::Overview(name.to_string())),
+                    _ => Msg::Route(Page::Listing),
                 }
             }
 
-            None => Msg::Overview(None),
+            None => Msg::Route(Page::Listing),
         })
     }
 

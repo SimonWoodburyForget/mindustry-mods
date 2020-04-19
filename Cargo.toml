@@ -1,7 +1,0 @@
-[workspace]
-members = [ "frontend", "backend", "core" ]
-
-[profile.release]
-opt-level = 's' # saves ~60,000 bytes
-# opt-level = 'z' # saves ~70,000 bytes
-lto = true # saves ~70,000 bytes

@@ -59,8 +59,8 @@ the right place.
 - unit tests: `cargo test` 
 - full test: `make test`
 
-A full test builds with custome features and pushes to a staging
-repostiory, to make a sanity check of everything.
+The full test pushes to another repostory, to do a complete test on
+the applicationo.
 
 ## Publishing
 

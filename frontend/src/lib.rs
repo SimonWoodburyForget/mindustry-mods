@@ -672,21 +672,22 @@ pub mod app {
         AfterMount::default()
     }
 
+    /// Parse query and change the page to overview if there's a mod param, or
+    /// just to to listing otherwise.
     fn routes(url: Url) -> Option<Msg> {
-        let Url { search, .. } = url;
-        Some(match search {
-            Some(search) => {
-                let mut args = search.split("=");
-                let k = args.next();
-                let v = args.next();
-                match (k, v) {
-                    (Some("mod"), Some(name)) => Msg::ChangePage(Page::Overview(name.to_string())),
-                    _ => Msg::ChangePage(Page::Listing),
-                }
-            }
+        let find_mod = |query: String| {
+            query.split("&").find_map(|pairs| {
+                let mut it = pairs.split("=");
+                let key = it.next().filter(|&k| k == "mod");
+                let value = it.next().map(|x| x.to_string());
+                key.and(value)
+            })
+        };
 
-            None => Msg::ChangePage(Page::Listing),
-        })
+        url.search
+            .and_then(find_mod)
+            .map(|name| Some(Msg::ChangePage(Page::Overview(name))))
+            .unwrap_or(Some(Msg::ChangePage(Page::Listing)))
     }
 
     fn events(_model: &Model) -> Vec<EventHandler<Msg>> {

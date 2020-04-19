@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ mod.name }}{% endblock %}
+
+{% block header %}
+<a href="../index.html"><h1>Mindustry Mods</h1></a>      
+{% endblock %}
+
+{% block content %}
+
+<p>
+  <code>{{ mod.repo }}</code>
+  <span class="version">v{{ mod.version }}</a>
+  <a href="{{ mod.link }}">repository</a>
+  <a href="{{ mod.archive_link() }}">zip</a>
+</p>
+
+{{ mod.readme_html() }}
+{% endblock %}
+

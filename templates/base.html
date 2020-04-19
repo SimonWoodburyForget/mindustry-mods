@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf8">
+    <link rel="stylesheet" type="text/css" href="{{ style }}">
+    <title>{% block title %}{% endblock %} - Mindustry Mods</title>
+    {% endblock %}
+  </head>
+  
+  <body>
+
+    <header>
+      {% block header %}
+      {% endblock %}
+    </header>
+    <content>
+      {% block content %}{% endblock %}
+    </content>
+  </body>
+</html>

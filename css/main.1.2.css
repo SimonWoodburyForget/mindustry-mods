@@ -385,6 +385,8 @@ img, .links a, p, .description
 .markdown h6
 {
     color: #a1a1a1;
+    padding-top: 4px;
+    border-top: #222 solid 4px;
 }
 
 .markdown img 
@@ -399,6 +401,12 @@ img, .links a, p, .description
     padding: 0.5em;
     overflow: auto;
     margin: 1.5em;
+}
+
+.markdown code
+{
+    margin: 0.1em;
+    padding: 0.1em;
 }
 
 .markdown pre

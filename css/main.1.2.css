@@ -193,7 +193,7 @@ input {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6
+a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6, li, lo
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description

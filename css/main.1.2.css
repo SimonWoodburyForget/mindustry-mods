@@ -396,7 +396,7 @@ img, .links a, p, .description
 .markdown pre,
 .markdown blockquote
 {
-    padding: 0.5em;
+    padding: 0.1em;
     overflow: auto;
     margin: 1.5em;
 }

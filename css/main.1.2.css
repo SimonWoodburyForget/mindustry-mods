@@ -403,10 +403,12 @@ img, .links a, p, .description
     margin: 1.5em;
 }
 
-.markdown code
+.markdown p code,
+.markdown li code,
+.markdown lo code
 {
-    margin: 0.1em;
-    padding: 0.1em;
+    background: #272727;
+    border: 1px #333 solid;
 }
 
 .markdown pre

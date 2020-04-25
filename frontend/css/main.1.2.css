@@ -193,7 +193,7 @@ input {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6
+a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6, li, lo
 { font-family: "Courier New", Courier, monospace; }
 
 img, .links a, p, .description
@@ -385,6 +385,8 @@ img, .links a, p, .description
 .markdown h6
 {
     color: #a1a1a1;
+    padding-top: 4px;
+    border-top: #222 solid 4px;
 }
 
 .markdown img 
@@ -397,6 +399,16 @@ img, .links a, p, .description
 .markdown blockquote
 {
     padding: 0.5em;
+    overflow: auto;
+    margin: 1.5em;
+}
+
+.markdown p code,
+.markdown li code,
+.markdown lo code
+{
+    background: #272727;
+    border: 1px #333 solid;
 }
 
 .markdown pre

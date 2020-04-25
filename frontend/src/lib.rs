@@ -337,7 +337,7 @@ mod listing {
 }
 
 /// Color markup rendering layer.
-pub mod markup {
+mod markup {
     use super::app::Msg;
     use mindustry_mods_core::{
         color::{Color, Name},

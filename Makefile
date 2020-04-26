@@ -1,5 +1,5 @@
 
-testdist = ../minmods-test
+test = ../minmods-test
 
 build:
 	wasm-pack build frontend --target web
@@ -13,14 +13,14 @@ publish:
 
 test:
 	wasm-pack build frontend --target web -- --features test-mode
-	cp frontend/pkg $(testdist) -rf
-	rm $(testdist)/pkg/.gitignore
-	cp frontend/css $(testdist) -rf
-	cp frontend/index.html $(testdist) -f
-	cd $(testdist)/ \
-		&& git add * \
-		&& git commit -m "test" \
-		&& git push -u origin master
+	cp frontend/pkg $(test) -rf
+	rm $(test)/pkg/.gitignore
+	cp frontend/css $(test) -rf
+	cp frontend/index.html $(test) -f
+	cp dist/data $(test) -rf
+	cd $(test)/ && git add * 
+	cd $(test)/ && git commit -m "test" 
+	cd $(test)/ && git push -u origin master
 
 run:
 	python3.8 scripts/mindustry-mods.py -iph

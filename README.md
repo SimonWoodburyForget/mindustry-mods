@@ -29,7 +29,7 @@ directory.
 
 # Rust Frontend
 
-- rustc 1.39.0
+- rustc 1.42.0
 
 ## Setup
 
@@ -37,30 +37,27 @@ Install Rust through [`rustup`](https://rustup.rs/), which also
 installs Cargo.
 
 - wasm-pack: `cargo install wasm-pack`
-- make: `sudo apt install make`
+- cargo-make: `cargo install cargo-make`
 
 
 [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
 is used to build and package the Wasm file for the
 browser (currently done without a bundler).
 
-`make` just runs the local `Makefile`, nothing fancy here.
+[`cargo-make`](https://github.com/sagiegurari/cargo-make) is used to
+assemble the package for the frontend.
 
 ## Building
 
-- build wasm: `make build`
-
-This will run the `wasm-dist` task in `frontend/Makefile.toml`, which will run
-`wasm-pack` on top of a few commands, which will move the `./pkg` into
-the right place.
+- build wasm: `cargo make dist-release`
 
 ## Testing
 
 - unit tests: `cargo test` 
-- full test: `make test`
+- build test: `cargo make dist-test`
 
 The full test pushes to another repostory, to do a complete test on
-the applicationo.
+the application.
 
 ## Publishing
 

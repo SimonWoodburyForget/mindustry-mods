@@ -12,8 +12,6 @@ use serde::{Deserialize, Serialize};
 use serde_hjson::value::ToJson;
 use serde_json::json;
 use std::collections::HashMap;
-use std::path::PathBuf;
-use structopt::StructOpt;
 use tokio::prelude::*;
 
 /// Deserializes mods from list at: https://github.com/Anuken/MindustryMods/blob/master/mods.json
@@ -89,33 +87,60 @@ struct Cache {
     contents: Vec<Contents>,
 }
 
-/// Midustry-Mods backend CLI.
-#[derive(StructOpt, Debug)]
-#[structopt(name = "mindustry-mods")]
-struct Opt {
-    /// Run templates right away
-    #[structopt(short, long)]
-    instant: bool,
+pub mod cli {
+    use std::{path::PathBuf, process::Command};
+    use structopt::StructOpt;
 
-    /// Push said changes to GitHub.
-    #[structopt(short, long)]
-    push: bool,
+    /// Midustry-Mods backend CLI.
+    #[derive(StructOpt, Debug)]
+    #[structopt(name = "mindustry-mods")]
+    struct Opt {
+        /// Run templates right away
+        #[structopt(short, long)]
+        instant: bool,
 
-    /// Keep running hourly.
-    #[structopt(short, long)]
-    hourly: bool,
+        /// Push said changes to GitHub.
+        #[structopt(short, long)]
+        push: bool,
 
-    /// Clear cache and stuff.
-    #[structopt(short, long)]
-    clean: bool,
+        /// Keep running hourly.
+        #[structopt(short, long)]
+        hourly: bool,
 
-    /// No update, just get to the end.
-    #[structopt(short, long)]
-    fast: bool,
+        /// Clear cache and stuff.
+        #[structopt(short, long)]
+        clean: bool,
 
-    /// Path to root of directory.
-    #[structopt(short = "d", long, default_value = ".", parse(from_os_str))]
-    path: PathBuf,
+        /// No update, just get to the end.
+        #[structopt(short, long)]
+        fast: bool,
+
+        /// Path to root of directory.
+        #[structopt(short = "d", long, default_value = ".", parse(from_os_str))]
+        path: PathBuf,
+    }
+
+    pub struct App {
+        opt: Opt,
+    }
+
+    impl App {
+        pub fn new() -> Self {
+            Self {
+                opt: Opt::from_args(),
+            }
+        }
+
+        /// Runs updater.
+        pub fn run(&self) {
+            Command::new("python3.8")
+                .arg("scripts/mindustry-mods.py")
+                .arg("-ph")
+                .status()
+                .expect("script failure")
+                .success();
+        }
+    }
 }
 
 /// Type to allow conversion of Hjson and Json value.
@@ -144,8 +169,6 @@ impl From<Hjson> for serde_json::Value {
 }
 
 pub async fn main() -> Result<()> {
-    let _opt = Opt::from_args();
-
     let dirs = ProjectDirs::from("", "Mindustry-Mods", "Mindustry-Mods-Backend")
         .expect("Project directories returned None.");
     tokio::fs::create_dir_all(dirs.config_dir()).await?;

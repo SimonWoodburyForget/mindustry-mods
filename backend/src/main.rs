@@ -1,4 +1,8 @@
+//! Main entry point into backend.
+use mindustry_mods_backend::*;
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    mindustry_mods_backend::main().await
+    cli::App::new().run();
+    Ok(())
 }

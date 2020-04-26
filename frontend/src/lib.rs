@@ -523,6 +523,10 @@ pub mod app {
         /// Change page without changing the route. (used when page is
         /// already the URL and pushing a new route would be incorrect)
         ChangePage(Page),
+
+        /// Scroll event failed, reason untracked, so just disable scroll
+        /// related behavior.
+        ScrollError,
     }
 
     fn scroll_to_top() {
@@ -584,6 +588,11 @@ pub mod app {
             Msg::FilterWords(words) => {
                 model.max_count = Default::default();
                 model.filtering = Some(words);
+            }
+
+            Msg::ScrollError => {
+                log("ERROR: scroll error");
+                model.max_count.0 = model.data.len();
             }
         }
     }
@@ -691,18 +700,23 @@ pub mod app {
     }
 
     fn events(_model: &Model) -> Vec<EventHandler<Msg>> {
-        let window = web_sys::window().unwrap();
-        let height = window.inner_height().unwrap().as_f64().unwrap().round() as i64;
-        let mut scroll = window.scroll_y().unwrap().round() as i64;
+        let some_window = web_sys::window().and_then(|window| {
+            let height = window.inner_height().ok()?.as_f64()?.round() as i64;
+            Some((window, height))
+        });
 
-        vec![ev(Ev::Scroll, move |_| {
-            let offset = window.document().unwrap().body().unwrap().offset_height() as i64;
-            scroll = window.scroll_y().unwrap().round() as i64;
-            Msg::Scroll {
-                scroll,
-                height,
-                offset,
-            }
+        vec![ev(Ev::Scroll, |_| {
+            some_window
+                .and_then(|(window, height)| {
+                    let offset = window.document()?.body()?.offset_height() as i64;
+                    let scroll = window.scroll_y().ok()?.round() as i64;
+                    Some(Msg::Scroll {
+                        scroll,
+                        offset,
+                        height,
+                    })
+                })
+                .unwrap_or(Msg::ScrollError)
         })]
     }
 

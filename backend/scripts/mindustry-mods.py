@@ -144,18 +144,18 @@ def main(args):
     if args.clean:
         subprocess.run(["rm", config.CACHE_DIR])
         time.sleep(2)
-        print("--- END CLEAN ---/n/n")
+        print("--- END CLEAN ---\n\n")
 
     path = Path(args.path)
     with open(Path.home()/".github-token") as f:
         rates = build(f.read(), path)
         if not args.push: return
     time.sleep(2)
-    print("--- END BUILD ---/n/n")
+    print("--- END BUILD ---\n\n")
     
     subprocess.run(['npm', 'run', 'deploy'])
     time.sleep(2)
-    print("--- END UPLOAD ---/n/n")
+    print("--- END UPLOAD ---\n\n")
     
     now = datetime.now()
     print(f"done: {now}")

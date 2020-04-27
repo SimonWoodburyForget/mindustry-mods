@@ -32,7 +32,7 @@ import schedule
 import click
 #import appdirs
 from github import GithubException
-import datetime
+from datetime import datetime, timezone
 
 # Generation
 import humanize
@@ -173,11 +173,11 @@ def main(path, push=True, update=True):
     print()
     print()
 
-    now = datetime.datetime.now()
+    now = datetime.now()
     print(f"done: {now}")
     print(f"limit: {rate.core.limit}")
     print(f"remaining: {rate.core.remaining}")
-    print(f"reset: {rate.core.reset}")
+    print(f"reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
 
 @click.command()
 @click.option('-i', '--instant', is_flag=True, help="Run templates right away.")

@@ -32,6 +32,7 @@ import schedule
 import click
 #import appdirs
 from github import GithubException
+import datetime
 
 # Generation
 import humanize
@@ -153,11 +154,13 @@ def build(token, path, update=True):
         with open(mod.endpoint(dist_path), 'w') as f:
             print(data, file=f)
 
+    return gh.get_rate_limit()
+
 def main(path, push=True, update=True):
     path = Path(path)
 
     with open(Path.home()/".github-token") as f:
-        build(f.read(), path, update=update)
+        rate = build(f.read(), path, update=update)
         if not push: return
 
     print("--- END BUILD ---")
@@ -169,6 +172,12 @@ def main(path, push=True, update=True):
     print("--- END UPLOAD ---")
     print()
     print()
+
+    now = datetime.datetime.now()
+    print(f"done: {now}")
+    print(f"limit: {rate.core.limit}")
+    print(f"remaining: {rate.core.remaining}")
+    print(f"reset: {rate.core.reset}")
 
 @click.command()
 @click.option('-i', '--instant', is_flag=True, help="Run templates right away.")

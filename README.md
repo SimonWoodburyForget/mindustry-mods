@@ -4,64 +4,31 @@ Checkout the website here: https://simonwoodburyforget.github.io/mindustry-mods/
 
 Add mods to listing here: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/CONTRIBUTING.md
 
-# Python Scripts
+## Development
 
-- Python 3.8
-- [requirements.txt](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt)
+Requirements:
+- Python 3.8: 
+  - [`requirements.txt`](requirements.txt)
+- Rust 1.42.0:
+  - [`wasm-pack`](wasm-pack)
+  - [`cargo-make`](cargo-make)
+- npm:
+  - gh-pages 2.2.0
 
-## Executing
+Installation:
+- [`rustup`](rustup), installs Rust and Cargo;
 
-Python scripts are used to update data in `dist/data/modmeta.*.json` which is
-used by the frontend. Before changing data `cargo test` is run, and if
-errors are found, the old data is reused instead.
+Executing: 
+- `cargo run -- -iph`
 
-Data is currently cached in `~/.github-cache`, and if Git hashes don't
-change, the specific repository is skipped. 
+Testing: 
+- `cargo test`
+- `cargo make dist-test`
 
-```
-python3.8 scripts/mindustry-mods.py -iph
-```
+Building:
+- `cargo make dist-release`
 
-This would executing the script hourly. The `--help` argument can be
-used to get more information. This assumes you're running the script
-from the current directory, and `-d` is just the path back to the root
-directory.
-
-# Rust Frontend
-
-- rustc 1.42.0
-
-## Setup
-
-Install Rust through [`rustup`](https://rustup.rs/), which also
-installs Cargo.
-
-- wasm-pack: `cargo install wasm-pack`
-- cargo-make: `cargo install cargo-make`
-
-
-[`wasm-pack`](https://github.com/rustwasm/wasm-pack)
-is used to build and package the Wasm file for the
-browser (currently done without a bundler).
-
-[`cargo-make`](https://github.com/sagiegurari/cargo-make) is used to
-assemble the package for the frontend.
-
-## Building
-
-- build wasm: `cargo make dist-release`
-
-## Testing
-
-- unit tests: `cargo test` 
-- build test: `cargo make dist-test`
-
-The full test pushes to another repostory, to do a complete test on
-the application.
-
-## Publishing
-
-- gh-pages 2.2.0
-
-`gh-pages` npm is used to publish to the `gh-pages`
-branch, from the `dist/` output directory.
+[requirements]: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt
+[wasm-pack]: https://github.com/rustwasm/wasm-pack
+[cargo-make]: https://github.com/sagiegurari/cargo-make
+[rustup]: https://rustup.rs/

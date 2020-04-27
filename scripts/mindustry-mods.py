@@ -43,6 +43,7 @@ import urllib
 from jinja2 import Markup
 
 from caching import modsmeta
+from caching import icons
 
 # Version number for data, to allow multiple version of data at once,
 # which unavoidably may eventually happen, because of caching.
@@ -177,6 +178,9 @@ def main(path, push=True, update=True):
 @click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
 @click.option('-d', '--path', default=".", help="Path to root of directory.")
 def cli(instant, push, hourly, clean, fast, path):
+    if clean:
+        subprocess.run(["rm", config.CACHE_DIR])
+    
     if path is None:
         print("--path is missing")
         return

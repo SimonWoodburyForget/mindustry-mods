@@ -120,22 +120,31 @@ pub mod cli {
         path: PathBuf,
     }
 
-    pub struct App {
-        opt: Opt,
-    }
+    pub struct App(Opt);
 
     impl App {
         pub fn new() -> Self {
-            Self {
-                opt: Opt::from_args(),
-            }
+            Self(Opt::from_args())
         }
 
         /// Runs updater.
         pub fn run(&self) {
-            Command::new("python3.8")
+            let &Self(Opt {
+                push,
+                clean,
+                hourly,
+                instant,
+                ..
+            }) = self;
+
+            let args = [("-p", push), ("-c", clean), ("-h", hourly), ("-i", instant)];
+            let args = args
+                .iter()
+                .filter_map(|&(arg, b)| if b { Some(arg) } else { None });
+
+            let _code = Command::new("python3.8")
                 .arg("scripts/mindustry-mods.py")
-                .arg("-ph")
+                .args(args)
                 .status()
                 .expect("script failure")
                 .success();

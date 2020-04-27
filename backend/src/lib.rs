@@ -153,6 +153,8 @@ pub mod cli {
 }
 
 /// Type to allow conversion of Hjson and Json value.
+/// This is required because serde_hjson uses an older
+/// version of serde. (serde 0.7)
 struct Hjson(serde_hjson::Value);
 
 impl From<Hjson> for serde_json::Value {

@@ -637,7 +637,7 @@ dependencies = [
 
 [[package]]
 name = "mindustry-mods-frontend"
-version = "0.1.16"
+version = "0.1.17"
 dependencies = [
  "futures 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
  "humantime 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",

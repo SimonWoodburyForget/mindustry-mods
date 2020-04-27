@@ -129,7 +129,7 @@ pub mod cli {
 
         /// Runs updater.
         pub fn run(&self) {
-            let &Self(Opt {
+            let Self(Opt {
                 push,
                 clean,
                 hourly,
@@ -140,7 +140,7 @@ pub mod cli {
             let args = [("-p", push), ("-c", clean), ("-h", hourly), ("-i", instant)];
             let args = args
                 .iter()
-                .filter_map(|&(arg, b)| if b { Some(arg) } else { None });
+                .filter_map(|&(arg, &b)| if b { Some(arg) } else { None });
 
             let _code = Command::new("python3.8")
                 .arg("scripts/mindustry-mods.py")

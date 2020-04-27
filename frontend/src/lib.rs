@@ -60,11 +60,16 @@ mod listing {
 
     /// Makes the tiny contents/assets overview lists.
     fn tiny_list(v: &[String]) -> Node<Msg> {
-        if !v.is_empty() {
-            ul![v
-                .iter()
-                .filter(|x| x.as_str() != "content")
-                .map(|x| li![attrs! { At::Class => x}, x])]
+        let it = v
+            .iter()
+            .filter_map(|x| match x.as_str() {
+                "content" => None,
+                string => Some(string),
+            })
+            .map(|x| li![attrs! { At::Class => x}, x]);
+
+        if it.clone().take(1).next().is_some() {
+            ul![it]
         } else {
             div![]
         }

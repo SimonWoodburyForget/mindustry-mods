@@ -20,10 +20,13 @@ Executing:
 
 Testing: 
 - `cargo test`
-- `cargo make dist-test`
+- `cargo make dist-test` (pushes to test repo)
 
 Building:
-- `cargo make dist-release`
+- `cargo make dist-release` (pushes to main repo with gh-pages)
+
+Notes: `cargo make dist-*` *related commands require repo access,
+relative paths and urls are hardcoded to make that work.*
 
 [requirements]: https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt
 [wasm-pack]: https://github.com/rustwasm/wasm-pack

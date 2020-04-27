@@ -15,9 +15,6 @@ Requirements:
 - npm:
   - gh-pages 2.2.0
 
-Installation:
-- [`rustup`](rustup), installs Rust and Cargo;
-
 Executing: 
 - `cargo run -- -iph`
 

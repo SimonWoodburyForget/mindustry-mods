@@ -143,7 +143,7 @@ pub mod cli {
                 .filter_map(|&(arg, &b)| if b { Some(arg) } else { None });
 
             let _code = Command::new("python3.8")
-                .arg("scripts/mindustry-mods.py")
+                .arg("backend/scripts/mindustry-mods.py")
                 .args(args)
                 .status()
                 .expect("script failure")

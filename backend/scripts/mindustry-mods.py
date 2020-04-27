@@ -1,9 +1,4 @@
-""" Python script to pull Mindustry mods relative to repo name.
-This modules requires Python 3.7 or higher.
-
-It uses Jinja2 for templating and eventually will use ClojureScript
-instead, which is probably entirely overkill.
-"""
+""" Python script to pull Mindustry mods relative to repo name. """
 
 from pathlib import Path
 from collections import namedtuple
@@ -72,11 +67,6 @@ def loads_yaml(path):
         raise ValueError(f"\n Duplicate repository in yaml: {dupsfmt}")
 
     return data
-
-def load_env():
-    from jinja2 import Environment, FileSystemLoader, select_autoescape
-    return Environment(loader=FileSystemLoader('templates/'),
-                       autoescape=select_autoescape(['html']))
 
 def update_data(path, jdata):
     def copy(a, b):
@@ -147,13 +137,6 @@ def build(token, path, update=True):
     jdata = json.dumps(jdata)
 
     update_data(dist_path, jdata)
-
-    env = load_env()
-    template = env.get_template('preview.html')
-    for mod in mods:
-        data = template.render(mod=mod, style="../css/readme.css")
-        with open(mod.endpoint(dist_path), 'w') as f:
-            print(data, file=f)
 
     return (rate_a, gh.get_rate_limit())
 

@@ -134,6 +134,7 @@ def build(token, path, update=True):
     mods_yaml = loads_yaml(yaml_path)
 
     gh = github.Github(token)
+    rate_a = gh.get_rate_limit()
 
     mods_crawl = loads_crawl(gh)
     mods_missing = [ { "repo": x } for x in
@@ -154,30 +155,41 @@ def build(token, path, update=True):
         with open(mod.endpoint(dist_path), 'w') as f:
             print(data, file=f)
 
-    return gh.get_rate_limit()
+    return (rate_a, gh.get_rate_limit())
 
-def main(path, push=True, update=True):
-    path = Path(path)
+def main(args):
+    if args.clean:
+        subprocess.run(["rm", config.CACHE_DIR])
+        time.sleep(2)
+        print("--- END CLEAN ---/n/n")
 
+    path = Path(args.path)
     with open(Path.home()/".github-token") as f:
-        rate = build(f.read(), path, update=update)
-        if not push: return
-
-    print("--- END BUILD ---")
-    print()
-    print()
-
+        rates = build(f.read(), path)
+        if not args.push: return
+    time.sleep(2)
+    print("--- END BUILD ---/n/n")
+    
     subprocess.run(['npm', 'run', 'deploy'])
-
-    print("--- END UPLOAD ---")
-    print()
-    print()
-
+    time.sleep(2)
+    print("--- END UPLOAD ---/n/n")
+    
     now = datetime.now()
     print(f"done: {now}")
-    print(f"limit: {rate.core.limit}")
-    print(f"remaining: {rate.core.remaining}")
-    print(f"reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
+    print("rate:")
+    print(f"  limit: {rates[1].core.limit}")
+    print(f"  remaining: {rates[1].core.remaining}")
+    print(f"  reset: {rates[1].core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
+    print(f"  used: {rates[0].core.remaining - rates[1].core.remaining}")
+
+@dataclass
+class Args:
+    instant: bool
+    push: bool
+    hourly: bool
+    clean: bool
+    fast: bool
+    path: str
 
 @click.command()
 @click.option('-i', '--instant', is_flag=True, help="Run templates right away.")
@@ -186,27 +198,19 @@ def main(path, push=True, update=True):
 @click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
 @click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
 @click.option('-d', '--path', default=".", help="Path to root of directory.")
-def cli(instant, push, hourly, clean, fast, path):
-    if clean:
-        subprocess.run(["rm", config.CACHE_DIR])
-    
-    if path is None:
-        print("--path is missing")
-        return
+def cli(**args):
+    args = Args(**args)
+    main_run = lambda: main(args)
 
-    update = not fast
-
-    main_run = lambda: main(path, push, update)
-
-    if instant:
+    if args.instant:
         main_run()
 
-    if hourly:
+    if args.hourly:
         schedule.every(1).hour.at(':00').do(main_run)
 
         while True:
             schedule.run_pending()
-            time.sleep(1)
+            time.sleep(10)
 
 if __name__ == '__main__':
     cli()

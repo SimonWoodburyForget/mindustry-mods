@@ -1,0 +1,424 @@
+header h1 {
+    text-decoration: underline;
+}
+
+header a h1:hover {
+    color: #ffc;
+}
+
+body {
+    margin: 0;
+    background: #000;
+}
+
+a {
+    color: #ffa;
+}
+
+/* ================================================================ */
+/* Stars */
+.stars-wrapper {
+    border-bottom: 3px solid #333;
+}
+
+.stars {
+    color: #606060;
+}
+
+.star {
+    color: #ffa;
+}
+
+.star {
+    padding-right: 0.2em;
+}
+
+.stars-wrapper, .star-count {
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:space-evenly;
+    align-self:start;
+}
+
+
+/* ================================================================ */
+
+.icon img {
+    /* max-width: 50px; */
+    /* min-width: 15px; */
+    /* max-height: 50px; */
+    /* min-height: 15px; */
+    min-width: 20px;
+    max-height: 50px;
+    /* background: #333; */
+}
+
+.icon {
+    /* background: #333; */
+}
+
+.box ul {
+    margin: 0;
+    padding: 4px;
+    color: #f0f0f0;
+    list-style-type: none;
+    font-size: 80%;
+}
+
+.box.assets ul {
+    border: 1px solid #422;
+    background: #211;
+}
+
+.box.contents ul {
+    border: 1px solid #224;
+    background: #112;
+}
+
+/* ================================================================ */
+/* Inputs */
+button, input {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #ffa;
+    border:0;
+}
+
+button,
+a
+{
+    cursor: pointer;
+}
+
+.buttons p {
+    color: #666;
+}
+
+input, .buttons, button {
+    border: 0;
+    border-left: 4px solid #333;
+    background: #333;
+}
+
+button.active {
+    background: #444;
+    border-left: 3px solid #666;
+}
+
+button:active {
+    background: #442;
+    border-left: 3px solid #553;
+}
+
+input, .buttons {
+    border: 1px solid #666;
+}
+
+.inputs {
+    background: #444;
+    border-bottom: 1px solid #ffa;
+}
+
+.inputs {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+
+.buttons {
+    display:flex;
+    flex-flow: row;
+}
+
+input {
+    width:50vw;
+}
+
+@media (width <= 760px) {
+    input {
+        width: 80vw;
+    }
+}
+
+@media (width <= 460px) {
+    input {
+        width: 100vw;
+    }
+
+    .buttons {
+        flex-flow: row wrap;
+    }
+}
+
+
+/* ================================================================ */
+
+
+.description {
+    color: #f0f0f0;
+    background: #333;
+    border-left: 3px solid #666;
+    white-space: pre-line;
+}
+
+/* ================================================================ */
+/* Title Box */
+.title-link,
+.by-author,
+.v-number
+{ padding-right: 0.5em; }
+
+.title-link a {
+    color: #ffa;
+    text-decoration: none;
+    border-left: 3px solid #666;
+    background: #333;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.by-author {
+    color: #f0f0f0;
+    white-space: nowrap;
+}
+
+.v-number {
+    color: #a0a0a0;
+    white-space: nowrap;
+}
+
+.last-commit {
+    color: #606060;
+    margin-left:auto;
+}
+
+/* ================================================================ */
+
+a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6, li, lo
+{ font-family: "Courier New", Courier, monospace; }
+
+img, .links a, p, .description
+{
+    padding: 4px;
+    margin: 0;
+}
+
+/* ================================================================ */
+/* Links container. */
+
+.links {
+    font-size: 0.8em;
+}
+
+.title-link {
+    font-size: 1.1em;
+}
+
+/* ================================================================ */
+/* Whole page margins/padding and borders between wrapper elements. */
+.outside {
+    /* margin-left: 3em; */
+    /* margin-right: 3em; */
+    background: #181818;
+    max-width: 64em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper
+{
+    padding-bottom: 3em;
+    padding-top: 1em;
+    border-bottom: 3px solid #666;
+    max-width: 64em;
+}
+
+/* ================================================================ */
+/* Tag containers. */
+
+.assets ul,
+.contents ul
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.assets ul li,
+.contents ul li
+{
+    padding-right: 0.4em;
+    white-space: nowrap;
+}
+
+/* ================================================================ */
+/* Layout */
+
+/* Nested containers */
+.title-box {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+}
+
+.links {
+    display: flex;
+    flex-flow: column;
+}
+
+/* /\* Star count *\/ */
+/* .star-count { */
+/*     justify-self:flex-start; */
+/*     /\* align-self:start; *\/ */
+/* } */
+
+/* The grid */
+.wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(20px, auto);
+    grid-auto-columns: minmax(20px, auto);
+    grid-gap: 10px;
+}
+
+/* .box.links { */
+/*     grid-column:5; */
+/*     grid-row:1/3; */
+/* } */
+
+/* .box.stars { grid-column:2/4} */
+
+.box.desc {
+    grid-column:2/6;
+    grid-row:2;
+}
+
+.box.icon {
+    grid-column:1;
+    grid-row:1/3;
+    justify-self:center;
+}
+
+.box.name {
+    grid-column:2/6;
+    grid-row:1;
+}
+
+.box.stars {
+    grid-column:4/6;
+    justify-self:center;
+}
+
+/* .box.assets { */
+/*     grid-column:2/3; */
+/*     grid-row:2; */
+/*     justify-self:end; */
+/* } */
+
+/* .box.contents { */
+/*     grid-column:3/5; */
+/*     grid-row:2; */
+/*     justify-self:start; */
+/* } */
+
+@media (width <= 460px) {
+    .wrapper {
+        display: flex;
+        /* grid-template-rows: 1fr 2fr;  */
+        flex-flow: column;
+    }
+    
+    .outside {
+        padding:0.2em;
+    }
+
+    /* .links { */
+    /*     display:flex; */
+    /*     flex-flow:row wrap; */
+    /*     align-items:center; */
+    /* } */
+
+    .box.stars,
+    .box.icon,
+    .box.links
+    {
+        align-self:center;
+    }
+
+    .box.links
+    {
+        flex-flow: row wrap;
+    }
+
+    .desc {
+        font-size: 85%;
+    }
+
+    /* .box.assets, */
+    /* .box.contents */
+    /* { */
+    /*     align-self:start; */
+    /* } */
+    
+}
+
+/* ================================================================ */
+/* Markdown */
+
+.markdown {
+    color: #a1a1a1;
+    padding: 2em;
+}
+
+.markdown h1,
+.markdown h2
+{
+    text-decoration: underline;
+}
+
+.markdown h1, 
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6
+{
+    color: #a1a1a1;
+    padding-top: 4px;
+    border-top: #222 solid 4px;
+}
+
+.markdown img 
+{
+    background: #323232;
+    max-width: 100%;
+}
+
+.markdown pre,
+.markdown blockquote
+{
+    padding: 0.5em;
+    overflow: auto;
+    margin: 1.5em;
+}
+
+.markdown p code,
+.markdown li code,
+.markdown lo code
+{
+    background: #272727;
+    border: 1px #333 solid;
+}
+
+.markdown pre
+{
+    border-left: #f1f1f1 solid 4px;
+    background: #2f2f2f;
+}
+
+.markdown blockquote
+{
+    border-left: #333 solid 4px;
+    background: #222;
+}

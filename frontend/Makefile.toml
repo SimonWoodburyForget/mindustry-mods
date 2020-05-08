@@ -1,0 +1,51 @@
+[tasks.ws-hook.env]
+ROOT = "../"
+OUT = "../${OUT}"
+DATA = "../${DATA}"
+
+[tasks.wasm-test-mode]
+script_runner = "@shell"
+script = [ "wasm-pack build --target web -- --features test-mode" ]
+
+[tasks.wasm-release]
+script_runner = "@shell"
+script = [ "wasm-pack build --target web" ]
+
+[tasks.wasm-build]
+run_task = [
+    { name = "wasm-release", condition = { env_true = [ "PROD" ] } },
+    { name = "wasm-test-mode", condition = { env_false = [ "PROD" ] } },
+]
+
+[tasks.copy-data]
+condition = { env_false = [ "PROD" ] }
+script = [ "cp ${DATA} ${OUT} -rf" ]
+
+[tasks.copy-files]
+script_runner = "@shell"
+script = [
+    "cp ./pkg ${OUT} -rf",
+    "rm ${OUT}/pkg/.gitignore",
+    "cp ./css ${OUT} -fr",
+    "cp ./index.html ${OUT} -f",
+]
+dependencies = [ "copy-data" ]
+
+[tasks.pub-test-mode]
+script_runner = "@shell"
+script = [
+    ''' cd ${OUT} \
+        && git add * \
+        && git commit -m "test" \
+        && git push -u origin master'''
+]
+
+[tasks.pub-release]
+script_runner = "@shell"
+script = [ "cd ${ROOT} && npm run deploy" ]
+
+[tasks.pub]
+run_task = [
+    { name = "pub-release", condition = { env_true = [ "PROD" ] } },
+    { name = "pub-test-mode", condition = { env_false = [ "PROD" ] } },
+]

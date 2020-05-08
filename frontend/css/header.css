@@ -1,0 +1,30 @@
+
+header {
+    display: flex;
+    /* justify-content:space-between; */
+    flex-flow: row wrap;
+    margin: 0;
+    color: #ffa;
+    background: #011;
+    border-bottom: 8px solid #ffa;
+}
+
+header h1 {
+    margin: 0;
+    padding: 16px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+header img {
+    margin: 0.3em;
+    background: #444;
+    /* opacity: 0.3; */
+    width: 2em;
+    border-left: 4px solid #777;
+}
+
+header a {
+    align-self:center;
+}
+
+header { font-family: "Courier New", Courier, monospace; }

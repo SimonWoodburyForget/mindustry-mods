@@ -1,0 +1,31 @@
+[env]
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
+DATA = "dist/data"
+
+[tasks.dist-release]
+description = "Runs distribution for release."
+dependencies = [ "release", "build-copy", "pub" ]
+
+[tasks.dist-test]
+description = "Runs test-mode distribution."  
+dependencies = [ "minmods-test", "build-copy", "pub" ]
+
+[tasks.release.env]
+PROD = true
+OUT = "dist"
+
+[tasks.minmods-test.env]
+PROD = false
+OUT = "../minmods-test"
+
+[tasks.build-copy]
+description = "Build wasm files and copy to output directories."
+dependencies = [ "ws-hook", "wasm-build", "copy-files" ]
+
+[tasks.ws-hook]
+description = "Task run before workspace. (..used for patching paths)"
+
+[tasks.copy-files]
+[tasks.wasm-build]
+[tasks.pub]
+

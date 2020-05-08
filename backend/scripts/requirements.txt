@@ -6,7 +6,6 @@ requests==2.20.0
 schedule==0.6.0
 humanize==0.5.1
 beautifulsoup4==4.8.1
-dataclasses==0.7
 parsec==3.5
 Pillow==6.2.2
 PyGithub==1.44.1

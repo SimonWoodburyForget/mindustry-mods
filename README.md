@@ -14,16 +14,18 @@ Requirements:
   - [`cargo-make`](cargo-make)
 - npm:
   - gh-pages 2.2.0
-
-Executing: 
-- `cargo run -- -iph`
+- Github personal access token at `~/.github-token` to increase request limit 
+  from 500 to 5,000.
 
 Testing: 
 - `cargo test`
-- `cargo make dist-test` (pushes to test repo)
+- `cargo make dist-test` (pushes to test repo in another directory, to test the gh-pages output)
 
 Building:
 - `cargo make dist-release` (pushes to main repo with gh-pages)
+
+Executing: 
+- `cargo run -- -iph`
 
 Notes: `cargo make dist-*` *related commands require repo access,
 relative paths and urls are hardcoded to make that work.*

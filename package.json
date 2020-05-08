@@ -18,7 +18,8 @@
         "url": "https://github.com/SimonWoodburyForget/mindustry-mods/issues"
     },
     "homepage": "https://simonwoodburyforget.github.com/mindustry-mods",
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
         "gh-pages": "^2.2.0"
     }
 }

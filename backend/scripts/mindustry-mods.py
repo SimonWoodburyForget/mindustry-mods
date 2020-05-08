@@ -81,6 +81,8 @@ def update_data(path, jdata):
         print("[warn] modmeta.1.1.json -- file not found")
         
     # update modmeta to with new data
+    data = path / "data"
+    data.mkdir(parents=True, exist_ok=True)
     with open(path/f"data/modmeta.{MOD_META_VERSION}.json", 'w') as f:
         print(jdata, file=f)
 
@@ -148,7 +150,7 @@ def main(args):
 
     path = Path(args.path)
     with open(Path.home()/".github-token") as f:
-        rates = build(f.read(), path)
+        rates = build(f.read().strip(), path)
         if not args.push: return
     time.sleep(2)
     print("--- END BUILD ---\n\n")

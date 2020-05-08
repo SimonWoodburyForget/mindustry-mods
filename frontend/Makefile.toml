@@ -28,6 +28,7 @@ script = [
     "rm ${OUT}/pkg/.gitignore",
     "cp ./css ${OUT} -fr",
     "cp ./index.html ${OUT} -f",
+    "cp ./images ${OUT} -fr"
 ]
 dependencies = [ "copy-data" ]
 

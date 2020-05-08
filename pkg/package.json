@@ -3,7 +3,7 @@
   "collaborators": [
     "Simon <simonwoodburyforget@gmail.com>"
   ],
-  "version": "0.1.16",
+  "version": "0.1.17",
   "license": "GNUv3",
   "files": [
     "mindustry_mods_frontend_bg.wasm",
@@ -12,5 +12,5 @@
   ],
   "module": "mindustry_mods_frontend.js",
   "types": "mindustry_mods_frontend.d.ts",
-  "sideEffects": "false"
+  "sideEffects": false
 }

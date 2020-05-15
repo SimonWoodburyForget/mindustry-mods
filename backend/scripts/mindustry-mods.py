@@ -122,7 +122,7 @@ def build(token, path, update=True):
     dist_path = path/"dist/"
     dist_path.mkdir(exist_ok=True)
     
-    yaml_path = path/"mindustry-mods.yaml"    
+    yaml_path = path/"mindustry-mods.yaml"
     mods_yaml = loads_yaml(yaml_path)
 
     gh = github.Github(token)

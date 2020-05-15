@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"
+default-run = "main"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -30,3 +31,7 @@ path = "../core"
 name = "scrap"
 path = "src/bin/scrap.rs"
 edition = "2018"
+
+[[bin]]
+name = "main"
+path = "src/bin/main.rs"

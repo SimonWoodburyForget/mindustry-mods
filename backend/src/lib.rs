@@ -2,30 +2,30 @@ pub mod rate;
 pub mod request;
 pub mod version;
 
-use crate::request::Content;
+pub use crate::request::Content;
 use crate::version::Version;
 
-use anyhow::Result;
+pub use anyhow::Result;
 use chrono::{DateTime, Utc};
-use directories::ProjectDirs;
+pub use directories::ProjectDirs;
 use serde::{Deserialize, Serialize};
-use serde_hjson::value::ToJson;
+pub use serde_hjson::value::ToJson;
 use serde_json::json;
 use std::collections::HashMap;
-use tokio::prelude::*;
+pub use tokio::prelude::*;
 
 /// Deserializes mods from list at: https://github.com/Anuken/MindustryMods/blob/master/mods.json
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
-struct ModSource {
+pub struct ModSource {
     /// ex: `"What42Pizza/Mindustry-Production-Mod"`
-    repo: String,
+    pub repo: String,
 
     /// ex: `"Mindustry-Production-Mod"`
     name: String,
 
     /// ex: `"[orange]What42Pizza"`
-    author: String,
+     author: String,
 
     /// ex: `"2020-03-18T16:35:29Z"`
     last_updated: String,
@@ -40,7 +40,7 @@ struct ModSource {
 /// The `mod.json` file.
 #[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
-struct ModInfo {
+pub struct ModInfo {
     name: Option<String>,
     description: Option<String>,
     author: Option<String>,
@@ -54,7 +54,7 @@ struct ModInfo {
 
 #[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "kebab-case")]
-enum Assets {
+pub enum Assets {
     Content,
     Bundles,
     Sounds,
@@ -66,7 +66,7 @@ enum Assets {
 
 #[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "kebab-case")]
-enum Contents {
+pub enum Contents {
     Items,
     Blocks,
     Mechs,
@@ -76,7 +76,7 @@ enum Contents {
 }
 
 #[derive(Deserialize, Serialize, Debug)]
-struct Cache {
+pub struct Cache {
     name: String,
     stars: u32,
     date: DateTime<Utc>,
@@ -155,7 +155,7 @@ pub mod cli {
 /// Type to allow conversion of Hjson and Json value.
 /// This is required because serde_hjson uses an older
 /// version of serde. (serde 0.7)
-struct Hjson(serde_hjson::Value);
+pub struct Hjson(pub serde_hjson::Value);
 
 impl From<Hjson> for serde_json::Value {
     fn from(value: Hjson) -> Self {
@@ -179,58 +179,3 @@ impl From<Hjson> for serde_json::Value {
     }
 }
 
-pub async fn main() -> Result<()> {
-    let dirs = ProjectDirs::from("", "Mindustry-Mods", "Mindustry-Mods-Backend")
-        .expect("Project directories returned None.");
-    tokio::fs::create_dir_all(dirs.config_dir()).await?;
-
-    let token_path = dirs.config_dir().join("github-token");
-    let mut file = match tokio::fs::File::open(token_path).await {
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
-            println!("Github token file not found.");
-            return Ok(());
-        }
-
-        other => other,
-    }?;
-
-    let mut token = "token ".to_string();
-    file.read_to_string(&mut token).await?;
-
-    let github = request::GitHub::new(&token).await?;
-
-    let mods_source: Vec<ModSource> = {
-        let data = github
-            .get_contents_decoded(Content {
-                repo: "Anuken/MindustryMods",
-                file: "mods.json",
-            })
-            .await?;
-        serde_json::from_str(&data)
-    }?;
-
-    let mods_meta: Vec<serde_hjson::Value> = github
-        .get_all_decoded(mods_source.iter().take(3).map(|m| Content {
-            repo: &m.repo,
-            file: "mod.json",
-        }))
-        .await
-        .iter()
-        .filter_map(|x| match x {
-            Ok(x) => Some(serde_hjson::from_str(&x).ok()?),
-            // throw away all invalid results for now
-            Err(_) => None,
-        })
-        .collect();
-
-    let x: Vec<ModInfo> = serde_json::from_value(Hjson(mods_meta.to_json()).into())?;
-
-    // let x: JValue = mods_meta.into();
-    // let x: Vec<HashMap<String, JValue>> = serde_json::from_str(&x).unwrap();
-
-    println!("{:?}", x);
-
-    // let mods_meta: Vec<Mod> = mods_source.iter();
-
-    Ok(())
-}

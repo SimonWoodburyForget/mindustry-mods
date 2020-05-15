@@ -25,3 +25,8 @@ default-features = false
 
 [dependencies.mindustry-mods-core]
 path = "../core"
+
+[[bin]]
+name = "scrap"
+path = "src/bin/scrap.rs"
+edition = "2018"

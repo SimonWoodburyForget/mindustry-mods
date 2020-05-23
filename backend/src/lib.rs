@@ -25,7 +25,7 @@ pub struct ModSource {
     name: String,
 
     /// ex: `"[orange]What42Pizza"`
-     author: String,
+    author: String,
 
     /// ex: `"2020-03-18T16:35:29Z"`
     last_updated: String,
@@ -167,15 +167,20 @@ impl From<Hjson> for serde_json::Value {
             serde_hjson::Value::U64(x) => json!(x),
             serde_hjson::Value::F64(x) => json!(x),
             serde_hjson::Value::String(x) => json!(x),
-            serde_hjson::Value::Array(x) => json!(x
-                .into_iter()
-                .map(|x| Hjson(x).into())
-                .collect::<Vec<serde_json::Value>>()),
-            serde_hjson::Value::Object(x) => json!(x
-                .into_iter()
-                .map(|(k, v)| (k, Hjson(v).into()))
-                .collect::<HashMap<_, serde_json::Value>>()),
+            serde_hjson::Value::Array(x) => {
+                let vector = x
+                    .into_iter()
+                    .map(|x| Hjson(x).into())
+                    .collect::<Vec<serde_json::Value>>();
+                json!(vector)
+            }
+            serde_hjson::Value::Object(x) => {
+                let hash_map = x
+                    .into_iter()
+                    .map(|(k, v)| (k, Hjson(v).into()))
+                    .collect::<HashMap<_, serde_json::Value>>();
+                json!(hash_map)
+            }
         }
     }
 }
-

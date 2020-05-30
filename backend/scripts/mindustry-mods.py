@@ -37,6 +37,7 @@ import re
 import bs4
 import urllib
 from jinja2 import Markup
+from requests.exceptions import ConnectionError
 
 from caching import modsmeta
 from caching import icons
@@ -165,7 +166,6 @@ def main(args):
     print(f"  limit: {rates[1].core.limit}")
     print(f"  remaining: {rates[1].core.remaining}")
     print(f"  reset: {rates[1].core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
-    print(f"  used: {rates[0].core.remaining - rates[1].core.remaining}")
 
 @dataclass
 class Args:
@@ -186,6 +186,13 @@ class Args:
 def cli(**args):
     args = Args(**args)
     main_run = lambda: main(args)
+    def main_run():
+        try:
+            main(args)
+        except ConnectionError as e:
+            # NOTE: Catch ratelimit errors, which occurs if the system
+            # gets suspended/hibernates and comes back online.
+            print("[exception] ", e)
 
     if args.instant:
         main_run()

@@ -190,8 +190,12 @@ def cli(**args):
         try:
             main(args)
         except ConnectionError as e:
-            # NOTE: Catch ratelimit errors, which occurs if the system
-            # gets suspended/hibernates and comes back online.
+            # NOTE: catch connection errors like:
+            #
+            # - ratelimit errors, which occurs if the system gets suspended/hibernates and comes back online.
+            # - timeout or other general connection errors.
+            #
+            # This may not be the best solution.
             print("[exception] ", e)
 
     if args.instant:

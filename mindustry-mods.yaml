@@ -167,6 +167,12 @@ repo: MisterCinnabar/Revenge-Of-The-Data-Mod
 repo: ZacBytes/BombMod
 icon: sprites/blocks/bomb.png
 ---
+repo: nichrosia/VanillaUpgraded
+name: VanillaUpgraded
+author: NiChrosia
+about: A Mindustry mod that adds a few things that improve vanilla.
+icon: sprites/mechs/nova-control-ship.png
+---
 repo: PetruCHIOrus/lead_ind
 icon: sprites/items/banana.png
 ---

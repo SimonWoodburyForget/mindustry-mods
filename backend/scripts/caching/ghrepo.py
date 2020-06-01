@@ -176,7 +176,7 @@ class Repo:
                     date=repo.get_commit(sha).commit.author.date,
                     sha=sha,
                     mod=modinfo,
-                    readme=get_file(repo, "README.md"),
+                    readme=get_file(repo, "README.md") or "",
                     assets=assets,
                     contents=contents)
 

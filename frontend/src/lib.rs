@@ -362,8 +362,13 @@ mod markup {
 
     /// Converts input markup string to html nodes.
     pub fn from_str(input: &str) -> Vec<Node<Msg>> {
-        let mut colors: Vec<Color> = vec![Name::White.into()];
-        let last = |v: &[Color]| v[v.len() - 1].to_style();
+        let mut colors: Vec<Color> = vec![];
+        let last = |v: &[Color]| {
+            v.last()
+                .cloned()
+                .unwrap_or(Color::from(Name::White))
+                .to_style()
+        };
         let mut output: Vec<Node<Msg>> = vec![];
         for x in Markup::from_str(input).unwrap_or(("", vec![])).1 {
             use Markup::*;

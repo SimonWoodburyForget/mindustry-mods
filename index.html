@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mindustry Mods</title>
+    <link rel="StyleSheet" href="css/main.1.2.css" />
+    <link rel="StyleSheet" href="css/header.css" />
+    <!-- <polygon points="50,50 20,50 10,40 10,20 20,10 50,10 60,20 60,40" fill="none" stroke="black" /> -->
+    <script type="module">
+      import init from './pkg/mindustry_mods_frontend.js';
+      async function run() {
+          await init('./pkg/mindustry_mods_frontend_bg.wasm');
+      }
+      run();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

@@ -1,10 +1,4 @@
-header h1 {
-    text-decoration: underline;
-}
 
-header a h1:hover {
-    color: #ffc;
-}
 
 body {
     margin: 0;

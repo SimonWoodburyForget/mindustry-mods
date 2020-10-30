@@ -133,13 +133,13 @@ input {
     width:50vw;
 }
 
-@media (width <= 760px) {
+@media (max-width: 760px) {
     input {
         width: 80vw;
     }
 }
 
-@media (width <= 460px) {
+@media (max-width: 460px) {
     input {
         width: 100vw;
     }
@@ -322,7 +322,7 @@ img, .links a, p, .description
 /*     justify-self:start; */
 /* } */
 
-@media (width <= 460px) {
+@media (max-width: 460px) {
     .wrapper {
         display: flex;
         /* grid-template-rows: 1fr 2fr;  */

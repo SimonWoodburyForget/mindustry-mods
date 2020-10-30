@@ -8,7 +8,15 @@ body {
 a {
     color: #ffa;
 }
-
+.wrapper a{
+    color: #ffa;
+    display: block;
+    border: 2px solid #323232;
+    text-decoration: none;
+}
+.wrapper a:hover{
+    background-color: #ffffff59;
+}
 /* ================================================================ */
 /* Stars */
 .stars-wrapper {
@@ -200,6 +208,8 @@ img, .links a, p, .description
 /* Links container. */
 
 .links {
+    display: flex;
+    flex-direction: column;
     font-size: 0.8em;
 }
 

@@ -1,7 +1,6 @@
 
 header {
     display: flex;
-    /* justify-content:space-between; */
     flex-flow: row wrap;
     margin: 0;
     color: #ffa;
@@ -13,9 +12,8 @@ header h1 {
     margin: 0;
     padding: 16px;
     font-family: "Courier New", Courier, monospace;
-    text-decoration: underline;
-
 }
+
 header a h1:hover {
     color: #ffc;
 }

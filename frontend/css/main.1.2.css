@@ -1,5 +1,7 @@
 
-
+*{
+    outline: none;
+}
 body {
     margin: 0;
     background: #000;
@@ -96,7 +98,7 @@ a
     color: #666;
 }
 
-input, .buttons, button {
+input, .button {
     border: 0;
     border-left: 4px solid #333;
     background: #333;
@@ -107,25 +109,40 @@ button.active {
     border-left: 3px solid #666;
 }
 
-button:active {
-    background: #442;
+button{
     border-left: 3px solid #553;
 }
 
-input, .buttons {
+input {
     border: 1px solid #666;
 }
 
 .inputs {
-    background: #444;
-    border-bottom: 1px solid #ffa;
+    background: #011;
+    border-bottom: 1px solid #444;
 }
 
 .inputs {
     display: flex;
     flex-flow: row-reverse wrap;
 }
-
+.inputs *{
+    background-color: #011;
+}
+.buttons p{
+    color: #ffffffc5;
+    border: none;
+}
+.buttons button{
+    background-color: #011;
+    border: 2px solid transparent;
+}
+.buttons button:hover{
+    background-color: #ffffff59;
+}
+.buttons button.active{
+    border-color: #ffa;
+}
 .buttons {
     display:flex;
     flex-flow: row;

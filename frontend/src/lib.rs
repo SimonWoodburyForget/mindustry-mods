@@ -636,14 +636,14 @@ pub mod app {
                     attrs! { At::Class => "inputs" },
                     input![
                         attrs! {
-                            "placeholder" => "filter by words",
+                            "placeholder" => "search",
                             At::Value => &model.filtering.as_deref().unwrap_or(""),
                         },
                         input_ev(Ev::Input, Msg::FilterWords)
                     ],
                     div! {
                         attrs! { At::Class => "buttons" },
-                        p!["Order by "],
+                        p!["Order by : "],
                         button![
                             attrs! { At::Class => if model.sorting == Sorting::Stars {"active"} else {""}},
                             simple_ev(Ev::Click, Msg::SetSort(Sorting::Stars)),

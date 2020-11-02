@@ -11,7 +11,6 @@ header {
 header h1 {
     margin: 0;
     padding: 16px;
-    font-family: "Courier New", Courier, monospace;
 }
 
 header a h1:hover {
@@ -27,7 +26,5 @@ header img {
 }
 
 header a {
-    align-self:center;
+    align-self: center;
 }
-
-header { font-family: "Courier New", Courier, monospace; }

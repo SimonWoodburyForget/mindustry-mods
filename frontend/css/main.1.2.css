@@ -17,7 +17,8 @@ a {
     text-decoration: none;
 }
 .wrapper a:hover{
-    background-color: #ffffff59;
+    background-color: #ffffff25;
+    border-color: #ffa;
 }
 /* ================================================================ */
 /* Stars */

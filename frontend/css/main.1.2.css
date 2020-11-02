@@ -1,11 +1,11 @@
 
 *{
     outline: none;
+    font-family: "Courier New", Courier, monospace;
 }
 body {
     margin: 0;
     background: #000;
-    font-family: "Courier New", Courier, monospace;
 }
 
 a {

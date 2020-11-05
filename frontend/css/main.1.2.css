@@ -179,6 +179,7 @@ input {
     background: #333;
     border-left: 3px solid #666;
     white-space: pre-line;
+    word-wrap: break-word;
 }
 
 /* ================================================================ */

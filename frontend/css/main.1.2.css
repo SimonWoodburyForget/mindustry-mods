@@ -117,23 +117,31 @@ button{
 
 input {
     border: 1px solid #666;
+    flex: 1;
 }
 
 .inputs {
     background: #011;
     border-bottom: 1px solid #444;
+    justify-content: center;
 }
 
 .inputs {
     display: flex;
-    flex-flow: row-reverse wrap;
+    flex-flow: row-reverse wrap-reverse;
 }
 .inputs *{
     background-color: #011;
 }
+.buttons{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
 .buttons p{
     color: #ffffffc5;
     border: none;
+    white-space: nowrap;
 }
 .buttons button{
     background-color: #011;
@@ -154,10 +162,10 @@ input {
     width:50vw;
 }
 
-@media (max-width: 760px) {
-    input {
-        width: 80vw;
-    }
+@media (max-width: 520px) {
+   .buttons{
+       justify-content: center;
+   }
 }
 
 @media (max-width: 460px) {

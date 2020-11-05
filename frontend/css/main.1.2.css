@@ -168,16 +168,6 @@ input {
    }
 }
 
-@media (max-width: 460px) {
-    input {
-        width: 100vw;
-    }
-
-    .buttons {
-        flex-flow: row wrap;
-    }
-}
-
 
 /* ================================================================ */
 

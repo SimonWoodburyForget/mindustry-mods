@@ -319,7 +319,14 @@ img, .links a, p, .description
     grid-row:1/3;
     justify-self:center;
 }
-
+.box.icon button{
+    border: none;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #333;
+    height: max-content;
+    width: max-content;
+}
 .box.name {
     grid-column:2/6;
     grid-row:1;

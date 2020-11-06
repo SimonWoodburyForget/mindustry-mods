@@ -198,7 +198,7 @@ input {
 
 .by-author {
     color: #f0f0f0;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .v-number {

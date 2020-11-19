@@ -14,11 +14,12 @@ struct Script {
 
 /// spawn python scripts updating ./dist
 fn spawn_script() -> Script {
-    use std::process::Command;
+    use std::process::{Command, Stdio};
 
     let output = Command::new("python3.8")
         .arg("backend/scripts/mindustry-mods.py")
         .args(&["-i", "-h"])
+        .stdout(Stdio::null())
         .spawn()
         .unwrap();
 

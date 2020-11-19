@@ -1,6 +1,6 @@
 # Mindustry Mods
 
-Website: https://mindustry-mods.metasimon.space/
+Website: http://mindustry-mods.metasimon.space/
 
 ## Development
 

@@ -2,7 +2,7 @@
 CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
 DATA = "dist/data"
 
-[tasks.release]
+[tasks.dist-release]
 description = "Runs distribution for release."
 dependencies = [ "release", "build-copy" ]
 

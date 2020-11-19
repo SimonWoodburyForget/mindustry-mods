@@ -1,18 +1,20 @@
 
 header {
     display: flex;
-    /* justify-content:space-between; */
     flex-flow: row wrap;
     margin: 0;
     color: #ffa;
     background: #011;
-    border-bottom: 8px solid #ffa;
+    border-bottom: 5px solid #444;
 }
 
 header h1 {
     margin: 0;
     padding: 16px;
-    font-family: "Courier New", Courier, monospace;
+}
+
+header a h1:hover {
+    color: #ffc;
 }
 
 header img {
@@ -24,7 +26,5 @@ header img {
 }
 
 header a {
-    align-self:center;
+    align-self: center;
 }
-
-header { font-family: "Courier New", Courier, monospace; }

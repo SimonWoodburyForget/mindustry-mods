@@ -1,11 +1,8 @@
-header h1 {
-    text-decoration: underline;
-}
 
-header a h1:hover {
-    color: #ffc;
+*{
+    outline: none;
+    font-family: "Courier new", Courier, monospace;
 }
-
 body {
     margin: 0;
     background: #000;
@@ -14,7 +11,16 @@ body {
 a {
     color: #ffa;
 }
-
+.wrapper a{
+    color: #ffa;
+    display: block;
+    border: 2px solid #323232;
+    text-decoration: none;
+}
+.wrapper a:hover{
+    background-color: #ffffff25;
+    border-color: #ffa;
+}
 /* ================================================================ */
 /* Stars */
 .stars-wrapper {
@@ -94,7 +100,7 @@ a
     color: #666;
 }
 
-input, .buttons, button {
+input, .button {
     border: 0;
     border-left: 4px solid #333;
     background: #333;
@@ -105,25 +111,48 @@ button.active {
     border-left: 3px solid #666;
 }
 
-button:active {
-    background: #442;
+button{
     border-left: 3px solid #553;
 }
 
-input, .buttons {
+input {
     border: 1px solid #666;
+    flex: 1;
 }
 
 .inputs {
-    background: #444;
-    border-bottom: 1px solid #ffa;
+    background: #011;
+    border-bottom: 1px solid #444;
+    justify-content: center;
 }
 
 .inputs {
     display: flex;
-    flex-flow: row-reverse wrap;
+    flex-flow: row-reverse wrap-reverse;
 }
-
+.inputs *{
+    background-color: #011;
+}
+.buttons{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.buttons p{
+    color: #ffffffc5;
+    border: none;
+    white-space: nowrap;
+}
+.buttons button{
+    background-color: #011;
+    border: 2px solid transparent;
+}
+.buttons button:hover{
+    background-color: #ffffff59;
+}
+.buttons button.active{
+    border-color: #ffa;
+}
 .buttons {
     display:flex;
     flex-flow: row;
@@ -133,20 +162,10 @@ input {
     width:50vw;
 }
 
-@media (width <= 760px) {
-    input {
-        width: 80vw;
-    }
-}
-
-@media (width <= 460px) {
-    input {
-        width: 100vw;
-    }
-
-    .buttons {
-        flex-flow: row wrap;
-    }
+@media (max-width: 520px) {
+   .buttons{
+       justify-content: center;
+   }
 }
 
 
@@ -158,6 +177,7 @@ input {
     background: #333;
     border-left: 3px solid #666;
     white-space: pre-line;
+    word-wrap: break-word;
 }
 
 /* ================================================================ */
@@ -178,7 +198,7 @@ input {
 
 .by-author {
     color: #f0f0f0;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .v-number {
@@ -193,9 +213,6 @@ input {
 
 /* ================================================================ */
 
-a, .description, .assets, .contents, button, input, p, h1, h2, h3, h4, h5, h6, li, lo
-{ font-family: "Courier New", Courier, monospace; }
-
 img, .links a, p, .description
 {
     padding: 4px;
@@ -206,6 +223,8 @@ img, .links a, p, .description
 /* Links container. */
 
 .links {
+    display: flex;
+    flex-direction: column;
     font-size: 0.8em;
 }
 
@@ -299,7 +318,14 @@ img, .links a, p, .description
     grid-row:1/3;
     justify-self:center;
 }
-
+.box.icon button{
+    border: none;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #333;
+    height: max-content;
+    width: max-content;
+}
 .box.name {
     grid-column:2/6;
     grid-row:1;
@@ -322,7 +348,7 @@ img, .links a, p, .description
 /*     justify-self:start; */
 /* } */
 
-@media (width <= 460px) {
+@media (max-width: 460px) {
     .wrapper {
         display: flex;
         /* grid-template-rows: 1fr 2fr;  */

@@ -2,9 +2,9 @@
 CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
 DATA = "dist/data"
 
-[tasks.dist-release]
+[tasks.release]
 description = "Runs distribution for release."
-dependencies = [ "release", "build-copy", "pub" ]
+dependencies = [ "release", "build-copy" ]
 
 [tasks.dist-test]
 description = "Runs test-mode distribution."  

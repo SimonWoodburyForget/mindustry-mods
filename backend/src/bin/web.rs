@@ -9,7 +9,7 @@ async fn server_run() {
 }
 
 struct Script {
-    output: std::process::Output,
+    output: std::process::Child,
 }
 
 /// spawn python scripts updating ./dist
@@ -19,7 +19,7 @@ fn spawn_script() -> Script {
     let output = Command::new("python3.8")
         .arg("backend/scripts/mindustry-mods.py")
         .args(&["-i", "-h"])
-        .output()
+        .spawn()
         .unwrap();
 
     Script { output }

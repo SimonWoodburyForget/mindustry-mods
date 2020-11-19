@@ -95,6 +95,10 @@ def update_data(path, jdata):
         print()
         print(e)
         print()
+        print("returncode:", e.returncode)
+        print()
+        print("stdout:", e.stdout)
+        print()
         print("[error] cargo test failed...")
 
         try:

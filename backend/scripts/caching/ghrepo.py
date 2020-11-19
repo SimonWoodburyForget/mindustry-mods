@@ -159,7 +159,13 @@ class Repo:
             print(f"[error] get_repo -- {name} -- {e}")
             return old
 
-        sha = repo.get_branch("master").commit.sha
+        try:
+            sha = repo.get_branch("master").commit.sha
+        except GithubException as e:
+            # no master branch?
+            print(f"[error] get_repo -- {name} -- {e}")
+            return old
+        
         if old and old.sha == sha and not force:
             print('[skipped] old hash --', name)
             return old

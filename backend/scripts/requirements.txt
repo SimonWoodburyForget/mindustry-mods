@@ -7,7 +7,6 @@ schedule==0.6.0
 humanize==0.5.1
 beautifulsoup4==4.8.1
 parsec==3.5
-Pillow==6.2.2
 PyGithub==1.44.1
 python_dateutil==2.8.1
 PyYAML==5.2

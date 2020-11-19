@@ -3,9 +3,13 @@ async fn server_run() {
     use warp::Filter;
     println!("running server");
     println!("  addr: 0.0.0.0:3042");
-    warp::serve(warp::fs::dir("dist"))
-        .run(([0, 0, 0, 0], 3042))
-        .await;
+    warp::serve(warp::fs::dir("dist").map(|x| {
+        use std::time::SystemTime;
+        println!("request: {:?}", SystemTime::now());
+        x
+    }))
+    .run(([0, 0, 0, 0], 3042))
+    .await;
 }
 
 struct Script {

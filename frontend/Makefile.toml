@@ -32,19 +32,6 @@ script = [
 ]
 dependencies = [ "copy-data" ]
 
-[tasks.pub-test-mode]
-script_runner = "@shell"
-script = [
-    ''' cd ${OUT} \
-        && git add * \
-        && git commit -m "test" \
-        && git push -u origin master'''
-]
-
-[tasks.pub-release]
-script_runner = "@shell"
-script = [ "cd ${ROOT} && npm run deploy" ]
-
 [tasks.pub]
 run_task = [
     { name = "pub-release", condition = { env_true = [ "PROD" ] } },

@@ -250,7 +250,7 @@ mod listing {
                 attrs! { At::Class => "by-author" },
                 style! { St::Opacity => "60%" },
                 "by ",
-                markup::from_str(&self.0.author_markup)
+                markup::from_str(self.0.author_markup.as_deref().unwrap_or("null"))
             ]
         }
 

@@ -6,10 +6,6 @@ DATA = "dist/data"
 description = "Runs distribution for release."
 dependencies = [ "release", "build-copy" ]
 
-[tasks.dist-test]
-description = "Runs test-mode distribution."  
-dependencies = [ "minmods-test", "build-copy", "pub" ]
-
 [tasks.release.env]
 PROD = true
 OUT = "dist"
@@ -27,5 +23,4 @@ description = "Task run before workspace. (..used for patching paths)"
 
 [tasks.copy-files]
 [tasks.wasm-build]
-[tasks.pub]
 

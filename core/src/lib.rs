@@ -1,4 +1,3 @@
-
 pub mod color;
 pub mod markup;
 
@@ -13,7 +12,7 @@ pub const MOD_VERSION: &str = "3.2";
 #[derive(Deserialize, Debug, Clone)]
 pub struct Mod {
     pub author: String,
-    pub author_markup: String,
+    pub author_markup: Option<String>,
     pub name: String,
     pub name_markup: String,
     pub stars: u32,

@@ -46,29 +46,6 @@ from caching import icons
 # which unavoidably may eventually happen, because of caching.
 MOD_META_VERSION = "3.2"
 
-def loads_yaml(path):
-    '''Loads data from path, ensuring duplicates don't exist,
-    and turning them into namedtuple, ready for a template to use.
-    '''
-    def key_handler(x, k):
-        # missing repo key
-        try:
-            return x[k]
-        except KeyError as e:
-            print(f"KeyError: {e} in {x}")
-            quit()
-
-    with open(path, 'r') as f:
-        data = [ x for x in yaml.safe_load_all(f.read()) ]
-    repos = (key_handler(x, 'repo') for x in data)
-    dups = [ x for x, count in Counter(repos).items()
-             if count > 1 ]
-    if dups:
-        dupsfmt = "\n  * " + '\n  * '.join(dups)
-        raise ValueError(f"\n Duplicate repository in yaml: {dupsfmt}")
-
-    return data
-
 def update_data(path, jdata):
     def copy(a, b):
         with open(path/a) as a, open(path/b, 'w') as b:
@@ -126,9 +103,6 @@ def build(token, path, update=True):
     
     dist_path = path/"dist/"
     dist_path.mkdir(exist_ok=True)
-    
-    yaml_path = path/"mindustry-mods.yaml"
-    mods_yaml = loads_yaml(yaml_path)
 
     gh = github.Github(token)
     rate_a = gh.get_rate_limit()
@@ -148,22 +122,12 @@ def build(token, path, update=True):
     return (rate_a, gh.get_rate_limit())
 
 def main(args):
-    if args.clean:
-        subprocess.run(["rm", config.CACHE_DIR])
-        time.sleep(2)
-        print("--- END CLEAN ---\n\n")
-
     path = Path(args.path)
-    with open(Path.home()/".github-token") as f:
-        rates = build(f.read().strip(), path)
-        if not args.push: return
-    time.sleep(2)
-    print("--- END BUILD ---\n\n")
     
-    subprocess.run(['npm', 'run', 'deploy'])
-    time.sleep(2)
-    print("--- END UPLOAD ---\n\n")
-    
+    import os
+    os.environ['GITHUB_TOKEN']
+    rates = build(GITHUB_TOKEN, path)
+
     now = datetime.now()
     print(f"done: {now}")
     print("rate:")

@@ -3,13 +3,7 @@
 
 /// Some important constant path stuff.
 mod path {
-    /// root for test repository
-    #[cfg(feature = "test-mode")]
-    pub const ROOT: &str = "minmods-test";
-
-    /// root for main repository
-    #[cfg(not(feature = "test-mode"))]
-    pub const ROOT: &str = "mindustry-mods";
+    pub const ROOT: &str = "";
 }
 
 /// Simple DateTime utilities.

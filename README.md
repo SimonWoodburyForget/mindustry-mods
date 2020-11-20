@@ -16,7 +16,6 @@ Requirements:
   - [`requirements.txt`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt)
 - Rust 1.48.0:
   - [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
-  - [`cargo-make`](https://github.com/sagiegurari/cargo-make)
 
 Environmental variables:
   - `GITHUB_TOKEN` for Github requests

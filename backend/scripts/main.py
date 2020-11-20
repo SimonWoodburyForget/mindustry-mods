@@ -41,37 +41,10 @@ def update_data(jdata):
     def copy(a, b):
         with open(DATA_PATH / a) as a, open(DATA_PATH / b, 'w') as b:
             print(a.read(), file=b)
-
-    # backup data before copying
-    try:
-        copy(f'modmeta.{MOD_META_VERSION}.json',
-             f'modmeta.{MOD_META_VERSION}.json.auto-bak')
-    except FileNotFoundError as e:
-        print(f"[warn] file not found -- {e}")
         
     # update modmeta to with new data
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         print(jdata, file=f)
-
-    # run tests
-    # revert on error
-    try:
-        subprocess.check_output(['cargo', 'test'])
-    except subprocess.CalledProcessError as e:
-        print()
-        print(e)
-        print()
-        print("returncode:", e.returncode)
-        print()
-        print("stdout:", e.stdout)
-        print()
-        print("[error] cargo test failed...")
-
-        try:
-            copy(f'data/modmeta.{MOD_META_VERSION}.json.auto-bak',
-                 f'data/modmeta.{MOD_META_VERSION}.json')
-        except FileNotFoundError:
-            pass
 
 def loads_crawl():
     '''Loads an officially auto generated modlist, and returns set of repo paths.'''

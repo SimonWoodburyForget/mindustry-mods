@@ -4,6 +4,13 @@ Website: http://mindustry-mods.metasimon.space/
 
 ## Development
 
+This is a three parts application:
+
+- backend server (rust), which is just a basic file server
+- backend scripts (python), which are used to get GitHub data
+- frontend (rust wasm), which curren renders most of webpage
+
+
 Requirements:
 
 - Python 3.8: 

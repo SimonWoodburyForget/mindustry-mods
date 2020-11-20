@@ -1,26 +1,21 @@
+[config]
+default_to_workspace = false
+
 [env]
-CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
-DATA = "dist/data"
-
-[tasks.dist-release]
-description = "Runs distribution for release."
-dependencies = [ "release", "build-copy" ]
-
-[tasks.release.env]
-PROD = true
 OUT = "dist"
 
-[tasks.minmods-test.env]
-PROD = false
-OUT = "../minmods-test"
-
-[tasks.build-copy]
-description = "Build wasm files and copy to output directories."
-dependencies = [ "ws-hook", "wasm-build", "copy-files" ]
-
-[tasks.ws-hook]
-description = "Task run before workspace. (..used for patching paths)"
+[tasks.release]
+dependencies = [ "wasm-build", "copy-files" ]
 
 [tasks.copy-files]
-[tasks.wasm-build]
+script_runner = "@shell"
+script = [
+    "cp frontend/pkg ${OUT} -rf",
+    "cp frontend/css ${OUT} -fr",
+    "cp frontend/index.html ${OUT} -f",
+    "cp frontend/images ${OUT} -fr"
+]
 
+[tasks.wasm-build]
+script_runner = "@shell"
+script = [ "wasm-pack build frontend --target web" ]

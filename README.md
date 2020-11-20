@@ -17,7 +17,7 @@ Testing:
 - `cargo test`
 
 Executing: 
-- building: `cargo make dist-release`, builds/copies static data into dist.
+- building: `cargo make release`, builds/copies static data into dist.
 - scripts: `cargo run -- -ih`, fetches data periodically.
 - server: `cargo run --bin web`, fetches data periodically and server's it.
 

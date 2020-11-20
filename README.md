@@ -13,12 +13,3 @@ Requirements:
   - [`cargo-make`](https://github.com/sagiegurari/cargo-make)
 - Github personal access token at `~/.github-token` to increase request limit 
   from 500 to 5,000.
-
-Testing: 
-- `cargo test`
-
-Executing: 
-- building: `cargo make release`, builds/copies static data into dist.
-- scripts: `cargo run -- -ih`, fetches data periodically.
-- server: `cargo run --bin web`, fetches data periodically and server's it.
-

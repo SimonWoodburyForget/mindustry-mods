@@ -4,8 +4,8 @@ async fn server_run() {
     println!("running server");
     println!("  addr: 0.0.0.0:3042");
     warp::serve(warp::fs::dir("dist").map(|x| {
-        use std::time::SystemTime;
-        println!("request: {:?}", SystemTime::now());
+        use chrono::prelude::*;
+        println!("request: {}", Local::now());
         x
     }))
     .run(([0, 0, 0, 0], 3042))

@@ -2,20 +2,12 @@
 default_to_workspace = false
 
 [env]
-OUT = "dist"
+WEB = "/web/mindustry-mods"
+SYS = "/etc/systemd/system"
+SERVICES = "mindustry-mods-web" # mindustry-mods-script"
 
 [tasks.release]
-dependencies = [ "wasm-build", "copy-files" ]
-
-[tasks.copy-files]
-script_runner = "@shell"
-script = [
-    "cp frontend/pkg ${OUT} -rf",
-    "cp frontend/css ${OUT} -fr",
-    "cp frontend/index.html ${OUT} -f",
-    "cp frontend/images ${OUT} -fr"
-]
+dependencies = [ "wasm-build" ]
 
 [tasks.wasm-build]
-script_runner = "@shell"
-script = [ "wasm-pack build frontend --target web" ]
+script = "wasm-pack build frontend --target web"

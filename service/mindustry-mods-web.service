@@ -1,0 +1,11 @@
+[Unit]
+Description=mindustry-mods webserver backend
+Wants=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/web/mindustry-mods/bin/web
+
+[Install]
+WantedBy=multi-user.target

@@ -5,6 +5,7 @@ Website: http://mindustry-mods.metasimon.space/
 ## Development
 
 Requirements:
+
 - Python 3.8: 
   - [`requirements.txt`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt)
 - Rust 1.48.0:

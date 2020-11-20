@@ -1,0 +1,12 @@
+[Unit]
+Description=midustry-mods data archiving scripts
+Wants=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3.8 /web/mindustry-mods/scripts/main.py
+EnvironmentFile=/web/mindustry-mods/secrets.env
+
+[Install]
+WantedBy=multi-user.target

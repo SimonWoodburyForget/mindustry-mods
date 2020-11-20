@@ -7,11 +7,9 @@ import hashlib
 import time
 from pathlib import Path
 
-from config import CACHE_DIR
+from config import IMAGES_JSON, gh
 
-CACHE_PATH = CACHE_DIR/"images.json"
-
-def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*60*24):
+def update_icon(repo_name, image_path=None, skip=False, cache_time=60*60*24):
     '''Downloads an image from the target repository, and runs it through sha256
     which is then used to verify whether the icon changed or not.
 
@@ -24,10 +22,10 @@ def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*
     if skip:
         return None
     
-    if not CACHE_PATH.exists():
+    if not IMAGES_JSON.exists():
         cache_data = {}
     else:
-        with open(CACHE_PATH) as f:
+        with open(IMAGES_JSON) as f:
             cache_data = json.load(f)
 
     if repo_name not in cache_data:
@@ -63,7 +61,7 @@ def update_icon(path, gh, repo_name, image_path=None, skip=False, cache_time=60*
                               "icon-path": data_path,
                               "time-cached": time.time() }
 
-    with open(CACHE_PATH, "w") as f:
+    with open(IMAGES_JSON, "w") as f:
         json.dump(cache_data, f)
 
     return data_path
@@ -78,8 +76,8 @@ def _get_icon(gh_repo, path):
     except GithubException as e:
         return None, None
 
-def update_icons(path, gh, mods):
-    def update_mod(gh, mod):
+def update_icons(mods):
+    def update_mod(mod):
         icon = mod['icon'] if 'icon' in mod else None
-        return mod['repo'], update_icon(path, gh, mod['repo'], icon)
-    return dict(update_mod(gh, m) for m in mods)
+        return mod['repo'], update_icon(mod['repo'], icon)
+    return dict(update_mod(m) for m in mods)

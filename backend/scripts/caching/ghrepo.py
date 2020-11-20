@@ -7,27 +7,16 @@ import dateutil
 
 import json
 import hjson
-import mson
-from mson import ParseError
 from base64 import b64decode
 
 from github import GithubException
-
-from config import CACHE_DIR
-
-CACHE_PATH = CACHE_DIR/"github-repo-cache.json"
+from config import GITHUB_REPO_CACHE_PATH, gh
 
 def try_hjson(text):
     try:
         return hjson.loads(text)
     except hjson.scanner.HjsonDecodeError as e:
         print(f"[error] Hjson error {e}")
-
-def try_mson(text):
-    try:
-        return mson.jsonc.parse(text)
-    except ParseError as e:
-        print(f"[error] Mson error {e}")
 
 def get_file(repo, filename):
     '''Gets one file from a repository and returns it as a string or None.'''
@@ -100,7 +89,7 @@ class ModInfo:
 
     @staticmethod
     def from_text(text):
-        j = try_hjson(text) or try_mson(text) or None
+        j = try_hjson(text) or None
 
         if j is None:
             return None
@@ -144,7 +133,7 @@ class Repo:
     contents: Set[str]
 
     @staticmethod
-    def from_github(gh, name, old=None, force=False):
+    def from_github(name, old=None, force=False):
         '''Gets a Github repository from Github, with other
         data which may require a few requests, and packs this
         data into a namedtuple to be cached.
@@ -204,27 +193,29 @@ class Repo:
                         "assets": set(d["assets"]),
                         "contents": set(d["contents"]) })
 
-def repos_cached(gh, mods, update=True, cache_path=CACHE_PATH):
+def repos_cached(mods, update=True):
     '''Gets repos if update is `True` and caches them,
-    otherwise just reads the cached data.
-    '''
+    otherwise just reads the cached data.'''
 
     # TODO: implement better caching
-    cache_path = Path(cache_path)
-    if cache_path.exists():
+    PATH = GITHUB_REPO_CACHE_PATH
+    if PATH.exists():
         print('[log] path exists')
-        with open(cache_path) as f:
+        with open(PATH) as f:
             repos = [ Repo.from_dict(d) for d in json.load(f) ]
             old = { r.name: r for r in repos }
+
     else:
         print('[log] path not exist')
         repos = []
         old = {}
 
     if update:
-        repos = ( Repo.from_github(gh, x, old[x] if x in old else None) for x in mods if x is not None )
+        repos = ( Repo.from_github(x, old[x] if x in old else None) for x in mods if x is not None )
         repos = [ r for r in repos if r is not None]
-        with open(cache_path, "w") as f:
+        with open(PATH, "w") as f:
             json.dump([ r.into_dict() for r in repos if r is not None ], f)
+
     return repos
+
 

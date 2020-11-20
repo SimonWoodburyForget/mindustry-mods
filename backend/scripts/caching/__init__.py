@@ -14,6 +14,8 @@ from minfmt import ignore_sbrack
 from caching.ghrepo import repos_cached
 from caching.icons import update_icons
 
+from config import gh
+
 def fix_image_url(url, repo_name):
     '''Fixes a GitHub url, where the url should point to an image.
 
@@ -196,11 +198,10 @@ class ModMeta:
                  "date": str(self.date),
                  "header": self.header() }
 
-def modsmeta(path, gh, mods, update):
+def modsmeta(mods, update):
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
-    repos = repos_cached(gh, [ m['repo'] for m in mods], update=update)
-    icons = update_icons(path, gh, mods)
-
+    repos = repos_cached([ m['repo'] for m in mods], update=update)
+    icons = update_icons(mods)
     mods = ModMeta.builds(mods, repos, icons)
     return list(reversed(sorted(mods, key=lambda x: x.date)))

@@ -9,18 +9,13 @@ from functools import partial
 import time
 
 # Decoding/Encoding
-import yaml
 import json
-import mson
 import hjson
-from mson import ParseError
 from minfmt import ignore_sbrack
 import dateutil.parser
-import parsec
 from base64 import b64decode
 
 # Application Stuff
-import github
 import subprocess
 import time
 import schedule
@@ -41,27 +36,22 @@ from requests.exceptions import ConnectionError
 
 from caching import modsmeta
 from caching import icons
+from config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh
 
-# Version number for data, to allow multiple version of data at once,
-# which unavoidably may eventually happen, because of caching.
-MOD_META_VERSION = "3.2"
-
-def update_data(path, jdata):
+def update_data(jdata):
     def copy(a, b):
-        with open(path/a) as a, open(path/b, 'w') as b:
+        with open(DATA_PATH / a) as a, open(DATA_PATH / b, 'w') as b:
             print(a.read(), file=b)
 
     # backup data before copying
     try:
-        copy(f'data/modmeta.{MOD_META_VERSION}.json',
-             f'data/modmeta.{MOD_META_VERSION}.json.auto-bak')
+        copy(f'modmeta.{MOD_META_VERSION}.json',
+             f'modmeta.{MOD_META_VERSION}.json.auto-bak')
     except FileNotFoundError as e:
-        print("[warn] modmeta.1.1.json -- file not found")
+        print(f"[warn] file not found -- {e}")
         
     # update modmeta to with new data
-    data = path / "data"
-    data.mkdir(parents=True, exist_ok=True)
-    with open(path/f"data/modmeta.{MOD_META_VERSION}.json", 'w') as f:
+    with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         print(jdata, file=f)
 
     # run tests
@@ -84,7 +74,7 @@ def update_data(path, jdata):
         except FileNotFoundError:
             pass
 
-def loads_crawl(gh):
+def loads_crawl():
     '''Loads an officially auto generated modlist, and returns set of repo paths.'''
     try:
         repo = gh.get_repo("Anuken/MindustryMods")
@@ -96,38 +86,19 @@ def loads_crawl(gh):
     # currently contains no other useful data
     return { x["repo"] for x in data }
 
-def build(token, path, update=True):
-    '''Builds the README.md out of everything else here.
-    '''
-    path = Path(path)
-    
-    dist_path = path/"dist/"
-    dist_path.mkdir(exist_ok=True)
-
-    gh = github.Github(token)
+def build(update=True):
+    '''Builds the README.md out of everything else here.'''
     rate_a = gh.get_rate_limit()
-
-    mods_crawl = loads_crawl(gh)
-    mods_missing = [ { "repo": x } for x in
-                     (mods_crawl - { r['repo'] for r in mods_yaml }) ]
-    mods_yaml += mods_missing
-
-    mods = modsmeta(dist_path, gh, mods_yaml, update)
-
+    mod_names = loads_crawl()
+    mods = [ { "repo": x } for x in mod_names ]
+    mods = modsmeta(mods, update)
     jdata = [ mm.pack_data() for mm in mods ]
     jdata = json.dumps(jdata)
-
-    update_data(dist_path, jdata)
-
+    update_data(jdata)
     return (rate_a, gh.get_rate_limit())
 
-def main(args):
-    path = Path(args.path)
-    
-    import os
-    os.environ['GITHUB_TOKEN']
-    rates = build(GITHUB_TOKEN, path)
-
+def main():
+    rates = build()
     now = datetime.now()
     print(f"done: {now}")
     print("rate:")
@@ -135,46 +106,26 @@ def main(args):
     print(f"  remaining: {rates[1].core.remaining}")
     print(f"  reset: {rates[1].core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
 
-@dataclass
-class Args:
-    instant: bool
-    push: bool
-    hourly: bool
-    clean: bool
-    fast: bool
-    path: str
-
 @click.command()
-@click.option('-i', '--instant', is_flag=True, help="Run templates right away.")
-@click.option('-p', '--push', is_flag=True, help="Push said changes to GitHub.")
 @click.option('-h', '--hourly', is_flag=True, help="Keep running hourly.")
-@click.option('-c', '--clean', is_flag=True, help="Clear cache and stuff.")
-@click.option('-f', '--fast', is_flag=True, help="No update, just get to the end.")
-@click.option('-d', '--path', default=".", help="Path to root of directory.")
-def cli(**args):
-    args = Args(**args)
-    main_run = lambda: main(args)
+def cli(hourly):
+
     def main_run():
         try:
-            main(args)
+            main()
         except ConnectionError as e:
             # NOTE: catch connection errors like:
             #
-            # - ratelimit errors, which occurs if the system gets suspended/hibernates and comes back online.
+            # - ratelimit errors, which occurs if the system
+            #   gets suspended/hibernates and comes back online.
             # - timeout or other general connection errors.
-            #
-            # This may not be the best solution.
+            # 
+            # ...this is a bad solution.
             print("[exception] ", e)
 
-    if args.instant:
+    while True:
         main_run()
-
-    if args.hourly:
-        schedule.every(1).hour.at(':00').do(main_run)
-
-        while True:
-            schedule.run_pending()
-            time.sleep(10)
+        time.sleep(60 * 60)
 
 if __name__ == '__main__':
     cli()

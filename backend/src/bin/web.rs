@@ -3,7 +3,7 @@ async fn server_run() {
     use warp::Filter;
     println!("running server");
     println!("  addr: 0.0.0.0:3042");
-    warp::serve(warp::fs::dir("dist").map(|x| {
+    warp::serve(warp::fs::dir("/web/mindustry-mods/www").map(|x| {
         use chrono::prelude::*;
         println!("request: {}", Local::now());
         x

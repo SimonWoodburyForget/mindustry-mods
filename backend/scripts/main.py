@@ -18,7 +18,6 @@ from base64 import b64decode
 # Application Stuff
 import subprocess
 import time
-import schedule
 import click
 #import appdirs
 from github import GithubException

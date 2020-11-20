@@ -5,6 +5,7 @@ Jinja2==2.10.3
 requests==2.20.0
 humanize==0.5.1
 beautifulsoup4==4.8.1
+parsec==3.5
 PyGithub==1.44.1
 python_dateutil==2.8.1
 pretty_errors==1.1.7

@@ -10,7 +10,6 @@ This is a three parts application:
 - backend scripts (python), which are used to get GitHub data
 - frontend (rust wasm), which curren renders most of webpage
 
-
 Requirements:
 
 - Python 3.8: 
@@ -18,5 +17,6 @@ Requirements:
 - Rust 1.48.0:
   - [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
   - [`cargo-make`](https://github.com/sagiegurari/cargo-make)
-- Github personal access token at `~/.github-token` to increase request limit 
-  from 500 to 5,000.
+
+Environmental variables:
+  - `GITHUB_TOKEN` for Github requests

@@ -76,8 +76,8 @@ def _get_icon(gh_repo, path):
     except GithubException as e:
         return None, None
 
-def update_icons(mods):
-    def update_mod(mod):
-        icon = mod['icon'] if 'icon' in mod else None
-        return mod['repo'], update_icon(mod['repo'], icon)
-    return dict(update_mod(m) for m in mods)
+def update_icons(repo_names):
+    '''Returns a dict of `repo_name` to `icon_path`'''
+    def update_mod_icon(repo_name):
+        return repo_name, update_icon(repo_name)
+    return dict(update_mod_icon(m) for m in repo_names)

@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3.8 /web/mindustry-mods/scripts/main.py
+ExecStart=/usr/bin/python3.8 /web/mindustry-mods/scripts/main.py run
 EnvironmentFile=/web/mindustry-mods/secrets.env
 
 [Install]

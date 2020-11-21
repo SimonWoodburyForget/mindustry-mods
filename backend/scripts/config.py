@@ -1,3 +1,4 @@
+'''Global configuration objects.'''
 from pathlib import Path
 import os
 import github
@@ -9,9 +10,11 @@ MOD_META_VERSION = "3.2"
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 
 WEB_DIR = Path("/web") / "mindustry-mods"
-IMAGES_JSON = WEB_DIR / "cache" / "images.json"
+CACHE_PATH = WEB_DIR / "cache"
+IMAGES_JSON = CACHE_PATH / "images.json"
+GITHUB_REPO_CACHE_PATH = CACHE_PATH / "github-repo-cache.json"
+SHA_CACHE_PATH = CACHE_PATH / "sha.json"
 DATA_PATH = WEB_DIR / "www" / "data"
-GITHUB_REPO_CACHE_PATH = WEB_DIR / "cache" / "github-repo-cache.json"
 
 DATA_PATH.mkdir(exist_ok=True)
 (WEB_DIR / "cache").mkdir(exist_ok=True)

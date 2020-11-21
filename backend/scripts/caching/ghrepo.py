@@ -12,6 +12,15 @@ from base64 import b64decode
 from github import GithubException
 from config import GITHUB_REPO_CACHE_PATH, gh
 
+def try_branches(repo, branch_list):
+    for branch_name in branch_list:
+        try:
+            branch = repo.get_branch(branch_name)
+        except GithubException as e:
+            continue
+        return branch
+    return None
+
 def try_hjson(text):
     try:
         return hjson.loads(text)
@@ -77,6 +86,9 @@ class ModInfo:
 
     mainScript: str = None
 
+    def __repr__(self):
+        return f"ModInfo(name=\"{self.name}\")"
+    
     @staticmethod
     def from_repo(repo):
         '''Get's mod.json from a specific repo.'''
@@ -112,8 +124,7 @@ class ModInfo:
 
 @dataclass
 class Repo:
-    '''Raw untouched data from the repository.
-    '''
+    '''Raw untouched data from the repository.'''
 
     '''Repo endpoint.'''
     name: str
@@ -131,6 +142,28 @@ class Repo:
     assets: Set[str]
     '''A set of contents found in the repo.'''
     contents: Set[str]
+
+    def __repr__(self):
+        return f"Repo(name=\"{self.name}\")"
+    
+    @staticmethod
+    def from_repo(repo):
+        sha = try_branches(repo, ["master", "main"]).commit.sha
+        assets = get_assets(repo)
+        contents = get_contents(repo) if 'content' in assets else set()
+        modinfo = ModInfo.from_repo(repo)
+        if modinfo is None:
+            return None
+        return Repo(
+            repo.full_name,
+            stars=repo.stargazers_count,
+            date=repo.get_commit(sha).commit.author.date,
+            sha=sha,
+            mod=modinfo,
+            readme=get_file(repo, "README.md") or "",
+            assets=assets,
+            contents=contents,
+        )
 
     @staticmethod
     def from_github(name, old=None, force=False):
@@ -165,7 +198,7 @@ class Repo:
         modinfo = ModInfo.from_repo(repo)
         if modinfo is None:
             return None
-        
+
         return Repo(name,
                     stars=repo.stargazers_count,
                     date=repo.get_commit(sha).commit.author.date,

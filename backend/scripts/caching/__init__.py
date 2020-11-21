@@ -12,8 +12,6 @@ import functools
 
 from minfmt import ignore_sbrack
 from caching.ghrepo import repos_cached
-from caching.icons import update_icons
-
 from config import gh
 
 def fix_image_url(url, repo_name):
@@ -101,6 +99,9 @@ class ModMeta:
     '''Link to external official wiki.'''
     wiki: str = ''
 
+    def __repr__(self):
+        return f"ModMeta(name=\"{self.name}\", date=\"{self.date}\")"
+    
     def icon_url(self):
         return f"https://raw.githubusercontent.com/{self.repo}/master/{self.icon_raw}"
     
@@ -152,20 +153,20 @@ class ModMeta:
     #     return set(str(x for x in self.readme).split())
 
     @staticmethod
-    def build(m, r, icon):
+    def build(repo_obj, icon):
         def parse_or_nothing(x):
             return ignore_sbrack.parse(x or "")
 
-        repo_name = m["repo"]
-        mods_name = parse_or_nothing(r.mod.name) if r.mod.name else m["repo"]
-        mods_desc = parse_or_nothing(r.mod.description) if 'about' not in m else m['about']
-        author = parse_or_nothing(r.mod.author) if 'author' not in m else m['author']
-        mindustry_name = repo_name.split("/")[1].lower().replace(" ", "-")
+        r = repo_obj
+        mods_name = parse_or_nothing(r.mod.name) if r.mod.name else r.name
+        mods_desc = parse_or_nothing(r.mod.description)
+        author = parse_or_nothing(r.mod.author)
+        mindustry_name = r.name.split("/")[1].lower().replace(" ", "-")
 
         return ModMeta(name=mods_name,
                        name_markup=r.mod.displayName or r.mod.name,
-                       link=f"https://github.com/{repo_name}",
-                       repo=m['repo'],
+                       link=f"https://github.com/{r.name}",
+                       repo=r.name,
                        desc=mods_desc,
                        desc_markup=r.mod.description,
                        icon=icon,
@@ -173,35 +174,22 @@ class ModMeta:
                        author=author.strip(),
                        author_markup=r.mod.author,
                        date=r.date,
-                       issue=m["issue"] if 'issue' in m else None,
-                       readme=fix_urls(r.readme or '', repo_name),
+                       issue=None,
+                       readme=fix_urls(r.readme or '', r.name),
                        version=r.mod.version,
                        assets=list(r.assets),
                        displayName=r.mod.displayName,
                        date_tt=time.mktime(r.date.timetuple()),
                        contents=list(r.contents),
-                       wiki=m['wiki'] if 'wiki' in m else None)
+                       wiki=None)
 
     @staticmethod
-    def builds(mods, repos, icons):
-        '''Turns a `Repo` and yaml config file (list of dicts) into a `Mod`, which
-        will be used in the templates.
-        '''
-        repos = { x.name: x for x in repos if x and x.name }
-
-        return [ ModMeta.build(m, repos[m['repo']], icons[m['repo']])
-                 for m in mods if 'issue' not in m and m['repo'] in repos ]
+    def builds(repo_objs, icons):
+        return [ ModMeta.build(x, icons[x.name])
+                 for x in repo_objs ]
 
     def pack_data(self):
         '''Packs JSON data for the frontend.'''
         return { **{ k: v for k, v in asdict(self).items() if k not in ['date'] },
                  "date": str(self.date),
                  "header": self.header() }
-
-def modsmeta(mods, update):
-    '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
-    which is generated data from what has been cached.'''
-    repos = repos_cached([ m['repo'] for m in mods], update=update)
-    icons = update_icons(mods)
-    mods = ModMeta.builds(mods, repos, icons)
-    return list(reversed(sorted(mods, key=lambda x: x.date)))

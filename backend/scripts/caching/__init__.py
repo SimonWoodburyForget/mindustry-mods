@@ -15,19 +15,19 @@ from caching.ghrepo import repos_cached
 from config import gh
 
 def fix_image_url(url, repo_name):
-    '''Fixes a GitHub url, where the url should point to an image.
+    '''Fixes a GitHub image urls.
 
-    Any links with `github.com` are invalid, because they're html links, while
-    image links would have `githubusercontent.com`, for example:
-    - https://github.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png;
+    Any links with `github.com` are invalid, because the return *html*
+    content. Image links would have `githubusercontent.com`. For example:
 
-    Any links that don't have a domain are relative and as such invalid, for example:
-    - preview.png;
-    - sprites/preview.png;
-    - /sprites/preview.png
+    - This returns an html: https://github.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png
+    - This returns a png: https://githubusercontent.com/Retrothopter/Niobium-Nanotech/blob/master/Preview.png
 
-    This is also why a repo name is required.
-    '''
+    Any links that are relative are also invalid. For example:
+
+    - preview.png
+    - sprites/preview.png
+    - /sprites/preview.png'''
     from urllib.parse import urlparse
     from parsec import optional, string, regex, none_of, many, ParseError
 
@@ -40,7 +40,8 @@ def fix_image_url(url, repo_name):
     if o.netloc == "raw.githubusercontent.com":
         return url
 
-    try: path = glob.parse(o.path)
+    try:
+        path = glob.parse(o.path)
     except ParseError as e:
         path = None
     if o.netloc == "github.com" and path:

@@ -42,7 +42,7 @@ from caching import ModMeta
 from caching.ghrepo import try_branches
 
 def update_frontend_data():
-    repos = repo_loads(GITHUB_REPO_CACHE_PATH)    
+    repos = repo_load()
     icons = update_icons([ x.name for x in repos ])
     mods = ModMeta.builds(repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
@@ -68,7 +68,7 @@ def search_repositories_updated(sha_list):
 def update_repositories_updated():
     '''The function updates the most recently updated repositories.
     Old repositories wont get updated, which makes it the most effecient.'''
-    repo_objs = repo_loads(GITHUB_REPO_CACHE_PATH)
+    repo_objs = repo_load()
     sha_list = [ repo.sha for repo in repo_objs ]
     for repo_i in search_repositories_updated(sha_list):
         print(f"[log] new entry -- {repo_i.name}")
@@ -79,16 +79,24 @@ def update_repositories_updated():
                 found = True
         if not found:
             repo_objs.append(repo_i)
+    repo_dump(repo_obj)
+            
+def repo_load():
+    '''Loads Repo objects from json file if exist,
+    otherwise creates a new empty one and returns it.'''
+    PATH = GITHUB_REPO_CACHE_PATH
+    if PATH.exists():
+        with open(PATH, 'r') as f:
+            return [ Repo.from_dict(x) for x in json.load(f) ]
+    else:
+        with open(PATH, 'w') as f:
+            json.dump([], f)
+        return []
+
+def repo_dump(repo_objs):
     with open(GITHUB_REPO_CACHE_PATH, 'w') as f:
         json.dump([ r.into_dict() for r in repo_objs], f)
 
-def repo_loads(path):
-    if path.exists():
-        with open(path, 'r') as f:
-            return [ Repo.from_dict(x) for x in json.load(f) ]
-    else:
-        return []
-    
 def update():
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
@@ -121,7 +129,7 @@ def cli():
 @cli.command()
 @click.argument("count", type=int)
 def ls(count):
-    mods = repo_loads(GITHUB_REPO_CACHE_PATH)
+    mods = repo_load()
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
     for i, mod in enumerate(mods[:count]):
         print(i, mod)

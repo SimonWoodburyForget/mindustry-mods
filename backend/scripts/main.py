@@ -92,11 +92,22 @@ def repo_loads(path):
 def update():
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
-    update_cached_repositories()
-    update_frontend_data()
 
-    now = datetime.now()
-    rate = gh.get_rate_limit()
+    try:
+        update_cached_repositories()
+        update_frontend_data()
+        now = datetime.now()
+        rate = gh.get_rate_limit()
+    except ConnectionError as e:
+        # NOTE: catch connection errors like:
+        #
+        # - ratelimit errors, which occurs if the system
+        #   gets suspended/hibernates and comes back online.
+        # - timeout or other general connection errors.
+        # 
+        # ...this is a bad solution.
+        print("[exception] ", e)
+
     print(f"done: {now}")
     print("rate:")
     print(f"  limit: {rate.core.limit}")
@@ -117,22 +128,10 @@ def ls(count):
 
 @cli.command()
 def run():
-    def main():
-        try:
-            update()
-        except ConnectionError as e:
-            # NOTE: catch connection errors like:
-            #
-            # - ratelimit errors, which occurs if the system
-            #   gets suspended/hibernates and comes back online.
-            # - timeout or other general connection errors.
-            # 
-            # ...this is a bad solution.
-            print("[exception] ", e)
-
+    schedule.every(5).minutes.do(update)
     while True:
-        main()
-        time.sleep(60 * 5)
+        schedule.run_pending()
+        time.sleep(1)
         
 if __name__ == '__main__':
     cli()

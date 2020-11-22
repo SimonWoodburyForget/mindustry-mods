@@ -79,7 +79,7 @@ def update_repositories_updated():
                 found = True
         if not found:
             repo_objs.append(repo_i)
-    repo_dump(repo_obj)
+    repo_dump(repo_objs)
             
 def repo_load():
     '''Loads Repo objects from json file if exist,

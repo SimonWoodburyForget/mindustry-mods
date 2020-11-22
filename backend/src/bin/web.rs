@@ -1,3 +1,25 @@
+//! Main entry point into backend.
+use mindustry_mods_backend::*;
+
+use clap::Clap;
+use std::{path::PathBuf, process::Command};
+
+/// mindustry-mods cli.
+#[derive(Clap)]
+#[clap(
+    version = "1.0",
+    author = "Simon W. Forget <simonwoodburyforget@gmail.com>"
+)]
+struct Opts {
+    #[clap(subcommand)]
+    subcmd: SubCommand,
+}
+
+#[derive(Clap)]
+enum SubCommand {
+    Run,
+}
+
 /// runs simple server hosting ./dist
 async fn server_run() {
     use warp::Filter;
@@ -13,6 +35,10 @@ async fn server_run() {
 }
 
 #[tokio::main]
-async fn main() {
-    server_run().await;
+async fn main() -> Result<()> {
+    let opts = Opts::parse();
+    match opts.subcmd {
+        SubCommand::Run => server_run().await,
+    }
+    Ok(())
 }

@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"
-default-run = "main"
+default-run = "web"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -12,7 +12,6 @@ serde_json = "1.0"
 reqwest = { version = "0.10.8", features = ["json"] }
 tokio = { version = "0.2", features = ["full"] }
 directories = "2.0"
-structopt = "0.3"
 base64 = "0.12"
 anyhow = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
@@ -20,6 +19,8 @@ thiserror = "1.0"
 futures = "0.3"
 nom = "5.1"
 warp = "0.2.5"
+sled = "0.34.6"
+clap = "3.0.0-beta.2"
 
 [dependencies.serde-hjson]
 version = "0.9.1"
@@ -32,7 +33,3 @@ path = "../core"
 name = "scrap"
 path = "src/bin/scrap.rs"
 edition = "2018"
-
-[[bin]]
-name = "main"
-path = "src/bin/main.rs"

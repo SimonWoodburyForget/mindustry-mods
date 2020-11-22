@@ -2,7 +2,6 @@
 use mindustry_mods_backend::*;
 
 use clap::Clap;
-use std::{path::PathBuf, process::Command};
 
 /// mindustry-mods cli.
 #[derive(Clap)]
@@ -11,34 +10,32 @@ use std::{path::PathBuf, process::Command};
     author = "Simon W. Forget <simonwoodburyforget@gmail.com>"
 )]
 struct Opts {
-    #[clap(subcommand)]
-    subcmd: SubCommand,
+    #[clap(short, long, default_value = "3042")]
+    port: u16,
 }
 
-#[derive(Clap)]
-enum SubCommand {
-    Run,
-}
-
-/// runs simple server hosting ./dist
-async fn server_run() {
-    use warp::Filter;
-    println!("running server");
-    println!("  addr: 0.0.0.0:3042");
-    warp::serve(warp::fs::dir("/web/mindustry-mods/www").map(|x| {
-        use chrono::prelude::*;
-        println!("request: {}", Local::now());
-        x
-    }))
-    .run(([0, 0, 0, 0], 3042))
-    .await;
+fn increment(old: Option<&[u8]>) -> Option<Vec<u8>> {
+    let number: u64 = old.and_then(|x| bincode::deserialize(x).ok()).unwrap_or(0);
+    bincode::serialize(&(number + 1)).ok()
 }
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let opts = Opts::parse();
-    match opts.subcmd {
-        SubCommand::Run => server_run().await,
-    }
+    let Opts { port } = Opts::parse();
+    use warp::Filter;
+    let db = sled::open("/web/mindustry-mods/data/db")?;
+    let stats = db.open_tree(b"statistics")?;
+    println!("running server");
+    println!("  addr: 0.0.0.0:3042");
+    warp::serve(warp::fs::dir("/web/mindustry-mods/www").map(move |x| {
+        let result = stats.update_and_fetch(b"requests", increment);
+        if let Some(bytes) = result.ok().flatten() {
+            let number: u64 = bincode::deserialize(&bytes).unwrap();
+            println!("requests: {}", number);
+        }
+        x
+    }))
+    .run(([0, 0, 0, 0], port))
+    .await;
     Ok(())
 }

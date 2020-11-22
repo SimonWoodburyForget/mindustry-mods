@@ -132,7 +132,7 @@ def run():
 
     while True:
         main()
-        time.sleep(60 * 60)
+        time.sleep(60 * 5)
         
 if __name__ == '__main__':
     cli()

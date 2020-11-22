@@ -65,9 +65,9 @@ def search_repositories_updated(sha_list):
         if repo_obj is not None:
             yield repo_obj
 
-def update_cached_repositories():
-    '''Returns a list of repositories. This function only pulls most recently
-    updated repositories, meaning old repositories wont get updated.'''
+def update_repositories_updated():
+    '''The function updates the most recently updated repositories.
+    Old repositories wont get updated, which makes it the most effecient.'''
     repo_objs = repo_loads(GITHUB_REPO_CACHE_PATH)
     sha_list = [ repo.sha for repo in repo_objs ]
     for repo_i in search_repositories_updated(sha_list):
@@ -94,7 +94,7 @@ def update():
     which is generated data from what has been cached.'''
 
     try:
-        update_cached_repositories()
+        update_repositories_updated()
         update_frontend_data()
         now = datetime.now()
         rate = gh.get_rate_limit()

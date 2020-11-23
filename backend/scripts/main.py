@@ -72,7 +72,6 @@ def update_repositories_updated():
     sha_list = [ repo.sha for repo in repo_objs ]
     for repo_i in search_repositories_updated(sha_list):
         print(f"[log] new entry -- {repo_i.name}")
-        found = False
         for j, repo_j in enumerate(repo_objs):
             if repo_i.name == repo_j.name:
                 repo_objs[j] = repo_i

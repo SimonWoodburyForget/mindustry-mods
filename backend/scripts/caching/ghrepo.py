@@ -147,8 +147,8 @@ class Repo:
         return f"Repo(name=\"{self.name}\")"
 
     def __hash__(self):
-        return self.sha.__hash__()
-    
+        return self.name.__hash__()
+
     @staticmethod
     def from_repo(repo):
         sha = try_branches(repo, ["master", "main"]).commit.sha

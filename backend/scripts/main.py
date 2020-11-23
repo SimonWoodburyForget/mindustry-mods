@@ -76,12 +76,6 @@ def update_repositories_updated():
             if repo_i.name == repo_j.name:
                 repo_objs[j] = repo_i
                 break
-        for j, repo_j in enumerate(repo_objs):
-            if repo_i.sha == repo_j.sha:
-                # Repository names are different, but the
-                # sha is the same, meaning it's been renamed.
-                repo_objs[j] = repos_i
-                break
         repo_objs.append(repo_i)
     repo_dump(repo_objs)
             
@@ -125,7 +119,7 @@ def update():
     print(f"  limit: {rate.core.limit}")
     print(f"  remaining: {rate.core.remaining}")
     print(f"  reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
-
+    
 @click.group()
 def cli():
     pass

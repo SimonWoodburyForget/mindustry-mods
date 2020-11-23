@@ -34,3 +34,8 @@ path = "../core"
 name = "scrap"
 path = "src/bin/scrap.rs"
 edition = "2018"
+
+[[bin]]
+name = "web"
+path = "src/bin/web.rs"
+edition = "2018"

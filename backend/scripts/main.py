@@ -76,9 +76,14 @@ def update_repositories_updated():
         for j, repo_j in enumerate(repo_objs):
             if repo_i.name == repo_j.name:
                 repo_objs[j] = repo_i
-                found = True
-        if not found:
-            repo_objs.append(repo_i)
+                break
+        for j, repo_j in enumerate(repo_objs):
+            if repo_i.sha == repo_j.sha:
+                # Repository names are different, but the
+                # sha is the same, meaning it's been renamed.
+                repo_objs[j] = repos_i
+                break
+        repo_objs.append(repo_i)
     repo_dump(repo_objs)
             
 def repo_load():
@@ -87,7 +92,7 @@ def repo_load():
     PATH = GITHUB_REPO_CACHE_PATH
     if PATH.exists():
         with open(PATH, 'r') as f:
-            return [ Repo.from_dict(x) for x in json.load(f) ]
+            return list({ Repo.from_dict(x) for x in json.load(f) })
     else:
         with open(PATH, 'w') as f:
             json.dump([], f)

@@ -85,7 +85,7 @@ def repo_load():
     PATH = GITHUB_REPO_CACHE_PATH
     if PATH.exists():
         with open(PATH, 'r') as f:
-            return list({ Repo.from_dict(x) for x in json.load(f) })
+            return [ Repo.from_dict(x) for x in json.load(f) ]
     else:
         with open(PATH, 'w') as f:
             json.dump([], f)

@@ -1,5 +1,5 @@
 [workspace]
-members = [ "frontend", "backend", "core" ]
+members = [ "frontend", "backend", "mcore" ]
 
 [profile.release]
 opt-level = 's' # saves ~60,000 bytes

@@ -47,7 +47,7 @@ mod date {
 /// Mod listing functions.
 mod listing {
     use super::{app::Msg, app::Page, date, markup};
-    use mindustry_mods_core::Mod;
+    use mcore::Mod;
     use seed::{prelude::*, *};
     use serde::Deserialize;
     use std::{convert::TryFrom, iter};
@@ -338,7 +338,7 @@ mod listing {
 /// Color markup rendering layer.
 mod markup {
     use super::app::Msg;
-    use mindustry_mods_core::{
+    use mcore::{
         color::{Color, Name},
         markup::Markup,
     };
@@ -387,7 +387,7 @@ mod markup {
 /// Base model/msg for application.
 pub mod app {
     use super::{listing::ListingItem, path::ROOT};
-    use mindustry_mods_core::MOD_VERSION;
+    use mcore::MOD_VERSION;
     use seed::{prelude::*, *};
 
     /// Package version string.

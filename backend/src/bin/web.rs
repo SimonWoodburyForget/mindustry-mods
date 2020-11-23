@@ -1,5 +1,5 @@
 //! Main entry point into backend.
-use mindustry_mods_backend::*;
+use backend::*;
 
 use clap::Clap;
 

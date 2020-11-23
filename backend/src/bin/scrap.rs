@@ -1,4 +1,4 @@
-use mindustry_mods_backend::*;
+use backend::*;
 
 #[tokio::main]
 async fn main() -> Result<()> {

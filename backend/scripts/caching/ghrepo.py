@@ -146,6 +146,12 @@ class Repo:
     def __repr__(self):
         return f"Repo(name=\"{self.name}\")"
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return self.name.__hash__()
+    
     @staticmethod
     def from_repo(repo):
         sha = try_branches(repo, ["master", "main"]).commit.sha

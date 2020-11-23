@@ -55,15 +55,16 @@ def search_repositories_updated(sha_list):
     helps this function minimize API calls, as search results are ordered by
     when they've been updated.'''
     paginated_list = gh.search_repositories("mindustry-mod", sort="updated")
-    for repo in paginated_list[:30]:
+    for repo in paginated_list[:100]:
         branch = try_branches(repo, ["master", "main"])
         if branch is None:
             continue
-        # if branch.commit.sha in sha_list:
-        #     break
-        repo_obj = Repo.from_repo(repo)
-        if repo_obj is not None:
-            yield repo_obj
+        if branch.commit.sha in sha_list:
+            break
+        else:
+            repo_obj = Repo.from_repo(repo)
+            if repo_obj is not None:
+                yield repo_obj
 
 def update_repositories_updated():
     '''The function updates the most recently updated repositories.
@@ -85,7 +86,7 @@ def repo_load():
     PATH = GITHUB_REPO_CACHE_PATH
     if PATH.exists():
         with open(PATH, 'r') as f:
-            return [ Repo.from_dict(x) for x in json.load(f) ]
+            return list({ Repo.from_dict(x) for x in json.load(f) })
     else:
         with open(PATH, 'w') as f:
             json.dump([], f)
@@ -93,8 +94,8 @@ def repo_load():
 
 def repo_dump(repo_objs):
     with open(GITHUB_REPO_CACHE_PATH, 'w') as f:
-        json.dump([ r.into_dict() for r in repo_objs], f)
-
+        json.dump([ r.into_dict() for r in set(repo_objs)], f)
+                
 def update():
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
@@ -134,6 +135,7 @@ def ls(count):
 
 @cli.command()
 def run():
+    update()
     schedule.every(5).minutes.do(update)
     while True:
         schedule.run_pending()

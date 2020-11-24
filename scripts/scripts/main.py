@@ -47,9 +47,9 @@ def update_frontend_data():
     icons = update_icons([ x.name for x in repos ])
     mods = ModMeta.builds(repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date_tt())))
-    jdata = scripts.dump(mods)
+    json_string = scripts.dump(mods)
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
-        json.dump(jdata, f)
+        f.write(json_string)
 
 def search_repositories_updated(sha_list):
     '''Search for repositories on GitHub. Given an old list of `sha` values,

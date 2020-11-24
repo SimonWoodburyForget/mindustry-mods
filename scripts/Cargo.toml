@@ -30,3 +30,9 @@ requires-dist = [
 
 [package.metadata.maturin.scripts]
 mindustry-mods-script = "scripts:main.cli"
+
+[package.metadata.maturin]
+classifier = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Rust",
+]

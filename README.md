@@ -6,16 +6,13 @@ Website: http://mindustry-mods.metasimon.space/
 
 This is a three parts application:
 
-- backend server (rust), which is just a basic file server
-- backend scripts (python), which are used to get GitHub data
-- frontend (rust wasm), which currently renders most of webpage
+- backend (rust), basic file server
+- scripts (mixed rust/python), github data caching
+- frontend app (rust wasm), html rendering
 
 Requirements:
 
-- Python 3.8: 
-  - [`requirements.txt`](https://github.com/SimonWoodburyForget/mindustry-mods/blob/master/scripts/requirements.txt)
-- Rust 1.48.0:
-  - [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
-
-Environmental variables:
-  - `GITHUB_TOKEN` for Github requests
+- Python 3.8
+- Rust 1.48
+- [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
+- [`maturin`](https://github.com/PyO3/maturin)

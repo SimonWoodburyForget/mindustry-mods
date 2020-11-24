@@ -33,6 +33,7 @@ import urllib
 from jinja2 import Markup
 from requests.exceptions import ConnectionError
 
+import scripts
 from scripts.minfmt import ignore_sbrack
 from scripts.caching import icons
 from scripts.config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH

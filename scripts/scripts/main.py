@@ -45,8 +45,8 @@ def update_frontend_data():
     repos = repo_load()
     icons = update_icons([ x.name for x in repos ])
     mods = ModMeta.builds(repos, icons)
-    mods = list(reversed(sorted(mods, key=lambda x: x.date)))
-    jdata = [ mm.pack_data() for mm in mods ]
+    mods = list(reversed(sorted(mods, key=lambda x: x.date_tt())))
+    jdata = dump(mods)
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         json.dump(jdata, f)
 

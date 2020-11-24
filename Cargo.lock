@@ -1820,6 +1820,8 @@ version = "0.1.2"
 dependencies = [
  "mcore",
  "pyo3",
+ "serde 1.0.104",
+ "serde_json",
 ]
 
 [[package]]

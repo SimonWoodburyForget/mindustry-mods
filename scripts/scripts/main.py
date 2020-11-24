@@ -134,7 +134,14 @@ def ls(count):
         print(i, mod)
 
 @cli.command()
-def run():
+@click.option("--un-authenticated", help="Ignore missing GitHub token.")
+def run(un_authenticated):
+    if GITHUB_TOKEN is None:
+        if un_authenticated:
+            print("[error] no github token")
+            sys.exit(1)
+        else:
+            print("[warn] no github token")    
     update()
     schedule.every(5).minutes.do(update)
     while True:

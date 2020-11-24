@@ -7,7 +7,10 @@ import github
 # which unavoidably may eventually happen, because of caching.
 MOD_META_VERSION = "3.2"
 
-GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+try:
+    GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+except KeyError:
+    GITHUB_TOKEN = none
 
 WEB_DIR = Path("/web") / "mindustry-mods"
 CACHE_PATH = WEB_DIR / "cache"

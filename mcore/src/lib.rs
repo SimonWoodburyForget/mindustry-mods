@@ -1,7 +1,7 @@
 pub mod color;
 pub mod markup;
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 mod path {
     pub const GITHUB: &str = "https://github.com";
@@ -9,7 +9,7 @@ mod path {
 
 pub const MOD_VERSION: &str = "3.2";
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Mod {
     pub author: String,
     pub author_markup: Option<String>,

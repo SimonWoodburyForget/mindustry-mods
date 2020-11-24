@@ -10,7 +10,7 @@ mkdir $WEB/bin -p
 cp target/release/web $WEB/bin/web -f
 
 (cd scripts; maturin build)
-pip install $(ls -Art target/wheels/scripts-*.whl | tail -n 1) --upgrade
+pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) --upgrade
 
 mkdir $WEB/www -p
 cp frontend/index.html $WEB/www -f

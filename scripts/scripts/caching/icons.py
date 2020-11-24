@@ -7,7 +7,7 @@ import hashlib
 import time
 from pathlib import Path
 
-from config import IMAGES_JSON, gh
+from scripts.config import IMAGES_JSON, gh
 
 def update_icon(repo_name, image_path=None, skip=False, cache_time=60*60*24):
     '''Downloads an image from the target repository, and runs it through sha256

@@ -5,20 +5,20 @@ WEB="/web/mindustry-mods"
 SERVICES=("mindustry-mods-web" "mindustry-mods-script")
 
 sudo mkdir $WEB -p
-sudo chown $USER $WEB
-sudo chgrp $USER $WEB
+sudo mkdir $WEB/bin -p
 
-mkdir $WEB/bin -p
-cp target/release/web $WEB/bin/web -f
+sudo cp target/release/web $WEB/bin/web -f
 
-mkdir $WEB/www -p
-cp frontend/index.html $WEB/www -f
+cd scripts
+sudo pip install . --upgrade
+cd ..
+
+sudo mkdir $WEB/www -p
+sudo cp frontend/index.html $WEB/www -f
 for x in pkg css images
 do
-    cp frontend/$x $WEB/www -rf
+    sudo cp frontend/$x $WEB/www -rf
 done
-
-cp backend/scripts $WEB -rf
 
 for x in ${SERVICES[@]}
 do

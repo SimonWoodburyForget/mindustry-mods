@@ -39,13 +39,13 @@ from scripts.caching import icons
 from scripts.config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH
 from scripts.caching.ghrepo import Repo
 from scripts.caching.icons import update_icons
-from scripts.caching import ModMeta
+from scripts.caching import build_mods
 from scripts.caching.ghrepo import try_branches
 
 def update_frontend_data():
     repos = repo_load()
     icons = update_icons([ x.name for x in repos ])
-    mods = ModMeta.builds(repos, icons)
+    mods = build_mods(repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date_tt())))
     json_string = scripts.dump(mods)
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:

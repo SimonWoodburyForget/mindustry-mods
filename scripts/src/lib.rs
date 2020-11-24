@@ -1,5 +1,5 @@
-use pyo3::prelude::*;
 use mcore::Mod;
+use pyo3::prelude::*;
 
 /// This module is implemented in Rust.
 #[pymodule]
@@ -9,7 +9,6 @@ fn scripts(_py: Python, m: &PyModule) -> PyResult<()> {
         let out = sum_as_string(a, b);
         Ok(out)
     }
-    
     Ok(())
 }
 

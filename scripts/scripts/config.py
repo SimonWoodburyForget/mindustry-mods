@@ -3,9 +3,9 @@ from pathlib import Path
 import os
 import github
 
-# Version number for data, to allow multiple version of data at once,
-# which unavoidably may eventually happen, because of caching.
-MOD_META_VERSION = "3.2"
+from scripts import MOD_VERSION
+
+MOD_META_VERSION = MOD_VERSION
 
 try:
     GITHUB_TOKEN = os.environ['GITHUB_TOKEN']

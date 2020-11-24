@@ -10,9 +10,9 @@ from jinja2 import Markup
 import re
 import functools
 
-from minfmt import ignore_sbrack
-from caching.ghrepo import repos_cached
-from config import gh
+from scripts.minfmt import ignore_sbrack
+from scripts.caching.ghrepo import repos_cached
+from scripts.config import gh
 
 def fix_image_url(url, repo_name):
     '''Fixes a GitHub image urls.

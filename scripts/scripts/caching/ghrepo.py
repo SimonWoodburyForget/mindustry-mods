@@ -8,9 +8,9 @@ import dateutil
 import json
 import hjson
 from base64 import b64decode
-
 from github import GithubException
-from config import GITHUB_REPO_CACHE_PATH, gh
+
+from scripts.config import GITHUB_REPO_CACHE_PATH, gh
 
 def try_branches(repo, branch_list):
     for branch_name in branch_list:

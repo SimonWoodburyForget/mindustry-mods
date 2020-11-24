@@ -11,7 +11,6 @@ import time
 # Decoding/Encoding
 import json
 import hjson
-from minfmt import ignore_sbrack
 import dateutil.parser
 from base64 import b64decode
 
@@ -34,12 +33,13 @@ import urllib
 from jinja2 import Markup
 from requests.exceptions import ConnectionError
 
-from caching import icons
-from config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH
-from caching.ghrepo import Repo
-from caching.icons import update_icons
-from caching import ModMeta
-from caching.ghrepo import try_branches
+from scripts.minfmt import ignore_sbrack
+from scripts.caching import icons
+from scripts.config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH
+from scripts.caching.ghrepo import Repo
+from scripts.caching.icons import update_icons
+from scripts.caching import ModMeta
+from scripts.caching.ghrepo import try_branches
 
 def update_frontend_data():
     repos = repo_load()

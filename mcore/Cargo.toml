@@ -7,8 +7,16 @@ edition = "2018"
 [lib]
 name = "mcore"
 
+[features]
+default = []
+
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 nom = "5.1"
 thiserror = "1.0"
+
+[dependencies.pyo3]
+version = "0.12.3"
+features = ["extension-module"]
+optional = true

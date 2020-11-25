@@ -13,6 +13,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 mcore = { path = "../mcore" }
+scripts = { path = "../scripts", default-features = false } 
 
 wasm-bindgen = "0.2.50"
 seed = "0.6"

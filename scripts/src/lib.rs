@@ -1,14 +1,23 @@
+#[cfg(feature = "pyo3")]
 use pyo3::prelude::*;
 use serde::{Deserialize, Serialize};
 
-pub const MOD_VERSION: &str = mcore::MOD_VERSION;
+mod path {
+    pub const GITHUB: &str = "https://github.com";
+}
 
+/// Mod struct version. If breaking changes occur, this version number is
+/// incremented, and access paths are changed, ensuring the cache is cleared
+/// from the backend all the way to the frontend.
+pub const MOD_VERSION: &str = "3.2";
+
+#[cfg(feature = "pyo3")]
 /// This module is implemented in Rust.
 #[pymodule]
 fn scripts(_py: Python, module: &PyModule) -> PyResult<()> {
     #[pyfn(module, "dump")]
     fn dump(_py: Python, mods: Vec<Mod>) -> PyResult<String> {
-        Ok(serde_json::to_string(&mods.0).unwrap())
+        Ok(serde_json::to_string(&mods).unwrap())
     }
 
     module.setattr("MOD_VERSION", MOD_VERSION)?;
@@ -16,9 +25,41 @@ fn scripts(_py: Python, module: &PyModule) -> PyResult<()> {
     Ok(())
 }
 
-#[pyclass]
-pub struct Mod(mcore::Mod);
+#[cfg_attr(feature = "pyo3", pyclass)]
+#[derive(Deserialize, Serialize, Clone, Debug)]
+pub struct Mod {
+    /// mod name
+    pub name: String,
+    /// mod name with markup
+    pub name_markup: String,
+    /// link to repository
+    pub link: String,
+    pub repo: String,
+    /// short description
+    pub desc: String,
+    /// short description with markup
+    pub desc_markup: Option<String>,
+    pub icon: Option<String>,
+    /// repository stars
+    pub stars: u32,
+    /// author name
+    pub author: String,
+    /// author name with markup
+    pub author_markup: Option<String>,
+    /// last commit ISO formatted datetime
+    pub date: String,
+    /// last commit UTC timestamp epoch in seconds
+    pub date_tt: f64,
+    pub readme: String,
+    pub version: Option<String>,
+    pub assets: Vec<String>,
+    pub contents: Vec<String>,
+    /// markup encoded name
+    #[serde(rename = "camelCase")]
+    pub display_name: Option<String>,
+}
 
+#[cfg(feature = "pyo3")]
 #[pymethods]
 impl Mod {
     #[new]
@@ -41,7 +82,7 @@ impl Mod {
         contents: Vec<String>,
         display_name: Option<String>,
     ) -> PyResult<Self> {
-        Ok(Self(mcore::Mod {
+        Ok(Self {
             name,
             name_markup,
             link,
@@ -59,10 +100,16 @@ impl Mod {
             assets,
             contents,
             display_name,
-        }))
+        })
     }
 
     pub fn date_tt(&self) -> PyResult<f64> {
-        Ok(self.0.date_tt)
+        Ok(self.date_tt)
+    }
+}
+
+impl Mod {
+    pub fn archive_link(&self) -> String {
+        format!("{}/{}/archive/master.zip", path::GITHUB, &self.repo)
     }
 }

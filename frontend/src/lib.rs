@@ -47,7 +47,7 @@ mod date {
 /// Mod listing functions.
 mod listing {
     use super::{app::Msg, app::Page, date, markup};
-    use mcore::Mod;
+    use scripts::Mod;
     use seed::{prelude::*, *};
     use serde::Deserialize;
     use std::{convert::TryFrom, iter};
@@ -389,7 +389,7 @@ mod markup {
 /// Base model/msg for application.
 pub mod app {
     use super::{listing::ListingItem, path::ROOT};
-    use mcore::MOD_VERSION;
+    use scripts::MOD_VERSION;
     use seed::{prelude::*, *};
 
     /// Package version string.

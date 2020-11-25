@@ -12,13 +12,6 @@ cp target/release/web $WEB/bin/web -f
 (cd scripts; maturin build)
 pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) --upgrade
 
-mkdir $WEB/www -p
-cp frontend/index.html $WEB/www -f
-for x in pkg css images
-do
-    cp frontend/$x $WEB/www -rf
-done
-
 for x in ${SERVICES[@]}
 do
     if test -f $SYS/$x.service; then

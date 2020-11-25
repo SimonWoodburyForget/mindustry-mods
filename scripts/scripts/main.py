@@ -21,7 +21,6 @@ import click
 #import appdirs
 from github import GithubException
 from datetime import datetime, timezone
-import schedule
 
 # Generation
 import humanize
@@ -51,7 +50,7 @@ def update_frontend_data():
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         f.write(json_string)
 
-def search_repositories_updated(sha_list):
+def search_repositories_recent(sha_list):
     '''Search for repositories on GitHub. Given an old list of `sha` values,
     helps this function minimize API calls, as search results are ordered by
     when they've been updated.'''
@@ -67,12 +66,12 @@ def search_repositories_updated(sha_list):
             if repo_obj is not None:
                 yield repo_obj
 
-def update_repositories_updated():
+def update_repositories_recent():
     '''The function updates the most recently updated repositories.
     Old repositories wont get updated, which makes it the most effecient.'''
     repo_objs = repo_load()
     sha_list = [ repo.sha for repo in repo_objs ]
-    for repo_i in search_repositories_updated(sha_list):
+    for repo_i in search_repositories_recent(sha_list):
         print(f"[log] new entry -- {repo_i.name}")
         for j, repo_j in enumerate(repo_objs):
             if repo_i.name == repo_j.name:
@@ -80,7 +79,26 @@ def update_repositories_updated():
                 break
         repo_objs.append(repo_i)
     repo_dump(repo_objs)
-            
+
+def update_repositories_cached():
+    '''This function updates all repositories cached.'''
+    repo_objs = repo_load()
+    remove = []
+    for i, repo_obj in enumerate(repo_objs):
+        repo = gh.get_repo(repo_obj.name)
+        if repo.full_name != repo_obj.name:
+            remove.append(repo_obj.name)
+            continue
+        repo_objs[i] = Repo.from_repo(repo)
+    for name in remove:
+        i = 0
+        while i < len(repo_objs):
+            if repo_objs[i] == name:
+                repo_objs.pop()
+            else:
+                i += 1
+    repo_dump(repo_objs)
+
 def repo_load():
     '''Loads Repo objects from json file if exist,
     otherwise creates a new empty one and returns it.'''
@@ -96,31 +114,35 @@ def repo_load():
 def repo_dump(repo_objs):
     with open(GITHUB_REPO_CACHE_PATH, 'w') as f:
         json.dump([ r.into_dict() for r in set(repo_objs)], f)
-                
-def update():
+        
+def update(i):
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
 
-    try:
-        update_repositories_updated()
-        update_frontend_data()
-        now = datetime.now()
-        rate = gh.get_rate_limit()
-    except ConnectionError as e:
-        # NOTE: catch connection errors like:
-        #
-        # - ratelimit errors, which occurs if the system
-        #   gets suspended/hibernates and comes back online.
-        # - timeout or other general connection errors.
-        # 
-        # ...this is a bad solution.
-        print("[exception] ", e)
+    if i % (60 * 5) == 0:
+        try:
+            update_repositories_recent()
+            update_frontend_data()
+            now = datetime.now()
+            rate = gh.get_rate_limit()
+        except ConnectionError as e:
+            # NOTE: catch connection errors like:
+            #
+            # - ratelimit errors, which occurs if the system
+            #   gets suspended/hibernates and comes back online.
+            # - timeout or other general connection errors.
+            # 
+            # ...this is a bad solution.
+            print("[exception] ", e)
 
-    print(f"done: {now}")
-    print("rate:")
-    print(f"  limit: {rate.core.limit}")
-    print(f"  remaining: {rate.core.remaining}")
-    print(f"  reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
+        print(f"done: {now}")
+        print("rate:")
+        print(f"  limit: {rate.core.limit}")
+        print(f"  remaining: {rate.core.remaining}")
+        print(f"  reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
+
+    if i % (60 * 60 * 6) == 0:
+        update_repositories_cached()
     
 @click.group()
 def cli():
@@ -142,12 +164,12 @@ def run(un_authenticated):
             print("[error] no github token")
             sys.exit(1)
         else:
-            print("[warn] no github token")    
-    update()
-    schedule.every(5).minutes.do(update)
+            print("[warn] no github token")
+    i = 0
     while True:
-        schedule.run_pending()
+        update(i)
         time.sleep(1)
+        i += 1
         
 if __name__ == '__main__':
     cli()

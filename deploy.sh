@@ -1,28 +1,23 @@
 #!/bin/bash
 
-SYS="/etc/systemd/system"
-WEB="/web/mindustry-mods"
-SERVICES=("mindustry-mods-web" "mindustry-mods-script")
-
-mkdir $WEB -p
-mkdir $WEB/bin -p
-
-cp target/release/web $WEB/bin/web -f
+cargo build --release
+rsync -avzhp target/release/web $MINDUSTRY_MODS_PATH/bin
 
 (cd scripts; maturin build)
 pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) --upgrade
 
-for x in ${SERVICES[@]}
+SYS="/etc/systemd/system"
+rsync -avzhp service/*.service $SYS
+for x in $(ls service/*.service)
 do
-    if test -f $SYS/$x.service; then
+    x=$(basename -- "$x")
+    if test -f $SYS/$x; then
 	echo Restarting $x
-	cp service/$x.service $SYS -f
 	systemctl daemon-reload
-	systemctl restart $x.service
+	systemctl restart $x
     else
-	echo Installing $x
-	cp service/$x.service $SYS
-	systemctl start $x.service
-	systemctl enable $x.service
+	echo Starting $x
+	systemctl start $x
+	systemctl enable $x
     fi
 done 

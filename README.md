@@ -10,9 +10,10 @@ This is a three parts application:
 - scripts (mixed rust/python), github data caching
 - frontend app (rust wasm), html rendering
 
-Requirements:
+Basic requirements:
 
 - Python 3.8
 - Rust 1.48
 - [`wasm-pack`](https://github.com/rustwasm/wasm-pack)
 - [`maturin`](https://github.com/PyO3/maturin)
+

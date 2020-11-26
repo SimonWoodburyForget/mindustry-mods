@@ -5,6 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=webadmin
+Group=webadmin
 ExecStart=mindustry-mods-script run
 EnvironmentFile=/web/mindustry-mods/secrets.env
 

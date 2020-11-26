@@ -5,6 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=webadmin
+Group=webadmin
 ExecStart=/web/mindustry-mods/bin/web
 
 [Install]

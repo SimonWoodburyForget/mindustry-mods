@@ -11,7 +11,7 @@ maturin build
 To install the most recent wheel built you can do something like:
 
 ```bash
-pip install $(ls -Art ../target/wheels/scripts-*.whl | tail -n 1) --upgrade
+pip install $(ls -Art ../target/wheels/scripts-*-cp38-*.whl | tail -n 1) --upgrade
 ```
 
 The environmental variable `GITHUB_TOKEN` should be set to a valid Github API token when executing the main script. For example:
@@ -19,3 +19,10 @@ The environmental variable `GITHUB_TOKEN` should be set to a valid Github API to
 ```bash
 export GITHUB_TOKEN="<api key>"
 ```
+
+You can then run the script with:
+
+```bash
+mindustry-mods-run run
+```
+

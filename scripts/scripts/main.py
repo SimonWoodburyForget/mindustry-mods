@@ -123,8 +123,14 @@ def update(i):
         try:
             update_repositories_recent()
             update_frontend_data()
+
             now = datetime.now()
             rate = gh.get_rate_limit()
+            print(f"done: {now}")
+            print("rate:")
+            print(f"  limit: {rate.core.limit}")
+            print(f"  remaining: {rate.core.remaining}")
+            print(f"  reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
         except ConnectionError as e:
             # NOTE: catch connection errors like:
             #
@@ -135,15 +141,9 @@ def update(i):
             # ...this is a bad solution.
             print("[exception] ", e)
 
-        print(f"done: {now}")
-        print("rate:")
-        print(f"  limit: {rate.core.limit}")
-        print(f"  remaining: {rate.core.remaining}")
-        print(f"  reset: {rate.core.reset.replace(tzinfo=timezone.utc).astimezone(tz=None)}")
-
     if i % (60 * 60 * 6) == 0:
         update_repositories_cached()
-    
+
 @click.group()
 def cli():
     pass

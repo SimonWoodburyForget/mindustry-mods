@@ -67,7 +67,7 @@ checksum = "f8aac770f1885fd7e387acedd76065302551364496e46b3dd00860b2f8359b9d"
 
 [[package]]
 name = "backend"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "base64 0.12.0",
@@ -79,6 +79,7 @@ dependencies = [
  "mcore",
  "nom",
  "reqwest",
+ "scripts",
  "serde 1.0.117",
  "serde-hjson",
  "serde_json",
@@ -486,13 +487,14 @@ checksum = "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b"
 
 [[package]]
 name = "frontend"
-version = "0.1.18"
+version = "0.1.19"
 dependencies = [
  "futures 0.1.29",
  "humantime",
  "instant",
  "itertools",
  "js-sys",
+ "lazy_static",
  "mcore",
  "regex",
  "scripts",
@@ -1051,7 +1053,6 @@ name = "mcore"
 version = "0.1.0"
 dependencies = [
  "nom",
- "pyo3",
  "serde 1.0.117",
  "serde_json",
  "thiserror",
@@ -1835,7 +1836,7 @@ checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
 
 [[package]]
 name = "scripts"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "mcore",
  "pyo3",

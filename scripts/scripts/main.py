@@ -118,14 +118,14 @@ def repo_dump(repo_objs):
 def update(i):
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
-
+    print(i)
     if i % (60 * 5) == 0:
         try:
             update_repositories_recent()
             update_frontend_data()
-
             now = datetime.now()
             rate = gh.get_rate_limit()
+
             print(f"done: {now}")
             print("rate:")
             print(f"  limit: {rate.core.limit}")
@@ -140,9 +140,8 @@ def update(i):
             # 
             # ...this is a bad solution.
             print("[exception] ", e)
-
-    if i % (60 * 60 * 6) == 0:
-        update_repositories_cached()
+    # if i % (60 * 60 * 6) == 0:
+    #     update_repositories_cached()
 
 @click.group()
 def cli():

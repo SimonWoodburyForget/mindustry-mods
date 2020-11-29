@@ -1,6 +1,6 @@
 [package]
 name = "scripts"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"

@@ -1,6 +1,8 @@
+#!/bin/bash
+
 wasm-pack build --target web
 
-for x in index.html pkg css images
-do
-    rsync -avzhp $x $MINDUSTRY_MODS_PATH/www
-done
+echo "\nstatic -> $MINDUSTRY_MODS_PATH/www/static"
+sudo rsync -avzhp --chown webadmin:web static $MINDUSTRY_MODS_PATH/www
+echo "\npkg -> $MINDUSTRY_MODS_PATH/www/static/pkg"
+sudo rsync -avzhp --chown webadmin:web pkg $MINDUSTRY_MODS_PATH/www/static

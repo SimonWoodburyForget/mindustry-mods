@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Mindustry Mods</title>
-    <link rel="StyleSheet" href="css/main.1.2.css" />
-    <link rel="StyleSheet" href="css/header.css" />
+    <link rel="StyleSheet" href="/static/css/main.1.2.css" />
+    <link rel="StyleSheet" href="/static/css/header.css" />
     <script type="module">
-      import init from './pkg/mindustry_mods_frontend.js';
+      import init from '/static/pkg/frontend.js';
       async function run() {
-          await init('./pkg/mindustry_mods_frontend_bg.wasm');
+          await init('/static/pkg/frontend_bg.wasm');
       }
       run();
     </script>

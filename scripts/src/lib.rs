@@ -2,10 +2,6 @@
 use pyo3::prelude::*;
 use serde::{Deserialize, Serialize};
 
-mod path {
-    pub const GITHUB: &str = "https://github.com";
-}
-
 /// Mod struct version. If breaking changes occur, this version number is
 /// incremented, and access paths are changed, ensuring the cache is cleared
 /// from the backend all the way to the frontend.
@@ -110,6 +106,6 @@ impl Mod {
 
 impl Mod {
     pub fn archive_link(&self) -> String {
-        format!("{}/{}/archive/master.zip", path::GITHUB, &self.repo)
+        format!("https://github.com/{}/archive/master.zip", &self.repo)
     }
 }

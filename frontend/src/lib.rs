@@ -1,9 +1,13 @@
 //! Frontend application of for a Mindustry-Mods listing.
 #![warn(missing_docs)]
 
-/// Some important constant path stuff.
 mod path {
-    pub const ROOT: &str = "";
+    use lazy_static::lazy_static;
+    pub const GITHUB_MARK: &str = "static/images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png";
+    pub const NOTHING: &str = "static/images/nothing.png";
+    lazy_static! {
+        pub static ref DATA: String = format!("static/data/modmeta.{}.json", scripts::MOD_VERSION);
+    }
 }
 
 /// Simple DateTime utilities.
@@ -46,7 +50,7 @@ mod date {
 
 /// Mod listing functions.
 mod listing {
-    use super::{app::Msg, app::Page, date, markup};
+    use super::{app::Msg, app::Page, date, markup, path};
     use scripts::Mod;
     use seed::{prelude::*, *};
     use serde::Deserialize;
@@ -200,7 +204,7 @@ mod listing {
                     let base = "https://github.com".to_string();
                     let icon = match self.0.repo.split("/").next() {
                         Some(user) => base + "/" + user + ".png?size=64",
-                        None => "images/nothing.png".into(),
+                        None => path::NOTHING.into(),
                     };
                     button![
                         simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
@@ -220,7 +224,7 @@ mod listing {
                         simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
                         img![attrs! {
                             At::Src => i,
-                            At::OnError => "this.src='images/nothing.png'",
+                            At::OnError => format!("this.src='{}'", path::NOTHING),
                             // At::Custom("loading".into()) => "lazy",
                         }]
                     ]
@@ -388,7 +392,7 @@ mod markup {
 
 /// Base model/msg for application.
 pub mod app {
-    use super::{listing::ListingItem, path::ROOT};
+    use super::{listing::ListingItem, path};
     use scripts::MOD_VERSION;
     use seed::{prelude::*, *};
 
@@ -549,7 +553,7 @@ pub mod app {
         match msg {
             Msg::Route(Page::Overview(name)) => {
                 let q = format!("mod={}", name);
-                let url = seed::Url::new(vec![ROOT]).search(&q);
+                let url = seed::Url::new(vec![""]).search(&q);
                 seed::push_route(url);
                 scroll_to_top();
                 orders
@@ -558,7 +562,7 @@ pub mod app {
             }
 
             Msg::Route(Page::Listing) => {
-                let url = seed::Url::new(vec![ROOT]);
+                let url = seed::Url::new(vec![""]);
                 seed::push_route(url);
                 model.max_count = Default::default();
                 orders.skip().send_msg(Msg::ChangePage(Page::Listing));
@@ -620,7 +624,7 @@ pub mod app {
                 a![
                     attrs! { At::Href => "https://github.com/SimonWoodburyForget/mindustry-mods" },
                     img![attrs! {
-                        At::Src => "images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png",
+                        At::Src => path::GITHUB_MARK,
                     }]
                 ]
             ],
@@ -675,7 +679,7 @@ pub mod app {
     }
 
     async fn fetch_data() -> Result<Msg, Msg> {
-        Request::new(format!("data/modmeta.{}.json", MOD_VERSION))
+        Request::new(crate::path::DATA.as_str())
             .method(Method::Get)
             .fetch_json_data(Msg::FetchData)
             .await

@@ -81,7 +81,9 @@ async fn main() -> Result<()> {
         }
     });
 
-    warp::serve(static_dir.or(statistics).or(index_file))
+    let version = warp::path("version").map(|| VERSION);
+
+    warp::serve(static_dir.or(statistics).or(version).or(index_file))
         .run(([0, 0, 0, 0], port))
         .await;
 

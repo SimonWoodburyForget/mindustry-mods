@@ -93,7 +93,7 @@ def update_repositories_cached():
     for name in remove:
         i = 0
         while i < len(repo_objs):
-            if repo_objs[i] == name:
+            if repo_objs[i].name == name:
                 repo_objs.pop()
             else:
                 i += 1

@@ -4,8 +4,12 @@ cargo build --release
 sudo rsync -avzhp --chown webadmin:web target/release/web $MINDUSTRY_MODS_PATH/bin
 
 (cd scripts; maturin build)
-pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) --upgrade
+pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) \
+       --upgrade\
+       --force-reinstall\
+       --no-deps
 
+(cd frontend; deploy.sh)
 
 SYS="/etc/systemd/system"
 sudo rsync -avzhp service/*.service $SYS

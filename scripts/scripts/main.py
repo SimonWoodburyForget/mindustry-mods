@@ -118,7 +118,6 @@ def repo_dump(repo_objs):
 def update(i):
     '''Takes PyGitHub instance and the mods-yaml data, and returns a modmeta, 
     which is generated data from what has been cached.'''
-    print(i)
     if i % (60 * 5) == 0:
         try:
             update_repositories_recent()

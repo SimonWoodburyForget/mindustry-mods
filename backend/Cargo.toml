@@ -1,6 +1,6 @@
 [package]
 name = "backend"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"

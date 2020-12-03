@@ -273,12 +273,14 @@ dependencies = [
 
 [[package]]
 name = "common"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
+ "bincode",
  "nom",
  "pyo3",
  "serde 1.0.117",
  "serde_json",
+ "sled",
  "thiserror",
 ]
 

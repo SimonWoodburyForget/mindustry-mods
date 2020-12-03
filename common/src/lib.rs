@@ -13,7 +13,7 @@ pub const MOD_VERSION: &str = "3.2";
 #[cfg(feature = "pyo3")]
 /// This module is implemented in Rust.
 #[pymodule]
-fn scripts(_py: Python, module: &PyModule) -> PyResult<()> {
+fn common(_py: Python, module: &PyModule) -> PyResult<()> {
     #[pyfn(module, "dump")]
     fn dump(_py: Python, mods: Vec<Mod>) -> PyResult<String> {
         Ok(serde_json::to_string(&mods).unwrap())
@@ -56,6 +56,8 @@ pub struct Mod {
     /// markup encoded name
     #[serde(rename = "camelCase")]
     pub display_name: Option<String>,
+    /// default repository branch (aka: master or main)
+    pub default_branch: String,
 }
 
 #[cfg(feature = "pyo3")]
@@ -80,6 +82,7 @@ impl Mod {
         assets: Vec<String>,
         contents: Vec<String>,
         display_name: Option<String>,
+        default_branch: String,
     ) -> PyResult<Self> {
         Ok(Self {
             name,
@@ -99,6 +102,7 @@ impl Mod {
             assets,
             contents,
             display_name,
+            default_branch,
         })
     }
 

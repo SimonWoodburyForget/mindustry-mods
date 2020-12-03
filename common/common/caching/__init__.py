@@ -10,10 +10,10 @@ from jinja2 import Markup
 import re
 import functools
 
-from scripts.minfmt import ignore_sbrack
-from scripts.caching.ghrepo import repos_cached
-from scripts.config import gh
-from scripts import Mod
+from common.minfmt import ignore_sbrack
+from common.caching.ghrepo import repos_cached
+from common.config import gh
+from common import Mod
 
 def fix_image_url(url, repo_name):
     '''Fixes a GitHub image urls.
@@ -95,6 +95,7 @@ def build_mod(repo_obj, icon):
         assets=list(r.assets),
         contents=list(r.contents),
         display_name=r.mod.displayName,
+        default_branch=r.default_branch,
     )
 
 

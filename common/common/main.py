@@ -19,7 +19,7 @@ import subprocess
 import time
 import click
 #import appdirs
-from github import GithubException
+from github import GithubException, UnknownObjectException
 from datetime import datetime, timezone
 
 # Generation
@@ -32,21 +32,22 @@ import urllib
 from jinja2 import Markup
 from requests.exceptions import ConnectionError
 
-import scripts
-from scripts.minfmt import ignore_sbrack
-from scripts.caching import icons
-from scripts.config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH
-from scripts.caching.ghrepo import Repo
-from scripts.caching.icons import update_icons
-from scripts.caching import build_mods
-from scripts.caching.ghrepo import try_branches
+import common
+from common.minfmt import ignore_sbrack
+from common.caching import icons
+from common.config import DATA_PATH, MOD_META_VERSION, GITHUB_TOKEN, gh, GITHUB_REPO_CACHE_PATH
+from common.caching.ghrepo import Repo
+from common.caching.icons import update_icons
+from common.caching import build_mods
+from common.caching.ghrepo import try_branches
+from common import dump as json_dump 
 
 def update_frontend_data():
     repos = repo_load()
     icons = update_icons([ x.name for x in repos ])
     mods = build_mods(repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date_tt())))
-    json_string = scripts.dump(mods)
+    json_string = json_dump(mods)
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         f.write(json_string)
 
@@ -80,24 +81,15 @@ def update_repositories_recent():
         repo_objs.append(repo_i)
     repo_dump(repo_objs)
 
-def update_repositories_cached():
+def update_repositories_cached(dry_run=False):
     '''This function updates all repositories cached.'''
     repo_objs = repo_load()
     remove = []
     for i, repo_obj in enumerate(repo_objs):
         repo = gh.get_repo(repo_obj.name)
-        if repo.full_name != repo_obj.name:
-            remove.append(repo_obj.name)
-            continue
         repo_objs[i] = Repo.from_repo(repo)
-    for name in remove:
-        i = 0
-        while i < len(repo_objs):
-            if repo_objs[i].name == name:
-                repo_objs.pop()
-            else:
-                i += 1
-    repo_dump(repo_objs)
+    if not dry_run:
+        repo_dump(repo_objs)
 
 def repo_load():
     '''Loads Repo objects from json file if exist,
@@ -105,7 +97,19 @@ def repo_load():
     PATH = GITHUB_REPO_CACHE_PATH
     if PATH.exists():
         with open(PATH, 'r') as f:
-            return list({ Repo.from_dict(x) for x in json.load(f) })
+            repo_set = set()
+            for x in json.load(f):
+                # === BEGIN-NOTE ===
+                # This is a patch for "default_branch" not existing.
+                try: 
+                    branch = gh.get_repo(x["name"]).default_branch
+                except UnknownObjectException as e:
+                    # repo is gone?
+                    continue
+                x["default_branch"] = branch
+                # === END-NOTE === 
+                repo_set.add(Repo.from_dict(x))
+            return list(repo_set)
     else:
         with open(PATH, 'w') as f:
             json.dump([], f)
@@ -147,13 +151,18 @@ def cli():
     pass
 
 @cli.command()
+@click.option("--dry-run", help="Don't write anything.")
+def fix(dry_run):
+    update_repositories_cached(dry_run)
+
+@cli.command()
 @click.argument("count", type=int)
 def ls(count):
     mods = repo_load()
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
     for i, mod in enumerate(mods[:count]):
         print(i, mod)
-
+        
 @cli.command()
 @click.option("--un-authenticated", help="Ignore missing GitHub token.")
 def run(un_authenticated):

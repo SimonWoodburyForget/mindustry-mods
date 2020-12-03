@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 import github
 
-from scripts import MOD_VERSION
+from common import MOD_VERSION
 
 MOD_META_VERSION = MOD_VERSION
 

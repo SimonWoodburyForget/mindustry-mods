@@ -4,7 +4,7 @@ cargo build --release
 sudo rsync -zaPv --chown webadmin:web target/release/web /web/mindustry-mods/bin
 
 (cd common; maturin build)
-pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) \
+sudo pip3.8 install $(ls -Art target/wheels/common-*-cp38-*.whl | tail -n 1) \
        --upgrade\
        --force-reinstall\
        --no-deps

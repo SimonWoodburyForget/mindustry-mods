@@ -8,11 +8,13 @@ import dateutil
 import json
 import hjson
 from base64 import b64decode
-from github import GithubException
+from github import GithubException, UnknownObjectException
 
-from scripts.config import GITHUB_REPO_CACHE_PATH, gh
+from common.config import GITHUB_REPO_CACHE_PATH, gh
 
 def try_branches(repo, branch_list):
+    if repo.default_branch is not None:
+        [repo.default_branch] + branch_list
     for branch_name in branch_list:
         try:
             branch = repo.get_branch(branch_name)
@@ -142,6 +144,8 @@ class Repo:
     assets: Set[str]
     '''A set of contents found in the repo.'''
     contents: Set[str]
+    '''The default repository branch. (aka: master or main)'''
+    default_branch: str
 
     def __repr__(self):
         return f"Repo(name=\"{self.name}\")"
@@ -154,7 +158,8 @@ class Repo:
     
     @staticmethod
     def from_repo(repo):
-        sha = try_branches(repo, ["master", "main"]).commit.sha
+        branch = try_branches(repo, ["master", "main"])
+        sha = branch.commit.sha
         assets = get_assets(repo)
         contents = get_contents(repo) if 'content' in assets else set()
         modinfo = ModInfo.from_repo(repo)
@@ -169,50 +174,51 @@ class Repo:
             readme=get_file(repo, "README.md") or "",
             assets=assets,
             contents=contents,
+            default_branch=branch.name,
         )
 
-    @staticmethod
-    def from_github(name, old=None, force=False):
-        '''Gets a Github repository from Github, with other
-        data which may require a few requests, and packs this
-        data into a namedtuple to be cached.
-        '''
+    # @staticmethod
+    # def from_github(name, old=None, force=False):
+    #     '''Gets a Github repository from Github, with other
+    #     data which may require a few requests, and packs this
+    #     data into a namedtuple to be cached.
+    #     '''
 
-        try:
-            repo = gh.get_repo(name)
-        except GithubException as e:
-            # repository gone?
-            # FIXME: message not always in exception?
-            # print(f"[error] get_repo {e.data['message']} -- {name}")
-            print(f"[error] get_repo -- {name} -- {e}")
-            return old
+    #     try:
+    #         repo = gh.get_repo(name)
+    #     except GithubException as e:
+    #         # repository gone?
+    #         # FIXME: message not always in exception?
+    #         # print(f"[error] get_repo {e.data['message']} -- {name}")
+    #         print(f"[error] get_repo -- {name} -- {e}")
+    #         return old
 
-        try:
-            sha = repo.get_branch("master").commit.sha
-        except GithubException as e:
-            # no master branch?
-            print(f"[error] get_repo -- {name} -- {e}")
-            return old
+    #     try:
+    #         sha = repo.get_branch("master").commit.sha
+    #     except GithubException as e:
+    #         # no master branch?
+    #         print(f"[error] get_repo -- {name} -- {e}")
+    #         return old
         
-        if old and old.sha == sha and not force:
-            print('[skipped] old hash --', name)
-            return old
-        print('[processing] new hash --', name)
+    #     if old and old.sha == sha and not force:
+    #         print('[skipped] old hash --', name)
+    #         return old
+    #     print('[processing] new hash --', name)
 
-        assets = get_assets(repo)
-        contents = get_contents(repo) if 'content' in assets else set()
-        modinfo = ModInfo.from_repo(repo)
-        if modinfo is None:
-            return None
+    #     assets = get_assets(repo)
+    #     contents = get_contents(repo) if 'content' in assets else set()
+    #     modinfo = ModInfo.from_repo(repo)
+    #     if modinfo is None:
+    #         return None
 
-        return Repo(name,
-                    stars=repo.stargazers_count,
-                    date=repo.get_commit(sha).commit.author.date,
-                    sha=sha,
-                    mod=modinfo,
-                    readme=get_file(repo, "README.md") or "",
-                    assets=assets,
-                    contents=contents)
+    #     return Repo(name,
+    #                 stars=repo.stargazers_count,
+    #                 date=repo.get_commit(sha).commit.author.date,
+    #                 sha=sha,
+    #                 mod=modinfo,
+    #                 readme=get_file(repo, "README.md") or "",
+    #                 assets=assets,
+    #                 contents=contents)
 
     def archive_link(self):
         return f"https://github.com/{self.repo}/archive/master.zip"

@@ -199,37 +199,22 @@ mod listing {
         /// 2. (most-likely) else try out the github user icon;
         /// 3. otherwise, if all fails just pick a `nothing.png` placeholder;
         fn icon(&self) -> Node<Msg> {
-            match self.0.icon.as_deref() {
-                Some("") | None => {
-                    let base = "https://github.com".to_string();
-                    let icon = match self.0.repo.split("/").next() {
-                        Some(user) => base + "/" + user + ".png?size=64",
-                        None => path::NOTHING.into(),
-                    };
-                    button![
-                        simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
-                        img![attrs! {
-                            At::Src => &icon,
-                            // At::Custom("loading".into()) => "lazy",
-                        },]
-                    ]
-                }
-
-                Some(p) => {
-                    let i = format!(
-                        "{}/{}/master/{}",
-                        "https://raw.githubusercontent.com", self.0.repo, p
-                    );
-                    button![
-                        simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
-                        img![attrs! {
-                            At::Src => i,
-                            At::OnError => format!("this.src='{}'", path::NOTHING),
-                            // At::Custom("loading".into()) => "lazy",
-                        }]
-                    ]
-                }
-            }
+            let icon = format!(
+                "https://raw.githubusercontent.com/{}/{}/icon.png",
+                self.0.repo, self.0.default_branch,
+            );
+            // TODO: support user icon?
+            // let user_icon = match self.0.repo.split("/").next() {
+            //     Some(user) => base + user + ".png?size=64",
+            //     None => path::NOTHING.into(),
+            // };
+            button![
+                simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
+                img![attrs! {
+                    At::Src => &icon,
+                    At::OnError => format!("this.src='{}'", path::NOTHING),
+                }]
+            ]
         }
 
         /// Description paragraph of the mode for the listing.

@@ -177,49 +177,6 @@ class Repo:
             default_branch=branch.name,
         )
 
-    # @staticmethod
-    # def from_github(name, old=None, force=False):
-    #     '''Gets a Github repository from Github, with other
-    #     data which may require a few requests, and packs this
-    #     data into a namedtuple to be cached.
-    #     '''
-
-    #     try:
-    #         repo = gh.get_repo(name)
-    #     except GithubException as e:
-    #         # repository gone?
-    #         # FIXME: message not always in exception?
-    #         # print(f"[error] get_repo {e.data['message']} -- {name}")
-    #         print(f"[error] get_repo -- {name} -- {e}")
-    #         return old
-
-    #     try:
-    #         sha = repo.get_branch("master").commit.sha
-    #     except GithubException as e:
-    #         # no master branch?
-    #         print(f"[error] get_repo -- {name} -- {e}")
-    #         return old
-        
-    #     if old and old.sha == sha and not force:
-    #         print('[skipped] old hash --', name)
-    #         return old
-    #     print('[processing] new hash --', name)
-
-    #     assets = get_assets(repo)
-    #     contents = get_contents(repo) if 'content' in assets else set()
-    #     modinfo = ModInfo.from_repo(repo)
-    #     if modinfo is None:
-    #         return None
-
-    #     return Repo(name,
-    #                 stars=repo.stargazers_count,
-    #                 date=repo.get_commit(sha).commit.author.date,
-    #                 sha=sha,
-    #                 mod=modinfo,
-    #                 readme=get_file(repo, "README.md") or "",
-    #                 assets=assets,
-    #                 contents=contents)
-
     def archive_link(self):
         return f"https://github.com/{self.repo}/archive/master.zip"
 

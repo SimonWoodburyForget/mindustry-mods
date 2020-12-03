@@ -99,15 +99,20 @@ def repo_load():
         with open(PATH, 'r') as f:
             repo_set = set()
             for x in json.load(f):
-                # === BEGIN-NOTE ===
+                # == BEGIN-PATCH-NOTES ==
                 # This is a patch for "default_branch" not existing.
-                try: 
-                    branch = gh.get_repo(x["name"]).default_branch
-                except UnknownObjectException as e:
-                    # repo is gone?
-                    continue
-                x["default_branch"] = branch
-                # === END-NOTE === 
+                if "default_branch" not in x:
+                    try: 
+                        branch = gh.get_repo(x["name"]).default_branch
+                    except UnknownObjectException as e:
+                        # repo is gone?
+                        continue
+                    x["default_branch"] = branch
+                # == END-NOTE ==
+                # This is a patch for "minGameVersion"
+                if "min_game_version" not in x:
+                    x["min_game_version"] = None 
+                # == END-NOTE == 
                 repo_set.add(Repo.from_dict(x))
             return list(repo_set)
     else:

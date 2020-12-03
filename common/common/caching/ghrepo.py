@@ -82,7 +82,7 @@ class ModInfo:
     '''mod.json display name.'''
     displayName: str = None
     '''mod.json minimum game version.'''
-    minGameVersion: str = None
+    minGameVersion: Optional[int] = None
     '''mod.json hidden.'''
     hidden: bool = None
 
@@ -146,6 +146,8 @@ class Repo:
     contents: Set[str]
     '''The default repository branch. (aka: master or main)'''
     default_branch: str
+    '''The minimum game version.'''
+    min_game_version: Optional[str]
 
     def __repr__(self):
         return f"Repo(name=\"{self.name}\")"
@@ -175,6 +177,7 @@ class Repo:
             assets=assets,
             contents=contents,
             default_branch=branch.name,
+            min_game_version=modinfo.minGameVersion,
         )
 
     def archive_link(self):

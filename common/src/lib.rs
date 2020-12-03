@@ -58,6 +58,7 @@ pub struct Mod {
     pub display_name: Option<String>,
     /// default repository branch (aka: master or main)
     pub default_branch: String,
+    pub min_game_version: Option<u32>,
 }
 
 #[cfg(feature = "pyo3")]
@@ -83,6 +84,7 @@ impl Mod {
         contents: Vec<String>,
         display_name: Option<String>,
         default_branch: String,
+        min_game_version: Option<u32>,
     ) -> PyResult<Self> {
         Ok(Self {
             name,
@@ -103,6 +105,7 @@ impl Mod {
             contents,
             display_name,
             default_branch,
+            min_game_version,
         })
     }
 

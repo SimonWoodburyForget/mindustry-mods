@@ -1,6 +1,6 @@
 [package]
 name = "frontend"
-version = "0.1.19"
+version = "0.1.20"
 authors = ["Simon <simonwoodburyforget@gmail.com>"]
 edition = "2018"
 license = "GNUv3"

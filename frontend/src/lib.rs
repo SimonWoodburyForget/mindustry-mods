@@ -191,28 +191,24 @@ mod listing {
             }
         }
 
-        /// Returns an icon link node. This is a three stage process.
+        /// Returns an icon link node.
         ///
-        /// 1. if official icon exist use it, and this can either be
-        ///   a) icon.png (automatic),
-        ///   b) yaml path (manual override);
-        /// 2. (most-likely) else try out the github user icon;
-        /// 3. otherwise, if all fails just pick a `nothing.png` placeholder;
+        /// 1. uses `icon.png` from `default_branch`
+        /// 2  falls back to github user icon
         fn icon(&self) -> Node<Msg> {
             let icon = format!(
                 "https://raw.githubusercontent.com/{}/{}/icon.png",
                 self.0.repo, self.0.default_branch,
             );
-            // TODO: support user icon?
-            // let user_icon = match self.0.repo.split("/").next() {
-            //     Some(user) => base + user + ".png?size=64",
-            //     None => path::NOTHING.into(),
-            // };
+            let user_icon = match self.0.repo.split("/").next() {
+                Some(user) => format!("https://github.com/{}.png?size=64", user),
+                None => path::NOTHING.into(),
+            };
             button![
                 simple_ev(Ev::Click, Msg::Route(Page::Overview(self.endpoint_query()))),
                 img![attrs! {
                     At::Src => &icon,
-                    At::OnError => format!("this.src='{}'", path::NOTHING),
+                    At::OnError => format!("this.src='{}'", user_icon),
                 }]
             ]
         }

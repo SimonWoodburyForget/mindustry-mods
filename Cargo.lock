@@ -74,12 +74,11 @@ dependencies = [
  "bincode",
  "chrono",
  "clap",
+ "common",
  "directories",
  "futures 0.3.8",
- "mcore",
  "nom",
  "reqwest",
- "scripts",
  "serde 1.0.117",
  "serde-hjson",
  "serde_json",
@@ -270,6 +269,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4344512281c643ae7638bbabc3af17a11307803ec8f0fcad9fae512a8bf36467"
 dependencies = [
  "bitflags",
+]
+
+[[package]]
+name = "common"
+version = "0.1.7"
+dependencies = [
+ "nom",
+ "pyo3",
+ "serde 1.0.117",
+ "serde_json",
+ "thiserror",
 ]
 
 [[package]]
@@ -489,15 +499,14 @@ checksum = "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b"
 name = "frontend"
 version = "0.1.19"
 dependencies = [
+ "common",
  "futures 0.1.29",
  "humantime",
  "instant",
  "itertools",
  "js-sys",
  "lazy_static",
- "mcore",
  "regex",
- "scripts",
  "seed",
  "serde 1.0.117",
  "thiserror",
@@ -1047,16 +1056,6 @@ name = "matches"
 version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ffc5c5338469d4d3ea17d269fa8ea3512ad247247c30bd2df69e68309ed0a08"
-
-[[package]]
-name = "mcore"
-version = "0.1.0"
-dependencies = [
- "nom",
- "serde 1.0.117",
- "serde_json",
- "thiserror",
-]
 
 [[package]]
 name = "memchr"
@@ -1833,16 +1832,6 @@ name = "scopeguard"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
-
-[[package]]
-name = "scripts"
-version = "0.1.6"
-dependencies = [
- "mcore",
- "pyo3",
- "serde 1.0.117",
- "serde_json",
-]
 
 [[package]]
 name = "security-framework"

@@ -12,8 +12,7 @@ test-mode = []
 crate-type = ["cdylib"]
 
 [dependencies]
-mcore = { path = "../mcore" }
-scripts = { path = "../scripts", default-features = false } 
+common = { path = "../common", default-features = false } 
 
 wasm-bindgen = "0.2.68"
 seed = "0.6"

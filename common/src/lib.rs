@@ -1,3 +1,6 @@
+pub mod color;
+pub mod markup;
+
 #[cfg(feature = "pyo3")]
 use pyo3::prelude::*;
 use serde::{Deserialize, Serialize};

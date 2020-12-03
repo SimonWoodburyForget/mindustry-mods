@@ -7,7 +7,7 @@ Website: http://mindustry-mods.metasimon.space/
 This is a three parts application:
 
 - backend (rust), basic file server
-- scripts (mixed rust/python), github data caching
+- common (mixed rust/python), github, parsing, caching, statics data
 - frontend app (rust wasm), html rendering
 
 Basic requirements:

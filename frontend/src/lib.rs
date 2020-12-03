@@ -6,7 +6,7 @@ mod path {
     pub const GITHUB_MARK: &str = "static/images/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png";
     pub const NOTHING: &str = "static/images/nothing.png";
     lazy_static! {
-        pub static ref DATA: String = format!("static/data/modmeta.{}.json", scripts::MOD_VERSION);
+        pub static ref DATA: String = format!("static/data/modmeta.{}.json", common::MOD_VERSION);
     }
 }
 
@@ -51,7 +51,7 @@ mod date {
 /// Mod listing functions.
 mod listing {
     use super::{app::Msg, app::Page, date, markup, path};
-    use scripts::Mod;
+    use common::Mod;
     use seed::{prelude::*, *};
     use serde::Deserialize;
     use std::{convert::TryFrom, iter};
@@ -344,7 +344,7 @@ mod listing {
 /// Color markup rendering layer.
 mod markup {
     use super::app::Msg;
-    use mcore::{
+    use common::{
         color::{Color, Name},
         markup::Markup,
     };
@@ -393,7 +393,7 @@ mod markup {
 /// Base model/msg for application.
 pub mod app {
     use super::{listing::ListingItem, path};
-    use scripts::MOD_VERSION;
+    use common::MOD_VERSION;
     use seed::{prelude::*, *};
 
     /// Package version string.

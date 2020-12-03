@@ -1,8 +1,10 @@
-# Scripts
+# Common
 
 This is a mixed module/crate linking python to rust to python, with the help of [pyo3](https://github.com/PyO3/pyo3) and [maturin](https://github.com/PyO3/maturin).
 
-To build the project simply execute the following in the current directory:
+## Scripts
+
+To build the Python wheels, simply execute the following in the current directory:
 
 ```bash
 maturin build
@@ -23,6 +25,5 @@ export GITHUB_TOKEN="<api key>"
 You can then run the script with:
 
 ```bash
-mindustry-mods-run run
+mindustry-mods-script run
 ```
-

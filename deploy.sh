@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cargo build --release
-sudo rsync -avzhp --chown webadmin:web target/release/web $MINDUSTRY_MODS_PATH/bin
+sudo rsync -zaPv --chown webadmin:web target/release/web /web/mindustry-mods/bin
 
 (cd scripts; maturin build)
 pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) \
@@ -12,7 +12,7 @@ pip3.8 install $(ls -Art target/wheels/scripts-*-cp38-*.whl | tail -n 1) \
 (cd frontend; deploy.sh)
 
 SYS="/etc/systemd/system"
-sudo rsync -avzhp service/*.service $SYS
+sudo rsync -zaPv service/*.service $SYS
 for x in $(ls service/*.service)
 do
     x=$(basename -- "$x")

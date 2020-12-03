@@ -1,19 +1,15 @@
 
 # Seed-rs Frontend
 
-This is the frontend application for mindustry-mods. Deploying is simply a matter of building with wasm-pack and then copying the files to wherever they need to be. Here rsync is used in the `deploy.sh` script, which can also be used to deploy over ssh. The environmental valiable `MINDUSTRY_MODS_PATH` can be set to either `"/web/mindustry-mods"` for a local transfer, or `"user@---.---.---.---:/web/mindustry-mods"` where `user` is the user and `---.---.---.---` is the IP address (or domain) of the ssh server.
-
-Build:
+This is the frontend application for mindustry-mods. It can be built with:
 
 ```bash
 wasm-pack build --target web
 ```
 
-Deploy:
+The files in `./static` should be copied into `/web/mindustry-mods/static`, and `./pkg` into `/web/mindustry-mods/static`. The deploy script makes use of the `MINDUSTRY_MODS_PATH` environmental varible and `rsync`, such that it con be built here and deployed over a network. `--chown`  can be optionally included if they're being moved locally and you don't feel like changing users:
 
 ```bash
-for x in index.html pkg css images
-do
-    rsync -avzhp $x $/MINDUSTRY_MODS_PATH/www
-done
+sudo rsync -avzhp --chown webadmin:web static $MINDUSTRY_MODS_PATH/www
+sudo rsync -avzhp --chown webadmin:web pkg $MINDUSTRY_MODS_PATH/www/static
 ```

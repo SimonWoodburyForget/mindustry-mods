@@ -227,8 +227,8 @@ class Repo:
         '''Called when the object is about to be serialized.'''
         return { **asdict(self),
                  'date': str(self.date),
-                 'assets': tuple(self.assets),
-                 'contents': tuple(self.contents) }
+                 'assets': sorted(list(self.assets)),
+                 'contents': sorted(list(self.contents)) }
 
     def from_dict(d):
         '''Called when the object is being deserialized.'''

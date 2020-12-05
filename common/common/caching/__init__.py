@@ -29,6 +29,8 @@ def fix_image_url(url, repo_name):
     - preview.png
     - sprites/preview.png
     - /sprites/preview.png'''
+    # FIXME: this assumes `master` is always the branch we want, while in reality we need the
+    # `default_branch` of the repository, which could also for example be `main`
     from urllib.parse import urlparse
     from parsec import optional, string, regex, none_of, many, ParseError
 

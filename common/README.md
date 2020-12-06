@@ -27,3 +27,23 @@ You can then run the script with:
 ```bash
 mindustry-mods-script run
 ```
+
+## Cross-compilation
+
+Export the environmental variable to your targets `libpython` DSO and the associated `_sysconfigdata*.py` file. If building Python from source, this would be the `build/lib.linux-i686-3.8/` directory.
+
+```bash
+export PYO3_CROSS_LIB_DIR="path/to/libs"
+```
+
+Ensure you have the corresponding rustup target:
+
+```bash
+rustup install target i686-unknown-linux-gnu
+```
+
+Build the wheel with the target argument:
+
+```bash
+maturin build --target=i686-unknown-linux-gnu
+```

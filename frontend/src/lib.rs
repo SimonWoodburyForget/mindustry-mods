@@ -301,7 +301,7 @@ mod listing {
                     div![attrs! { At::Class => "box contents" }, self.contents_list()],
                     div![attrs! { At::Class => "box stars" }, self.stars_el()],
                     div![
-                        attrs! { At::Class => "box version" },
+                        attrs! { At::Class => "box min-version" },
                         self.min_game_version()
                     ],
                 ]

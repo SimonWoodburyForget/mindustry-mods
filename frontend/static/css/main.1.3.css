@@ -81,7 +81,7 @@ a {
     background: #112;
 }
 
-.box.version {
+.box.min-version {
     border-top: 2px solid #444;
     color: #444;
     font-size: 0.8em;

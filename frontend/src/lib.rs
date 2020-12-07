@@ -149,6 +149,14 @@ mod listing {
             a![style! { "display" => "none" }]
         }
 
+        fn min_game_version(&self) -> Node<Msg> {
+            if let Some(version) = &self.0.min_game_version {
+                p![format!("Mininum Game Version {}", version)]
+            } else {
+                p![style! { "display" => "none" }]
+            }
+        }
+
         /// The rendered `time age` string.
         fn last_commit(&self) -> Node<Msg> {
             // NOTE: may want to consider using chrono instead.
@@ -292,6 +300,10 @@ mod listing {
                     div![attrs! { At::Class => "box assets" }, self.assets_list()],
                     div![attrs! { At::Class => "box contents" }, self.contents_list()],
                     div![attrs! { At::Class => "box stars" }, self.stars_el()],
+                    div![
+                        attrs! { At::Class => "box version" },
+                        self.min_game_version()
+                    ],
                 ]
             ]
         }

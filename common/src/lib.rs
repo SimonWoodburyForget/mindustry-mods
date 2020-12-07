@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 /// Mod struct version. If breaking changes occur, this version number is
 /// incremented, and access paths are changed, ensuring the cache is cleared
 /// from the backend all the way to the frontend.
-pub const MOD_VERSION: &str = "3.2";
+pub const MOD_VERSION: &str = "3.3";
 
 #[cfg(feature = "pyo3")]
 /// This module is implemented in Rust.
@@ -58,7 +58,7 @@ pub struct Mod {
     pub display_name: Option<String>,
     /// default repository branch (aka: master or main)
     pub default_branch: String,
-    pub min_game_version: Option<u32>,
+    pub min_game_version: Option<String>,
 }
 
 #[cfg(feature = "pyo3")]
@@ -84,7 +84,7 @@ impl Mod {
         contents: Vec<String>,
         display_name: Option<String>,
         default_branch: String,
-        min_game_version: Option<u32>,
+        min_game_version: Option<String>,
     ) -> PyResult<Self> {
         Ok(Self {
             name,

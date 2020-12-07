@@ -82,7 +82,7 @@ class ModInfo:
     '''mod.json display name.'''
     displayName: str = None
     '''mod.json minimum game version.'''
-    minGameVersion: Optional[int] = None
+    minGameVersion: Optional[str] = None
     '''mod.json hidden.'''
     hidden: bool = None
 
@@ -112,6 +112,9 @@ class ModInfo:
         # but it may endup being a number
         if 'version' in j:
             j['version'] = str(j['version'])
+
+        if 'minGameVersion' in j:
+            j['minGameVersion'] = str(j['minGameVersion'])
 
         if j is not None:
             try:

@@ -81,6 +81,12 @@ a {
     background: #112;
 }
 
+.box.version {
+    color: #444;
+    font-size: 0.8em;
+    grid-column-end: span 3;
+}
+
 /* ================================================================ */
 /* Inputs */
 button, input {

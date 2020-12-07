@@ -98,6 +98,7 @@ def build_mod(repo_obj, icon):
         contents=list(r.contents),
         display_name=r.mod.displayName,
         default_branch=r.default_branch,
+        min_game_version=r.mod.minGameVersion,
     )
 
 

@@ -150,7 +150,7 @@ class Repo:
     '''The default repository branch. (aka: master or main)'''
     default_branch: str
     '''The minimum game version.'''
-    min_game_version: Optional[str]
+    min_game_version: Optional[str] = None
 
     def __repr__(self):
         return f"Repo(name=\"{self.name}\")"

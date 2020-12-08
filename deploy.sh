@@ -1,18 +1,20 @@
 #!/bin/bash
 
-cargo build --release
-sudo rsync -zaPv --chown webadmin:web target/release/web /web/mindustry-mods/bin
+TARGET="$ARCH-unknown-linux-gnu"
 
-(cd common; maturin build)
-sudo pip3.8 install $(ls -Art target/wheels/common-*-cp38-*.whl | tail -n 1) \
+sudo rsync -a $MINDUSTRY_MODS_PATH target/backup
+
+sudo rsync -a --chown webadmin:web target/$TARGET/release/web $MINDUSTRY_MODS_PATH/bin
+
+sudo pip3.8 install $(ls -Art target/wheels/common-*-cp38-manylinux1_$ARCH.whl | tail -n 1)\
        --upgrade\
        --force-reinstall\
        --no-deps
 
-(cd frontend; deploy.sh)
+sudo rsync -a --chown webadmin:web target/static $MINDUSTRY_MODS_PATH/www
 
 SYS="/etc/systemd/system"
-sudo rsync -zaPv service/*.service $SYS
+sudo rsync -a service/*.service $SYS
 for x in $(ls service/*.service)
 do
     x=$(basename -- "$x")

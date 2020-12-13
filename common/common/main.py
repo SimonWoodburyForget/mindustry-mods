@@ -40,14 +40,14 @@ from common.caching.ghrepo import Repo
 from common.caching.icons import update_icons
 from common.caching import build_mods
 from common.caching.ghrepo import try_branches
-from common import dump as json_dump 
+from common import mods_dump
 
 def update_frontend_data():
     repos = repo_load()
     icons = update_icons([ x.name for x in repos ])
     mods = build_mods(repos, icons)
     mods = list(reversed(sorted(mods, key=lambda x: x.date_tt())))
-    json_string = json_dump(mods)
+    json_string = mods_dump(mods)
     with open(DATA_PATH / f"modmeta.{MOD_META_VERSION}.json", 'w') as f:
         f.write(json_string)
 
@@ -167,7 +167,7 @@ def ls(count):
     mods = list(reversed(sorted(mods, key=lambda x: x.date)))
     for i, mod in enumerate(mods[:count]):
         print(i, mod)
-        
+
 @cli.command()
 @click.option("--un-authenticated", help="Ignore missing GitHub token.")
 def run(un_authenticated):

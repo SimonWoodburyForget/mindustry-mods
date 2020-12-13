@@ -44,6 +44,7 @@ schematics
 sprites-override
 sprites
 scripts
+maps
 '''.split('\n'))
 
 CONTENTS = set(x.strip() for x in '''

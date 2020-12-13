@@ -14,8 +14,8 @@ pub const MOD_VERSION: &str = "3.3";
 /// This module is implemented in Rust.
 #[pymodule]
 fn common(_py: Python, module: &PyModule) -> PyResult<()> {
-    #[pyfn(module, "dump")]
-    fn dump(_py: Python, mods: Vec<Mod>) -> PyResult<String> {
+    #[pyfn(module, "mods_dump")]
+    fn mods_dump(_py: Python, mods: Vec<Mod>) -> PyResult<String> {
         Ok(serde_json::to_string(&mods).unwrap())
     }
 

@@ -11,7 +11,6 @@ import re
 import functools
 
 from common.minfmt import ignore_sbrack
-from common.caching.ghrepo import repos_cached
 from common.config import gh
 from common import Mod
 

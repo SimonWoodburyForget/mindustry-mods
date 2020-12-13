@@ -1,12 +1,10 @@
 #!/bin/bash
 
-TARGET="$ARCH-unknown-linux-gnu"
-
 sudo rsync -a $MINDUSTRY_MODS_PATH target/backup
 
-sudo rsync -a --chown webadmin:web target/$TARGET/release/web $MINDUSTRY_MODS_PATH/bin
+sudo rsync -a --chown webadmin:web target/release/web $MINDUSTRY_MODS_PATH/bin
 
-sudo pip3.8 install $(ls -Art target/wheels/common-*-cp38-manylinux1_$ARCH.whl | tail -n 1)\
+sudo pip3.8 install $(ls -Art target/wheels/common-*-cp38-*.whl | tail -n 1)\
        --upgrade\
        --force-reinstall\
        --no-deps

@@ -44,6 +44,7 @@ schematics
 sprites-override
 sprites
 scripts
+maps
 '''.split('\n'))
 
 CONTENTS = set(x.strip() for x in '''
@@ -200,30 +201,3 @@ class Repo:
                         "mod": ModInfo(**d["mod"]),
                         "assets": set(d["assets"]),
                         "contents": set(d["contents"]) })
-
-def repos_cached(mods, update=True):
-    '''Gets repos if update is `True` and caches them,
-    otherwise just reads the cached data.'''
-
-    # TODO: implement better caching
-    PATH = GITHUB_REPO_CACHE_PATH
-    if PATH.exists():
-        print('[log] path exists')
-        with open(PATH) as f:
-            repos = [ Repo.from_dict(d) for d in json.load(f) ]
-            old = { r.name: r for r in repos }
-
-    else:
-        print('[log] path not exist')
-        repos = []
-        old = {}
-
-    if update:
-        repos = ( Repo.from_github(x, old[x] if x in old else None) for x in mods if x is not None )
-        repos = [ r for r in repos if r is not None]
-        with open(PATH, "w") as f:
-            json.dump([ r.into_dict() for r in repos if r is not None ], f)
-
-    return repos
-
-

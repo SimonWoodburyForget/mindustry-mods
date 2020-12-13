@@ -1,10 +1,8 @@
 #!/bin/bash
 
-TARGET="$ARCH-unknown-linux-gnu"
+cargo build --release --bin web
 
-cargo build --release --bin web --target=$TARGET
-
-(cd common; maturin build --target=$TARGET)
+(cd common; maturin build)
 
 wasm-pack build frontend --target web
 

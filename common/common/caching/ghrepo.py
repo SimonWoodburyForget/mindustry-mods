@@ -95,9 +95,9 @@ class ModInfo:
     @staticmethod
     def from_repo(repo):
         '''Get's mod.json from a specific repo.'''
-        text = get_file(repo, "mod.json")
+        text = get_file(repo, "/mod.json")
         if text is None:
-            text = get_file(repo, "mod.hjson")
+            text = get_file(repo, "/mod.hjson")
         if text is None:
             return None
         return ModInfo.from_text(text)

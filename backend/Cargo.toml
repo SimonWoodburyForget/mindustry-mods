@@ -12,7 +12,7 @@ common = { path = "../common" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 reqwest = { version = "0.10.9", default_features = false, features = ["json", "rustls-tls"] }
-tokio = { version = "0.2", features = ["full"] }
+tokio = { version = "1.8", features = ["full"] }
 directories = "2.0"
 base64 = "0.12"
 anyhow = "1.0"
